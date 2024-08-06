@@ -19,7 +19,7 @@ class CommentResource extends Resource
 {
     protected static ?string $model = Comment::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-tag';
+    protected static ?string $navigationIcon = 'heroicon-s-tag';
     protected static ?string $modelLabel = 'Comments';
 
     protected static ?string $navigationGroup = 'Blogs';

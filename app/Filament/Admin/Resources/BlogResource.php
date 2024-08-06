@@ -6,21 +6,18 @@ use App\Filament\Admin\Resources\BlogResource\Pages;
 use App\Filament\Admin\Resources\BlogResource\RelationManagers\CommentsRelationManager;
 use App\Models\Blog;
 use Filament\Forms;
-use Filament\Forms\Components\CheckboxList;
 use Filament\Forms\Components\Section;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class BlogResource extends Resource
 {
     protected static ?string $model = Blog::class;
     protected static ?string $navigationGroup = 'Blogs';
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-s-rectangle-stack';
 
     public static function form(Form $form): Form
     {
@@ -49,6 +46,9 @@ class BlogResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->modifyQueryUsing(function (Builder $query) {
+                $query->where('user_id', auth()->user()->id);
+            })
             ->columns([
                 Tables\Columns\TextColumn::make('id')->sortable()->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\ImageColumn::make("image")->sortable(),
@@ -62,7 +62,7 @@ class BlogResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make()
+                Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -74,7 +74,7 @@ class BlogResource extends Resource
     public static function getRelations(): array
     {
         return [
-            CommentsRelationManager::class
+            CommentsRelationManager::class,
         ];
     }
 

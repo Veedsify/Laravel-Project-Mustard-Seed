@@ -3,12 +3,13 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Admin\Resources\DashboardResource\Pages\Dashboard;
-use Filament\Enums\ThemeMode;
+use App\Filament\Admin\Resources\UserResource\Pages\Settings;
+use App\Filament\Admin\Resources\UserResource\Pages\SortUsers;
+use App\Http\Middleware\CheckUserIsAdmin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Navigation\MenuItem;
-use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
@@ -28,10 +29,11 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->id('admin')
             ->path('admin')
-            ->font('Plus Jakarta Sans')
+            ->font('Montserrat')
             ->colors([
-                'primary' => Color::hex("#00715D"),
-                'secondary' => Color::hex("#009688"),
+                'primary' => Color::hex("#16c1c9"),
+                'secondary' => Color::hex("#000"),
+                'background' => Color::hex("#000"),
             ])
             ->userMenuItems([
                 'profile' => MenuItem::make()->label('Profile')->icon('heroicon-s-user')->url('/admin/users'),
@@ -41,8 +43,18 @@ class AdminPanelProvider extends PanelProvider
             ->discoverResources(in: app_path('Filament/Admin/Resources'), for: 'App\\Filament\\Admin\\Resources')
             ->discoverPages(in: app_path('Filament/Admin/Pages'), for: 'App\\Filament\\Admin\\Pages')
             ->pages([
-//                Pages\Dashboard::class,
-                \App\Filament\Pages\Dashboard::class
+                \App\Filament\Pages\Dashboard::class,
+                \App\Filament\Admin\Pages\Settings::class
+            ])
+//          ->topNavigation()
+//          ->maxContentWidth(MaxWidth::ScreenTwoExtraLarge)
+            ->authMiddleware([
+                CheckUserIsAdmin::class,
+            ])
+            ->navigationGroups([
+                'Blogs',
+                'Users',
+                'Settings',
             ])
             ->discoverWidgets(in: app_path('Filament/Admin/Widgets'), for: 'App\\Filament\\Admin\\Widgets')
             ->widgets([

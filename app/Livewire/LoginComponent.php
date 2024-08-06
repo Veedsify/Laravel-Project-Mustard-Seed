@@ -10,7 +10,7 @@ class LoginComponent extends Component
 {
     public function render()
     {
-        Auth::login(User::find(1)->first());
+        Auth::login(User::find(2));
         return view('livewire.login-component');
     }
 }

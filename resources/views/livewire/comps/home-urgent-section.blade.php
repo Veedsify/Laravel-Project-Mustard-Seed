@@ -5,7 +5,7 @@
             <div class="col-xl-7">
                 <!-- Section Tittle -->
                 <div class="section-tittle text-center mb-50">
-                    <span class="sub-tittle text-capitalize font-600">In urgent cases</span>
+                    <span class="sub-tittle text-capitalize font-600">In urgent {{$title}}</span>
                     <h2 class="title font-700">The best way is to find yourself</h2>
                 </div>
             </div>
@@ -14,7 +14,7 @@
             <div class="col-xxl-7 col-xl-8 col-lg-8 p-0 urgent-area-slide xs-p-12">
                 <!-- Single Slider-->
                 <div class="image-container position-relative h-100">
-                    <img class="w-100 h-100" src="assets/images/gallery/urgent-1.png" alt="img">
+                    <img class="w-100 h-100" src="{{asset('assets/images/gallery/urgent-1.png')}}" alt="img">
                     <div class="image-overlay-text">
                         <div class="flex gap-20 mb-10">
                             <div class="edu flex gap-10">
@@ -36,7 +36,7 @@
                 </div>
                 <!-- Single Slider-->
                 <div class="image-container position-relative h-100">
-                    <img class="w-100 h-100" src="assets/images/gallery/urgent-1.png" alt="img">
+                    <img class="w-100 h-100" src="{{asset('assets/images/gallery/urgent-1.png')}}" alt="img">
                     <div class="image-overlay-text">
                         <div class="flex gap-20 mb-16">
                             <div class="edu flex gap-10">
@@ -58,7 +58,7 @@
                 </div>
                 <!-- Single Slider -->
                 <div class="image-container position-relative h-100">
-                    <img class="w-100 h-100" src="assets/images/gallery/urgent-1.png" alt="img">
+                    <img class="w-100 h-100" src="{{asset('assets/images/gallery/urgent-1.png')}}" alt="img">
                     <div class="image-overlay-text">
                         <div class="flex gap-20 mb-16">
                             <div class="edu flex gap-10">

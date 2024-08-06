@@ -8,6 +8,7 @@ use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Log;
 
 class User extends Authenticatable implements FilamentUser
 {
@@ -15,7 +16,11 @@ class User extends Authenticatable implements FilamentUser
 
 
     public function canAccessPanel(Panel $panel): bool {
-        return $this->role === 'admin';
+        if($panel->getId() === $this->role) {
+            return true;
+        }
+//        dump($panel);
+        return false;
     }
     /**
      * The attributes that are mass assignable.
@@ -44,6 +49,11 @@ class User extends Authenticatable implements FilamentUser
     public function categories()
     {
         return $this->hasMany(Category::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 
     /**
