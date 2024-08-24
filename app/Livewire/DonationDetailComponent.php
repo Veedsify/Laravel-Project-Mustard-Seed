@@ -2,6 +2,9 @@
 
 namespace App\Livewire;
 
+use App\Models\Campaign;
+use App\Models\CampaignCategory;
+use App\Models\Donation;
 use Livewire\Component;
 
 class DonationDetailComponent extends Component
@@ -13,6 +16,11 @@ class DonationDetailComponent extends Component
     }
     public function render()
     {
-        return view('livewire.donation-detail-component');
+        $donation = Campaign::where('slug', $this->slug)->first();
+        $categories = CampaignCategory::all();
+        return view('livewire.donation-detail-component',[
+            'donation' => $donation,
+            'categories' => $categories
+        ]);
     }
 }

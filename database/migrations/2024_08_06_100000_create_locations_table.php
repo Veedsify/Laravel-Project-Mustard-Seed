@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('address');
+            $table->string('slug')->unique();
             $table->string('city');
             $table->string('state');
             $table->string('zip');
-            $table->string('country');            
+            $table->string('country');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

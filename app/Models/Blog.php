@@ -29,4 +29,17 @@ class Blog extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function scopeSearch($query, $search)
+    {
+        return $query->where('title', 'like', '%' . $search . '%')
+            ->orWhere('content', 'like', '%' . $search . '%')
+            ->orWhere('tags', 'like', '%' . $search . '%')
+            ->orWhere('descriptions', 'like', '%' . $search . '%');
+    }
+
+    public function getBlogsCount($query)
+    {
+        return $query->all()->count();
+    }
 }

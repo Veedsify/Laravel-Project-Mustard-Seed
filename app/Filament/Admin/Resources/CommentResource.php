@@ -11,9 +11,9 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class CommentResource extends Resource
 {
@@ -83,6 +83,10 @@ class CommentResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                ViewAction::make('view')
+                    ->label('View')
+                    ->icon('heroicon-s-eye'),
+                DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -95,7 +99,7 @@ class CommentResource extends Resource
     {
         return [
             RelationManagers\UserRelationManager::class,
-            RelationManagers\BlogRelationManager::class
+            RelationManagers\BlogRelationManager::class,
         ];
     }
 

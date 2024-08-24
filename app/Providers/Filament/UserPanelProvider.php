@@ -5,6 +5,7 @@ namespace App\Providers\Filament;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationItem;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -24,10 +25,14 @@ class UserPanelProvider extends PanelProvider
     {
         return $panel
             ->id('user')
+            ->spa()
+            ->brandName("Mustard Seed Charity")
             ->path('user')
             ->colors([
                 'primary' => Color::Amber,
             ])
+            ->font('DM Sans')
+            ->viteTheme('resources/css/filament/user/theme.css')
             ->discoverResources(in: app_path('Filament/User/Resources'), for: 'App\\Filament\\User\\Resources')
             ->discoverPages(in: app_path('Filament/User/Pages'), for: 'App\\Filament\\User\\Pages')
             ->pages([
@@ -36,7 +41,22 @@ class UserPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/User/Widgets'), for: 'App\\Filament\\User\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
+            ])
+            ->navigationItems([
+                NavigationItem::make("Become an Agent")
+                    ->icon('heroicon-s-check-badge')
+                    ->url(fn()=> route('home'), true)
+                    ->group("Volunteers")
+                    ->sort(3)
+            ])
+            ->navigationGroups([
+                'Blogs',
+                'Locations',
+                'Campaigns',
+                'Events',
+                'Testimonials',
+                'Volunteers',
+                'Settings',
             ])
             ->middleware([
                 EncryptCookies::class,

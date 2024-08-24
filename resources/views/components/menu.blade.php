@@ -37,7 +37,7 @@
 
                                         <li class="single-list"><a href="{{route('donation')}}"
                                                                    class="single {{request()->is('donation')? 'active': ""}}"
-                                                                   wire:navigate>Donation</a></li>
+                                                                   wire:navigate>Campaigns</a></li>
 
                                         <li class="single-list"><a href="{{route('blogs')}}"
                                                                    class="single {{request()->is('blogs') ? 'active': ""}}"
@@ -75,7 +75,7 @@
                                     <a href="javascript:void(0)" class="rounded-btn search-bar"><i
                                                 class="ri-search-line"></i></a>
                                     @auth()
-                                        <a href="{{route('home')}}" class="btn-primary-fill pill-btn" wire:navigate>
+                                        <a href="/admin" class="btn-primary-fill pill-btn">
                                             {{explode(' ', auth()->user()->name)[0] ??auth()->user()->name }}
                                         </a>
                                     @endauth

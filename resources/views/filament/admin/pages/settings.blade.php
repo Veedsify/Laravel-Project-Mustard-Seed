@@ -1,8 +1,7 @@
 <x-filament-panels::page>
-    {{--    <x-filament::breadcrumbs :breadcrumbs="[--}}
-    {{--    '/' => 'Home',--}}
-    {{--    '/dashboard' => 'Dashboard',--}}
-    {{--    '/dashboard/users' => 'Users',--}}
-    {{--    '/your-custom-path' => 'Your Custom Page',--}}
-    {{--]"/>--}}
+    <x-filament::breadcrumbs :breadcrumbs="[
+        '/admin' => 'Home',
+        '/admin/settings' => 'Settings',
+    ]" />
+
 </x-filament-panels::page>

@@ -38,9 +38,9 @@ Route::get('/contact', ContactComponent::class)->name('contact');
 
 Route::get('/events/{slug}', EventsComponent::class)->name('events.details');
 
-Route::get("/donation", DonationComponent::class)->name('donation');
-Route::get("/donate/{slug}", DonationDetailComponent::class)->name('donate.details');
-Route::get('/donate/{slug}/payment', DonationPayComponent::class)->name('donate.payment');
+Route::get("/campaigns", DonationComponent::class)->name('donation');
+Route::get("/campaign/{slug}", DonationDetailComponent::class)->name('donate.details');
+Route::get('/campaign/{slug}/payment', DonationPayComponent::class)->name('donate.payment');
 
 Route::get("/volunteers", VolunteersComponent::class)->name('volunteers');
 Route::get("/volunteer/{slug}", VolunteersDetailsComponent::class)->name('volunteers.details');

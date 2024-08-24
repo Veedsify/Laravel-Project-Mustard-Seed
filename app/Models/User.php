@@ -16,11 +16,12 @@ class User extends Authenticatable implements FilamentUser
 
 
     public function canAccessPanel(Panel $panel): bool {
-        if($panel->getId() === $this->role) {
-            return true;
-        }
-//        dump($panel);
-        return false;
+        return true;
+//         if($panel->getId() === $this->role) {
+//             return true;
+//         }
+// //        dump($panel);
+//         return false;
     }
     /**
      * The attributes that are mass assignable.
@@ -37,6 +38,7 @@ class User extends Authenticatable implements FilamentUser
         'role',
         'bio',
         'google_id',
+        'location',
         'password_reset_token',
         'email_verified_at',
     ];
@@ -54,6 +56,21 @@ class User extends Authenticatable implements FilamentUser
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function donations()
+    {
+        return $this->hasMany(Donation::class);
+    }
+
+    public function campaigns()
+    {
+        return $this->hasMany(Campaign::class);
+    }
+
+    public function campaignCategories()
+    {
+        return $this->hasMany(CampaignCategory::class);
     }
 
     /**

@@ -19,13 +19,26 @@ class BlogResource extends Resource
     protected static ?string $navigationGroup = 'Blogs';
     protected static ?string $navigationIcon = 'heroicon-s-rectangle-stack';
 
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\Group::make()->schema([
                     Forms\Components\Section::make('Create a Blog')->schema([
-                        Forms\Components\TextInput::make('title')->label('Title')->required(),
+                        Forms\Components\TextInput::make('title')->label('Title')->required()->live(onBlur: true)->columnSpan('full')
+                            ->afterStateUpdated(function (Forms\Set $set, $state) {
+                                $set('slug', \Illuminate\Support\Str::slug($state));
+                            }),
+                        Forms\Components\TextInput::make('slug')->readOnly()->columnSpan('full')->unique(
+                            'blogs',
+                            'slug',
+                            ignoreRecord: true
+                        )->label('Slug')->required(),
                         Forms\Components\RichEditor::make('content')->label('Editor')->required()->columnSpan('full'),
                     ])->description("Create a new blog post.")->columns(2),
                 ])->columnSpan(3),
@@ -38,6 +51,9 @@ class BlogResource extends Resource
                         }),
                     ])->description("add a post image"),
                     Section::make('Category')->schema([
+                        Forms\Components\Select::make('category_id')->label('Category')->options(function () {
+                            return \App\Models\Category::pluck('name', 'id');
+                        })->required()->columnSpan('full')->searchable()
                     ])->description('add post category')
                 ])->columnSpan(2)
             ])->columns(5);

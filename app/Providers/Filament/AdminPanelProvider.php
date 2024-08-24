@@ -6,6 +6,7 @@ use App\Filament\Admin\Resources\DashboardResource\Pages\Dashboard;
 use App\Filament\Admin\Resources\UserResource\Pages\Settings;
 use App\Filament\Admin\Resources\UserResource\Pages\SortUsers;
 use App\Http\Middleware\CheckUserIsAdmin;
+use Filament\Enums\ThemeMode;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -21,6 +22,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use App\Filament\Admin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -28,10 +30,14 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->id('admin')
+            ->brandName('Mustards')
+            ->spa()
             ->path('admin')
-            ->font('Montserrat')
+            ->font('Plus Jakarta Sans')
+            ->defaultThemeMode(ThemeMode::Dark)
+            ->viteTheme('resources/css/filament/admin/theme.css')
             ->colors([
-                'primary' => Color::hex("#16c1c9"),
+                'primary' => Color::Teal,
                 'secondary' => Color::hex("#000"),
                 'background' => Color::hex("#000"),
             ])
@@ -46,20 +52,24 @@ class AdminPanelProvider extends PanelProvider
                 \App\Filament\Pages\Dashboard::class,
                 \App\Filament\Admin\Pages\Settings::class
             ])
-//          ->topNavigation()
-//          ->maxContentWidth(MaxWidth::ScreenTwoExtraLarge)
-            ->authMiddleware([
-                CheckUserIsAdmin::class,
-            ])
+            // ->authMiddleware([
+            //     CheckUserIsAdmin::class,
+            // ])
             ->navigationGroups([
                 'Blogs',
+                'Locations',
+                'Campaigns & Donations',
+                'Events',
+                'Testimonails',
                 'Users',
                 'Settings',
             ])
+            ->sidebarFullyCollapsibleOnDesktop()
             ->discoverWidgets(in: app_path('Filament/Admin/Widgets'), for: 'App\\Filament\\Admin\\Widgets')
             ->widgets([
-                Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
+                Admin\Widgets\UsersOverview::class,
+                 Widgets\AccountWidget::class,
+//                Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,

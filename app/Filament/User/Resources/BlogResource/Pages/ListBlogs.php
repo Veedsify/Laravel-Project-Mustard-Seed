@@ -9,11 +9,12 @@ use Filament\Resources\Pages\ListRecords;
 class ListBlogs extends ListRecords
 {
     protected static string $resource = BlogResource::class;
+    protected static ?string $breadcrumb = 'Posts';
 
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+//            Actions\CreateAction::make(),
         ];
     }
 }

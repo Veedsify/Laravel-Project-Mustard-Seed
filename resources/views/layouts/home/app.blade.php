@@ -27,7 +27,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>
-        @yield("title", "Mustatrd Seed")
+        @yield("title", "Mustatrd Seed") - Mustard Seed
     </title>
 
     {{-- FONTS --}}

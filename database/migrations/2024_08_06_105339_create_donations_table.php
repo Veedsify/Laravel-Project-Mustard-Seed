@@ -13,13 +13,19 @@ return new class extends Migration
     {
         Schema::create('donations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade')->nullable();
             $table->foreignId('campaign_id')->constrained()->onDelete('cascade');
-            $table->string('amount');
+            $table->integer('amount');
+            $table->string('name');
+            $table->string('email');
+            $table->string('company_email');
+            $table->string('phone');
+            $table->string('address');
+            $table->string('city');
             $table->string('payment_method');
             $table->string('status');
             $table->string('payment_id');
-            $table->string('payment_status')->pending();
+            $table->string('payment_status')->default("pending");
             $table->timestamps();
         });
     }

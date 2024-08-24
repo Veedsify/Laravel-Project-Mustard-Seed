@@ -16,9 +16,9 @@
                                 donation plays a crucial role in advancing medical science</p>
                             <div class="d-flex gap-20 flex-wrap">
                                 <a href="donation.html" class="btn-primary-fill hero-btn wow-dis fadeInLeft"
-                                    data-wow-delay="0.4s">Donate Now</a>
+                                   data-wow-delay="0.4s">Donate Now</a>
                                 <a href="volunteer.html" class="btn-tertiary-fill hero-btn wow-dis fadeInRight"
-                                    data-wow-delay="0.4s">Join Volunteers</a>
+                                   data-wow-delay="0.4s">Join Volunteers</a>
                             </div>
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                         <div class="d-flex gap-44">
                             <div class="hero-image position-relative d-none d-lg-block">
                                 <img src="assets/images/hero/hero-1.png" alt="img"
-                                    class="w-100 tilt-effect wow-dis fadeInUp" data-wow-delay="0.1s">
+                                     class="w-100 tilt-effect wow-dis fadeInUp" data-wow-delay="0.1s">
                             </div>
                             <div class="hero-count-section flex flex-column gap-60">
                                 <div class="hero-count wow-dis fadeInUp" data-wow-delay="0.0s">
@@ -116,7 +116,7 @@
     </section>
     <!-- End-of helpful-->
 
-    <livewire:comps.home-urgent-section />
+    <livewire:comps.home-urgent-section/>
     <!-- Donate S t a r t -->
     <section class="donate-section bottom-padding">
         <div class="container">
@@ -130,126 +130,68 @@
                 </div>
             </div>
             <div class="row gy-24">
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 view-wrapper">
-                    <div class="single-donate h-calc wow fadeInUp" data-wow-delay="0.0s">
-                        <div class="donate-img position-relative">
-                            <a href="donation-details.html"> <img class="w-100" src="assets/images/gallery/donate-1.png"
-                                    alt="img"> </a>
-                            <div class="donate-badge">
-                                <p class="subtitle">Food</p>
+                @foreach($campaigns as $campaign)
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 view-wrapper">
+                        <div class="single-donate h-calc wow fadeInUp" data-wow-delay="0.0s">
+                            @php
+                                $percentage = ($campaign->raised / $campaign->goal) * 100;
+                            @endphp
+                            <div class="donate-img position-relative"
+                                 data-percent="{{$percentage . '%'}}"
+                            >
+                                <a href="{{route('donate.details', $campaign->slug)}}" wire:navigate>
+                                    <img class="w-100"
+                                         style="aspect-ratio: 1/1; object-fit: cover"
+                                         src="{{asset('storage/'. $campaign->image)}}"
+                                         alt="img"> </a>
+                                <div class="donate-badge">
+                                    <p class="subtitle">
+                                        {{$campaign->campaign_category->name}}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="donate-info">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="donate-info-title">
-                                    <h4 class="title text-capitalize"><a href="blog-details.html">We assure you that
-                                            your donation will be used wisely.</a></h4>
-                                    <p class="subtitle">We understand that there are many people organization The
-                                        seeking support,</p>
-                                    <div class="progress custom-progress-two">
-                                        <div class="progress-bar" style="width: 25%"></div>
-                                    </div>
-                                    <div class="flex justify-content-between mt-14 mb-20">
-                                        <div class="flex gap-20">
-                                            <div class="charges">
-                                                <p class="pera">$15.000</p>
-                                                <h4 class="title">Goals</h4>
+                            <div class="donate-info">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="donate-info-title w-100">
+                                        <h4 class="title text-capitalize">
+                                            <a href="{{route('donate.details', $campaign->slug)}}">
+                                                {{$campaign->name}}
+                                            </a>
+                                        </h4>
+                                        <div class="subtitle">
+                                            {!! $campaign->description !!}
+                                        </div>
+                                        <div class="progress custom-progress-two">
+                                            <div class="progress-bar" style="width: {{$percentage}}%"></div>
+                                        </div>
+                                        <div class="flex justify-content-between mt-14 mb-20">
+                                            <div class="flex gap-20">
+                                                <div class="charges">
+                                                    <p class="pera">
+                                                        {{ $campaign->payment_method === 'cash' ? $campaign->payment_currency: "" }}
+                                                        {{number_format($campaign->goal)}}
+                                                    </p>
+                                                    <h4 class="title">Goals</h4>
+                                                </div>
+                                                <div class="charges">
+                                                    <p class="pera">
+                                                        {{ $campaign->payment_method === 'cash' ? "$": "" }}
+                                                        {{number_format($campaign->raised)}}
+                                                    </p>
+                                                    <h4 class="title">Raised</h4>
+                                                </div>
                                             </div>
-                                            <div class="charges">
-                                                <p class="pera">$15.000</p>
-                                                <h4 class="title">Raised</h4>
+                                            <div class="forward-btn">
+                                                <i class="ri-reply-fill"></i>
                                             </div>
                                         </div>
-                                        <div class="forward-btn">
-                                            <i class="ri-reply-fill"></i>
-                                        </div>
+                                        <a href="{{route('donate.details', $campaign->slug)}}" class="btn donate-btn w-100" wire:navigate>Donate Now</a>
                                     </div>
-                                    <a href="donate-payment.html" class="btn donate-btn w-100">Donate Now</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 view-wrapper">
-                    <div class="single-donate h-calc wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="donate-img position-relative">
-                            <a href="donation-details.html"> <img class="w-100" src="assets/images/gallery/donate-2.png"
-                                    alt="img"> </a>
-                            <div class="donate-badge">
-                                <p class="subtitle">Education</p>
-                            </div>
-                        </div>
-                        <div class="donate-info">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="donate-info-title">
-                                    <h4 class="title text-capitalize"><a href="donation-details.html">We assure you that
-                                            your donation will be used wisely.</a></h4>
-                                    <p class="subtitle">We understand that there are many people organization The
-                                        seeking support,</p>
-                                    <div class="progress custom-progress-two">
-                                        <div class="progress-bar" style="width: 65%"></div>
-                                    </div>
-                                    <div class="flex justify-content-between mt-14 mb-20">
-                                        <div class="flex gap-20">
-                                            <div class="charges">
-                                                <p class="pera">$15.000</p>
-                                                <h4 class="title">Goals</h4>
-                                            </div>
-                                            <div class="charges">
-                                                <p class="pera">$15.000</p>
-                                                <h4 class="title">Raised</h4>
-                                            </div>
-                                        </div>
-                                        <div class="forward-btn">
-                                            <i class="ri-reply-fill"></i>
-                                        </div>
-                                    </div>
-                                    <a href="donate-payment.html" class="btn donate-btn w-100">Donate Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 view-wrapper">
-                    <div class="single-donate h-calc wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="donate-img position-relative">
-                            <a href="donation-details.html"> <img class="w-100" src="assets/images/gallery/donate-1.png"
-                                    alt="img"> </a>
-                            <div class="donate-badge">
-                                <p class="subtitle">medical</p>
-                            </div>
-                        </div>
-                        <div class="donate-info">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="donate-info-title">
-                                    <h4 class="title text-capitalize"><a href="donation-details.html">We assure you that
-                                            your donation will be used wisely.</a></h4>
-                                    <p class="subtitle">We understand that there are many people organization The
-                                        seeking support,</p>
-                                    <div class="progress custom-progress-two">
-                                        <div class="progress-bar" style="width: 85%"></div>
-                                    </div>
-                                    <div class="flex justify-content-between mt-14 mb-20">
-                                        <div class="flex gap-20">
-                                            <div class="charges">
-                                                <p class="pera">$15.000</p>
-                                                <h4 class="title">Goals</h4>
-                                            </div>
-                                            <div class="charges">
-                                                <p class="pera">$15.000</p>
-                                                <h4 class="title">Raised</h4>
-                                            </div>
-                                        </div>
-                                        <div class="forward-btn">
-                                            <i class="ri-reply-fill"></i>
-                                        </div>
-                                    </div>
-                                    <a href="donate-payment.html" class="btn donate-btn w-100">Donate Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -273,7 +215,7 @@
             <!-- Single -->
             <div class="clip event-image-overlay ml-15 mr-15">
                 <a href="event-details.html"><img class="main-img" src="assets/images/gallery/event-6.png"
-                        alt="image"></a>
+                                                  alt="image"></a>
                 <div class="brush-bg">
                     <img src="assets/images/gallery/brush.png" alt="image">
                 </div>
@@ -289,7 +231,7 @@
             <!-- Single -->
             <div class="clip event-image-overlay ml-15 mr-15">
                 <a href="event-details.html"> <img class="main-img" src="assets/images/gallery/event-6.png"
-                        alt="image"></a>
+                                                   alt="image"></a>
                 <div class="brush-bg">
                     <img src="assets/images/gallery/brush.png" alt="image">
                 </div>
@@ -320,7 +262,7 @@
             <!-- Single -->
             <div class="clip event-image-overlay ml-15 mr-15">
                 <a href="event-details.html"><img class="main-img" src="assets/images/gallery/event-6.png"
-                        alt="image"></a>
+                                                  alt="image"></a>
                 <div class="brush-bg">
                     <img src="assets/images/gallery/brush.png" alt="image">
                 </div>
@@ -337,7 +279,7 @@
     </div>
 
     <!-- Blog S t a r t -->
-    <livewire:comps.home-blog-section />
+    <livewire:comps.home-blog-section/>
     <!-- End-of Blog -->
 
     <!-- Testimonial S t a r t-->
@@ -463,14 +405,15 @@
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Have
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Have
                                     you
                                     weighed the potential risks and
                                     benefits?
                                 </button>
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                                data-bs-parent="#accordionExample">
+                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">When deciding which charity to donate to, it's
                                     important to do your search.
                                 </div>
@@ -479,13 +422,13 @@
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingTwo">
                                 <button class="accordion-button collapsed additional-styles" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
-                                    aria-controls="collapseTwo">How will you gather
+                                        data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                                        aria-controls="collapseTwo">How will you gather
                                     feedback from stakeholders
                                 </button>
                             </h2>
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                                data-bs-parent="#accordionExample">
+                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">When deciding which charity to donate to, it's
                                     important to do your search.
                                 </div>
@@ -494,13 +437,13 @@
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingThree">
                                 <button class="accordion-button collapsed additional-styles" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
-                                    aria-controls="collapseThree">There any
+                                        data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">There any
                                     sustainability or ethical to take into account?
                                 </button>
                             </h2>
                             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                                data-bs-parent="#accordionExample">
+                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">When deciding which charity to donate to, it's
                                     important to do your search.
                                 </div>
@@ -509,13 +452,13 @@
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingFour">
                                 <button class="accordion-button collapsed additional-styles" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
-                                    aria-controls="collapseFour">There any
+                                        data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
+                                        aria-controls="collapseFour">There any
                                     sustainability or ethical to take into account?
                                 </button>
                             </h2>
                             <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
-                                data-bs-parent="#accordionExample">
+                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">When deciding which charity to donate to, it's
                                     important to do your search.
                                 </div>

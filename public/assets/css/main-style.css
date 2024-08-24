@@ -22246,7 +22246,7 @@ input[type=number] {
 }
 
 .donate-section .single-donate .donate-img::before {
-    content: "55%";
+    content: attr(data-percent);
     color: var(--primary-title);
     font-size: 20px;
     font-weight: 700;
@@ -25672,7 +25672,7 @@ input[type=number] {
 }
 
 .donate-details .donate-img::before {
-    content: "55%";
+    content: attr(data-percent);
     color: var(--primary-title);
     font-size: 20px;
     font-weight: 700;
