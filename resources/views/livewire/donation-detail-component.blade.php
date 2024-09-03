@@ -80,7 +80,7 @@
                                     </div>
                                 </div>
                             </div>
-                            @livewire('comps.donation-detail-price', ['donation' => $donation])
+                            @livewire('comps.donation-detail-price', ['campaigns' => $donation])
                         </div>
                     </div>
                     <!-- Donate contents -->

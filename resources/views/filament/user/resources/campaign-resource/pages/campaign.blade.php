@@ -2,7 +2,7 @@
     <div class="bg-white dark:bg-gray-900 shadow-sm rounded-lg p-5">
         <p class="mb-10 max-w-[500px] leading-loose">
             Do take notes that the campaigns listed here are only the campaigns that are closest to your location.
-            to view all campaigns, please visit the <a href="{{route('donation')}}"
+            to view all campaigns, please visit the <a href="{{route('campaigns')}}"
                                                        class="text-amber-500 font-semibold">Campaigns page</a>.
         </p>
         @if($this->campaigns->count() == 0)

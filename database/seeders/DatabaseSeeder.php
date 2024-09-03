@@ -20,10 +20,11 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-            'role' => 'user',
+            'name' => 'Admin User',
+            'email' => 'admin@example.com',
+            'role' => 'admin',
         ]);
+        User::factory(200)->create();
         Location::factory(10)->create();
         CampaignCategory::factory(4)->create();
         Category::factory(10)->create();

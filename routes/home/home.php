@@ -5,6 +5,7 @@ use App\Livewire\AboutComponent;
 use App\Livewire\BlogComponent;
 use App\Livewire\BlogDetailsComponent;
 use App\Livewire\ContactComponent;
+use App\Livewire\DonatedItemsComponent;
 use App\Livewire\DonationComponent;
 use App\Livewire\DonationDetailComponent;
 use App\Livewire\DonationPayComponent;
@@ -13,6 +14,7 @@ use App\Livewire\FaqComponents;
 use App\Livewire\HomeComponent;
 use App\Livewire\LoginComponent;
 use App\Livewire\PrivacyPolicyComponent;
+use App\Livewire\RegisAsVolunteer;
 use App\Livewire\RegisterComponent;
 use App\Livewire\TermsComponent;
 use App\Livewire\VolunteersComponent;
@@ -38,16 +40,22 @@ Route::get('/contact', ContactComponent::class)->name('contact');
 
 Route::get('/events/{slug}', EventsComponent::class)->name('events.details');
 
-Route::get("/campaigns", DonationComponent::class)->name('donation');
+Route::get("/campaigns", DonationComponent::class)->name('campaigns');
 Route::get("/campaign/{slug}", DonationDetailComponent::class)->name('donate.details');
 Route::get('/campaign/{slug}/payment', DonationPayComponent::class)->name('donate.payment');
 
+Route::get("/donations", DonatedItemsComponent::class)->name('donations');
+
 Route::get("/volunteers", VolunteersComponent::class)->name('volunteers');
-Route::get("/volunteer/{slug}", VolunteersDetailsComponent::class)->name('volunteers.details');
+Route::get("/volunteer/{username}", VolunteersDetailsComponent::class)->name('volunteers.details');
 
 Route::get("/faq", FaqComponents::class)->name('faq');
 Route::get("/privacy-policy", PrivacyPolicyComponent::class)->name("privacy.policy");
 Route::get('/terms-and-conditions', TermsComponent::class)->name('terms');
+
+
+//Register As A Volunteer
+Route::get('/register/volunteer', RegisAsVolunteer::class)->name('register.as.volunteer');
 
 // Google Auth
 Route::get("/register/google", [AuthController::class, 'redirectToGoogle'])->name("redirect.google");

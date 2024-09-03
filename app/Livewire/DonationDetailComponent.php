@@ -18,6 +18,12 @@ class DonationDetailComponent extends Component
     {
         $donation = Campaign::where('slug', $this->slug)->first();
         $categories = CampaignCategory::all();
+
+        if(!$donation)
+        {
+            return abort(404);
+        }
+
         return view('livewire.donation-detail-component',[
             'donation' => $donation,
             'categories' => $categories

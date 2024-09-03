@@ -31,7 +31,7 @@ class UserPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Amber,
             ])
-            ->font('DM Sans')
+            ->font('Instrument Sans')
             ->viteTheme('resources/css/filament/user/theme.css')
             ->discoverResources(in: app_path('Filament/User/Resources'), for: 'App\\Filament\\User\\Resources')
             ->discoverPages(in: app_path('Filament/User/Pages'), for: 'App\\Filament\\User\\Pages')
@@ -45,11 +45,12 @@ class UserPanelProvider extends PanelProvider
             ->navigationItems([
                 NavigationItem::make("Become an Agent")
                     ->icon('heroicon-s-check-badge')
-                    ->url(fn()=> route('home'), true)
+                    ->url(fn()=> route('register.as.volunteer'), true)
                     ->group("Volunteers")
                     ->sort(3)
             ])
             ->navigationGroups([
+                'Items',    
                 'Blogs',
                 'Locations',
                 'Campaigns',

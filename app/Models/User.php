@@ -15,13 +15,14 @@ class User extends Authenticatable implements FilamentUser
     use HasFactory, Notifiable;
 
 
-    public function canAccessPanel(Panel $panel): bool {
+    public function canAccessPanel(Panel $panel): bool
+    {
         return true;
-//         if($panel->getId() === $this->role) {
-//             return true;
-//         }
-// //        dump($panel);
-//         return false;
+        //         if($panel->getId() === $this->role) {
+        //             return true;
+        //         }
+        // //        dump($panel);
+        //         return false;
     }
     /**
      * The attributes that are mass assignable.
@@ -39,9 +40,61 @@ class User extends Authenticatable implements FilamentUser
         'bio',
         'google_id',
         'location',
+        'admin_id',
+        'donator_id',
+        'volunteer_id',
         'password_reset_token',
         'email_verified_at',
     ];
+
+    // Add this method to create settings after a user is created
+    protected static function booted()
+    {
+        static::created(function ($user) {
+            // Create a new settings record for the newly created user
+            if ($user->role === 'volunteer') {
+                VolunteerSetting::create([
+                    'user_id' => $user->id,
+                ]);
+            }
+        });
+    }
+
+    public function volunteer_settings()
+    {
+        return $this->hasOne(VolunteerSetting::class);
+    }
+
+    // Volunteer belongs to an Admin
+    public function admin()
+    {
+        return $this->belongsTo(User::class, 'admin_id')->where('role', 'admin');
+    }
+
+    // User belongs to a Volunteer
+    public function volunteer()
+    {
+        return $this->belongsTo(User::class, 'volunteer_id')->where('role', 'volunteer');
+    }
+
+    // Donators are standalone
+    public function donators()
+    {
+        return $this->hasMany(User::class, 'donator_id')->where('role', 'donator');
+    }
+
+    // Admin has many Volunteers
+    public function volunteers()
+    {
+        return $this->hasMany(User::class, 'admin_id')->where('role', 'volunteer');
+    }
+
+    // Volunteer has many Users
+    public function users()
+    {
+        return $this->hasMany(User::class, 'volunteer_id')->where('role', 'user');
+    }
+
 
     public function blogs()
     {
@@ -71,6 +124,10 @@ class User extends Authenticatable implements FilamentUser
     public function campaignCategories()
     {
         return $this->hasMany(CampaignCategory::class);
+    }
+
+    public function items(){
+        return $this->hasMany(Item::class);
     }
 
     /**

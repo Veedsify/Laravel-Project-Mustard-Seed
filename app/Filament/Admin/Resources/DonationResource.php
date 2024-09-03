@@ -60,9 +60,6 @@ class DonationResource extends Resource
                                 if ($campaign) {
                                     $set('amount', $campaign->goal);
                                 }
-//                                if ($operation === 'create') {
-//                                    Campaign::where('id', $state)->increment('raised', intval($get('amount')));
-//                                }
                             })
                             ->required()
                             ->columnSpanFull()

@@ -28,6 +28,6 @@ class Campaign extends Page
         $this->campaigns = AllCampaign::where('status', 'published')
             ->orderBy('id', 'desc')
             ->paginate(9);
-//            ->get();
+        //            ->get();
     }
 }
