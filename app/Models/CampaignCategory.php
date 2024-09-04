@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class CampaignCategory extends Model
 {
@@ -21,8 +22,8 @@ class CampaignCategory extends Model
     protected static function booted()
     {
         static::creating(function ($campaignCategory) {
-            if (auth()->check()) {
-                $campaignCategory->user_id = auth()->id();
+            if (Auth::check()) {
+                $campaignCategory->user_id = Auth::user()->id;
             }
         });
     }

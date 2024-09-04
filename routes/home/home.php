@@ -7,6 +7,7 @@ use App\Livewire\BlogDetailsComponent;
 use App\Livewire\ContactComponent;
 use App\Livewire\DonatedItemsComponent;
 use App\Livewire\DonationComponent;
+use App\Livewire\DonationItemPreview;
 use App\Livewire\DonationDetailComponent;
 use App\Livewire\DonationPayComponent;
 use App\Livewire\EventsComponent;
@@ -45,6 +46,7 @@ Route::get("/campaign/{slug}", DonationDetailComponent::class)->name('donate.det
 Route::get('/campaign/{slug}/payment', DonationPayComponent::class)->name('donate.payment');
 
 Route::get("/donations", DonatedItemsComponent::class)->name('donations');
+Route::get("/item/{slug}", DonationItemPreview::class)->name('item.preview');
 
 Route::get("/volunteers", VolunteersComponent::class)->name('volunteers');
 Route::get("/volunteer/{username}", VolunteersDetailsComponent::class)->name('volunteers.details');

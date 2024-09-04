@@ -24,7 +24,8 @@
                 <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     @foreach ($items as $item)
                         <li>
-                            <a href="#"
+                            <a href="{{route('item.preview', $item->slug)}}"
+                                target="_blank"
                                 class="group block overflow-hidden dark:bg-gray-800 bg-gray-100 shadow rounded-lg p-2">
                                 <img src="{{ asset('storage/' . $item->image) }}" alt=""
                                     class="aspect-square w-full object-cover transition duration-500 group-hover:rotate-1 rounded-lg" />

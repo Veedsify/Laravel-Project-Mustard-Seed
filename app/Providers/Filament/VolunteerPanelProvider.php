@@ -24,6 +24,9 @@ class VolunteerPanelProvider extends PanelProvider
     {
         return $panel
             ->id('volunteer')
+            ->font('Instrument Sans')
+            ->spa()
+            ->brandName("Mustard Seed Charity")
             ->path('/dashboard/volunteer')
             ->colors([
                 'primary' => Color::Amber,
@@ -36,7 +39,7 @@ class VolunteerPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Volunteer/Widgets'), for: 'App\\Filament\\Volunteer\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
+                // Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,

@@ -43,11 +43,7 @@ class UserPanelProvider extends PanelProvider
                 Widgets\AccountWidget::class,
             ])
             ->navigationItems([
-                NavigationItem::make("Become an Agent")
-                    ->icon('heroicon-s-check-badge')
-                    ->url(fn()=> route('register.as.volunteer'), true)
-                    ->group("Volunteers")
-                    ->sort(3)
+               
             ])
             ->navigationGroups([
                 'Items',    

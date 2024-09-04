@@ -1,12 +1,12 @@
-<x-filament-panels::page>
+ <x-filament-panels::page>
     <div x-data="{ activeTab: 0 }">
         <!-- Tab List -->
         <ul class="flex item-center gap-2">
             <!-- Tab 1 -->
             <li>
                 <button x-transition @click="activeTab = 0" :aria-selected="activeTab === 0"
-                    :class="{ 'bg-slate-600 text-white': activeTab === 0 }"
-                    class="px-4 py-2 bg-gray-100 rounded font-medium" role="tab">
+                    :class="{ 'bg-slate-600 text-white dark:text-white': activeTab === 0 }"
+                    class="px-4 py-2 bg-gray-100 rounded dark:text-black font-medium" role="tab">
                     <!-- Icon and Title for Tab 1 -->
                     <span>My Account</span>
                 </button>
@@ -14,8 +14,8 @@
             <!-- Tab 2 -->
             <li>
                 <button x-transition @click="activeTab = 1" :aria-selected="activeTab === 1"
-                    :class="{ 'bg-slate-600 dark:text-white text-black': activeTab === 1 }"
-                    class="px-4 py-2 bg-gray-100 rounded font-medium text-white" role="tab">
+                    :class="{ 'bg-slate-600 dark:text-white text-white': activeTab === 1 }"
+                    class="px-4 py-2 bg-gray-100 rounded font-medium text-black" role="tab">
                     <span>Location</span>
                 </button>
             </li>

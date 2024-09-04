@@ -14,16 +14,22 @@ class Item extends Model
         'name',
         'description',
         'slug',
+        'content',
         'quantity',
         'unit',
-        'category',
         'image',
         'condition',
         'status',
         'is_anonymous',
         'user_id',
+        'category_id',
         'volunteer_id',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(ItemCategory::class, 'category_id');
+    }
 
     public function user()
     {

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Filament\Donator\Resources;
+namespace App\Filament\User\Resources;
 
-use App\Filament\Donator\Resources\ItemResource\Pages;
-use App\Filament\Donator\Resources\ItemResource\RelationManagers;
+use App\Filament\User\Resources\ItemResource\Pages;
+use App\Filament\User\Resources\ItemResource\RelationManagers;
 use App\Models\Item;
+use App\Models\ItemCategory;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
@@ -20,7 +21,7 @@ class ItemResource extends Resource
     protected static ?string $model = Item::class;
 
     protected static ?string $navigationIcon = 'heroicon-s-window';
-    protected static ?string $navigationGroup = 'Donate';
+    protected static ?string $navigationGroup = 'Campaigns';
     protected static ?string $navigationLabel = 'Donate';
     protected static ?string $title = 'New Donation';
 
@@ -61,8 +62,13 @@ class ItemResource extends Resource
                         Forms\Components\TextInput::make('unit')
                             ->label('Unit')
                             ->required(),
-                        Forms\Components\TextInput::make('category')
+                        Forms\Components\Select::make('category_id')
+                            ->relationship('category', 'name')
+                            ->options(
+                                ItemCategory::where('status', 'active')->pluck('name', 'id')->toArray()
+                            )
                             ->label('Category')
+                            ->searchable()
                             ->required(),
                         Forms\Components\Select::make('condition')
                             ->options([
@@ -91,14 +97,13 @@ class ItemResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('slug')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('slug')->searchable()->sortable()->limit(20),
                 Tables\Columns\TextColumn::make('quantity'),
-                Tables\Columns\TextColumn::make('unit'),
-                Tables\Columns\TextColumn::make('category'),
-                Tables\Columns\TextColumn::make('condition'),
-                Tables\Columns\TextColumn::make('status'),
-                Tables\Columns\TextColumn::make('user.name')->searchable()->sortable()
-                    ->label('User'),
+                Tables\Columns\TextColumn::make('category.name')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('status')->sortable()
+                    ->tooltip(fn($record) => $record->status ? 'Active' : 'Pending Approval')
+                    ->icon(fn($record) => $record->status ? 'heroicon-s-check-circle' : 'heroicon-s-x-circle')
+                    ->iconColor(fn($record) => $record->status ? 'success' : 'warning'),
                 Tables\Columns\TextColumn::make('volunteer.name')->searchable()->sortable()
                     ->label('Agent'),
             ])

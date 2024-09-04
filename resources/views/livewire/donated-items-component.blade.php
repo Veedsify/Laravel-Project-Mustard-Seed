@@ -1,4 +1,4 @@
-@section('title', 'Campaigns')
+@section('title', 'Donated Items')
 <main>
     <!-- Breadcrumb Area S t a r t -->
     <section class="breadcrumb-section breadcrumb-bg"
@@ -22,33 +22,55 @@
     <section class="donate-section top-bottom-padding">
         <div class="container">
             <div class="row gy-24">
+
+                @if ($items->isEmpty())
+                    <div class="col-lg-12">
+                        <h4 class="font-medium">
+                            No Available Items
+                        </h4>
+                    </div>
+                @endif
                 @foreach ($items as $item)
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 view-wrapper">
-                        <a href="#" class="d-block position-relative overflow-hidden">
+                        <a href="{{ route('item.preview', $item->slug) }}"
+                            class="d-block position-relative overflow-hidden" wire:navigate>
                             <div class="card">
                                 <div class="px-2 pt-2 position-relative">
                                     <img alt="..." src="{{ asset('storage/' . $item->image) }}"
                                         style="aspect-ratio: 1/1;object-fit:cover;" class="rounded w-100">
                                 </div>
                                 <div class="card-body">
-                                    <div class="social mb-1">
+                                    <div class="social mb-3">
                                         <span class="new-badge">
                                             {{ $item->condition === 1 ? 'New' : 'Used' }}
                                         </span>
                                     </div>
+                                    <div class="flex mb-15 gap-16 align-items-center">
+                                        <div class="user flex gap-10 align-items-center">
+                                            <i class="ri-user-line"></i>
+                                            <p class="info">By:
+                                                @if ($item->user)
+                                                    {{ explode(' ', $item->user->name)[0] ?? $item->user->name }}
+                                                @else
+                                                    Admin
+                                                @endif
+                                            </p>
+                                        </div>
+                                        <div class="donate flex gap-10 align-items-center">
+                                            <i class="ri-chat-3-line"></i>
+                                        </div>
+                                    </div>
                                     <h4 class="text-base text-muted fw-bold mb-3">
                                         {{ $item->name }}
                                     </h4>
-                            <div class="mb-3 lh-lg pb-3 item-description truncate">
+                                    <div class="mb-3 lh-lg pb-3 item-description truncate">
                                         {!! $item->description !!}
                                     </div>
                                     <div class="d-flex gap-1">
-                                        <button class="btn-primary-fill w-100 py-2 rounded border">
-                                            View
-                                        </button>
-                                        <button class="btn donate-btn w-100 py-2 rounded border">
+                                        <a href="{{ route('item.preview', $item->slug) }}#apply"
+                                            class="btn-primary-fill w-100 py-2 rounded border" wire:navigate>
                                             Apply
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

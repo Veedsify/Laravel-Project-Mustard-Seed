@@ -16,14 +16,15 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug');
             $table->text('description');
+            $table->longText('content');
             $table->integer('quantity');
             $table->string('unit');
-            $table->string('category');
             $table->string('image')->nullable();
             $table->boolean('condition')->default(0);
             $table->boolean('status')->default(0);
             $table->boolean('is_anonymous')->default(0);
             $table->foreignId('user_id')->constrained();
+            $table->unsignedBigInteger('category_id')->references('id')->on('item_categories')->nullable();
             $table->unsignedBigInteger('volunteer_id')->references('id')->on('users')->nullable();
             $table->timestamps();
         });

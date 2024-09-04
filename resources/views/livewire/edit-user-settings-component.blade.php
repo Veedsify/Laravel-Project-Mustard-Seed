@@ -1,4 +1,5 @@
-<div x-data="{ name: '{{ Auth::user()->name }}', location: '{{ Auth::user()->location }}', email: '{{ Auth::user()->email }}', bio: '{{ Auth::user()->bio }}', image: '{{ asset(Auth::user()->avatar) }}' }" class="bg-white dark:bg-black dark:shadow-gray-300 shadow-sm p-6 rounded w-72 md:w-2/3 lg:w-1/3 m-3 max-h-[80vh] overflow-y-auto"
+<div x-data="{ name: '{{ Auth::user()->name }}', location: '{{ Auth::user()->location }}', email: '{{ Auth::user()->email }}', bio: '{{ Auth::user()->bio }}', image: '{{ asset(Auth::user()->avatar) }}' }"
+    class="bg-white dark:bg-black dark:shadow-gray-300 shadow-sm p-6 rounded w-72 md:w-2/3 lg:w-1/3 m-3 max-h-[80vh] overflow-y-auto"
     @click.stop="">
 
     <h1 class="font-bold text-lg md:text-xl mb-5 dark:text-white">Edit Profile</h1>
@@ -62,8 +63,7 @@
                 <path d="m4.9 4.9 2.9 2.9" />
             </svg>
         </div>
-        <input wire:click="save" type="submit" @click.prevent="submitForm"
-        value="Save"
+        <input wire:click="save" type="submit" @click.prevent="submitForm" value="Save"
             class="w-full block border mb-3 dark:text-white dark:bg-amber-600 dark:border-amber-700 bg-amber-600 p-4 outline-none text-white rounded-xl cursor-pointer" />
     </div>
 </div>

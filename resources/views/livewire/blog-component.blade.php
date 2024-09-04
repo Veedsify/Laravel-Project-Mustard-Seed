@@ -1,4 +1,4 @@
-@section('title', 'Blogs')
+    @section('title', 'Blogs')
 <main>
     <!-- Breadcrumb Area S t a r t -->
     <section class="breadcrumb-section breadcrumb-bg" style="background-image: url({{asset('assets/images/gallery/breadcrumb-1.png')}})">

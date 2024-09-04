@@ -19,7 +19,9 @@ class TotalDonations extends BaseWidget
             Stat::make('Total Donations', Item::where('user_id', Auth::user()->id)->count())
                 ->icon('heroicon-s-archive-box')
                 ->description("Total donations")
-                ->descriptionIcon('heroicon-s-arrow-trending-up')
+                ->descriptionIcon(Item::where([
+                    'user_id' => Auth::user()->id
+                ])->where('status', true)->count() > 0 ? 'heroicon-s-arrow-trending-up' : 'heroicon-s-arrow-trending-down')
                 ->descriptionColor(Item::where('user_id', Auth::user()->id)->count() > 0 ? 'success' : 'danger'),
 
             Stat::make('Active Donations', Item::where([
@@ -27,7 +29,9 @@ class TotalDonations extends BaseWidget
             ])->where('status', true)->count())
                 ->icon('heroicon-s-check-circle')
                 ->description("Active donations")
-                ->descriptionIcon('heroicon-s-arrow-trending-up')
+                ->descriptionIcon(Item::where([
+                    'user_id' => Auth::user()->id
+                ])->where('status', true)->count() > 0 ? 'heroicon-s-arrow-trending-up' : 'heroicon-s-arrow-trending-down')
                 ->descriptionColor(Item::where([
                     'user_id' => Auth::user()->id
                 ])->where('status', true)->count() > 0 ? 'success' : 'danger'),

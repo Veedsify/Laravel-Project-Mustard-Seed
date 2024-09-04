@@ -9,6 +9,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -89,11 +90,31 @@ class VolunteerSettingResource extends Resource
                 $query->where('user_id', Auth::user()->id);
             })
             ->columns([
-                Tables\Columns\TextColumn::make('profession'),
-                Tables\Columns\TextColumn::make('age'),
-                Tables\Columns\TextColumn::make('phone'),
-                Tables\Columns\TextColumn::make('email'),
-                Tables\Columns\TextColumn::make('address'),
+                TextColumn::make('profession')
+                    ->searchable()
+                    ->label('Profession')
+                    ->sortable(),
+                TextColumn::make('age')
+                    ->label('Age')
+                    ->sortable(),
+                TextColumn::make('phone')
+                    ->label('Phone')
+                    ->sortable(),
+                TextColumn::make('email')
+                    ->label('Email')
+                    ->sortable(),
+                TextColumn::make('city')
+                    ->label('City')
+                    ->sortable(),
+                TextColumn::make('state')
+                    ->label('State')
+                    ->sortable(),
+                TextColumn::make('country')
+                    ->label('Country')
+                    ->sortable(),
+                TextColumn::make('zip')
+                    ->label('Zip')
+                    ->sortable(),
             ])
             ->filters([
                 //

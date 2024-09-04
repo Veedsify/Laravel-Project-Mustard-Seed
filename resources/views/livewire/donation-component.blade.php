@@ -23,6 +23,13 @@
     <section class="donate-section top-bottom-padding">
         <div class="container">
             <div class="row gy-24">
+                @if ($campaigns->isEmpty())
+                    <div class="col-lg-12">
+                        <h4 class="font-medium">
+                            No Available Campaigns
+                        </h4>
+                    </div>
+                @endif
                 @foreach($campaigns as $campaign)
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 view-wrapper">
                         <div class="single-donate h-calc wow fadeInUp" data-wow-delay="0.0s">
