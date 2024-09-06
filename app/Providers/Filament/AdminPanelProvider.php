@@ -31,18 +31,19 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->id('admin')
             ->brandName('Mustards')
-            ->spa()
+            // ->spa()
             ->path('admin')
             ->font('Instrument Sans')
             ->defaultThemeMode(ThemeMode::Dark)
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->colors([
-                'primary' => Color::Teal,
+                'primary' => Color::Emerald,
                 'secondary' => Color::hex("#000"),
                 'background' => Color::hex("#000"),
             ])
             ->userMenuItems([
-                'profile' => MenuItem::make()->label('Profile')->icon('heroicon-s-user')->url('/admin/users'),
+                'profile' => MenuItem::make()->label('Profile')
+                    ->icon('heroicon-s-user')->url('/admin/profile'),
                 'settings' => MenuItem::make()->label('Settings')->icon('heroicon-s-cog')->url('/admin/settings'),
                 'logout' => MenuItem::make()->label('Log Out')->icon('heroicon-s-arrow-left-end-on-rectangle'),
             ])
@@ -52,9 +53,6 @@ class AdminPanelProvider extends PanelProvider
                 \App\Filament\Pages\Dashboard::class,
                 \App\Filament\Admin\Pages\Settings::class
             ])
-            // ->authMiddleware([
-            //     CheckUserIsAdmin::class,
-            // ])
             ->navigationGroups([
                 'Blogs',
                 'Locations',
@@ -68,8 +66,8 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Admin/Widgets'), for: 'App\\Filament\\Admin\\Widgets')
             ->widgets([
                 Admin\Widgets\UsersOverview::class,
-                 Widgets\AccountWidget::class,
-//                Widgets\FilamentInfoWidget::class,
+                Widgets\AccountWidget::class,
+                //                Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
@@ -84,6 +82,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+                // CheckUserIsAdmin::class,
             ]);
     }
 }

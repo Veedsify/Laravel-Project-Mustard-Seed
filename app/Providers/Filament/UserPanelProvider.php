@@ -55,6 +55,7 @@ class UserPanelProvider extends PanelProvider
                 'Volunteers',
                 'Settings',
             ])
+            ->sidebarFullyCollapsibleOnDesktop()
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,

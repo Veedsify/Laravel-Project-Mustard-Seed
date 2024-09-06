@@ -43,16 +43,12 @@
                                             {{ $item->user->name }}
                                         </p>
                                     </div>
-                                    <div class="donate flex gap-10 align-items-center">
+                                    <div class="donate flex gap-10 align-item-center">
                                         <i class="ri-chat-3-line"></i>
-                                        <p class="info">
-                                        </p>
-                                    </div>
-                                    <div class="donate flex gap-10 align-items-center">
                                         <small>Condiiton:</small>
-                                        <p class="info">
+                                        <span class="info">
                                             {{ $item->condition === 1 ? 'New' : 'Used' }}
-                                        </p>
+                                        </span>
                                     </div>
                                 </div>
                                 <h4 style="font-size: 32px;" class="fw-bold">
@@ -63,39 +59,6 @@
                                 </div>
                             </div>
                             <!-- blog info -->
-                            <div class="another-blog-info">
-                                <div class="d-flex res-flex justify-content-between gap-2 align-items-center">
-                                    <div class="d-flex align-items-center gap-1">
-                                        <h4 class="fw-bold">
-                                            Condition:
-                                        </h4>
-                                        <div class="flex align-items-center">
-                                            <div class="badge px-2 py-1">
-                                                <p class="subtitle">
-                                                    {{ $item->condition === 1 ? 'New' : 'Used' }}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="share-link align-items-center text-right">
-                                        <p class="title">share:</p>
-                                        <div class="social-link">
-                                            <div class="social-icon active">
-                                                <a href="javascript:void(0)"><i class="ri-facebook-fill"></i></a>
-                                            </div>
-                                            <div class="social-icon">
-                                                <a href="javascript:void(0)"><i class="ri-twitter-fill"></i></a>
-                                            </div>
-                                            <div class="social-icon">
-                                                <a href="javascript:void(0)"><i class="ri-linkedin-fill"></i></a>
-                                            </div>
-                                            <div class="social-icon">
-                                                <a href="javascript:void(0)"><i class="ri-instagram-fill"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <!-- Related Blog -->
                             @if ($otherItems->count() > 0)
                                 <div class="related-blog">
@@ -119,12 +82,12 @@
                                                                     {{ $otherItem->user->name }}
                                                                 </p>
                                                             </div>
-                                                            <div class="donate flex gap-10 align-items-center">
-                                                                <p>Condition</p>
-                                                                <p class="info">
-                                                                    {{ $otherItem->condition === 1 ? 'New' : 'Used' }}
-                                                                </p>
-                                                            </div>
+                                                        </div>
+                                                        <div class="donate flex gap-10 align-items-center">
+                                                            <p>Condition</p>
+                                                            <p class="info">
+                                                                {{ $otherItem->condition === 1 ? 'New' : 'Used' }}
+                                                            </p>
                                                         </div>
                                                         <h4 class="title text-capitalize">
                                                             {{ $otherItem->name }}
@@ -147,46 +110,62 @@
                             @endif
                         </div>
                     </div>
+                    @php
+                        $restrictedUsers = $volunteers;
+                        $userIsRestricted = in_array(auth()->id(), $restrictedUsers);
+                    @endphp
+
                     <!-- Comments -->
-                    @if (auth()->check() && !($item->user->id === auth()->id() || $item->volunteer->id === auth()->id()))
-                        <div class="comment-blog" id="#apply">
+                    @if ($userIsRestricted == false && $item->user->id !== auth()->id())
+                        <div class="comment-blog" id="apply">
                             <h4 class="pera">Apply To Receive This Item</h4>
                             <div class="comment-box">
                                 <form action="javascript:void(0)" method="post" class="custom-form">
                                     <div class="row">
                                         <div class="col-xl-6">
                                             <div class="form-group">
-                                                <label class="custom-label" for="exampleFormControlInput1">Full
-                                                    Name</label>
-                                                <input type="text" class="form-control custom-input"
-                                                    id="exampleFormControlInput1" placeholder="Alex Jordan">
+                                                <label class="custom-label" for="fullName">Full Name</label>
+                                                <input type="text" class="form-control custom-input" id="fullName"
+                                                    value="{{ auth()->check() ? auth()->user()->name : '' }}"
+                                                    placeholder="Alex Jordan">
                                             </div>
                                         </div>
                                         <div class="col-xl-6">
                                             <div class="form-group">
-                                                <label class="custom-label" for="exampleFormControlInput1">Email
-                                                    address</label>
-                                                <input type="email" class="form-control custom-input"
-                                                    id="exampleFormControlInput2" placeholder="name@example.com">
+                                                <label class="custom-label" for="email">Email address</label>
+                                                <input type="email" class="form-control custom-input" id="email"
+                                                    value="{{ auth()->check() ? auth()->user()->email : '' }}"
+                                                    placeholder="name@example.com">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="custom-label" for="exampleFormControlTextarea3">Reasons Why you
-                                            Need This</label>
-                                        <textarea class="form-control custom-textarea" id="exampleFormControlTextarea3" placeholder="Type Keyword"></textarea>
+                                        <label class="custom-label" for="reasons">Reasons Why You Need This</label>
+                                        <textarea class="form-control custom-textarea" id="reasons" placeholder="Type Keyword"></textarea>
                                     </div>
-                                    @if (!auth()->user())
+                                    @if (!auth()->check())
                                         <div class="form-group">
                                             <div>
                                                 You need to <a href="{{ route('login') }}"
                                                     class="text-primary">login</a> to apply for this item.
                                             </div>
                                         </div>
+                                    @elseif($item->user->id === auth()->id())
+                                        <div class="form-group">
+                                            <div>
+                                                Sorry, You can't apply for this item.
+                                            </div>
+                                        </div>
                                     @else
                                         <button type="submit" class="submit-btn">Apply</button>
                                     @endif
                                 </form>
+                            </div>
+                        </div>
+                    @else
+                        <div class="form-group">
+                            <div class="border p-3 rounded-2 text-danger">
+                                Sorry, You can't apply for this item.
                             </div>
                         </div>
                     @endif
@@ -230,24 +209,14 @@
                             </div>
                             <div class="category-box">
                                 <ul class="listing">
-                                    <li class="single-list">
-                                        <a class="single" href="javascript:void(0)">Food</a>
-                                    </li>
-                                    <li class="single-list">
-                                        <a class="single" href="javascript:void(0)">Medical</a>
-                                    </li>
-                                    <li class="single-list active">
-                                        <a class="single" href="javascript:void(0)">Global Warming</a>
-                                    </li>
-                                    <li class="single-list">
-                                        <a class="single" href="javascript:void(0)">Wireframing</a>
-                                    </li>
-                                    <li class="single-list">
-                                        <a class="single" href="javascript:void(0)">Recycline</a>
-                                    </li>
-                                    <li class="single-list">
-                                        <a class="single" href="javascript:void(0)">Education</a>
-                                    </li>
+                                    @foreach ($itemCategories as $category)
+                                        <li
+                                            class="single-list
+                                        {{ $category->id === $item->category_id ? 'active' : '' }}
+                                        ">
+                                            <a class="single" href="javascript:void(0)">{{ $category->name }}</a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>

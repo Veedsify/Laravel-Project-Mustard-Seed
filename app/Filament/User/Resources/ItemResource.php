@@ -4,6 +4,7 @@ namespace App\Filament\User\Resources;
 
 use App\Filament\User\Resources\ItemResource\Pages;
 use App\Filament\User\Resources\ItemResource\RelationManagers;
+use App\Filament\User\Resources\ItemResource\Widgets\TotalDonations;
 use App\Models\Item;
 use App\Models\ItemCategory;
 use Filament\Forms;
@@ -20,7 +21,7 @@ class ItemResource extends Resource
 {
     protected static ?string $model = Item::class;
 
-    protected static ?string $navigationIcon = 'heroicon-s-window';
+    protected static ?string $navigationIcon = 'heroicon-o-window';
     protected static ?string $navigationGroup = 'Campaigns';
     protected static ?string $navigationLabel = 'Donate';
     protected static ?string $title = 'New Donation';
@@ -126,7 +127,12 @@ class ItemResource extends Resource
             //
         ];
     }
-
+    public static function getWidgets(): array
+    {
+        return [
+            TotalDonations::class
+        ];
+    }
     public static function getPages(): array
     {
         return [

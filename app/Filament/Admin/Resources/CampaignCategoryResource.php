@@ -18,7 +18,7 @@ class CampaignCategoryResource extends Resource
 {
     protected static ?string $model = CampaignCategory::class;
     protected static ?string $navigationGroup = 'Campaigns & Donations';
-    protected static ?string $navigationIcon = 'heroicon-s-globe-europe-africa';
+    protected static ?string $navigationIcon = 'heroicon-o-globe-europe-africa';
 
     public static function getNavigationBadge(): ?string
     {
@@ -58,10 +58,10 @@ class CampaignCategoryResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('description'),
+                Tables\Columns\TextColumn::make('slug'),    
+                Tables\Columns\TextColumn::make('description')->searchable()->sortable(),
                 Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\TextColumn::make('status')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('slug'),
             ])
             ->filters([
                 //

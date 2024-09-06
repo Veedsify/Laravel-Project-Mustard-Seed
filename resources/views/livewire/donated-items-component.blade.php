@@ -37,7 +37,7 @@
                             <div class="card">
                                 <div class="px-2 pt-2 position-relative">
                                     <img alt="..." src="{{ asset('storage/' . $item->image) }}"
-                                        style="aspect-ratio: 1/1;object-fit:cover;" class="rounded w-100">
+                                        style="aspect-ratio: 4/3;object-fit:cover;" class="rounded w-100">
                                 </div>
                                 <div class="card-body">
                                     <div class="social mb-3">
