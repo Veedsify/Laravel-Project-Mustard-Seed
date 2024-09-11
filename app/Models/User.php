@@ -60,6 +60,22 @@ class User extends Authenticatable implements FilamentUser
         });
     }
 
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+    
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class);
+    }
+
+    public function hasRole($role)
+    {
+        return $this->roles->contains('name', $role);
+    }
+
+
     public function volunteer_settings()
     {
         return $this->hasOne(VolunteerSetting::class);
