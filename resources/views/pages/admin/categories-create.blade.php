@@ -10,16 +10,21 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb breadcrumb-separator-1">
                                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Invoice</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Categories</li>
                                 </ol>
                             </nav>
-                            <h3>Invoice</h3>
+                            <h3>Create Categories</h3>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg">
                         {{-- CARD CONTENTS HERE --}}
+                        <div class="card">
+                            <div class="card-body">
+                            
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

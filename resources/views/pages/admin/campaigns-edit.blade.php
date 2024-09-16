@@ -10,10 +10,10 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb breadcrumb-separator-1">
                                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Invoice</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Campaigns</li>
                                 </ol>
                             </nav>
-                            <h3>Invoice</h3>
+                            <h3>Edit Campaigns</h3>
                         </div>
                     </div>
                 </div>
