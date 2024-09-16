@@ -34,7 +34,7 @@
                         <a href="{{ route('blog.details', $blog->slug) }}" target="_blank">
                             <i class="material-icons">visibility</i>
                         </a>
-                        <a href="javascript:void(0)" class="text-danger" onclick="confirmDelete({{ $blog->id }})">
+                        <a href="javascript:void(0)" class="text-danger" onclick="confirmDelete({{ $blog->id }}, 'Article')">
                             <i class="material-icons">delete</i>
                         </a>
                     </td>

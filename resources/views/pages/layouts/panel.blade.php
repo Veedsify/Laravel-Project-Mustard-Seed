@@ -17,7 +17,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
         rel="stylesheet">
-
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="{{ asset('lime_assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('lime_assets/plugins/font-awesome/css/all.min.css') }}" rel="stylesheet">
@@ -28,11 +27,10 @@
     <link href="{{ asset('lime_assets/css/custom.css') }}" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
-    @livewireStyles
+        @livewireStyles
 </head>
 
 <body>
-
     {{-- <div class='loader'>
         <div class='spinner-grow text-primary' role='status'>
             <span class='sr-only'>Loading...</span>
@@ -47,10 +45,8 @@
     {{-- HEADER  --}}
     <x-panel.header />
     @yield('content')
-
     <!-- Javascripts -->
     @livewireScripts
-
     <script src="{{ asset('lime_assets/plugins/jquery/jquery-3.1.0.min.js') }}"></script>
     <script src="{{ asset('lime_assets/plugins/bootstrap/popper.min.js') }}"></script>
     <script src="{{ asset('lime_assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
@@ -61,9 +57,7 @@
     <script src="{{ asset('lime_assets/js/lime.min.js') }}"></script>
     <script src="{{ asset('lime_assets/plugins/select2/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('lime_assets/js/pages/select2.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
     <script src="{{ asset('lime_assets/js/pages/dashboard.js') }}"></script>
-
     <script>
         window.addEventListener('notify-success', event => {
             toastr.success(event.detail.message)
@@ -78,16 +72,16 @@
             // })
         });
 
-        function confirmDelete(blogId) {
+        function confirmDelete(id, name) {
             swal({
                 title: 'Are you sure?',
-                text: 'Once deleted, you will not be able to recover this article!',
+                text: `Once deleted, you will not be able to recover this ${name}!`,
                 icon: 'warning',
                 buttons: true,
             }).then((value) => {
                 if (value) {
-                    Livewire.dispatch('deleteBlog', {
-                        id: blogId
+                    Livewire.dispatch('deleteThis', {
+                        id: id
                     });
                 }
             });

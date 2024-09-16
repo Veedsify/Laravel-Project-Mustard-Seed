@@ -13,14 +13,17 @@
                                     <li class="breadcrumb-item active" aria-current="page">Categories</li>
                                 </ol>
                             </nav>
-                            <h3>Blog Categories</h3>
+                            <h3>Create Categories</h3>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg">
+                        {{-- CARD CONTENTS HERE --}}
                         <div class="card">
-                            <livewire:admin.blog-category-table />
+                            <div class="card-body">
+                                
+                            </div>
                         </div>
                     </div>
                 </div>

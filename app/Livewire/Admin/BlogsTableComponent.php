@@ -18,7 +18,7 @@ class BlogsTableComponent extends Component
         $this->resetPage(); // Reset pagination when search changes
     }
 
-    #[On('deleteBlog')]
+    #[On('deleteThis')]
     public function delete($id)
     {
         $blog = Blog::find($id);

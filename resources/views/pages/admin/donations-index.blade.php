@@ -19,9 +19,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg">
-                        <div class="card">
-                            <livewire:admin.blog-category-table />
-                        </div>
+                        {{-- CARD CONTENTS HERE --}}
                     </div>
                 </div>
             </div>

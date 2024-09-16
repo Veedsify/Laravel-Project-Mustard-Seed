@@ -60,11 +60,11 @@
             class="material-icons has-sub-menu">keyboard_arrow_left</i></a>
     <ul class="sub-menu">
         <li>
-            <a href="{{ route('admin.campaigns') }}">
+            <a href="{{ route('admin.users') }}">
                 Users</a>
         </li>
         <li>
-            <a href="{{ route('admin.campaigns.create') }}">
+            <a href="{{ route('admin.users.create') }}">
                 Create User
             </a>
         </li>
@@ -105,11 +105,11 @@
             class="material-icons has-sub-menu">keyboard_arrow_left</i></a>
     <ul class="sub-menu">
         <li>
-            <a href="styles-typography.html">
+            <a href="{{ route('admin.campaigns.categories') }}">
                 All Category</a>
         </li>
         <li>
-            <a href="styles-code.html">
+            <a href="{{ route('admin.campaigns.categories.create') }}">
                 Create Category
             </a>
         </li>
@@ -121,12 +121,12 @@
             class="material-icons has-sub-menu">keyboard_arrow_left</i></a>
     <ul class="sub-menu">
         <li>
-            <a href="styles-typography.html">
+            <a href="{{ route('admin.donations') }}">
                 Donations
             </a>
         </li>
         <li>
-            <a href="styles-code.html">
+            <a href="{{ route('admin.donations.create') }}">
                 Create Donation Category
             </a>
         </li>
@@ -142,12 +142,17 @@
             class="material-icons has-sub-menu">keyboard_arrow_left</i></a>
     <ul class="sub-menu">
         <li>
-            <a href="styles-typography.html">
+            <a href="{{ route('admin.events') }}">
                 Events
             </a>
         </li>
         <li>
-            <a href="styles-code.html">
+            <a href="{{ route('admin.events.create') }}">
+                Create Event
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('admin.events.categories.create') }}">
                 Create Event Category
             </a>
         </li>
@@ -157,7 +162,7 @@
     Reviews
 </li>
 <li>
-    <a href="profile.html"><i class="material-icons">reviews</i>Reviews</a>
+    <a href="{{route('admin.reviews')}}"><i class="material-icons">reviews</i>Reviews</a>
 </li>
 
 <li class="sidebar-title">

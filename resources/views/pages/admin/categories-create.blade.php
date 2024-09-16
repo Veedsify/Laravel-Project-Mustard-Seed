@@ -17,16 +17,57 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg">
+                <from class="row">
+                    <div class="col-md-6">
                         {{-- CARD CONTENTS HERE --}}
                         <div class="card">
                             <div class="card-body">
-                            
+                                <h5 class="card-title">Create a Blog Category </h5>
+                                <p>
+                                    Create a new blog category.
+                                </p>
+                                <div class="form-group">
+                                    <label for="exampleName1">Name</label>
+                                    <input wire:model="title" type="text" name="name" class="form-control" id="exampleName1"
+                                        aria-describedby="name" placeholder="Name">
+                                    @if ($errors->has('name'))
+                                        <small id="name" class="form-text text-danger">
+                                            {{ $errors->first('name') }}
+                                        </small>
+                                    @endif
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleTextarea1">
+                                        Description
+                                    </label>
+                                    <textarea rows="4" class="form-control" id="exampleTextarea1" aria-describedby="description"
+                                        placeholder="Description" name="description"></textarea>
+                                    @if ($errors->has('description'))
+                                        <small id="description" class="form-text text-danger">
+                                            {{ $errors->first('description') }}
+                                        </small>
+                                    @endif
+                                </div>
+                                <div>
+                                    <button type="submit" class="btn btn-primary">Create</button>
+                                    <button type="submit" class="btn btn-outline-primary">Create & Create Another</button>
+                                    <button type="submit" class="btn btn-outline-danger">Cancel</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="col-md-6">
+                        {{-- CARD CONTENTS HERE --}}
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="exampleImage1">Image</label>
+                                    {{-- <input class="my-pond" id="exampleImage1" name="image"/> --}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </from>
             </div>
         </div>
         <x-panel.footer />
