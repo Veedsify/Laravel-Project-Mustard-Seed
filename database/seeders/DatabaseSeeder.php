@@ -6,6 +6,7 @@ use App\Models\Blog;
 use App\Models\CampaignCategory;
 use App\Models\Category;
 use App\Models\Location;
+use App\Models\Role;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -24,6 +25,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@example.com',
             'role' => 'admin',
         ]);
+        Role::factory(3)->create();
         User::factory(200)->create();
         Location::factory(10)->create();
         CampaignCategory::factory(4)->create();

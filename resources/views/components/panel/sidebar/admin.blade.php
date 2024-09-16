@@ -2,7 +2,7 @@
     Actions
 </li>
 <li>
-    <a href="{{route('admin.dashboard')}}" class="active"><i class="material-icons">dashboard</i>Dashboard</a>
+    <a href="{{ route('admin.dashboard') }}" class="active"><i class="material-icons">dashboard</i>Dashboard</a>
 </li>
 <li class="sidebar-title">
     Blogs
@@ -13,11 +13,11 @@
             class="material-icons has-sub-menu">keyboard_arrow_left</i></a>
     <ul class="sub-menu">
         <li>
-            <a href="{{route('admin.blogs')}}">
+            <a href="{{ route('admin.blogs') }}">
                 <i class="material-icons">library_books</i>All Articles</a>
         </li>
         <li>
-            <a href="{{route('admin.blogs.create')}}">
+            <a href="{{ route('admin.blogs.create') }}">
                 <i class="material-icons">add</i>New Article
             </a>
         </li>
@@ -29,12 +29,12 @@
             class="material-icons has-sub-menu">keyboard_arrow_left</i></a>
     <ul class="sub-menu">
         <li>
-            <a href="styles-typography.html">
+            <a href="{{ route('admin.categories') }}">
                 All Categories</a>
         </li>
         <li>
-            <a href="styles-code.html">
-               Add Category
+            <a href="{{ route('admin.categories.create') }}">
+                Add Category
             </a>
         </li>
     </ul>
@@ -45,22 +45,39 @@
             class="material-icons has-sub-menu">keyboard_arrow_left</i></a>
     <ul class="sub-menu">
         <li>
-            <a href="styles-typography.html">
-                <i class="material-icons">chat</i>All Articles</a>
+            <a href="{{ route('admin.comments') }}">
+                <i class="material-icons">chat</i>All Comments</a>
+        </li>
+    </ul>
+</li>
+
+<li class="sidebar-title">
+    Users
+</li>
+
+<li>
+    <a href="#"><i class="material-icons">people</i>Users<i
+            class="material-icons has-sub-menu">keyboard_arrow_left</i></a>
+    <ul class="sub-menu">
+        <li>
+            <a href="{{ route('admin.campaigns') }}">
+                Users</a>
         </li>
         <li>
-            <a href="styles-code.html">
-                <i class="material-icons">note_add</i>New Comments
+            <a href="{{ route('admin.campaigns.create') }}">
+                Create User
             </a>
         </li>
     </ul>
 </li>
+
+
 {{-- LOCATION --}}
 <li class="sidebar-title">
     Location
 </li>
 <li>
-    <a href="profile.html"><i class="material-icons">location_on</i>Location</a>
+    <a href="{{ route('admin.location') }}"><i class="material-icons">location_on</i>Location</a>
 </li>
 
 <li class="sidebar-title">
@@ -72,12 +89,12 @@
             class="material-icons has-sub-menu">keyboard_arrow_left</i></a>
     <ul class="sub-menu">
         <li>
-            <a href="styles-typography.html">
-               Campaigns</a>
+            <a href="{{ route('admin.campaigns') }}">
+                Campaigns</a>
         </li>
         <li>
-            <a href="styles-code.html">
-               Create Campaign
+            <a href="{{ route('admin.campaigns.create') }}">
+                Create Campaign
             </a>
         </li>
     </ul>
@@ -89,11 +106,11 @@
     <ul class="sub-menu">
         <li>
             <a href="styles-typography.html">
-               All Category</a>
+                All Category</a>
         </li>
         <li>
             <a href="styles-code.html">
-               Create Category
+                Create Category
             </a>
         </li>
     </ul>
@@ -106,11 +123,11 @@
         <li>
             <a href="styles-typography.html">
                 Donations
-               </a>
+            </a>
         </li>
         <li>
             <a href="styles-code.html">
-               Create Donation Category
+                Create Donation Category
             </a>
         </li>
     </ul>
@@ -127,11 +144,11 @@
         <li>
             <a href="styles-typography.html">
                 Events
-               </a>
+            </a>
         </li>
         <li>
             <a href="styles-code.html">
-               Create Event Category
+                Create Event Category
             </a>
         </li>
     </ul>
@@ -170,7 +187,7 @@
         </li>
         <li>
             <a href="styles-icons.html">Social Media Links</a>
-        </li>   
+        </li>
         <li>
             <a href="styles-icons.html">Header Links</a>
         </li>

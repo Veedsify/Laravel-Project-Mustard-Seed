@@ -1,0 +1,16 @@
+ii  php-common                                               2:93+nmu1                                all          Common files for PHP packages
+ii  php-composer-ca-bundle                                   1.5.1-1                                  all          utility library to find a path to the system CA bundle
+ii  php-composer-class-map-generator                         1.3.4-2                                  all          Utilities to scan PHP code and generate class maps
+ii  php-composer-metadata-minifier                           1.0.0-2                                  all          Small utility library that handles metadata minification and expansion
+ii  php-composer-pcre                                        3.3.1-1                                  all          PCRE wrapping library that offers type-safe preg_* replacements
+ii  php-composer-semver                                      3.4.2-1                                  all          utilities, version constraint parsing and validation
+ii  php-composer-spdx-licenses                               1.5.8-2                                  all          SPDX licenses list and validation library
+ii  php-composer-xdebug-handler                              3.0.5-2                                  all          Restarts a process without Xdebug
+ii  php-psr-container                                        1.1.2-1                                  all          Common Container Interface (PHP FIG PSR-11)
+ii  php-psr-log                                              1.1.4-2                                  all          common interface for logging libraries
+ii  php-react-promise                                        3.2.0-2                                  all          lightweight implementation of CommonJS Promises/A for PHP
+ii  php-seld-signal-handler                                  2.0.2-3                                  all          simple cross-platform1 signal handler
+ii  php-symfony-deprecation-contracts                        3.5.0-2                                  all          A generic function and convention to trigger deprecation notices
+ii  php-symfony-finder                                       6.4.11+dfsg-1                            all          find files and directories
+ii  php-symfony-process                                      6.4.11+dfsg-1                            all          execute commands in sub-processes
+ii  php-symfony-service-contracts                            3.5.0-2                                  all          Generic abstractions related to writing services
