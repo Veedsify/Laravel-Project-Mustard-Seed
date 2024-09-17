@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 class AdminCategoriesController extends Controller
 {
@@ -56,4 +61,17 @@ class AdminCategoriesController extends Controller
             ->with('success', 'Category updated successfully.');
     }
 
+    public function upload(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
+        ]);
+
+        $file = ImageManager::gd()->read($request->file);
+        $file->cover(300, 300);
+        $fileName = Str::random(32) . '.' . 'webp';
+        $file->save(public_path('storage/categories/' . $fileName));
+        $image_path = 'storage/categories' . $fileName;
+        return response()->json(['success' => 'You have successfully uploaded an image', 'id' => $image_path]);
+    }
 }

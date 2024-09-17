@@ -27,7 +27,8 @@
     <link href="{{ asset('lime_assets/css/custom.css') }}" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
-        @livewireStyles
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+    @livewireStyles
 </head>
 
 <body>
@@ -58,6 +59,7 @@
     <script src="{{ asset('lime_assets/plugins/select2/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('lime_assets/js/pages/select2.js') }}"></script>
     <script src="{{ asset('lime_assets/js/pages/dashboard.js') }}"></script>
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
     <script>
         window.addEventListener('notify-success', event => {
             toastr.success(event.detail.message)
@@ -86,14 +88,28 @@
                 }
             });
         }
-        const quill = new Quill('#exampleEditor1', {
-            debug: 'info',
-            modules: {
-                toolbar: true,
-            },
-            placeholder: 'Compose an epic...',
-            theme: 'snow'
-        });
+
+        if (document.querySelector('#exampleEditor1')) {
+            const quill = new Quill('#exampleEditor1', {
+                debug: 'info',
+                modules: {
+                    toolbar: true,
+                },
+                placeholder: 'Compose an epic...',
+                theme: 'snow'
+            });
+        }
+
+        Dropzone.options.myDropzone = {
+            maxFiles: 1,
+            init: function() {
+                this.on("success", function(file, response) {
+                    const id = response.id;
+                    toastr.success('Image uploaded successfully');
+                    document.querySelector('#image').value = id;
+                })
+            }
+        };
     </script>
 </body>
 

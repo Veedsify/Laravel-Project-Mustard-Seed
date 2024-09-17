@@ -49,6 +49,8 @@ class ItemResource extends Resource
             ->modifyQueryUsing(function (Builder $query) {
                 $query->where('volunteer_id', Auth::user()->id);
             })
+            ->emptyStateHeading('No pending donations found')
+            ->emptyStateDescription('It seems like there are no donations here at the moment.')
             ->columns([
                 Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\TextColumn::make('name'),

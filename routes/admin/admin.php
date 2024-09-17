@@ -28,6 +28,7 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/store', [AdminCategoriesController::class, 'store'])->name('admin.categories.store');
         Route::get('/edit/{id}', [AdminCategoriesController::class, 'edit'])->name('admin.categories.edit');
         Route::post('/update/{id}', [AdminCategoriesController::class, 'update'])->name('admin.categories.update');
+        Route::post('/image/upload',[AdminCategoriesController::class, 'upload'])->name('admin.categories.upload');
     });
 
     Route::prefix("comments")->group(function () {

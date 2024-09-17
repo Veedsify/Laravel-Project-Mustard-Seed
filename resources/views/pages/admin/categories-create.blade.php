@@ -28,8 +28,8 @@
                                 </p>
                                 <div class="form-group">
                                     <label for="exampleName1">Name</label>
-                                    <input wire:model="title" type="text" name="name" class="form-control" id="exampleName1"
-                                        aria-describedby="name" placeholder="Name">
+                                    <input wire:model="title" type="text" name="name" class="form-control"
+                                        id="exampleName1" aria-describedby="name" placeholder="Name">
                                     @if ($errors->has('name'))
                                         <small id="name" class="form-text text-danger">
                                             {{ $errors->first('name') }}
@@ -62,7 +62,10 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleImage1">Image</label>
-                                    {{-- <input class="my-pond" id="exampleImage1" name="image"/> --}}
+                                    <form class="dropzone" id="my-dropzone" action="{{ route('admin.categories.upload') }}">
+                                        @csrf
+                                        <input type="hidden" name="image" id="image">
+                                    </form>
                                 </div>
                             </div>
                         </div>
