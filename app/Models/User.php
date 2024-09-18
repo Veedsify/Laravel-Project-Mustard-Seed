@@ -47,6 +47,16 @@ class User extends Authenticatable implements FilamentUser
         'email_verified_at',
     ];
 
+    public function address()
+    {
+        return $this->hasOne(Address::class);
+    }
+
+    public function location()
+    {
+        return $this->hasOne(Location::class);
+    }
+
     // Add this method to create settings after a user is created
     protected static function booted()
     {
@@ -64,7 +74,7 @@ class User extends Authenticatable implements FilamentUser
     {
         return $this->belongsToMany(Role::class);
     }
-    
+
     public function permissions()
     {
         return $this->belongsToMany(Permission::class);
@@ -142,7 +152,8 @@ class User extends Authenticatable implements FilamentUser
         return $this->hasMany(CampaignCategory::class);
     }
 
-    public function items(){
+    public function items()
+    {
         return $this->hasMany(Item::class);
     }
 

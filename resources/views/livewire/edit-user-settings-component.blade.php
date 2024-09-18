@@ -32,13 +32,14 @@
         <select type="text" wire:model="location" name="location" x-model="location"
             class="w-full block border mb-3 dark:text-white dark:bg-gray-900 dark:border-gray-700 border-gray-300 p-4 outline-none text-black rounded-lg"
             placeholder="Location " label="Location">
-            <x-states />
+            <option value="" selected disabled>--SELECT FROM LIST--</option>
+            <x-states :states="$states"/>
         </select>
         <p class="text-red-500">{{ $errors->first('location') }}</p>
     </div>
     <div>
-        <input wire:model="email_address" type="email" name="email_address" x-model="email"
-            class="w-full block border mb-3 dark:text-white dark:bg-gray-900 dark:border-gray-700 border-gray-300 p-4 outline-none text-black rounded-xl select-none"
+        <input wire:model="email_address" readonly disabled type="email" name="email_address" x-model="email"
+            class="w-full block border mb-3 dark:text-white disabled:cursor-not-allowed disabled:select-none dark:bg-gray-900 dark:border-gray-700 border-gray-300 p-4 outline-none text-black rounded-xl select-none"
             placeholder="Email " />
         <p class="text-red-500">{{ $errors->first('email_address') }}</p>
     </div>

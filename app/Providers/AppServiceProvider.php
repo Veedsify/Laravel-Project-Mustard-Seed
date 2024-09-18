@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
         Gate::policy(Blog::class, BlogPolicy::class);
         FilamentAsset::register([
             Js::make('custom-scripts',  __DIR__ . '/../../resources/js/custom.js'),
-            // Js::make('alpinejs', 'https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js'),
+            Js::make('swal', 'https://unpkg.com/sweetalert/dist/sweetalert.min.js'),
         ]);
     }
 

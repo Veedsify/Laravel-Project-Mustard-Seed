@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\State;
 use App\Models\User;
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
@@ -57,10 +58,13 @@ class EditUserSettingsComponent extends Component
             ->success()
             ->send();
 
-        $this->dispatch('notify', 'User settings updated successfully!');
+        $this->dispatch('refreshProfilePage');
     }
     public function render()
     {
-        return view('livewire.edit-user-settings-component');
+        $states = State::all();
+        return view('livewire.edit-user-settings-component',[
+            'states' => $states
+        ]);
     }
 }

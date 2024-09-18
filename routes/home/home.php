@@ -24,14 +24,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('page_visits')->group(function () {
 
-// Home Page Routes
+    // Home Page Routes
     Route::get('/', HomeComponent::class)->name('home');
     Route::get('/about', AboutComponent::class)->name('about');
     Route::get('/blog/{slug}', BlogDetailsComponent::class)->name('blog.details');
     Route::get('/blogs', BlogComponent::class)->name('blogs');
-    Route::get('/login', LoginComponent::class)->name('login');
+    Route::get('/login/{id}', LoginComponent::class)->name('login');
     Route::get('/register', RegisterComponent::class)->name('register');
-// Route::get('/logout', [LoginComponent::class, 'logout'])->name('logout');
+    // Route::get('/logout', [LoginComponent::class, 'logout'])->name('logout');
     Route::get('/contact', ContactComponent::class)->name('contact');
 
     Route::get('/events/{slug}', EventsComponent::class)->name('events.details');
@@ -50,10 +50,10 @@ Route::middleware('page_visits')->group(function () {
     Route::get("/privacy-policy", PrivacyPolicyComponent::class)->name("privacy.policy");
     Route::get('/terms-and-conditions', TermsComponent::class)->name('terms');
 
-//Register As A Volunteer
+    //Register As A Volunteer
     Route::get('/register/volunteer', RegisAsVolunteer::class)->name('register.as.volunteer');
 
-// Google Auth
+    // Google Auth
     Route::get("/register/google", [AuthController::class, 'redirectToGoogle'])->name("redirect.google");
     Route::get("/auth/google-callback", [AuthController::class, 'authCallback'])->name("redirect.google.callback");
 });

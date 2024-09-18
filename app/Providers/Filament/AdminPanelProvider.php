@@ -32,7 +32,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->brandName('Mustards')
             // ->spa()
-            ->path('adminx')
+            ->path('admin')
             ->font('Instrument Sans')
             ->defaultThemeMode(ThemeMode::Dark)
             ->viteTheme('resources/css/filament/admin/theme.css')

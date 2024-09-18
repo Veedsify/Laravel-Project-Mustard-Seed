@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Location extends Model
 {
@@ -18,13 +19,14 @@ class Location extends Model
         'country',
         'zip',
         'user_id',
+        'state_id'
     ];
 
     protected static function booted()
     {
         static::creating(function ($location) {
-            if (auth()->check()) {
-                $location->user_id = auth()->id();
+            if (Auth::check()) {
+                $location->user_id = Auth::id();
             }
         });
     }

@@ -27,8 +27,7 @@
                     <div class="single-blog">
                         <div class="blog-img">
                             <a href="javascript:void(0)">
-                                <img src="{{ asset('storage/' . $item->image) }}" class="blog-image w-100"
-                                    alt="img">
+                                <img src="{{ asset('storage/' . $item->image) }}" class="w-100 blog-image"alt="{{$item->name}}">
                             </a>
                             <div class="brush-bg">
                                 <img src="{{ asset('assets/images/gallery/brush-bg-two.png') }}" alt="image">
@@ -177,7 +176,9 @@
                             <h6 class="fw-bold mb-3">Donator</h6>
                             <div class="user-box mb-3">
                                 <div class="user-img mx-auto">
-                                    <img src="{{ asset($item->user->avatar) }}" alt="img">
+                                    <img src="{{ asset($item->user->avatar) }}" alt="img"
+                                        style="object-fit: cover; aspect-ratio: 1/1;"
+                                    >
                                 </div>
                                 <div class="user-info text-center">
                                     <h4 class="title">
