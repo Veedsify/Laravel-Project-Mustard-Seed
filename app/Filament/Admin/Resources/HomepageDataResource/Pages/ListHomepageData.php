@@ -3,6 +3,7 @@
 namespace App\Filament\Admin\Resources\HomepageDataResource\Pages;
 
 use App\Filament\Admin\Resources\HomepageDataResource;
+use App\Models\HomepageData;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
@@ -13,7 +14,10 @@ class ListHomepageData extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\CreateAction::make()
+            ->visible(fn () => HomepageData::first() === null)    
+            ->label('Create')
+            // Actions\EditAction::make(),w
         ];
     }
 }

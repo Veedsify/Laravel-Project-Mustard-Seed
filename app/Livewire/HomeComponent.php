@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Campaign;
+use App\Models\HomepageData;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 
@@ -16,7 +17,8 @@ class HomeComponent extends Component
             ->orderBy('created_at', 'DESC')
             ->take(3)
             ->get();
-        return view('livewire.home-component',[
+        return view('livewire.home-component', [
+            'data' => HomepageData::first(),
             'campaigns' => $campaigns
         ]);
     }

@@ -31,7 +31,7 @@ class UserPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Amber,
             ])
-            ->font('Instrument Sans')
+            ->font('DM Sans')
             ->viteTheme('resources/css/filament/user/theme.css')
             ->discoverResources(in: app_path('Filament/User/Resources'), for: 'App\\Filament\\User\\Resources')
             ->discoverPages(in: app_path('Filament/User/Pages'), for: 'App\\Filament\\User\\Pages')
@@ -43,10 +43,15 @@ class UserPanelProvider extends PanelProvider
                 Widgets\AccountWidget::class,
             ])
             ->navigationItems([
-               
+                // NavigationItem::make('Verifications')
+                //     ->url('/user/verification')
+                //     ->group('Settings')
+                //     ->visible(fn () => true)
+                //     ->icon('heroicon-s-shield-check')
+                //     ->sort(-1),
             ])
             ->navigationGroups([
-                'Items',    
+                'Items',
                 'Blogs',
                 'Locations',
                 'Campaigns',

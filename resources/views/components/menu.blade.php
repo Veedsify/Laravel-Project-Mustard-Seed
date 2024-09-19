@@ -84,7 +84,8 @@
                                         </a>
                                     @endauth
                                     @guest()
-                                        <a href="{{ route('login') }}" class="btn-primary-fill pill-btn" wire:navigate>Log
+                                        <a href="{{ route('login', [1]) }}" class="btn-primary-fill pill-btn"
+                                            wire:navigate>Log
                                             in</a>
                                     @endguest
                                 </div>

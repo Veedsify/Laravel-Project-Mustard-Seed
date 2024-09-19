@@ -13,6 +13,24 @@ return new class extends Migration
     {
         Schema::create('homepage_data', function (Blueprint $table) {
             $table->id();
+            $table->string('home_banner_intro');
+            $table->string('home_banner_title');
+            $table->string('home_banner_description');
+            $table->text('home_banner_image');
+            $table->boolean('show_banner_experience');
+            $table->string('banner_experience_title_1');
+            $table->text('banner_experience_desc_1');
+            $table->string('banner_experience_title_2');
+            $table->text('banner_experience_desc_2');
+            $table->string('banner_experience_title_3');
+            $table->text('banner_experience_desc_3');
+            $table->boolean('show_feature_section');
+            $table->boolean('show_event_section');
+            $table->boolean('show_upcoming_event_section');
+            $table->boolean('show_blog_section');
+            $table->boolean('show_testimonial_section');
+            $table->boolean('show_faq_section');
+            $table->boolean('show_gallery_section');
             $table->timestamps();
         });
     }
