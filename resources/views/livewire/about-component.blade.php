@@ -2,7 +2,7 @@
 <main>
     <!-- Breadcrumb Area S t a r t -->
     <section class="breadcrumb-section breadcrumb-bg"
-        style="background-image: url({{asset('assets/images/gallery/breadcrumb-1.png')}})">
+        style="background-image: url({{ asset('assets/images/gallery/breadcrumb-1.png') }})">
         <div class="container">
             <div class="breadcrumb-text">
                 <nav aria-label="breadcrumb" class="breadcrumb-nav wow-dis fadeInUp" data-wow-delay="0.0s">
@@ -24,74 +24,30 @@
     <section class="helpful-area-three section-padding">
         <div class="container">
             <div class="row g-24">
-                <div class="col-xl-3 col-md-6 col-lg-6">
-                    <div class="helpful-card wow-dis fadeInUp" data-wow-delay="0.0s">
-                        <div class="helpful-card-icon">
-                            <i class="ri-hand-coin-line"></i>
-                        </div>
-                        <div class="helpful-card-caption">
-                            <h4 class="caption-title">Medical & Blood</h4>
-                            <p class="caption-para">When deciding which charity to donate to, it important to do
-                                your research.</p>
-                            <a href="javascript:void(0)" class="imp-link">Read More <i
-                                    class="ri-arrow-right-up-line"></i></a>
-                        </div>
-                        <div class="number-watermark">
-                            <h4 class="number">01</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6 col-lg-6">
-                    <div class="helpful-card wow-dis fadeInUp" data-wow-delay="0.10s">
-                        <div class="helpful-card-icon">
-                            <i class="ri-24-hours-line"></i>
-                        </div>
-                        <div class="helpful-card-caption">
-                            <h4 class="caption-title">Social Service</h4>
-                            <p class="caption-para">When deciding which charity to donate to, it important to do
-                                your research.</p>
-                            <a href="javascript:void(0)" class="imp-link">Read More <i
-                                    class="ri-arrow-right-up-line"></i></a>
-                        </div>
-                        <div class="number-watermark">
-                            <h4 class="number">02</h4>
+                @foreach ($services as $service)
+                    <div class="col-xl-3 col-md-6 col-lg-6">
+                        <div class="helpful-card wow-dis fadeInUp" data-wow-delay="0.0s">
+                            <div class="helpful-card-icon">
+                                <i class="ri-hand-coin-line"></i>
+                            </div>
+                            <div class="helpful-card-caption">
+                                <h4 class="caption-title">
+                                    <a href="javascript:void(0)">{{ $service->service_name }}</a>
+                                </h4>
+                                <p class="caption-para">
+                                    {{ Str::limit($service->service_description, 100) }}
+                                </p>
+                                <a href="{{ $service->service_slug }}" class="imp-link">Read More <i
+                                        class="ri-arrow-right-up-line"></i></a>
+                            </div>
+                            <div class="number-watermark">
+                                <h4 class="number">
+                                    {{ $loop->iteration }}
+                                </h4>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-3 col-md-6 col-lg-6">
-                    <div class="helpful-card wow-dis fadeInUp" data-wow-delay="0.20s">
-                        <div class="helpful-card-icon">
-                            <i class="ri-exchange-dollar-line"></i>
-                        </div>
-                        <div class="helpful-card-caption">
-                            <h4 class="caption-title">Send a Charitable</h4>
-                            <p class="caption-para">When deciding which charity to donate to, it important to do
-                                your research.</p>
-                            <a href="javascript:void(0)" class="imp-link">Read More <i
-                                    class="ri-arrow-right-up-line"></i></a>
-                        </div>
-                        <div class="number-watermark">
-                            <h4 class="number">03</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6 col-lg-6">
-                    <div class="helpful-card wow-dis fadeInUp" data-wow-delay="0.03s">
-                        <div class="helpful-card-icon">
-                            <i class="ri-book-open-line"></i>
-                        </div>
-                        <div class="helpful-card-caption">
-                            <h4 class="caption-title">Education</h4>
-                            <p class="caption-para">When deciding which charity to donate to, it important to do
-                                your research.</p>
-                            <a href="javascript:void(0)" class="imp-link">Read More <i
-                                    class="ri-arrow-right-up-line"></i></a>
-                        </div>
-                        <div class="number-watermark">
-                            <h4 class="number">04</h4>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -372,8 +328,8 @@
                                     </div>
                                 </div>
                                 <div class="position-absolute quote">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="62" height="45" viewBox="0 0 62 45"
-                                        fill="none">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="62" height="45"
+                                        viewBox="0 0 62 45" fill="none">
                                         <path
                                             d="M20.6667 0.75H10.3333C7.59277 0.75 4.96445 1.83869 3.02657 3.77657C1.08869 5.71445 0 8.34277 0 11.0833L0 21.4167C0 22.787 0.544345 24.1011 1.51328 25.0701C2.48222 26.039 3.79639 26.5834 5.16667 26.5834H20.4342C19.8212 30.1911 17.9528 33.4661 15.1591 35.8297C12.3654 38.1932 8.8261 39.4933 5.16667 39.5001C4.48153 39.5001 3.82445 39.7722 3.33998 40.2567C2.85551 40.7412 2.58334 41.3983 2.58334 42.0834C2.58334 42.7685 2.85551 43.4256 3.33998 43.9101C3.82445 44.3946 4.48153 44.6667 5.16667 44.6667C10.6459 44.6606 15.899 42.4812 19.7734 38.6068C23.6479 34.7324 25.8272 29.4793 25.8334 24V5.91667C25.8334 4.54639 25.289 3.23222 24.3201 2.26328C23.3511 1.29434 22.037 0.75 20.6667 0.75Z"
                                             fill="#EDEDEF" />

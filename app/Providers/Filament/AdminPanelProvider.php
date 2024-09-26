@@ -56,6 +56,7 @@ class AdminPanelProvider extends PanelProvider
             ->navigationGroups([
                 'Blogs',
                 'Locations',
+                'Services',
                 'Campaigns & Donations',
                 'Events',
                 'Testimonails',
