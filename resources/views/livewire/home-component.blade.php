@@ -17,10 +17,12 @@
                                 {{ $data->home_banner_description ?? "When deciding which charity to donate to, it's important to do your research and find one that aligns with your values and interests." }}
                             </p>
                             <div class="d-flex gap-20 flex-wrap">
-                                <a href="donation.html" class="btn-primary-fill hero-btn wow-dis fadeInLeft"
-                                    data-wow-delay="0.4s">Donate Now</a>
-                                <a href="volunteer.html" class="btn-tertiary-fill hero-btn wow-dis fadeInRight"
-                                    data-wow-delay="0.4s">Join Volunteers</a>
+                                <a href="{{ Auth::check() ? config('app.url') . '/user/items' : route('register') }}"
+                                    class="btn-primary-fill hero-btn wow-dis fadeInLeft" data-wow-delay="0.4s">Donate
+                                    Now</a>
+                                <a href="{{ route('register.as.volunteer') }}" wire:navigate
+                                    class="btn-tertiary-fill hero-btn wow-dis fadeInRight" data-wow-delay="0.4s">Join
+                                    Volunteers</a>
                             </div>
                         </div>
                     </div>

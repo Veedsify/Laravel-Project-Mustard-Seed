@@ -33,6 +33,7 @@ class UserFactory extends Factory
             'cover' => fake()->imageUrl(),
             'username' => '@' . fake()->unique()->userName(),
             'bio' => fake()->sentence(),
+            'admin_approved' => fake()->boolean(),
             'role' => fake()->randomElement(['donator', 'volunteer', 'user']),
 
         ];

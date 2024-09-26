@@ -25,7 +25,7 @@ class UserPanelProvider extends PanelProvider
     {
         return $panel
             ->id('user')
-            ->spa()
+            // ->spa()
             ->brandName("Mustard Seed Charity")
             ->path('user')
             ->colors([

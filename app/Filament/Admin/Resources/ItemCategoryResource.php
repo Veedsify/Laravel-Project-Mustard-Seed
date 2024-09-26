@@ -18,7 +18,7 @@ class ItemCategoryResource extends Resource
 {
     protected static ?string $model = ItemCategory::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-building-storefront';
+    protected static ?string $navigationIcon = 'heroicon-s-building-storefront';
     protected static ?string $navigationGroup = 'Campaigns & Donations';
     protected static ?int $sort = 4;
 
@@ -44,10 +44,7 @@ class ItemCategoryResource extends Resource
                             ->maxLength(255)->columnSpanFull(),
                         Forms\Components\RichEditor::make('description')->label('Description')->placeholder('Description of the item category')->required()->columnSpanFull(),
                         Forms\Components\FileUpload::make('image')->label('Image')->required()->columnSpanFull(),
-                        Forms\Components\Select::make('status')->label('Status')->options([
-                            'draft' => 'Draft',
-                            'active' => 'Active',
-                        ])->required(),
+                        Forms\Components\Toggle::make('status')->label('Status')->required(),
 
                     ]),
                 ])->columnSpan(2),
@@ -61,10 +58,12 @@ class ItemCategoryResource extends Resource
                 Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('description')->limit(30)->html(),
-                Tables\Columns\TextColumn::make('status')->sortable()->badge(fn($record) => match ($record->status) {
-                    'active' => 'success',
-                    'draft' => 'danger',
-                }),
+                Tables\Columns\TextColumn::make('status')
+                    ->label('Status') // Optional: Add a label if needed
+                    ->sortable()
+                    ->getStateUsing(function ($record) {
+                        return $record->status ? 'Active' : 'Inactive';
+                    }),
                 Tables\Columns\TextColumn::make('user.name'),
                 Tables\Columns\TextColumn::make('created_at')->sortable(),
             ])

@@ -12,7 +12,7 @@ class VolunteerSetting extends Model
     protected $fillable = [
         'user_id',
         'is_available',
-        'profession',
+        'organization',
         'age',
         'bio',
         'phone',
@@ -26,34 +26,31 @@ class VolunteerSetting extends Model
         'facebook',
         'twitter',
         'linkedin',
+        'verification_number',
+        'verification_state',
+        'verification_city',
+        'verification_zip',
+        'verification_lga',
     ];
 
 
-    protected static function booted()
-    {
-        static::created(function ($volunteerSetting) {
-            // Create a new settings record for the newly created user
-            VolunteerSettingEducation::create([
-                'volunteer_setting_id' => $volunteerSetting->id,
-            ]);
-            VolunteerSettingSkill::create([
-                'volunteer_setting_id' => $volunteerSetting->id,
-            ]);
-        });
-    }
+    // protected static function booted()
+    // {
+    //     static::created(function ($volunteerSetting) {
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+    //     });
+    // }
 
-    public function educations()
-    {
-        return $this->hasMany(VolunteerSettingEducation::class);
-    }
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class);
+    // }
 
-    public function skills()
-    {
-        return $this->hasMany(VolunteerSettingSkill::class);
-    }
+    // public function educations()
+    // {
+    // }
+
+    // public function skills()
+    // {
+    // }
 }

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->boolean('is_available')->default(false);
-            $table->string('profession')->nullable();
+            $table->string('organization')->nullable();
             $table->string('age')->nullable();
             $table->longText('bio')->nullable();
             $table->string('phone')->nullable();
@@ -29,6 +29,11 @@ return new class extends Migration
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
             $table->string('linkedin')->nullable();
+            $table->string('verification_number')->nullable();
+            $table->string('verification_state')->nullable();
+            $table->string('verification_city')->nullable();
+            $table->string('verification_zip')->nullable();
+            $table->string('verification_lga')->nullable();
             $table->timestamps();
         });
     }

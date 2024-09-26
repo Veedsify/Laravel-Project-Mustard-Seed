@@ -16,7 +16,7 @@ class VolunteersDetailsComponent extends Component
 
     public function render()
     {
-        $volunteer = User::where('username', $this->username)->with('volunteer_settings', 'volunteer_settings.educations', 'volunteer_settings.skills')->first();
+        $volunteer = User::where('username', $this->username)->first();
         if (!$volunteer) {
             return abort(404);
         }

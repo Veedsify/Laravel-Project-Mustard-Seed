@@ -43,6 +43,8 @@ class AuthController extends Controller
                 $role = Role::where('name', 'user')->first();
                 $user->attach($role);
 
+                // Send Welcome Emailq
+
                 Auth::login($newUser);
                 return redirect(route('home'))->with('success', 'Login Successful');
             }

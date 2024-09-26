@@ -4,6 +4,7 @@ namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\UserResource\Pages;
 use App\Filament\Admin\Resources\UserResource\RelationManagers;
+use App\Models\State;
 use App\Models\User;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\ViewAction;
@@ -44,11 +45,6 @@ class UserResource extends Resource
                         Forms\Components\TextInput::make('name')->label('Name')->required(),
                         Forms\Components\TextInput::make('email')->label('Email')->required(),
                         Forms\Components\TextInput::make('username')->label('Username'),
-                        Forms\Components\Select::make('role')->label('Role')->required()->options([
-                            'donator' => 'Donator',
-                            'volunteer' => 'Volunteer',
-                            'user' => 'User'
-                        ])->hidden(fn($record) => $record->role === 'admin')->native(false)
                     ]),
                     Section::make('User Configs')->columns(2)->schema([
                         Forms\Components\FileUpload::make('avatar')->label('Avatar'),
@@ -59,11 +55,18 @@ class UserResource extends Resource
                 ])->columnSpan(2),
                 Forms\Components\Group::make([
                     Section::make('User Relations')->schema([
-                        Forms\Components\TextInput::make('location')->label('Location')->required(),
-                        Forms\Components\Select::make('volunteer_id')->label('Volunteer')->options(
-                            User::where('role', 'volunteer')
-                                ->pluck('name', 'id')
-                        )->searchable()->hidden(fn($record) => Auth::user()->id === $record->id || $record->role === 'volunteer'),
+                        Forms\Components\Select::make('location')
+                            ->options(
+                                State::all()
+                                    ->pluck('name', 'id')
+                            )
+                            ->native(false)
+                            ->label('Location')->required(),
+                        Forms\Components\Select::make('roles')
+                            ->label('Roles')
+                            ->relationship('roles', 'name') // This is where you define the pivot relationship
+                            ->preload() // Preload roles for better UX
+                            ->searchable(),
                     ])
                 ])
             ])->columns(3);
@@ -76,6 +79,13 @@ class UserResource extends Resource
                 TextColumn::class::make('name')->sortable()->searchable(),
                 TextColumn::class::make('role')->sortable(),
                 TextColumn::class::make('email')->sortable(),
+                TextColumn::class::make('admin_approved')->getStateUsing((
+                    fn($record) => $record->admin_approved ? 'Approved' : 'Not Approved'
+                ))->label('Admin Approved')
+                ->badge()
+                ->color(
+                    fn($record) => $record->admin_approved ? 'success' : 'danger'
+                ),
                 ImageColumn::class::make('avatar')
             ])
             ->filters([

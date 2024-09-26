@@ -17,10 +17,10 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->text('description')->nullable();
             $table->string('image')->nullable();
-            $table->enum('status', ['active', 'draft'])->default('active');
+            $table->boolean('status')->default(true);
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
-        });
+        }); 
     }
 
     /**

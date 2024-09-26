@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('google_id')->nullable();
             $table->string('verification_token')->nullable();
+            $table->boolean('admin_approved')->default(false);
             $table->text("password_reset_token")->nullable();
             $table->timestamp('email_verified_at')->nullable();
             // Relations between Admin, Donators, volunteers and userr

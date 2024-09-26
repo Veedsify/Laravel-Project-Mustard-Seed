@@ -6,6 +6,7 @@ use App\Filament\Admin\Resources\BlogResource\Pages;
 use App\Filament\Admin\Resources\BlogResource\RelationManagers\CommentsRelationManager;
 use App\Models\Blog;
 use Filament\Forms;
+use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -40,7 +41,6 @@ class BlogResource extends Resource
                             'slug',
                             ignoreRecord: true
                         )->label('Slug')->required(),
-                        Forms\Components\RichEditor::make('content')->label('Editor')->required()->columnSpan('full'),
                     ])->description("Create a new blog post.")->columns(2),
                 ])->columnSpan(3),
                 Forms\Components\Group::make()->schema([
@@ -56,7 +56,12 @@ class BlogResource extends Resource
                             return \App\Models\Category::pluck('name', 'id');
                         })->required()->columnSpan('full')->searchable()
                     ])->description('add post category')
-                ])->columnSpan(2)
+                ])->columnSpan(2),
+                Group::make()->schema([
+                    Forms\Components\Section::make("Editor")->schema([
+                        Forms\Components\RichEditor::make('content')->label('Editor')->required()->columnSpan('full'),
+                    ])
+                ])->columnSpan(5),
             ])->columns(5);
     }
 

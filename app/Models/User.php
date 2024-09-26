@@ -40,6 +40,7 @@ class User extends Authenticatable implements FilamentUser
         'bio',
         'google_id',
         'location',
+        'admin_approved',
         'admin_id',
         'donator_id',
         'volunteer_id',

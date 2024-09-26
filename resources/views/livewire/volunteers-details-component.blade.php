@@ -1,8 +1,8 @@
 <main>
     <!-- Breadcrumb Area S t a r t -->
     <section class="breadcrumb-section breadcrumb-bg"
-        style="background-image: url({{ asset('assets/images/gallery/breadcrumb-1.png') }}); background-size: cover;">
-        >
+        style="background-image: url({{ $volunteer->cover }}); background-size: cover; background-position:center;">
+        >   
         <div class="container">
             <div class="breadcrumb-text">
                 <nav aria-label="breadcrumb" class="breadcrumb-nav wow fadeInUp" data-wow-delay="0.0s">
@@ -24,7 +24,7 @@
             <div class="row gy-24">
                 <div class="col-xl-4 col-md-5 col-lg-5">
                     <div class="volunteer-img">
-                        <img src="{{ asset('storage/' . $volunteer->avatar) }}" alt="image">
+                        <img src="{{ $volunteer->avatar }}" alt="image">
                     </div>
                 </div>
                 <div class="col-xl-8 col-md-7 col-lg-7">
@@ -36,7 +36,7 @@
                                 </h3>
                                 <span class="subtitle mr-20">{{ $volunteer->volunteer_settings->profession }} </span>
                                 <span class="subtitle">(
-                                    {{ $volunteer->volunteer_settings->age }} years Age
+                                    Founded {{ $volunteer->volunteer_settings->age }} years ago
                                     )</span>
                             </div>
                             <div class="social-icon">
@@ -45,7 +45,7 @@
                         </div>
                         <div class="divider"></div>
                         <div style="all:unset;" class="content">
-                            {!! $volunteer->volunteer_settings->bio !!} 
+                            {!! $volunteer->volunteer_settings->bio !!}
                         </div>
                         <h4 class="title">Contact Me</h4>
                         <div class="contact-list">
@@ -72,66 +72,6 @@
                                 <a class="title" href="javascript:void(0)">
                                     {{ $volunteer->volunteer_settings->address }}
                                 </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="education-section">
-                        <h4 class="title">Education & Training</h4>
-                        <div class="education-box">
-                            <p class="pera">However, if you intended to refer to body or organ donation, that is a
-                                separate topic. Organ donation involves the voluntary donation of organs or tissues from
-                                a living or deceased person to help save or improve the lives of others in need of</p>
-                            <p class="pera">transplantation. including poverty, education, healthcare, disaster
-                                relief, environmental conservation, and more. People can contribute to charities..</p>
-                            <ul class="key-points">
-                                <li class="point">Organ donation involves the voluntary donation of organs..</li>
-                                <li class="point">Organ donation involves the voluntary donation of organs..</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="skill-section">
-                        <h4 class="title">Skill</h4>
-                        <div class="skill-box">
-                            <p class="pera">including poverty, education, healthcare, disaster relief, environmental
-                                conservation, and more. People can contribute to charities by making financial
-                                donations,</p>
-                            <div class="row gy-24">
-                                <div class="col-xl-6">
-                                    <div class="progress-content">
-                                        <h4 class="title">Medical Project</h4>
-                                        <p class="pera">70%</p>
-                                    </div>
-                                    <div class="progress custom-progress-two">
-                                        <div class="progress-bar" style="width: 70%"></div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6">
-                                    <div class="progress-content">
-                                        <h4 class="title">Food</h4>
-                                        <p class="pera">45%</p>
-                                    </div>
-                                    <div class="progress custom-progress-two">
-                                        <div class="progress-bar" style="width: 45%"></div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6">
-                                    <div class="progress-content">
-                                        <h4 class="title">Medicine & health</h4>
-                                        <p class="pera">75%</p>
-                                    </div>
-                                    <div class="progress custom-progress-two">
-                                        <div class="progress-bar" style="width: 75%"></div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6">
-                                    <div class="progress-content">
-                                        <h4 class="title">Education</h4>
-                                        <p class="pera">80%</p>
-                                    </div>
-                                    <div class="progress custom-progress-two">
-                                        <div class="progress-bar" style="width: 80%"></div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

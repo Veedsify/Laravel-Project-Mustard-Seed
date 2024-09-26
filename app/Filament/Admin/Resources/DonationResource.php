@@ -17,10 +17,10 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class DonationResource extends Resource
 {
-    protected static ?string $model = Donation::class;
+protected static ?string $model = Donation::class;
     protected static ?string $navigationGroup = 'Campaigns & Donations';
 
-    protected static ?string $navigationIcon = 'heroicon-o-chart-pie';
+    protected static ?string $navigationIcon = 'heroicon-s-chart-pie';
 
     public static function form(Form $form): Form
     {

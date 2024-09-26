@@ -79,7 +79,7 @@ class ItemResource extends Resource
                             ->native(false)
                             ->required()
                             ->label('Condition'),
-                        Forms\Components\Checkbox::make('is_anonymous')
+                        Forms\Components\Toggle::make('is_anonymous')
                             ->label('Post as Anonymous'),
                         Forms\Components\Select::make('volunteer_id')
                             ->label('Select an Agent')
