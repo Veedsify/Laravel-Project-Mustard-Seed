@@ -17,6 +17,7 @@ return new class extends Migration
             $table->boolean('is_available')->default(false);
             $table->string('organization')->nullable();
             $table->string('age')->nullable();
+            $table->string('image')->nullable();
             $table->longText('bio')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->nullable();

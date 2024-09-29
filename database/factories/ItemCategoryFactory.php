@@ -17,7 +17,12 @@ class ItemCategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->name,
+            'slug' => $this->faker->slug,
+            'description' => $this->faker->text,
+            'image' => $this->faker->imageUrl(),
+            'status' => $this->faker->boolean(),
+            'user_id' => 1,
         ];
     }
 }

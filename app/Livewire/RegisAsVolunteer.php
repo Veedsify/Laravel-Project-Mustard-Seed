@@ -73,11 +73,12 @@ class RegisAsVolunteer extends Component
 
         $user->volunteer_settings()->create([
             'is_available' => true,
-            'organization' => 'Volunteer Organization',
+            'organization' =>  $this->name,
             'age' => $this->age,
             'bio' => 'I am a volunteer',
             'phone' => $this->phone,
             'email' => $this->email,
+            'image' => fake()->imageUrl(), 
             'website' => 'https://example.com',
             'address' => $this->address,
             'city' => $this->city,

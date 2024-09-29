@@ -1,8 +1,8 @@
 <main>
     <!-- Breadcrumb Area S t a r t -->
     <section class="breadcrumb-section breadcrumb-bg"
-        style="background-image: url({{ $volunteer->cover }}); background-size: cover; background-position:center;">
-        >   
+        style="background-image: url({{ optional($volunteer->volunteer_settings)->image }}); background-size: cover; background-position:center;">
+        >
         <div class="container">
             <div class="breadcrumb-text">
                 <nav aria-label="breadcrumb" class="breadcrumb-nav wow fadeInUp" data-wow-delay="0.0s">
@@ -24,7 +24,7 @@
             <div class="row gy-24">
                 <div class="col-xl-4 col-md-5 col-lg-5">
                     <div class="volunteer-img">
-                        <img src="{{ $volunteer->avatar }}" alt="image">
+                        <img src="{{ optional($volunteer->volunteer_settings)->image }}" alt="image">
                     </div>
                 </div>
                 <div class="col-xl-8 col-md-7 col-lg-7">
@@ -32,11 +32,11 @@
                         <div class="volunteer-info">
                             <div class="naming-section">
                                 <h3 class="title">
-                                    {{ $volunteer->name }}
+                                    {{ optional($volunteer->volunteer_settings)->organization }}
                                 </h3>
-                                <span class="subtitle mr-20">{{ $volunteer->volunteer_settings->profession }} </span>
+                                <span class="subtitle mr-20"> {{ $volunteer->name }} </span>
                                 <span class="subtitle">(
-                                    Founded {{ $volunteer->volunteer_settings->age }} years ago
+                                    Founded since {{ $volunteer->volunteer_settings->age }}
                                     )</span>
                             </div>
                             <div class="social-icon">
@@ -53,7 +53,7 @@
                                 <div class="single-icon">
                                     <i class="ri-phone-fill"></i>
                                 </div>
-                                <a class="title" href="javascript:void(0)">
+                                <a class="title" href="tel:{{ $volunteer->volunteer_settings->phone }}">
                                     {{ $volunteer->volunteer_settings->phone }}
                                 </a>
                             </div>
@@ -61,7 +61,7 @@
                                 <div class="single-icon">
                                     <i class="ri-mail-line"></i>
                                 </div>
-                                <a class="title" href="javascript:void(0)">
+                                <a class="title" href="mailto:{{ $volunteer->volunteer_settings->email }}">
                                     {{ $volunteer->volunteer_settings->email }}
                                 </a>
                             </div>
@@ -69,7 +69,9 @@
                                 <div class="single-icon">
                                     <i class="ri-map-pin-line"></i>
                                 </div>
-                                <a class="title" href="javascript:void(0)">
+                                <a class="title" target="_blank" href="https://google.com/maps/place/{{
+                                    str_replace(' ', '+', $volunteer->volunteer_settings->address)
+                                }}">
                                     {{ $volunteer->volunteer_settings->address }}
                                 </a>
                             </div>
@@ -80,32 +82,4 @@
         </div>
     </section>
     <!-- End-of volunteer details-->
-
-    <!-- Gallery S t a r t -->
-    <div class="gallery-area">
-        <div class="gallery-slider d-flex">
-            <div class="gallery-img">
-                <img src="assets/images/gallery/gallery-1.png" alt="img">
-            </div>
-            <div class="gallery-img">
-                <img src="assets/images/gallery/gallery-2.png" alt="img">
-            </div>
-            <div class="gallery-img">
-                <img src="assets/images/gallery/gallery-3.png" alt="img">
-            </div>
-            <div class="gallery-img">
-                <img src="assets/images/gallery/gallery-4.png" alt="img">
-            </div>
-            <div class="gallery-img">
-                <img src="assets/images/gallery/gallery-2.png" alt="img">
-            </div>
-            <div class="gallery-img">
-                <img src="assets/images/gallery/gallery-3.png" alt="img">
-            </div>
-            <div class="gallery-img">
-                <img src="assets/images/gallery/gallery-1.png" alt="img">
-            </div>
-        </div>
-    </div>
-    <!-- End-of Gallery -->
 </main>

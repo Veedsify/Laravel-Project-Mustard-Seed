@@ -1,6 +1,6 @@
 <option value="" disabled>Select State</option>
 @foreach ($states as $state)
-    <option {{ Auth::check() && Auth::user()->load('address')->address->state ?? '' === $state->name ? 'selected' : '' }}
+    <option {{ Auth::check() && optional(Auth::user()->address)->state === $state->name ? 'selected' : '' }}
         value="{{ $state->code }}">
         {{ $state->name }}
     </option>

@@ -152,7 +152,7 @@
                                     @elseif($item->user->id === auth()->id())
                                         <div class="form-group">
                                             <div>
-                                                Sorry, You can't apply for this item.
+                                                Sorry, You can't apply for items you donated.
                                             </div>
                                         </div>
                                     @else

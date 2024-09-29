@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Filament\Volunteer\Resources;
+namespace App\Filament\Admin\Resources;
 
-use App\Filament\Volunteer\Resources\ItemResource\Pages;
-use App\Filament\Volunteer\Resources\ItemResource\RelationManagers;
+use App\Filament\Admin\Resources\ItemResource\Pages;
+use App\Filament\Admin\Resources\ItemResource\RelationManagers;
 use App\Models\Item;
-use App\Models\ItemCategory;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Infolists\Components\TextEntry;
@@ -19,23 +17,20 @@ use Filament\Tables\Actions\Action;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\Facades\Auth;
 
 class ItemResource extends Resource
 {
     protected static ?string $model = Item::class;
 
-
     protected static ?string $navigationIcon = 'heroicon-s-window';
-    protected static ?string $navigationGroup = 'Donations';
-    protected static ?string $navigationLabel = 'Approve Donations';
+    protected static ?string $navigationGroup = 'Campaigns & Donations';
+    protected static ?string $navigationLabel = 'Approve Item Donations';
     protected static ?string $title = 'New Donation';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                // Section that spans 2 columns
                 Section::make('Item Details')->schema([
                     Forms\Components\TextInput::make('name')->label('Name')->required()->live(onBlur: true)->columnSpan('full')
                         ->afterStateUpdated(function (Forms\Set $set, $state) {
@@ -52,20 +47,12 @@ class ItemResource extends Resource
                         ->image(),
                 ]),
                 Section::make('Actions')
-                    ->columnSpan(1)
-                    ->description('Please only approve donations, within your poccession that are in good condition.')
-                    ->schema([
-                        Forms\Components\Toggle::make('status')->label('Status')
-                    ]),
             ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->modifyQueryUsing(function (Builder $query) {
-                $query->where('volunteer_id', Auth::user()->id);
-            })
             ->emptyStateHeading('No pending donations found')
             ->emptyStateDescription('It seems like there are no donations here at the moment.')
             ->columns([
@@ -122,6 +109,10 @@ class ItemResource extends Resource
                 ->default(fn($record) => $record->user->username),
             TextEntry::make('Item Category')
                 ->default(fn($record) => $record->category->name),
+            TextEntry::make('Assigned Volunteer Name')
+                ->default(fn($record) => $record->volunteer->name),
+            TextEntry::make('Assigned Volunteer Email')
+                ->default(fn($record) => $record->volunteer->email),
         ]);
     }
 

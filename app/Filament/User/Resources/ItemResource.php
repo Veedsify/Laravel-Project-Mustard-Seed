@@ -65,11 +65,13 @@ class ItemResource extends Resource
                             ->required(),
                         Forms\Components\Select::make('category_id')
                             ->relationship('category', 'name')
-                            ->options(
-                                ItemCategory::where('status', 'active')->pluck('name', 'id')->toArray()
-                            )
-                            ->label('Category')
+                            // ->options(
+                            //     ItemCategory::where('status', 'active')->pluck('name', 'id')->toArray()
+                            // )
                             ->searchable()
+                            ->preload()
+                            ->label('Category')
+                            ->native(false)
                             ->required(),
                         Forms\Components\Select::make('condition')
                             ->options([
@@ -103,8 +105,9 @@ class ItemResource extends Resource
                 Tables\Columns\TextColumn::make('category.name')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('status')->sortable()
                     ->tooltip(fn($record) => $record->status ? 'Active' : 'Pending Approval')
-                    ->icon(fn($record) => $record->status ? 'heroicon-s-check-circle' : 'heroicon-s-x-circle')
-                    ->iconColor(fn($record) => $record->status ? 'success' : 'warning'),
+                    ->badge()
+                    ->getStateUsing(fn($record) => $record->status ? 'Approved' : 'Pending')
+                    ->color(fn($record) => $record->status ? 'success' : 'warning'),
                 Tables\Columns\TextColumn::make('volunteer.name')->searchable()->sortable()
                     ->label('Agent'),
             ])

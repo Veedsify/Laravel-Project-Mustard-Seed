@@ -158,6 +158,11 @@ class User extends Authenticatable implements FilamentUser
         return $this->hasMany(Item::class);
     }
 
+    public function appliedItems()
+    {
+        return $this->hasMany(AppliedItem::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

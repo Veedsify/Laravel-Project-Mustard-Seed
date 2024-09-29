@@ -15,6 +15,7 @@ class VolunteerSetting extends Model
         'organization',
         'age',
         'bio',
+        'image',
         'phone',
         'email',
         'website',

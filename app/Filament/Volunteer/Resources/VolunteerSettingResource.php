@@ -6,6 +6,7 @@ use App\Filament\Volunteer\Resources\VolunteerSettingResource\Pages;
 use App\Filament\Volunteer\Resources\VolunteerSettingResource\RelationManagers;
 use App\Models\VolunteerSetting;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -29,11 +30,13 @@ class VolunteerSettingResource extends Resource
             ->schema([
                 Forms\Components\Section::make('Personal Information')
                     ->schema([
-                        Forms\Components\TextInput::make('profession')
-                            ->label('Profession')
+                        Forms\Components\TextInput::make('organization')
+                            ->label('Organization Name')
                             ->required(),
+                        FileUpload::make('image')
+                            ->label('Image'),
                         Forms\Components\TextInput::make('age')
-                            ->label('Age')
+                            ->label('Founded Year')
                             ->required(),
                         Forms\Components\RichEditor::make('bio')
                             ->label('Bio')
@@ -90,9 +93,9 @@ class VolunteerSettingResource extends Resource
                 $query->where('user_id', Auth::user()->id);
             })
             ->columns([
-                TextColumn::make('profession')
+                TextColumn::make('organization')
                     ->searchable()
-                    ->label('Profession')
+                    ->label('Organization')
                     ->sortable(),
                 TextColumn::make('age')
                     ->label('Age')
@@ -119,13 +122,14 @@ class VolunteerSettingResource extends Resource
             ->filters([
                 //
             ])
+            ->paginated(false)
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                // Tables\Actions\BulkActionGroup::make([
+                //     Tables\Actions\DeleteBulkAction::make(),
+                // ]),
             ]);
     }
 

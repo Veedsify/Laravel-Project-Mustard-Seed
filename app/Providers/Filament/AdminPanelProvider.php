@@ -23,6 +23,7 @@ use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use App\Filament\Admin;
+use App\Http\Middleware\CheckRole;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -83,7 +84,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-                // CheckUserIsAdmin::class,
+                CheckUserIsAdmin::class,
             ]);
     }
 }

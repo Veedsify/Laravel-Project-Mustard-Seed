@@ -8,19 +8,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class CheckRole
+class CheckIsUser
 {
     /**
      * Handle an incoming request.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle($request, Closure $next, $role)
+    public function handle(Request $request, Closure $next): Response
     {
-        if (!User::find(Auth::id())->hasRole($role)) {
-            return redirect(route('home'));
+        if (Auth::check() && User::find(Auth::id())->hasRole('user')) {
+            return $next($request);
         }
-
-        return $next($request);
+        return redirect()->route('home');
     }
 }

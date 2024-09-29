@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\User\Resources\BlogResource\Pages;
+namespace App\Filament\Admin\Resources\ItemResource\Pages;
 
-use App\Filament\User\Resources\BlogResource;
+use App\Filament\Admin\Resources\ItemResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditBlog extends EditRecord
+class EditItem extends EditRecord
 {
-    protected static string $resource = BlogResource::class;
+    protected static string $resource = ItemResource::class;
 
     protected function getHeaderActions(): array
     {

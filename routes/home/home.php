@@ -29,7 +29,7 @@ Route::middleware('page_visits')->group(function () {
     Route::get('/about', AboutComponent::class)->name('about');
     Route::get('/blog/{slug}', BlogDetailsComponent::class)->name('blog.details');
     Route::get('/blogs', BlogComponent::class)->name('blogs');
-    Route::get('/login/{id}', LoginComponent::class)->name('login');
+    Route::get('/login', LoginComponent::class)->name('login');
     Route::get('/register', RegisterComponent::class)->name('register');
     // Route::get('/logout', [LoginComponent::class, 'logout'])->name('logout');
     Route::get('/contact', ContactComponent::class)->name('contact');

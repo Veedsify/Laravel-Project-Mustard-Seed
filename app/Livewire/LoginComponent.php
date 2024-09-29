@@ -9,10 +9,11 @@ use Livewire\Component;
 class LoginComponent extends Component
 {
     public $id;
-    public function mount($id)
+    public function mount()
     {
-        if ($id) {
-            $this->id = $id;
+        $userFromQuery = request()->query('id') ?? null;
+        if ($userFromQuery) {
+            $this->id = $userFromQuery;
         } else {
             $this->id = 1;
         }

@@ -22,6 +22,8 @@ protected static ?string $model = Donation::class;
 
     protected static ?string $navigationIcon = 'heroicon-s-chart-pie';
 
+    protected static ?string $modelLabel = 'Campaign Donations';
+
     public static function form(Form $form): Form
     {
         return $form

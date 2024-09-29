@@ -10,6 +10,7 @@ use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -61,12 +62,14 @@ class UserResource extends Resource
                                     ->pluck('name', 'id')
                             )
                             ->native(false)
-                            ->label('Location')->required(),
+                            ->label('Location'),
                         Forms\Components\Select::make('roles')
                             ->label('Roles')
                             ->relationship('roles', 'name') // This is where you define the pivot relationship
                             ->preload() // Preload roles for better UX
                             ->searchable(),
+                        Toggle::make('admin_approved')->label('Admin Approved')->hidden(fn($record) => Auth::user()->id == $record->id),
+
                     ])
                 ])
             ])->columns(3);
@@ -82,10 +85,10 @@ class UserResource extends Resource
                 TextColumn::class::make('admin_approved')->getStateUsing((
                     fn($record) => $record->admin_approved ? 'Approved' : 'Not Approved'
                 ))->label('Admin Approved')
-                ->badge()
-                ->color(
-                    fn($record) => $record->admin_approved ? 'success' : 'danger'
-                ),
+                    ->badge()
+                    ->color(
+                        fn($record) => $record->admin_approved ? 'success' : 'danger'
+                    ),
                 ImageColumn::class::make('avatar')
             ])
             ->filters([

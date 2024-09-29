@@ -28,7 +28,7 @@ class Item extends Model
 
     public function category()
     {
-        return $this->belongsTo(ItemCategory::class, 'category_id');
+        return $this->belongsTo(ItemCategory::class);
     }
 
     public function user()
@@ -39,6 +39,11 @@ class Item extends Model
     public function volunteer()
     {
         return $this->belongsTo(User::class, 'volunteer_id');
+    }
+
+    public function appliedItem()
+    {
+        return $this->hasOne(AppliedItem::class);
     }
 
     protected static function booted()
