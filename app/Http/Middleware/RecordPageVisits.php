@@ -17,7 +17,6 @@ class RecordPageVisits
      */
     public function handle(Request $request, Closure $next): Response
     {
-        Log::info('Page visited: ' . $request);
         $pageVisit = new PageVisit();
         $pageVisit->url = $request->url();
         $pageVisit->ip = $request->ip();

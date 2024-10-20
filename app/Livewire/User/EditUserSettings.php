@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\User;
 
 use App\Models\State;
 use App\Models\User;
@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class EditUserSettingsComponent extends Component
+class EditUserSettings extends Component
 {
     use WithFileUploads;
 
@@ -63,8 +63,9 @@ class EditUserSettingsComponent extends Component
     public function render()
     {
         $states = State::all();
-        return view('livewire.edit-user-settings-component',[
+        return view('livewire.user.edit-user-settings',[
             'states' => $states
         ]);
     }
 }
+

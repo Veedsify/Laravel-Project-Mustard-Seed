@@ -1,2 +1,10 @@
 @import '/vendor/filament/filament/resources/css/theme.css';
 @config 'tailwind.config.js';
+
+
+.select-idcard>input:checked + span.selects{
+     outline: 2px solid #ef8408;
+     color: #ef8408;
+     font-weight: 600;
+     scale: 1.05;
+}

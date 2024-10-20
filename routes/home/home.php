@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FaceVerifcation;
 use App\Livewire\AboutComponent;
 use App\Livewire\BlogComponent;
 use App\Livewire\BlogDetailsComponent;
@@ -11,6 +12,7 @@ use App\Livewire\DonationDetailComponent;
 use App\Livewire\DonationItemPreview;
 use App\Livewire\DonationPayComponent;
 use App\Livewire\EventsComponent;
+use App\Livewire\FaceVerificationComponent;
 use App\Livewire\FaqComponents;
 use App\Livewire\HomeComponent;
 use App\Livewire\LoginComponent;
@@ -56,4 +58,8 @@ Route::middleware('page_visits')->group(function () {
     // Google Auth
     Route::get("/register/google", [AuthController::class, 'redirectToGoogle'])->name("redirect.google");
     Route::get("/auth/google-callback", [AuthController::class, 'authCallback'])->name("redirect.google.callback");
+
+    // FaceVerification
+    Route::get('/verify/face', FaceVerificationComponent::class)->name('face.verify');
+   Route::post('/start/face-verification', [FaceVerifcation::class, 'saveFace'])->name('face.verification');
 });

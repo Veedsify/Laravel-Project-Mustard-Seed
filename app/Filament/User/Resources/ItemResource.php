@@ -86,6 +86,7 @@ class ItemResource extends Resource
                         Forms\Components\Select::make('volunteer_id')
                             ->label('Select an Agent')
                             ->searchable()
+                            ->preload()
                             ->relationship('volunteer', 'name'),
                     ]),
             ])->columns(3);

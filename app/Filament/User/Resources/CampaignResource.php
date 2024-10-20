@@ -4,6 +4,7 @@ namespace App\Filament\User\Resources;
 
 use App\Filament\User\Resources\CampaignResource\Pages;
 use App\Filament\User\Resources\CampaignResource\RelationManagers;
+use App\Http\Middleware\CheckUserIsIdVerified;
 use App\Models\Campaign;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -15,6 +16,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class CampaignResource extends Resource
 {
+    protected static string | array $routeMiddleware = [CheckUserIsIdVerified::class];
+
     protected static ?string $model = Campaign::class;
 
     protected static ?string $navigationIcon = 'heroicon-s-academic-cap';

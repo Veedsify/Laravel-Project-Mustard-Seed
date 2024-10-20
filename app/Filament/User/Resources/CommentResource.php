@@ -4,6 +4,7 @@ namespace App\Filament\User\Resources;
 
 use App\Filament\User\Resources\CommentResource\Pages;
 use App\Filament\User\Resources\CommentResource\RelationManagers;
+use App\Http\Middleware\CheckUserIsIdVerified;
 use App\Models\Blog;
 use App\Models\Comment;
 use App\Models\User;
@@ -21,7 +22,7 @@ class CommentResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-s-chat-bubble-bottom-center-text';
     protected static ?string $modelLabel = 'Comments';
-
+    protected static string | array $routeMiddleware = [CheckUserIsIdVerified::class];
     protected static ?string $navigationGroup = 'Blogs';
 
     public static function form(Form $form): Form

@@ -57,7 +57,7 @@
                             'pointer-events-auto opacity-100': openModal
                         }"
                         @click="openModal = false">
-                        <livewire:edit-user-settings-component />
+                        <livewire:user.edit-user-settings />
                     </div>
                 </div>
             </div>

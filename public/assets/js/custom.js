@@ -16,3 +16,7 @@ window.addEventListener('notify-error', event => {
         text: event.detail.message
     })
 })
+
+
+//Main Script Files for the application
+

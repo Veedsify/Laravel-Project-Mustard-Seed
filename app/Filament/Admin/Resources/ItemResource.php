@@ -3,7 +3,6 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\ItemResource\Pages;
-use App\Filament\Admin\Resources\ItemResource\RelationManagers;
 use App\Models\Item;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
@@ -15,8 +14,6 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ItemResource extends Resource
 {
@@ -46,7 +43,6 @@ class ItemResource extends Resource
                         ->label('Image')
                         ->image(),
                 ]),
-                Section::make('Actions')
             ]);
     }
 
@@ -75,8 +71,8 @@ class ItemResource extends Resource
                 Tables\Actions\ViewAction::make(),
                 Action::make('UpdateStatus')
                     ->icon('heroicon-s-arrow-path')
-                    ->label('Update')
-                    ->color('danger')
+                    ->label('Approve')
+                    ->color('success')
                     ->requiresConfirmation()
                     ->form([
                         Toggle::make('status')
@@ -89,7 +85,7 @@ class ItemResource extends Resource
                             'status' => $data['status'],
                         ]);
                         $record->save();
-                    })
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

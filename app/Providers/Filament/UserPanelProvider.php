@@ -33,7 +33,7 @@ class UserPanelProvider extends PanelProvider
                 'primary' => Color::Amber,
             ])
             ->font('DM Sans')
-            ->viteTheme('resources/css/filament/user/theme.css')
+            ->viteTheme('resources/css/filament/admin/theme.css')
             ->discoverResources(in: app_path('Filament/User/Resources'), for: 'App\\Filament\\User\\Resources')
             ->discoverPages(in: app_path('Filament/User/Pages'), for: 'App\\Filament\\User\\Pages')
             ->pages([
