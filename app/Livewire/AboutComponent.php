@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class AboutComponent extends Component
 {
-    public $title = 'Blog Page';
+    public $title = 'About Us';
     public function render()
     {
     $services = Service::where('service_status', true)->orderBy('service_name', 'DESC')->get()->take(4);

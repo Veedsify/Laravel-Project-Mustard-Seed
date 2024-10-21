@@ -3,10 +3,8 @@
 namespace App\Filament\User\Resources;
 
 use App\Filament\User\Resources\ItemResource\Pages;
-use App\Filament\User\Resources\ItemResource\RelationManagers;
 use App\Filament\User\Resources\ItemResource\Widgets\TotalDonations;
 use App\Models\Item;
-use App\Models\ItemCategory;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
@@ -14,7 +12,6 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
 
 class ItemResource extends Resource
@@ -25,6 +22,11 @@ class ItemResource extends Resource
     protected static ?string $navigationGroup = 'Campaigns';
     protected static ?string $navigationLabel = 'Donate';
     protected static ?string $title = 'New Donation';
+    
+    public static function canEdit($record): bool
+    {
+        return false;
+    }
 
     public static function form(Form $form): Form
     {
@@ -116,7 +118,8 @@ class ItemResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                // Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -134,7 +137,7 @@ class ItemResource extends Resource
     public static function getWidgets(): array
     {
         return [
-            TotalDonations::class
+            TotalDonations::class,
         ];
     }
     public static function getPages(): array

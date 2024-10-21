@@ -2,32 +2,23 @@
 
 namespace App\Filament\User\Resources;
 
-use App\Filament\User\Resources\CampaignResource\Pages;
+use App\Filament\User\Resources\AppliedItemResource\Pages;
 use App\Http\Middleware\CheckUserIsIdVerified;
-use App\Models\Campaign;
+use App\Models\AppliedItem;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 
-class CampaignResource extends Resource
+class AppliedItemResource extends Resource
 {
+    protected static ?string $model = AppliedItem::class;
+
+    protected static ?string $navigationIcon = 'heroicon-s-cursor-arrow-ripple';
+    protected static ?string $navigationGroup = 'Donations';
+    protected static ?string $navigationLabel = 'Applied Items';
+    protected static ?string $title = 'Applied Items';
     protected static string|array $routeMiddleware = [CheckUserIsIdVerified::class];
-
-    protected static ?string $model = Campaign::class;
-
-    protected static ?string $navigationIcon = 'heroicon-s-academic-cap';
-
-    protected static ?string $navigationLabel = 'All Campaigns';
-
-    protected static ?string $navigationGroup = 'Campaigns';
-
-    protected static ?string $breadcrumb = 'Campaigns';
-
-    public static function getNavigationBadge(): ?string
-    {
-        return static::getModel()::count();
-    }
 
     public static function form(Form $form): Form
     {
@@ -66,10 +57,9 @@ class CampaignResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\Campaign::route('/'),
-            //            'index' => Pages\ListCampaigns::route('/'),
-//            'create' => Pages\CreateCampaign::route('/create'),
-//            'edit' => Pages\EditCampaign::route('/{record}/edit'),
+            'index' => Pages\ListAppliedItems::route('/'),
+            'create' => Pages\CreateAppliedItem::route('/create'),
+            'edit' => Pages\EditAppliedItem::route('/{record}/edit'),
         ];
     }
 }

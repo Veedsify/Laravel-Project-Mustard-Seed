@@ -1,7 +1,7 @@
     @section('title', 'Blogs')
 <main>
     <!-- Breadcrumb Area S t a r t -->
-    <section class="breadcrumb-section breadcrumb-bg" style="background-image: url({{asset('assets/images/gallery/breadcrumb-1.png')}})">
+    <section class="breadcrumb-section breadcrumb-bg" style="background-image: url({{asset('storage/' . $headerImages->blogs_page_header_image)}}); background-size:cover; background-position:center;">
         <div class="container">
             <div class="breadcrumb-text">
                 <nav aria-label="breadcrumb" class="breadcrumb-nav wow fadeInUp" data-wow-delay="0.0s">

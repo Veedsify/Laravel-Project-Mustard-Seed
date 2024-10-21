@@ -1,9 +1,9 @@
 console.log('FIlament and There');
 
 AWS.config.update({
-     accessKeyId: '', // Replace with your access key
-     secretAccessKey: '', // Replace with your secret key
-     region: '' // Replace with your region
+     accessKeyId: 'AKIA44U26FALAXIDBKB5', // Replace with your access key
+     secretAccessKey: 'ZPQZAMVtJoqusYMRHJCR5Z55kJF7/9gcd6yESsOo', // Replace with your secret key
+     region: 'us-east-2' // Replace with your region
 });
 
 const rekognition = new AWS.Rekognition();

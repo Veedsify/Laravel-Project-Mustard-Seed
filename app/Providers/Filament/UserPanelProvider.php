@@ -49,12 +49,13 @@ class UserPanelProvider extends PanelProvider
                 //     ->group('Settings')
                 //     ->visible(fn () => true)
                 //     ->icon('heroicon-s-shield-check')
-                //     ->sort(-1),
+                //     ->sort(-1),  
             ])
             ->navigationGroups([
                 'Items',
                 'Blogs',
                 'Locations',
+                'Donations',
                 'Campaigns',
                 'Events',
                 'Testimonials',

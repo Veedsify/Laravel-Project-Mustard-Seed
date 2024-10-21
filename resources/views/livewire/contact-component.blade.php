@@ -2,14 +2,14 @@
 <main>
     <!-- Breadcrumb Area S t a r t -->
     <section class="breadcrumb-section breadcrumb-bg"
-             style="background-image: url({{asset('assets/images/gallery/breadcrumb-1.png')}}); background-size: cover;">
+        style="background-image: url({{ asset('storage/' . $headerImages->contact_page_header_image) }}); background-size: cover; background-position: center;"">
         <div class="container">
             <div class="breadcrumb-text">
                 <nav aria-label="breadcrumb" class="breadcrumb-nav wow fadeInUp" data-wow-delay="0.0s">
                     <ul class="breadcrumb listing">
                         <li class="breadcrumb-item single-list"><a href="index.blade.php" class="single">Home</a></li>
                         <li class="breadcrumb-item single-list" aria-current="page"><a href="javascript:void(0)"
-                                                                                       class="single">contact</a></li>
+                                class="single">contact</a></li>
                     </ul>
                 </nav>
                 <h1 class="title wow fadeInUp" data-wow-delay="0.1s">contact us</h1>
@@ -61,12 +61,12 @@
             </div>
             <div class="top-padding4">
                 <div class="row gy-24">
-                    <livewire:comps.contact-component-form/>
+                    <livewire:comps.contact-component-form />
                     <div class="col-xl-6">
                         <iframe class="map-frame"
-                                src="https://www.google.com/maps/embed/v1/place?q=Dhaka,+Bangladesh&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
-                                width="600" height="450" style="border: 15px" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            src="https://www.google.com/maps/embed/v1/place?q=Dhaka,+Bangladesh&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
+                            width="600" height="450" style="border: 15px" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>

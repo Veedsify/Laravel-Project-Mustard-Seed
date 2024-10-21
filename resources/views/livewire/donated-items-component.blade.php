@@ -2,7 +2,7 @@
 <main>
     <!-- Breadcrumb Area S t a r t -->
     <section class="breadcrumb-section breadcrumb-bg"
-        style="background-image: url({{ asset('assets/images/gallery/breadcrumb-1.png') }}); background-size: cover;">
+        style="background-image: url({{ asset('storage/' . $headerImages->donations_page_header_image) }}); background-size: cover; background-position: center;">
         <div class="container">
             <div class="breadcrumb-text">
                 <nav aria-label="breadcrumb" class="breadcrumb-nav wow fadeInUp" data-wow-delay="0.0s">
@@ -22,7 +22,6 @@
     <section class="donate-section top-bottom-padding">
         <div class="container">
             <div class="row gy-24">
-
                 @if ($items->isEmpty())
                     <div class="col-lg-12">
                         <h4 class="font-medium">
