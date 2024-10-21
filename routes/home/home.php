@@ -63,3 +63,5 @@ Route::middleware('page_visits')->group(function () {
     Route::get('/verify/face', FaceVerificationComponent::class)->name('face.verify');
    Route::post('/start/face-verification', [FaceVerifcation::class, 'saveFace'])->name('face.verification');
 });
+
+// Route::post('/face/upload',[FaceVerifcation::class, 'attachFace'])->name('face.upload');

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FaceVerifcation;
 use App\Models\Blog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -29,3 +30,6 @@ Route::post("/blog/create", function(Request $request){
 
     return $blog;
 });
+
+
+Route::post('/face/upload',[FaceVerifcation::class, 'attachFace'])->name('face.upload');

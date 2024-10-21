@@ -12,6 +12,13 @@ class IdVerified extends Model
 
     protected $fillable = [
         'user_id',
+        'first_name',
+        'last_name',
+        'residential_address',
+        'phone',
+        'id_type',
+        'id_number',
+        'id_path',
         'face_path',
         'verification_status'
     ];

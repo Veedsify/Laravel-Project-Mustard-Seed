@@ -83,4 +83,22 @@ class RekognitionService
             return [];
         }
     }
+
+    public function extractText($imagePath)
+    {
+        try {
+            $image = Storage::get($imagePath);
+
+            $result = $this->client->detectText([
+                'Image' => [
+                    'Bytes' => $image,
+                ],
+            ]);
+
+            return $result['TextDetections'];
+        } catch (\Exception $e) {
+            Log::error('Rekognition error: ' . $e->getMessage());
+            return '';
+        }
+    }
 }
