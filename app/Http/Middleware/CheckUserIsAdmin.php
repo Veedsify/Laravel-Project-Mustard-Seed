@@ -21,6 +21,6 @@ class CheckUserIsAdmin
         if (Auth::check() && User::find(Auth::id())->hasRole('admin')) {
             return $next($request);
         }
-        return redirect()->route('home');
+        return redirect()->route('home')->with('error', 'You are not Authorized to view this page');
     }
 }

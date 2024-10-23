@@ -7,9 +7,9 @@
     "require": {
         "php": "^8.2",
         "aws/aws-sdk-php": "^3.323",
-        "filament/filament": "3.*",
+        "filament/filament": "^3.2",
         "intervention/image": "^3.0",
-        "laravel/framework": "^11.9",   
+        "laravel/framework": "^11.9",
         "laravel/sanctum": "^4.0",
         "laravel/socialite": "^5.15",
         "laravel/tinker": "^2.9",

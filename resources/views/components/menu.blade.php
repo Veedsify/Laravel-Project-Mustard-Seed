@@ -49,22 +49,22 @@
                                                 wire:navigate>Blog</a>
                                         </li>
 
-                                        <li class="single-list">
-                                            <a href="javascript:void(0)" class="single">More <i
-                                                    class="ri-arrow-down-s-line"></i></a>
-                                            <ul class="submenu">
-                                                <li class="single-list"><a href="{{ route('volunteers') }}"
-                                                        class="single" wire:navigate>Volunteers</a>
-                                                </li>
-                                                <li class="single-list"><a href="{{ route('faq') }}" class="single"
-                                                        wire:navigate>FAQs</a></li>
-                                                <li class="single-list"><a href="{{ route('privacy.policy') }}"
-                                                        class="single" wire:navigate>privacy
-                                                        policy</a></li>
-                                                <li class="single-list"><a href="{{ route('terms') }}" class="single"
-                                                        wire:navigate>terms-condition</a></li>
-                                            </ul>
-                                        </li>
+                                        {{-- <li class="single-list">
+                                                <a href="javascript:void(0)" class="single">More <i
+                                                        class="ri-arrow-down-s-line"></i></a>
+                                                <ul class="submenu">
+                                                    <li class="single-list"><a href="{{ route('volunteers') }}"
+                                                            class="single" wire:navigate>Volunteers</a>
+                                                    </li>
+                                                    <li class="single-list"><a href="{{ route('faq') }}" class="single"
+                                                            wire:navigate>FAQs</a></li>
+                                                    <li class="single-list"><a href="{{ route('privacy.policy') }}"
+                                                            class="single" wire:navigate>privacy
+                                                            policy</a></li>
+                                                    <li class="single-list"><a href="{{ route('terms') }}" class="single"
+                                                            wire:navigate>terms-condition</a></li>
+                                                </ul>
+                                            </li> --}}
                                         <li class="single-list"><a href="{{ route('contact') }}"
                                                 class="single {{ request()->is('contact') ? 'active' : '' }}"
                                                 wire:navigate>Contact</a>
@@ -79,7 +79,15 @@
                                     <a href="javascript:void(0)" class="rounded-btn search-bar"><i
                                             class="ri-search-line"></i></a>
                                     @auth()
-                                        <a href="/admin" class="btn-primary-fill pill-btn">
+                                        @php
+                                            $role = auth()->user()->role;
+                                            $dashboardRoute = match ($role) {
+                                                'admin' => '/admin',
+                                                'user' => '/user',
+                                                default => '/dashboard/volunteer',
+                                            };
+                                        @endphp
+                                        <a href="{{ $dashboardRoute }}" class="btn-primary-fill pill-btn">
                                             {{ explode(' ', auth()->user()->name)[0] ?? auth()->user()->name }}
                                         </a>
                                     @endauth

@@ -17,6 +17,7 @@ class VolunteersComponent extends Component
             ['role', '=', 'volunteer'],
             ['admin_approved', '=', true]
         ])->orderByDesc('created_at')->paginate(9);
+        
         return view('livewire.volunteers-component', [
             'volunteers' => $volunteers
         ]);

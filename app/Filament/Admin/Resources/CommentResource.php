@@ -62,7 +62,7 @@ class CommentResource extends Resource
                 Tables\Columns\TextColumn::make('content')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\CheckboxColumn::make('approved')
+                Tables\Columns\ToggleColumn::make('approved')
                     ->label('Approved')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('user.name')

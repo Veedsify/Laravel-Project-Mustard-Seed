@@ -55,10 +55,10 @@
                                     @enderror
                                 </div>
                                 <div class="col-xl-6">
-                                    <label for="age">Age</label>
+                                    <label for="age">Founded Year</label>
                                     <input type="text" id="age" class="form-control custom-input"
-                                        placeholder="Age*" wire:model="age">
-                                    @error('age')
+                                        placeholder="Founded Year*" wire:model="founded_year">
+                                    @error('founded_year')
                                         <span class="error text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>

@@ -3,6 +3,7 @@
 namespace App\Filament\Admin\Resources\TermOfServiceResource\Pages;
 
 use App\Filament\Admin\Resources\TermOfServiceResource;
+use App\Models\TermOfService;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
@@ -13,7 +14,7 @@ class ListTermOfServices extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\CreateAction::make()->hidden(TermOfService::count() >= 0),
         ];
     }
 }

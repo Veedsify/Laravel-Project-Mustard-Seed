@@ -29,6 +29,7 @@ class VolunteerPanelProvider extends PanelProvider
             ->spa()
             ->brandName("Mustard Seed Charity")
             ->path('/dashboard/volunteer')
+            ->viteTheme('resources/css/filament/admin/theme.css')
             ->colors([
                 'primary' => Color::Amber,
             ])
@@ -41,6 +42,17 @@ class VolunteerPanelProvider extends PanelProvider
             ->widgets([
                 Widgets\AccountWidget::class,
                 // Widgets\FilamentInfoWidget::class,
+            ])
+            ->navigationGroups([
+                'Items',
+                'Blogs',
+                'Locations',
+                'Donations',
+                'Campaigns',
+                'Events',
+                'Testimonials',
+                'Volunteers',
+                'Settings',
             ])
             ->middleware([
                 EncryptCookies::class,

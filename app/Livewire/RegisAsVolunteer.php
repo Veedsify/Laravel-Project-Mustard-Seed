@@ -14,7 +14,7 @@ class RegisAsVolunteer extends Component
     public $name = '';
     public $email = '';
     public $phone = '';
-    public $age = '';
+    public $founded_year = '';
     public $address = '';
     public $state = '';
     public $city = '';
@@ -33,7 +33,7 @@ class RegisAsVolunteer extends Component
             'name' => 'required',
             'email' => 'required|email',
             'phone' => 'required',
-            'age' => 'required',
+            'founded_year' => 'required',
             'address' => 'required',
             'state' => 'required',
             'city' => 'required',
@@ -74,7 +74,7 @@ class RegisAsVolunteer extends Component
         $user->volunteer_settings()->create([
             'is_available' => true,
             'organization' =>  $this->name,
-            'age' => $this->age,
+            'age' => $this->founded_year,
             'bio' => 'I am a volunteer',
             'phone' => $this->phone,
             'email' => $this->email,
@@ -104,10 +104,10 @@ class RegisAsVolunteer extends Component
             'password' => $password,
         ];
 
-        // Send email to user
+        // Send email to volunteer with google auth signin
 
 
-        $this->reset();
+        $this->redirect(route('login'));
         $this->dispatch('notify', message: 'Volunteer has been registered successfully, check your email for login details');
     }
 

@@ -5,8 +5,8 @@ namespace App\Livewire\User;
 use App\Models\User;
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
-use Livewire\Component;
 use Livewire\Attributes\On;
+use Livewire\Component;
 
 class ProfileSettingsComponent extends Component
 {
@@ -15,13 +15,21 @@ class ProfileSettingsComponent extends Component
     public function delete()
     {
         $user = User::find(Auth::id());
-        Auth::logout();
-        $user->delete();
-        $this->dispatch('notify', 'Account deleted successfully');
+
+        if ($user->hasRole('user')) {
+            Notification::make()
+                ->title('Account deleted successfully')
+                ->success()
+                ->send();
+            $user->delete();
+            Auth::logout();
+            return;
+        }
         Notification::make()
-            ->title('Account deleted successfully')
-            ->success()
+            ->title('Sorry ' . ucwords($user->role) . ' Accounts Cant Be deleted')
+            ->danger()
             ->send();
+        return;
     }
 
     #[On('refreshProfilePage')]

@@ -90,6 +90,7 @@ class PageHeaderImagesResource extends Resource
                 ImageColumn::make('contact_page_header_image')
                     ->label('Contact Page Header Image'),
             ])
+            ->paginated(false)
             ->filters([
                 //
             ])

@@ -3,17 +3,16 @@
 namespace App\Filament\Volunteer\Resources;
 
 use App\Filament\Volunteer\Resources\VolunteerSettingResource\Pages;
-use App\Filament\Volunteer\Resources\VolunteerSettingResource\RelationManagers;
 use App\Models\VolunteerSetting;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
 
 class VolunteerSettingResource extends Resource
@@ -93,6 +92,8 @@ class VolunteerSettingResource extends Resource
                 $query->where('user_id', Auth::user()->id);
             })
             ->columns([
+                ImageColumn::make('image')
+                    ->label('Image'),
                 TextColumn::make('organization')
                     ->searchable()
                     ->label('Organization')

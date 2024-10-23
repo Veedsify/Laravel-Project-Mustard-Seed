@@ -2,12 +2,16 @@
 
 namespace App\Livewire;
 
+use App\Models\TermOfService;
 use Livewire\Component;
 
 class TermsComponent extends Component
 {
     public function render()
     {
-        return view('livewire.terms-component');
+        $terms = TermOfService::first();
+        return view('livewire.terms-component',[
+            'terms' => $terms
+        ]);
     }
 }

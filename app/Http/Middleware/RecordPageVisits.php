@@ -21,14 +21,14 @@ class RecordPageVisits
         $pageVisit->url = $request->url();
         $pageVisit->ip = $request->ip();
         $pageVisit->user_agent = $request->userAgent();
-        $pageVisit->referrer = $request->header('referer');
-        $pageVisit->device = $request['Sec-Ch-Ua-Platform'] ?? 'Unknown';
-        $pageVisit->browser = $request['User-Agent'] ?? 'Unknown';
-        $pageVisit->platform = $request['Sec-Ch-Ua:'] ?? 'Unknown';
+        $pageVisit->referrer = $request->header('referer') ?? 'Unknown';
+        $pageVisit->device = $request->header('Sec-Ch-Ua-Platform') ?? 'Unknown';
+        $pageVisit->browser = $request->header('User-Agent') ?? 'Unknown';
+        $pageVisit->platform = $request->header('Sec-Ch-Ua') ?? 'Unknown';
         $pageVisit->country = "Unknown";
         $pageVisit->city = "Unknown";
         $pageVisit->state = "Unknown";
-        $pageVisit->timezone = "Unknown";;
+        $pageVisit->timezone = "Unknown";
         $pageVisit->save();
         return $next($request);
     }

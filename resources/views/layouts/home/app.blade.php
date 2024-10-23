@@ -70,6 +70,15 @@
     <x-footer />
 
     @livewireScripts
+    @if(session('error'))
+        <script>
+            swal({
+                title: 'Action is denied',
+                text: '{{session('error')}}',
+                icon: 'error',
+            })
+        </script>
+    @endif
     <script src="{{ asset('assets/js/jquery-3.7.0.min.js') }}"></script>
     <script src="{{ asset('assets/js/popper.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap-5.3.0.min.js') }}"></script>

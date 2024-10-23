@@ -20,52 +20,7 @@
     <!-- Any Question Area S t a r t -->
     <section class="question-area section-padding">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-7 my-auto">
-                    <!-- Section Tittle -->
-                    <div class="section-tittle mb-50">
-                        <h2 class="title font-700">Any Questions</h2>
-                        <p class="pera">When deciding which charity to donate to, it's important to do your search and find one that aligns with your values and interests.</p>
-                    </div>
-                    <div class="accordion" id="accordionExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Have you weighed the potential risks and benefits?</button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">When deciding which charity to donate to, it's important to do your search.</div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed additional-styles" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">How will you gather feedback from stakeholders</button>
-                            </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">When deciding which charity to donate to, it's important to do your search.</div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingThree">
-                                <button class="accordion-button collapsed additional-styles" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">There any sustainability or ethical to take into account?</button>
-                            </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">When deciding which charity to donate to, it's important to do your search.</div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingFour">
-                                <button class="accordion-button collapsed additional-styles" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">There any sustainability or ethical to take into account?</button>
-                            </h2>
-                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">When deciding which charity to donate to, it's important to do your search.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <img class="w-100 d-none d-lg-block tilt-effect" src="assets/images/gallery/que.png" alt="image">
-                </div>
-            </div>
+            <livewire:faq-question-component />
         </div>
     </section>
     <!-- End-of Question Area -->

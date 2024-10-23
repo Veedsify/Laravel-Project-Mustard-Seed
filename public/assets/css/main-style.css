@@ -21738,6 +21738,9 @@ input[type=number] {
 
 .blog-section .single-blog .blog-img img {
     border-radius: 10px;
+    aspect-ratio: 16/10;
+    width: 100%;
+    object-fit: cover;
 }
 
 .blog-section .single-blog .blog-info-title {

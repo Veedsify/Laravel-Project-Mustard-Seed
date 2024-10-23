@@ -69,8 +69,8 @@ class CampaignResource extends Resource
                 ])->columnSpan(2),
                 Forms\Components\Group::make()->schema([
                     Forms\Components\Section::make('Campaign Dates')->columns(3)->schema([
-                        Forms\Components\Datepicker::make('start_date')->label('Start Date')->required()->columnSpanFull()->beforeOrEqual('end_date'),
-                        Forms\Components\Datepicker::make('end_date')->label('End Date')->required()->columnSpanFull(),
+                        Forms\Components\TextInput::make('start_date')->type('date')->label('Start Date')->required()->columnSpanFull()->beforeOrEqual('end_date'),
+                        Forms\Components\TextInput::make('end_date')->type('date')->label('End Date')->required()->columnSpanFull(),
                     ]),
                     Forms\Components\Section::make('Campaign Category')->columns(3)->schema([
                         Forms\Components\Select::make('campaign_category_id')->label('Campaign Category')->options(function () {

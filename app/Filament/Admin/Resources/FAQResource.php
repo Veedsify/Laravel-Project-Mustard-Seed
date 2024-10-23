@@ -3,15 +3,14 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\FAQResource\Pages;
-use App\Filament\Admin\Resources\FAQResource\RelationManagers;
 use App\Models\FAQ;
-use Filament\Forms;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class FAQResource extends Resource
 {
@@ -25,7 +24,16 @@ class FAQResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Section::make('FAQ Information')->schema([
+                    TextInput::make('question')
+                        ->label('Question')
+                        ->required()
+                        ->columnSpan(2),
+                    Textarea::make('answer')
+                        ->label('Answer')
+                        ->required()
+                        ->columnSpan(2),
+                ])->columns(3),
             ]);
     }
 
@@ -33,7 +41,13 @@ class FAQResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('question')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('answer')
+                    ->searchable()
+                    ->words(20)
+                    ->sortable(),
             ])
             ->filters([
                 //

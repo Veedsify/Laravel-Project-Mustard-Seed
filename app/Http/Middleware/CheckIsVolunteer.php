@@ -19,8 +19,13 @@ class CheckIsVolunteer
     {
 
         if(!User::find(Auth::id())->hasRole('volunteer')) {
-            return redirect(route('home'));
+            return redirect(route('home'))->with('error', 'You are not Authorized to view this page');
         }
+
+        if(User::find(Auth::id())->admin_approved == false){
+            return redirect(route('home'))->with('error', 'This Account Has Been Deactivated, Please contact admin for futher instructions');
+        }
+
         return $next($request);
     }
 }

@@ -20,6 +20,6 @@ class CheckIsUser
         if (Auth::check() && User::find(Auth::id())->hasRole('user')) {
             return $next($request);
         }
-        return redirect()->route('home');
+        return redirect()->route('home')->with('error', 'You are not Authorized to view this page');
     }
 }

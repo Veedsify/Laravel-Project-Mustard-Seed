@@ -27,7 +27,8 @@
                     <div class="single-blog">
                         <div class="blog-img">
                             <a href="javascript:void(0)">
-                                <img src="{{ asset('storage/' . $item->image) }}" class="w-100 blog-image"alt="{{$item->name}}">
+                                <img src="{{ asset('storage/' . $item->image) }}"
+                                    class="w-100 blog-image"alt="{{ $item->name }}">
                             </a>
                             <div class="brush-bg">
                                 <img src="{{ asset('assets/images/gallery/brush-bg-two.png') }}" alt="image">
@@ -114,57 +115,81 @@
                         $userIsRestricted = in_array(auth()->id(), $restrictedUsers);
                     @endphp
 
-                    <!-- Comments -->
-                    @if ($userIsRestricted == false && $item->user->id !== auth()->id())
-                        <div class="comment-blog" id="apply">
-                            <h4 class="pera">Apply To Receive This Item</h4>
-                            <div class="comment-box">
-                                <form action="javascript:void(0)" method="post" class="custom-form">
-                                    <div class="row">
-                                        <div class="col-xl-6">
-                                            <div class="form-group">
-                                                <label class="custom-label" for="fullName">Full Name</label>
-                                                <input type="text" class="form-control custom-input" id="fullName"
-                                                    value="{{ auth()->check() ? auth()->user()->name : '' }}"
-                                                    placeholder="Alex Jordan">
+
+                    @if (!$item->appliedItem->count() > 0)
+                        <!-- Comments -->
+                        @if ($userIsRestricted == false && $item->user->id !== auth()->id())
+                            <div class="comment-blog" id="apply">
+                                <h4 class="pera">Apply To Receive This Item</h4>
+                                <div class="comment-box">
+                                    <div class="custom-form">
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                                                <div class="form-group">
+                                                    <label class="custom-label" for="fullName">Full Name</label>
+                                                    <input type="text" class="form-control custom-input"
+                                                        id="fullName" wire:model="name" placeholder="Alex Jordan">
+                                                    @error('name')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6">
+                                                <div class="form-group">
+                                                    <label class="custom-label" for="email">Email address</label>
+                                                    <input type="email" class="form-control custom-input"
+                                                        id="email" wire:model="email"
+                                                        placeholder="name@example.com">
+                                                    @error('email')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-xl-6">
-                                            <div class="form-group">
-                                                <label class="custom-label" for="email">Email address</label>
-                                                <input type="email" class="form-control custom-input" id="email"
-                                                    value="{{ auth()->check() ? auth()->user()->email : '' }}"
-                                                    placeholder="name@example.com">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="custom-label" for="reasons">Reasons Why You Need This</label>
-                                        <textarea class="form-control custom-textarea" id="reasons" placeholder="Type Keyword"></textarea>
-                                    </div>
-                                    @if (!auth()->check())
                                         <div class="form-group">
-                                            <div>
-                                                You need to <a href="{{ route('login') }}"
-                                                    class="text-primary">login</a> to apply for this item.
+                                            <label class="custom-label" for="reason">Reasons Why You Need This</label>
+                                            <textarea wire:model="reason" class="form-control custom-textarea" id="reason" placeholder="Type Keyword"></textarea>
+                                            @error('reason')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <div wire:loading wire:target="apply" class="mb-3">
+                                                <img src="{{ asset('assets/images/loader.gif') }}" alt="Loading"
+                                                    width="60" style="user-select: none;">
                                             </div>
                                         </div>
-                                    @elseif($item->user->id === auth()->id())
-                                        <div class="form-group">
-                                            <div>
-                                                Sorry, You can't apply for items you donated.
+                                        @if (!auth()->check())
+                                            <div class="form-group">
+                                                <div>
+                                                    You need to <a href="{{ route('login') }}"
+                                                        class="text-primary">login</a> to apply for this item.
+                                                </div>
                                             </div>
-                                        </div>
-                                    @else
-                                        <button type="submit" class="submit-btn">Apply</button>
-                                    @endif
-                                </form>
+                                        @elseif($item->user->id === auth()->id())
+                                            <div class="form-group">
+                                                <div>
+                                                    Sorry, You can't apply for items you donated.
+                                                </div>
+                                            </div>
+                                        @else
+                                            <button wire:click="apply" type="submit"
+                                                class="submit-btn">Apply</button>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        @else
+                            <div class="form-group">
+                                <div class="border p-3 rounded-2 text-danger">
+                                    Sorry, You can't apply for this item.
+                                </div>
+                            </div>
+                        @endif
                     @else
                         <div class="form-group">
-                            <div class="border p-3 rounded-2 text-danger">
-                                Sorry, You can't apply for this item.
+                            <div class="border p-3 rounded-2 text-success">
+                                Sorry, This Item Has Already Been Applied For, Check back after 24 hours
                             </div>
                         </div>
                     @endif
@@ -177,8 +202,7 @@
                             <div class="user-box mb-3">
                                 <div class="user-img mx-auto">
                                     <img src="{{ asset($item->user->avatar) }}" alt="img"
-                                        style="object-fit: cover; aspect-ratio: 1/1;"
-                                    >
+                                        style="object-fit: cover; aspect-ratio: 1/1;">
                                 </div>
                                 <div class="user-info text-center">
                                     <h4 class="title">

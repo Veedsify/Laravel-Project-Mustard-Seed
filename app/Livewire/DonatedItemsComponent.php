@@ -12,11 +12,9 @@ class DonatedItemsComponent extends Component
     public function render()
     {
         $items = Item::where('status', true)
-            ->orderBy('created_at', 'desc')->get();
-
-        if (!$items) {
-            abort(404);
-        }
+            ->orderBy('created_at', 'desc')
+            ->doesntHave('appliedItem')
+            ->get();
 
         return view('livewire.donated-items-component', [
             'items' => $items

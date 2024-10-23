@@ -156,123 +156,66 @@
     <!-- End-of favorite -->
 
     <!-- Team Area S t a r t -->
-    <section class="team-section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-7">
-                    <!-- Section Tittle -->
-                    <div class="section-tittle text-center mb-50">
-                        <span class="sub-tittle text-capitalize font-600">Expert Team</span>
-                        <h2 class="title font-700">Meet our volunteer team</h2>
+    @if ($volunteers->count() > 0)
+        <section class="team-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-7">
+                        <!-- Section Tittle -->
+                        <div class="section-tittle text-center mb-50">
+                            <span class="sub-tittle text-capitalize font-600">Expert Team</span>
+                            <h2 class="title font-700">Meet our volunteer team</h2>
+                        </div>
                     </div>
+                </div>
+                <div class="row gy-24">
+                    @foreach ($volunteers as $volunteer)
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 view-wrapper">
+                            <div class="single-team h-calc wow-dis fadeInUp" data-wow-delay="0.0s">
+                                <div class="team-img">
+                                    <a href="{{ route('volunteers.details', [$volunteer->username]) }}">
+                                        <img src="{{ asset('storage/' . $volunteer->volunteer_settings->image) }}"
+                                            class="img-fluid w-100" alt="img">
+                                    </a>
+                                </div>
+                                <div class="team-info">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="team-info-title mb-8">
+                                            <div class="d-flex gap-40 align-items-center">
+                                                <div class="content">
+                                                    <h4 class="title text-capitalize"><a
+                                                            href="{{ route('volunteers.details', [$volunteer->username]) }}">
+                                                            {{ $volunteer->volunteer_settings->organization }}
+                                                        </a></h4>
+                                                    <p class="pera">founded in
+                                                        {{ $volunteer->volunteer_settings->age }}</p>
+                                                </div>
+                                                <div class="social">
+                                                    <a class="hover-icon" href="javascript:void(0)"><i
+                                                            class="ri-share-fill"></i></a>
+                                                    <div class="all-social-icon">
+                                                        <a class="social-icon"
+                                                            href="{{ $volunteer->volunteer_settings->facebook }}"><i
+                                                                class="ri-twitter-fill"></i></a>
+                                                        <a class="social-icon"
+                                                            href="{{ $volunteer->volunteer_settings->twitter }}"><i
+                                                                class="ri-facebook-fill"></i></a>
+                                                        <a class="social-icon"
+                                                            href="{{ $volunteer->volunteer_settings->linkedin }}"><i
+                                                                class="ri-linkedin-fill"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
-            <div class="row gy-24">
-                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 view-wrapper">
-                    <div class="single-team h-calc wow-dis fadeInUp" data-wow-delay="0.0s">
-                        <div class="team-img">
-                            <a href="volunteer-details.html">
-                                <img src="assets/images/gallery/team-1.png" class="img-fluid w-100" alt="img">
-                            </a>
-                        </div>
-                        <div class="team-info">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="team-info-title mb-8">
-                                    <div class="d-flex gap-40 align-items-center">
-                                        <div class="content">
-                                            <h4 class="title text-capitalize"><a href="volunteer-details.html">david
-                                                    warner</a></h4>
-                                            <p class="pera">sir bradman</p>
-                                        </div>
-                                        <div class="social">
-                                            <a class="hover-icon" href="javascript:void(0)"><i
-                                                    class="ri-share-fill"></i></a>
-                                            <div class="all-social-icon">
-                                                <a class="social-icon" href="javascript:void(0)"><i
-                                                        class="ri-google-fill"></i></a>
-                                                <a class="social-icon" href="javascript:void(0)"><i
-                                                        class="ri-facebook-fill"></i></a>
-                                                <a class="social-icon" href="javascript:void(0)"><i
-                                                        class="ri-linkedin-fill"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 view-wrapper">
-                    <div class="single-team h-calc wow-dis fadeInUp" data-wow-delay="0.1s">
-                        <div class="team-img">
-                            <a href="volunteer-details.html">
-                                <img src="assets/images/gallery/team-2.png" class="img-fluid w-100" alt="img">
-                            </a>
-                        </div>
-                        <div class="team-info">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="team-info-title mb-8">
-                                    <div class="d-flex gap-40 align-items-center">
-                                        <div class="content">
-                                            <h4 class="title text-capitalize"><a href="volunteer-details.html">Jony
-                                                    Bristow</a></h4>
-                                            <p class="pera">sir bradman</p>
-                                        </div>
-                                        <div class="social">
-                                            <a class="hover-icon" href="javascript:void(0)"><i
-                                                    class="ri-share-fill"></i></a>
-                                            <div class="all-social-icon">
-                                                <a class="social-icon" href="javascript:void(0)"><i
-                                                        class="ri-google-fill"></i></a>
-                                                <a class="social-icon" href="javascript:void(0)"><i
-                                                        class="ri-facebook-fill"></i></a>
-                                                <a class="social-icon" href="javascript:void(0)"><i
-                                                        class="ri-linkedin-fill"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 view-wrapper">
-                    <div class="single-team h-calc wow-dis fadeInUp" data-wow-delay="0.2s">
-                        <div class="team-img">
-                            <a href="volunteer-details.html">
-                                <img src="assets/images/gallery/team-3.png" class="img-fluid w-100" alt="img">
-                            </a>
-                        </div>
-                        <div class="team-info">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="team-info-title mb-8">
-                                    <div class="d-flex gap-40 align-items-center">
-                                        <div class="content">
-                                            <h4 class="title text-capitalize"><a href="volunteer-details.html">david
-                                                    warner</a></h4>
-                                            <p class="pera">sir bradman</p>
-                                        </div>
-                                        <div class="social">
-                                            <a class="hover-icon" href="javascript:void(0)"><i
-                                                    class="ri-share-fill"></i></a>
-                                            <div class="all-social-icon">
-                                                <a class="social-icon" href="javascript:void(0)"><i
-                                                        class="ri-google-fill"></i></a>
-                                                <a class="social-icon" href="javascript:void(0)"><i
-                                                        class="ri-facebook-fill"></i></a>
-                                                <a class="social-icon" href="javascript:void(0)"><i
-                                                        class="ri-linkedin-fill"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    @endif
     <!-- End-of Team -->
 
     <!-- Testimonial S t a r t-->
@@ -348,118 +291,7 @@
     <!-- End-of Testimonial -->
 
     <!-- Blog S t a r t -->
-    <section class="blog-section-three bottom-padding">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-7">
-                    <!-- Section Tittle -->
-                    <div class="section-tittle text-center mb-50">
-                        <span class="sub-tittle text-capitalize font-600">Blog</span>
-                        <h2 class="title font-700">Our Blog & Feeds</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row gy-24">
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 view-wrapper">
-                    <div class="single-blog h-calc">
-                        <div class="blog-img">
-                            <a href="blog-details.html">
-                                <img src="assets/images/gallery/blog-7.png" class="img-fluid w-100" alt="img">
-                            </a>
-                            <div class="brush-bg">
-                                <img src="assets/images/gallery/brush.png" alt="image">
-                            </div>
-                        </div>
-                        <div class="blog-info">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="blog-info-title">
-                                    <div class="flex gap-16 mb-15 align-items-center">
-                                        <div class="user flex gap-10 align-items-center">
-                                            <i class="ri-user-line"></i>
-                                            <p class="info">By: admin</p>
-                                        </div>
-                                        <div class="donate flex gap-10 align-items-center">
-                                            <i class="ri-chat-3-line"></i>
-                                            <p class="info">Donation</p>
-                                        </div>
-                                    </div>
-                                    <h4 class="title text-capitalize"><a href="blog-details.html">We assure you that
-                                            your donation will be used wisely.</a></h4>
-                                    <p class="subtitle">We understand that there are many people organization The
-                                        seeking support,</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="button-section"><a href="blog-details.html" class="read-btn">Read More</a></div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 view-wrapper">
-                    <div class="single-blog h-calc">
-                        <div class="blog-img position-relative">
-                            <a href="blog-details.html"> <img src="assets/images/gallery/blog-8.png"
-                                    class="img-fluid w-100" alt="img"> </a>
-                            <div class="brush-bg">
-                                <img src="assets/images/gallery/brush.png" alt="image">
-                            </div>
-                        </div>
-                        <div class="blog-info">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="blog-info-title">
-                                    <div class="flex gap-16 mb-15 align-items-center">
-                                        <div class="user flex gap-10 align-items-center">
-                                            <i class="ri-user-line"></i>
-                                            <p class="info">By: admin</p>
-                                        </div>
-                                        <div class="donate flex gap-10 align-items-center">
-                                            <i class="ri-chat-3-line"></i>
-                                            <p class="info">Donation</p>
-                                        </div>
-                                    </div>
-                                    <h4 class="title text-capitalize"><a href="blog-details.html">We assure you that
-                                            your donation will be used wisely.</a></h4>
-                                    <p class="subtitle">We understand that there are many people organization The
-                                        seeking support,</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="button-section"><a href="blog-details.html" class="read-btn">Read More</a></div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 view-wrapper">
-                    <div class="single-blog h-calc">
-                        <div class="blog-img position-relative">
-                            <a href="blog-details.html"> <img src="assets/images/gallery/blog-9.png"
-                                    class="img-fluid w-100" alt="img"> </a>
-                            <div class="brush-bg">
-                                <img src="assets/images/gallery/brush.png" alt="image">
-                            </div>
-                        </div>
-                        <div class="blog-info">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="blog-info-title">
-                                    <div class="flex gap-16 mb-15 align-items-center">
-                                        <div class="user flex gap-10 align-items-center">
-                                            <i class="ri-user-line"></i>
-                                            <p class="info">By: admin</p>
-                                        </div>
-                                        <div class="donate flex gap-10 align-items-center">
-                                            <i class="ri-chat-3-line"></i>
-                                            <p class="info">Donation</p>
-                                        </div>
-                                    </div>
-                                    <h4 class="title text-capitalize"><a href="blog-details.html">We assure you that
-                                            your donation will be used wisely.</a></h4>
-                                    <p class="subtitle">We understand that there are many people organization The
-                                        seeking support,</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="button-section"><a href="blog-details.html" class="read-btn">Read More</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <livewire:comps.home-blog-section />
     <!-- End-of Blog -->
 
     <!-- Gallery S t a r t -->

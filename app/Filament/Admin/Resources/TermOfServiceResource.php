@@ -6,12 +6,17 @@ use App\Filament\Admin\Resources\TermOfServiceResource\Pages;
 use App\Filament\Admin\Resources\TermOfServiceResource\RelationManagers;
 use App\Models\TermOfService;
 use Filament\Forms;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use PHPUnit\Framework\Constraint\IsFalse;
 
 class TermOfServiceResource extends Resource
 {
@@ -24,7 +29,11 @@ class TermOfServiceResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Section::make('Terms Of Service')
+                    ->schema([
+                        TextInput::make('title'),
+                        RichEditor::make('content')
+                    ])
             ]);
     }
 
@@ -32,8 +41,10 @@ class TermOfServiceResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('title'),
+                TextColumn::make('content')->words('20')->html()
             ])
+            ->paginated(false)
             ->filters([
                 //
             ])

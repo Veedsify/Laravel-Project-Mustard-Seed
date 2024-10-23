@@ -3,12 +3,9 @@
 namespace App\Filament\Volunteer\Resources;
 
 use App\Filament\Volunteer\Resources\ItemResource\Pages;
-use App\Filament\Volunteer\Resources\ItemResource\RelationManagers;
 use App\Models\Item;
-use App\Models\ItemCategory;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Infolists\Components\TextEntry;
@@ -18,18 +15,21 @@ use Filament\Tables;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
 
 class ItemResource extends Resource
 {
     protected static ?string $model = Item::class;
 
-
     protected static ?string $navigationIcon = 'heroicon-s-window';
     protected static ?string $navigationGroup = 'Donations';
     protected static ?string $navigationLabel = 'Approve Donations';
     protected static ?string $title = 'New Donation';
+
+    public static function canEdit($record): bool
+    {
+        return false;
+    }
 
     public static function form(Form $form): Form
     {
@@ -55,7 +55,7 @@ class ItemResource extends Resource
                     ->columnSpan(1)
                     ->description('Please only approve donations, within your poccession that are in good condition.')
                     ->schema([
-                        Forms\Components\Toggle::make('status')->label('Status')
+                        Forms\Components\Toggle::make('status')->label('Status'),
                     ]),
             ]);
     }
@@ -63,8 +63,9 @@ class ItemResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->poll('10s')
             ->modifyQueryUsing(function (Builder $query) {
-                $query->where('volunteer_id', Auth::user()->id);
+                $query->where('volunteer_id', Auth::user()->id)->orderBy('id', 'desc');
             })
             ->emptyStateHeading('No pending donations found')
             ->emptyStateDescription('It seems like there are no donations here at the moment.')
@@ -84,12 +85,12 @@ class ItemResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                // Tables\Actions\EditAction::make(),
                 Tables\Actions\ViewAction::make(),
                 Action::make('UpdateStatus')
                     ->icon('heroicon-s-arrow-path')
                     ->label('Update')
-                    ->color('danger')
+                    ->color('info')
                     ->requiresConfirmation()
                     ->form([
                         Toggle::make('status')
@@ -102,7 +103,7 @@ class ItemResource extends Resource
                             'status' => $data['status'],
                         ]);
                         $record->save();
-                    })
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

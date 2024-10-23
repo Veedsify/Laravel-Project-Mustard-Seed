@@ -1,7 +1,7 @@
 <main>
     <!-- Breadcrumb Area S t a r t -->
     <section class="breadcrumb-section breadcrumb-bg"
-        style="background-image: url({{ optional($volunteer->volunteer_settings)->image }}); background-size: cover; background-position:center;">
+        style="background-image: url({{ asset('storage/' . optional($volunteer->volunteer_settings)->image) }}); background-size: cover; background-position:center;">
         >
         <div class="container">
             <div class="breadcrumb-text">
@@ -24,7 +24,7 @@
             <div class="row gy-24">
                 <div class="col-xl-4 col-md-5 col-lg-5">
                     <div class="volunteer-img">
-                        <img src="{{ optional($volunteer->volunteer_settings)->image }}" alt="image">
+                        <img src="{{ asset('storage/' . optional($volunteer->volunteer_settings)->image) }}" alt="image">
                     </div>
                 </div>
                 <div class="col-xl-8 col-md-7 col-lg-7">
@@ -44,8 +44,10 @@
                             </div>
                         </div>
                         <div class="divider"></div>
-                        <div style="all:unset;" class="content">
-                            {!! $volunteer->volunteer_settings->bio !!}
+                        <div class="pb-5">
+                            <div style="all:unset;" class="content">
+                                {!! $volunteer->volunteer_settings->bio !!}
+                            </div>
                         </div>
                         <h4 class="title">Contact Me</h4>
                         <div class="contact-list">
@@ -69,9 +71,8 @@
                                 <div class="single-icon">
                                     <i class="ri-map-pin-line"></i>
                                 </div>
-                                <a class="title" target="_blank" href="https://google.com/maps/place/{{
-                                    str_replace(' ', '+', $volunteer->volunteer_settings->address)
-                                }}">
+                                <a class="title" target="_blank"
+                                    href="https://google.com/maps/place/{{ str_replace(' ', '+', $volunteer->volunteer_settings->address) }}">
                                     {{ $volunteer->volunteer_settings->address }}
                                 </a>
                             </div>

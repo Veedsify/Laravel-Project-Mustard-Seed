@@ -10,19 +10,6 @@
                                 <a href="index.blade.php"><img src="assets/images/logo/dark.png" alt="logo"></a>
                             </div>
                         </div>
-                        <!-- Footer-menu -->
-                        <div class="main-menu d-none d-lg-block">
-                            <nav>
-                                <ul class="listing" id="navigation2">
-                                    <li class="single-list"><a href="index.blade.php" class="single">Home</a></li>
-                                    <li class="single-list"><a href="donation.html" class="single">Donation</a></li>
-                                    <li class="single-list"><a href="about.html" class="single">About</a></li>
-                                    <li class="single-list"><a href="blog.html" class="single">Blog</a></li>
-                                    <li class="single-list"><a href="contact-us.html" class="single">Contact</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
                         <!-- Right button -->
                         <ul class="cart">
                             <li class="cart-list"><a href="donate-payment.html" class="donate-btn">Donate</a></li>
@@ -36,43 +23,41 @@
                     <div class="footer-link">
                         <h4 class="title">Explore Links</h4>
                         <ul class="imp-link">
-                            <li class="single-list">
-                                <a class="single" href="javascript:void(0)">About Company</a>
+                            <li class="single-list"><a href="{{ route('home') }}"
+                                    class="single {{ request()->is('/') ? 'active' : '' }}" wire:navigate>Home</a></li>
+
+                            <li class="single-list"><a href="{{ route('about') }}"
+                                    class="single {{ request()->is('about') ? 'active' : '' }}" wire:navigate>About</a>
                             </li>
-                            <li class="single-list">
-                                <a class="single" href="javascript:void(0)">Latest Projects</a>
-                            </li>
-                            <li class="single-list">
-                                <a class="single" href="javascript:void(0)">Latest Blog</a>
-                            </li>
-                            <li class="single-list">
-                                <a class="single" href="javascript:void(0)">Our Testimonials</a>
-                            </li>
-                            <li class="single-list">
-                                <a class="single" href="javascript:void(0)">Our Mission</a>
+
+                            <li class="single-list"><a href="{{ route('campaigns') }}"
+                                    class="single {{ request()->is('campaigns') ? 'active' : '' }}"
+                                    wire:navigate>Campaigns</a></li>
+
+                            <li class="single-list"><a href="{{ route('donations') }}"
+                                    class="single {{ request()->is('donations') ? 'active' : '' }}"
+                                    wire:navigate>Donations</a></li>
+
+                            <li class="single-list"><a href="{{ route('blogs') }}"
+                                    class="single {{ request()->is('blogs') ? 'active' : '' }}" wire:navigate>Blog</a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-xl-2 col-lg-6">
                     <div class="footer-link">
-                        <h4 class="title">Get Support</h4>
+                        <h4 class="title">Additional Links</h4>
                         <ul class="imp-link">
-                            <li class="single-list">
-                                <a class="single" href="javascript:void(0)">About</a>
+                            <li class="single-list"><a href="{{ route('volunteers') }}" class="single"
+                                    wire:navigate>Volunteers</a>
                             </li>
-                            <li class="single-list">
-                                <a class="single" href="javascript:void(0)">How it Works</a>
+                            <li class="single-list"><a href="{{ route('faq') }}" class="single" wire:navigate>FAQs</a>
                             </li>
-                            <li class="single-list">
-                                <a class="single" href="javascript:void(0)">Knowledge Hub</a>
-                            </li>
-                            <li class="single-list">
-                                <a class="single" href="javascript:void(0)">Success Stories</a>
-                            </li>
-                            <li class="single-list">
-                                <a class="single" href="javascript:void(0)">Contact</a>
-                            </li>
+                            <li class="single-list"><a href="{{ route('privacy.policy') }}" class="single"
+                                    wire:navigate>privacy
+                                    policy</a></li>
+                            <li class="single-list"><a href="{{ route('terms') }}" class="single"
+                                    wire:navigate>terms-condition</a></li>
                         </ul>
                     </div>
                 </div>
@@ -107,43 +92,6 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-xl-4 col-lg-6">
-                    <div class="footer-link">
-                        <h4 class="title">Projects</h4>
-                        <ul class="imp-link">
-                            <li class="single-list">
-                                <div class="d-flex gap-20 mb-20 align-items-center">
-                                    <div class="project-img">
-                                        <a href="donation-details.html">
-                                            <img src="assets/images/gallery/project-1.png" alt="image">
-                                        </a>
-                                    </div>
-
-                                    <div class="project-info">
-                                        <p class="project-date">12.Oct.2023</p>
-                                        <h4 class="project-title"><a href="donation-details.html">18 Best Charity
-                                                Marketing Champions</a></h4>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="single-list">
-                                <div class="d-flex gap-20">
-                                    <div class="project-img">
-                                        <a href="donation-details.html">
-                                            <img src="assets/images/gallery/project-2.png" alt="image">
-                                        </a>
-                                    </div>
-                                    <div class="project-info">
-                                        <p class="project-date">20.Oct.2023</p>
-                                        <h4 class="project-title"><a href="donation-details.html">Charity starts
-                                                from
-                                                home. You Can't Even Help,</a></h4>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
             </div>
             <hr class="footer-line">
         </div>
@@ -154,7 +102,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="footer-copy-right text-center">
-                                <p class="pera">Copyright © 2023 initTheme. All rights reserved.</p>
+                                <p class="pera">Copyright © {{date('Y')}} {{config('app.name')}}. All rights reserved.</p>
                                 <div class="footer-social-link">
                                     <ul class="listing">
                                         <li class="single-list">
