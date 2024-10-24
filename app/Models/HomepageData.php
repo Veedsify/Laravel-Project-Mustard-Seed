@@ -11,6 +11,8 @@ class HomepageData extends Model
     use HasFactory;
 
     protected $fillable = [
+        'logo',
+        'footer_text',
         'home_banner_intro',
         'home_banner_title',
         'home_banner_description',

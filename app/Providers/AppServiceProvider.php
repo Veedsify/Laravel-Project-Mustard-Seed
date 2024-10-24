@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Models\Blog;
+use App\Models\ContactPage;
+use App\Models\HomepageData;
 use App\Models\PageHeaderImages;
 use App\Policies\BlogPolicy;
 use Filament\Support\Assets\Js;
@@ -34,6 +36,12 @@ class AppServiceProvider extends ServiceProvider
     {
         FacadesView::composer('*', function ($view) {
             $view->with('headerImages', PageHeaderImages::first());
+        });
+        FacadesView::composer('*', function ($view) {
+            $view->with('footerContactData', ContactPage::first());
+        });
+        FacadesView::composer('*', function ($view) {
+            $view->with('homePage', HomepageData::first());
         });
     }
 }

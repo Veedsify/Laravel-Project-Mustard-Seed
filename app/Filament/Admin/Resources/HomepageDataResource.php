@@ -3,7 +3,6 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\HomepageDataResource\Pages;
-use App\Filament\Admin\Resources\HomepageDataResource\RelationManagers;
 use App\Models\HomepageData;
 use Filament\Forms;
 use Filament\Forms\Components\Group;
@@ -12,8 +11,6 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class HomepageDataResource extends Resource
 {
@@ -31,6 +28,10 @@ class HomepageDataResource extends Resource
                     Section::make('Banner Information Section')
                         ->description('This section is for the banner information.')
                         ->schema([
+                            Forms\Components\FileUpload::make('logo')
+                                ->label('Logo')
+                                ->avatar()
+                                ->required(),
                             Forms\Components\TextInput::make('home_banner_intro')
                                 ->label('Home Banner Intro')
                                 ->required(),
@@ -42,6 +43,9 @@ class HomepageDataResource extends Resource
                                 ->required(),
                             Forms\Components\FileUpload::make('home_banner_image')
                                 ->label('Home Banner Image')
+                                ->required(),
+                                Forms\Components\Textarea::make('footer_text')
+                                ->label('Footer Text')
                                 ->required(),
                         ]),
                 ])->columnSpan(3),
@@ -69,7 +73,7 @@ class HomepageDataResource extends Resource
                             Forms\Components\Textarea::make('banner_experience_desc_3')
                                 ->label('Banner Experience Description 3')
                                 ->required(),
-                        ])
+                        ]),
 
                 ])->columnSpan(2),
 
@@ -106,6 +110,8 @@ class HomepageDataResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('logo')
+                    ->label('Logo'),
                 Tables\Columns\TextColumn::make('home_banner_intro')
                     ->searchable()
                     ->label('Home Banner Intro'),
@@ -118,10 +124,10 @@ class HomepageDataResource extends Resource
                     ->label('Home Banner Description'),
                 Tables\Columns\ImageColumn::make('home_banner_image')
                     ->label('Home Banner Image'),
-                Tables\Columns\CheckboxColumn::make('show_banner_experience')
+                Tables\Columns\ToggleColumn::make('show_banner_experience')
                     ->searchable()
                     ->label('Show Banner Experience'),
-                Tables\Columns\TextColumn::make('banner_experience_title_1')
+                Tables\Columns\ToggleColumn::make('banner_experience_title_1')
                     ->searchable()
                     ->label('Banner Experience Title 1'),
             ])
@@ -133,7 +139,7 @@ class HomepageDataResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    // Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }

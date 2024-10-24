@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('homepage_data', function (Blueprint $table) {
             $table->id();
+            $table->string('logo');
+            $table->longText('footer_text');
             $table->string('home_banner_intro');
             $table->string('home_banner_title');
             $table->string('home_banner_description');

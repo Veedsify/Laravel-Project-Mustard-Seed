@@ -6,13 +6,19 @@
                     <div class="menu-wrapper d-flex align-items-center justify-content-between">
                         <div class="header-left d-flex align-items-center justify-content-between">
                             <!-- Logo-->
-                            <div class="logo">
-                                <a href="index.blade.php"><img src="assets/images/logo/dark.png" alt="logo"></a>
+                            <div>   
+                                <div class="logo">
+                                    <a href="index.blade.php"><img width="70"
+                                            src="{{ asset('storage/' . $homePage->logo) }}" alt="logo"></a>
+                                </div>
+                                <p class="text-white w-50">
+                                   {{ $homePage->footer_text }}
+                                </p>
                             </div>
                         </div>
                         <!-- Right button -->
                         <ul class="cart">
-                            <li class="cart-list"><a href="donate-payment.html" class="donate-btn">Donate</a></li>
+                            <li class="cart-list"><a href="{{ route('donations') }}" class="donate-btn">Donate</a></li>
                         </ul>
                     </div>
                 </div>
@@ -70,7 +76,9 @@
                                     <div class="imp-icon">
                                         <i class="ri-mail-fill"></i>
                                     </div>
-                                    <a class="single" href="javascript:void(0)">donation@gmail.com</a>
+                                    <a class="single" href="javascript:void(0)">
+                                        {{ $footerContactData->email }}
+                                    </a>
                                 </div>
                             </li>
                             <li class="single-list">
@@ -78,7 +86,7 @@
                                     <div class="imp-icon">
                                         <i class="ri-phone-fill"></i>
                                     </div>
-                                    <a class="single" href="javascript:void(0)">(+88) 111-222-333</a>
+                                    <a class="single" href="javascript:void(0)"> {{ $footerContactData->phone }}</a>
                                 </div>
                             </li>
                             <li class="single-list">
@@ -86,7 +94,9 @@
                                     <div class="imp-icon">
                                         <i class="ri-map-pin-2-fill"></i>
                                     </div>
-                                    <a class="single" href="javascript:void(0)">Tropical Cyclone, Volcano</a>
+                                    <a class="single" href="javascript:void(0)">
+                                        {{ $footerContactData->location }}
+                                    </a>
                                 </div>
                             </li>
                         </ul>
@@ -102,20 +112,25 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="footer-copy-right text-center">
-                                <p class="pera">Copyright © {{date('Y')}} {{config('app.name')}}. All rights reserved.</p>
+                                <p class="pera">Copyright © {{ date('Y') }} {{ config('app.name') }}. All rights
+                                    reserved.</p>
                                 <div class="footer-social-link">
                                     <ul class="listing">
                                         <li class="single-list">
-                                            <a class="single" href=""><i class="ri-facebook-fill"></i></a>
+                                            <a class="single" href="{{ $footerContactData->facebook }}"><i
+                                                    class="ri-facebook-fill"></i></a>
                                         </li>
                                         <li class="single-list">
-                                            <a class="single" href=""><i class="ri-youtube-fill"></i></a>
+                                            <a class="single" href="{{ $footerContactData->twitter }}"><i
+                                                    class="ri-twitter-fill"></i></a>
                                         </li>
                                         <li class="single-list">
-                                            <a class="single" href=""><i class="ri-instagram-line"></i></a>
+                                            <a class="single" href="{{ $footerContactData->instagram }}"><i
+                                                    class="ri-instagram-line"></i></a>
                                         </li>
                                         <li class="single-list">
-                                            <a class="single" href=""><i class="ri-linkedin-fill"></i></a>
+                                            <a class="single" href="{{ $footerContactData->linkedin }}"><i
+                                                    class="ri-linkedin-fill"></i></a>
                                         </li>
                                     </ul>
                                 </div>

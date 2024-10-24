@@ -83,37 +83,12 @@
                             @livewire('comps.donation-detail-price', ['campaigns' => $donation])
                         </div>
                     </div>
-                    <!-- Donate contents -->
-                    <div class="donate-content">
-                        <p class="pera">Charity refers to the act of giving resources, such as money, time, or goods
-                            to
-                            individuals, organizations, or causes in need. It is driven by the desire to alleviate
-                            suffering, support vulnerable populations, promote social welfare, or advance specific
-                            charitable objectives. Charity organizations and nonprofits play a crucial role in
-                            collecting and distributing funds to address various issues</p>
-                        <p class="pera">including poverty, education, healthcare, disaster relief, environmental
-                            conservation, and more. People can contribute to charities by making financial donations,
-                            volunteering their time and skills, or donating goods like clothing, food, or medical
-                            supplies.</p>
-                        <h4 class="title">Our Challenge & Goal</h4>
-                        <p class="pera">However, if you intended to refer to body or organ donation, that is a
-                            separate
-                            topic. Organ donation involves the voluntary donation of organs or tissues from a living or
-                            deceased person to help save or improve the lives of others in need of transplantation.</p>
-                        <p class="pera">including poverty, education, healthcare, disaster relief, environmental
-                            conservation, and more. People can contribute to charities by making financial donations,
-                            volunteering their time and skills,</p>
-                        <p class="pera">It is a generous act that can make a significant difference in someone's life
-                            by
-                            providing them with a chance for a healthier future.</p>
-                        <h4 class="title">Donors</h4>
-                        <p class="pera">However, if you intended to refer to body or organ donation, that is a
-                            separate
-                            topic. Organ donation involves the voluntary donation of organs or tissues from a living or
-                            deceased person to help save or improve the lives of others in need of transplantation.</p>
-                    </div>
                     <!-- Donors -->
-                    <div class="row gy-24">
+
+                    <div class="row py-5 gy-24">
+                        <div class="col-12">
+                            <h3 class="title">Donors</h3>
+                        </div>
                         <div class="col-xl-3 col-lg-4 col-sm-6 col-xs-12">
                             <div class="donor-card">
                                 <div class="donor-img">
@@ -189,76 +164,6 @@
                         </div>
                         <!-- Post -->
 
-                        <!-- Related post -->
-                        <div class="related-post-section">
-                            <p class="pera text-capitalize">Related post</p>
-                            <div class="dotted">
-                                <div class="active-dot"></div>
-                                <div class="inactive-dot"></div>
-                            </div>
-                            <div class="related-box">
-                                <div class="single-post">
-                                    <div class="post-img">
-                                        <a href="#"><img src="assets/images/gallery/post-1.png"
-                                                alt="img"></a>
-                                    </div>
-                                    <div class="post-info">
-                                        <div class="date-time">
-                                            <i class="ri-time-line"></i>
-                                            <p class="pera">November 28, 2023</p>
-                                        </div>
-                                        <h4 class="title"><a href="#">How Kids Make Sense of Life
-                                                Experiences.</a></h4>
-                                    </div>
-                                </div>
-                                <div class="divider"></div>
-                                <div class="single-post">
-                                    <div class="post-img">
-                                        <a href="#"><img src="assets/images/gallery/post-2.png"
-                                                alt="img"></a>
-                                    </div>
-                                    <div class="post-info">
-                                        <div class="date-time">
-                                            <i class="ri-time-line"></i>
-                                            <p class="pera">November 28, 2023</p>
-                                        </div>
-                                        <h4 class="title"><a href="#">How Kids Make Sense of Life
-                                                Experiences.</a></h4>
-                                    </div>
-                                </div>
-                                <div class="divider"></div>
-                                <div class="single-post">
-                                    <div class="post-img">
-                                        <a href="#"><img src="assets/images/gallery/post-3.png"
-                                                alt="img"></a>
-                                    </div>
-                                    <div class="post-info">
-                                        <div class="date-time">
-                                            <i class="ri-time-line"></i>
-                                            <p class="pera">November 28, 2023</p>
-                                        </div>
-                                        <h4 class="title"><a href="#">How Kids Make Sense of Life
-                                                Experiences.</a></h4>
-                                    </div>
-                                </div>
-                                <div class="divider"></div>
-                                <div class="single-post">
-                                    <div class="post-img">
-                                        <a href="#"><img src="assets/images/gallery/post-4.png"
-                                                alt="img"></a>
-                                    </div>
-                                    <div class="post-info">
-                                        <div class="date-time">
-                                            <i class="ri-time-line"></i>
-                                            <p class="pera">November 28, 2023</p>
-                                        </div>
-                                        <h4 class="title"><a href="#">How Kids Make Sense of Life
-                                                Experiences.</a></h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                         <!-- Concat -->
                         <div class="contact-us-section">
                             <form action="donation-details.html" class="custom-form">
@@ -288,32 +193,6 @@
                             </form>
                         </div>
                         <!-- Tags -->
-                        <div class="tag-section">
-                            <p class="pera">Tags</p>
-                            <div class="dotted">
-                                <div class="active-dot"></div>
-                                <div class="inactive-dot"></div>
-                            </div>
-                            <div class="tag-box">
-                                <div class="tag-info">
-                                    <div class="badge active">
-                                        <p class="subtitle">medical</p>
-                                    </div>
-                                    <div class="badge">
-                                        <p class="subtitle">Food</p>
-                                    </div>
-                                    <div class="badge">
-                                        <p class="subtitle">Election</p>
-                                    </div>
-                                    <div class="badge">
-                                        <p class="subtitle">Campaign</p>
-                                    </div>
-                                    <div class="badge">
-                                        <p class="subtitle">Security</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

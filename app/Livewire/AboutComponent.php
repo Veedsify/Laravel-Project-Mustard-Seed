@@ -2,6 +2,8 @@
 
 namespace App\Livewire;
 
+use App\Models\AboutPageConfig;
+use App\Models\AboutPagePartners;
 use App\Models\Service;
 use App\Models\User;
 use Livewire\Component;
@@ -21,10 +23,15 @@ class AboutComponent extends Component
             })
             ->limit(3)
             ->get();
+
+            $aboutPageConfig = AboutPageConfig::first();
+            $aboutPagePartners = AboutPagePartners::all();
             
             return view('livewire.about-component', [
             'services' => $services,
             'volunteers' => $volunteers,
+            'aboutPageConfig' => $aboutPageConfig,
+            'aboutPagePartners' => $aboutPagePartners
         ]);
     }
 }

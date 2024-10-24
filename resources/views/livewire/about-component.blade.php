@@ -60,14 +60,11 @@
                 <div class="col-lg-6 my-auto">
                     <!-- Section Tittle -->
                     <div class="section-tittle mb-35">
-                        <span class="sub-tittle text-capitalize font-600">About us</span>
-                        <h2 class="title font-700 pb-15">We Are Best Treatment For Our Hospita</h2>
-                        <p class="pera-subtitle mb-15">When deciding which charity to donate to, it's important to
-                            do your e search and find one that aligns with your values and interests. Look for
-                            charities that are transparent preventable diseases,</p>
-                        <p class="pera-subtitle">When deciding which charity to donate to, it's important to do your
-                            e search and find one that aligns with your values and interests. Look for charities
-                            that are transparent preventable diseases,</p>
+                        <span class="sub-tittle text-capitalize font-600">{{ $aboutPageConfig->short_title }}</span>
+                        <h2 class="title font-700 pb-15">{{ $aboutPageConfig->title }}</h2>
+                        <p class="pera-subtitle mb-15">
+                            {!! $aboutPageConfig->content !!}
+                        </p>
                     </div>
                     <div class="about-info">
                         <div class="row">
@@ -77,9 +74,8 @@
                                         <i class="ri-hand-heart-line"></i>
                                     </div>
                                     <div class="info-content">
-                                        <h4 class="title">Donation</h4>
-                                        <p class="pera">Fund programs that help children escape poverty providing
-                                            vocational training.</p>
+                                        <h4 class="title">{{ $aboutPageConfig->donation_title }}</h4>
+                                        <p class="pera">{{ $aboutPageConfig->donation_content }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -90,32 +86,23 @@
                                     </div>
 
                                     <div class="info-content">
-                                        <h4 class="title">Volunteer</h4>
-                                        <p class="pera">Fund programs that help children escape poverty providing
-                                            vocational training.</p>
+                                        <h4 class="title">{{ $aboutPageConfig->volunteer_title }}</h4>
+                                        <p class="pera">{{ $aboutPageConfig->volunteer_content }}</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-10 mt-10">
-                                <a href="about.html" class="btn btn-primary-fill">Read More</a>
+                                <a href="{{ $aboutPageConfig->read_more_link }}"
+                                    class="btn btn-primary-fill">{{ $aboutPageConfig->read_more_title }}</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-5">
                     <div class="position-relative h-100">
-                        <div class="play-button">
-                            <a id="play-video-two" class="video-play-button-two d-none d-lg-block d-none d-lg-block"
-                                href="javascript:void(0)">
-                                <span></span>
-                            </a>
-
-                            <div id="video-overlay" class="video-overlay">
-                                <a class="video-overlay-close">&times;</a>
-                            </div>
-                        </div>
                         <div>
-                            <img class="w-100 d-none d-lg-block" src="assets/images/gallery/about-3.png" alt="image">
+                            <img class="w-100 d-none d-lg-block"
+                                src="{{ asset('storage/' . $aboutPageConfig->main_image) }}" alt="image">
                         </div>
                     </div>
                 </div>
@@ -128,27 +115,11 @@
     <div class="favourite-section section-padding">
         <div class="container">
             <div class="favourite-slider">
-                <div class="img-container">
-                    <img src="assets/images/gallery/fav-1.png" alt="image">
-                </div>
-                <div class="img-container">
-                    <img src="assets/images/gallery/fav-4.png" alt="image">
-                </div>
-                <div class="img-container">
-                    <img src="assets/images/gallery/fav-3.png" alt="image">
-                </div>
-                <div class="img-container">
-                    <img src="assets/images/gallery/fav-4.png" alt="image">
-                </div>
-                <div class="img-container">
-                    <img src="assets/images/gallery/fav-5.png" alt="image">
-                </div>
-                <div class="img-container">
-                    <img src="assets/images/gallery/fav-1.png" alt="image">
-                </div>
-                <div class="img-container">
-                    <img src="assets/images/gallery/fav-1.png" alt="image">
-                </div>
+                @foreach ($aboutPagePartners as $aboutPagePartner)
+                    <div class="img-container">
+                        <img src="{{ asset('storage/' . $aboutPagePartner->image) }}" width="150" alt="image">
+                    </div>
+                @endforeach
             </div>
             <hr class="divider mb-0">
         </div>

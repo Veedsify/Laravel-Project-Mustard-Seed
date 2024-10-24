@@ -32,7 +32,9 @@
                                 <div class="divider-ver"></div>
                                 <div class="contact-content">
                                     <p class="subtitle">Phone</p>
-                                    <a class="title" href="javascript:void(0)">+ 012 345 678</a>
+                                    <a class="title" href="javascript:void(0)">
+                                        {{ $contactData->phone }}
+                                    </a>
                                 </div>
                             </div>
                             <div class="contact-icon-list">
@@ -42,7 +44,9 @@
                                 <div class="divider-ver"></div>
                                 <div class="contact-content">
                                     <p class="subtitle">Email</p>
-                                    <a class="title" href="javascript:void(0)">Helpfull@gmail.com</a>
+                                    <a class="title" href="javascript:void(0)">
+                                        {{ $contactData->email }}
+                                    </a>
                                 </div>
                             </div>
                             <div class="contact-icon-list">
@@ -52,7 +56,9 @@
                                 <div class="divider-ver"></div>
                                 <div class="contact-content">
                                     <p class="subtitle">Location</p>
-                                    <a class="title" href="javascript:void(0)">View on Google Map</a>
+                                    <a class="title" href="javascript:void(0)">
+                                        {{ $contactData->location }}
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -63,10 +69,11 @@
                 <div class="row gy-24">
                     <livewire:comps.contact-component-form />
                     <div class="col-xl-6">
-                        <iframe class="map-frame"
+                        {!! $contactData->map_embed !!}
+                        {{-- <iframe class="map-frame"
                             src="https://www.google.com/maps/embed/v1/place?q=Dhaka,+Bangladesh&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
                             width="600" height="450" style="border: 15px" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            referrerpolicy="no-referrer-when-downgrade"></iframe> --}}
                     </div>
                 </div>
             </div>

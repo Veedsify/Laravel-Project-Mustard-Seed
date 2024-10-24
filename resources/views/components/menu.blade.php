@@ -9,7 +9,8 @@
                                 <!-- Logo-->
                                 <div class="logo logo-large light-logo">
                                     <a href="{{ route('home') }}"><img
-                                            src="{{ asset('assets/images/logo/Logo-charitfix.png') }}"
+                                        width="70"
+                                            src="{{ asset('storage/' . $homePage->logo) }}"
                                             alt="logo"></a>
                                 </div>
                                 <!-- Logo Mobile-->

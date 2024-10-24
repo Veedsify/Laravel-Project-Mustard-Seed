@@ -57,6 +57,7 @@ class AdminPanelProvider extends PanelProvider
                 'Events',
                 'Testimonails',
                 'Users',
+                'About Page Config',
                 'Settings',
             ])
             ->sidebarFullyCollapsibleOnDesktop()
