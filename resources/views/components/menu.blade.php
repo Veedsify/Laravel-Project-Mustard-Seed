@@ -8,10 +8,8 @@
                             <div class="header-left d-flex align-items-center justify-content-between">
                                 <!-- Logo-->
                                 <div class="logo logo-large light-logo">
-                                    <a href="{{ route('home') }}"><img
-                                        width="70"
-                                            src="{{ asset('storage/' . $homePage->logo) }}"
-                                            alt="logo"></a>
+                                    <a href="{{ route('home') }}"><img width="70"
+                                            src="{{ asset('storage/' . $homePage->logo) }}" alt="logo"></a>
                                 </div>
                                 <!-- Logo Mobile-->
                                 <div class="logo logo-mobile light-logo">
@@ -20,9 +18,13 @@
                                 </div>
                             </div>
                             <div class="search-container">
-                                <input type="text" id="searchField" class="search-field" placeholder="Search...">
+                                {{-- <input type="text" id="searchField" class="search-field" placeholder="Search..."> --}}
                                 <button id="closeSearch" class="close-search-btn"><i class="ri-close-line"></i>
                                 </button>
+                                <div class="google_custom_search_engine">
+                                    <script async src="https://cse.google.com/cse.js?cx=216722da6f83c4cd0"></script>
+                                    <div class="gcse-search"></div>
+                                </div>
                             </div>
 
                             <!-- Main-menu for desktop -->

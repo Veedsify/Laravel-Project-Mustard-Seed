@@ -19,11 +19,12 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Admin User',
-            'email' => 'admin@example.com',
+        $user = User::factory()->create([
+            'name' => 'Kc Admin',
+            'email' => 'charitymustardseed@gmail.com',
             'role' => 'admin',
         ]);
+
         Role::factory()->create([
             'name' => 'admin',
         ]);
@@ -33,10 +34,10 @@ class DatabaseSeeder extends Seeder
         Role::factory()->create([
             'name' => 'volunteer',
         ]);
-        User::factory(200)->create();
-        Location::factory(10)->create();
-        CampaignCategory::factory(4)->create();
-        Category::factory(10)->create();
-        Blog::factory(100)->create();
+        // User::factory(200)->create();
+        // Location::factory(10)->create();
+        // CampaignCategory::factory(4)->create();
+        // Category::factory(10)->create();
+        // Blog::factory(100)->create();
     }
 }

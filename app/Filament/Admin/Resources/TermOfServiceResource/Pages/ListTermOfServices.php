@@ -14,7 +14,7 @@ class ListTermOfServices extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make()->hidden(TermOfService::count() >= 0),
+            Actions\CreateAction::make()->hidden(TermOfService::count() > 0),
         ];
     }
 }

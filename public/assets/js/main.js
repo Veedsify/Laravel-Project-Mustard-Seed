@@ -432,8 +432,8 @@
 
     $(document).click(function (event) {
         if (!$(event.target).closest($searchIcon).length && !$(event.target).closest($searchContainer).length) {
-            $searchContainer.hide();
-            $overlay.hide();
+            // $searchContainer.hide();
+            // $overlay.hide();
         }
     });
 

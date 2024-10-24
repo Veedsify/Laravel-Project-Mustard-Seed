@@ -10,6 +10,7 @@ use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Navigation\MenuItem;
 use Filament\Panel;
+use Filament\Pages;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Widgets;
@@ -28,6 +29,7 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->id('admin')
             ->brandName('Mustards')
+            ->brandLogo('assets/images/logo/mustard_seed_logo.jpg')
             // ->spa()
             ->path('admin')
             ->font('Instrument Sans')
@@ -47,7 +49,8 @@ class AdminPanelProvider extends PanelProvider
             ->discoverResources(in: app_path('Filament/Admin/Resources'), for: 'App\\Filament\\Admin\\Resources')
             ->discoverPages(in: app_path('Filament/Admin/Pages'), for: 'App\\Filament\\Admin\\Pages')
             ->pages([
-                // \App\Filament\Admin\Pages\Settings::class,
+                Pages\Dashboard::class,
+                \App\Filament\Admin\Pages\Settings::class,
             ])
             ->navigationGroups([
                 'Blogs',

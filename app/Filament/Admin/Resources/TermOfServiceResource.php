@@ -22,7 +22,7 @@ class TermOfServiceResource extends Resource
 {
     protected static ?string $model = TermOfService::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-s-no-symbol';
     protected static ?string $navigationGroup = 'Configs';
 
     public static function form(Form $form): Form
