@@ -116,7 +116,7 @@
                     @endphp
 
 
-                    @if (!$item->appliedItem->count() > 0)
+                    {{-- @if (!$item->appliedItem && !$item->appliedItem->count() > 0) --}}
                         <!-- Comments -->
                         @if ($userIsRestricted == false && $item->user->id !== auth()->id())
                             <div class="comment-blog" id="apply">
@@ -186,13 +186,13 @@
                                 </div>
                             </div>
                         @endif
-                    @else
-                        <div class="form-group">
+                    {{-- @else --}}
+                        {{-- <div class="form-group">
                             <div class="border p-3 rounded-2 text-success">
                                 Sorry, This Item Has Already Been Applied For, Check back after 24 hours
                             </div>
-                        </div>
-                    @endif
+                        </div> --}}
+                    {{-- @endif --}}
                 </div>
                 <div class="col-xxl-3 col-xl-4 col-lg-4">
                     <div class="right-element">
