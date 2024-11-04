@@ -2,7 +2,7 @@
 <main>
     <!-- Breadcrumb Area S t a r t -->
     <section class="breadcrumb-section breadcrumb-bg"
-             style="background-image: url({{asset('storage/' . $headerImages->campaigns_page_header_image)}}); background-size:cover; background-position:center;"
+             style="background-image: url({{asset('storage/' . optional($headerImages)->campaigns_page_header_image)}}); background-size:cover; background-position:center;"
     >
         <div class="container">
             <div class="breadcrumb-text">

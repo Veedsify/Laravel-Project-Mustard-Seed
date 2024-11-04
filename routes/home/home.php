@@ -5,6 +5,7 @@ use App\Http\Controllers\FaceVerifcation;
 use App\Livewire\AboutComponent;
 use App\Livewire\BlogComponent;
 use App\Livewire\BlogDetailsComponent;
+use App\Livewire\Comp\JobDetailComponent;
 use App\Livewire\ContactComponent;
 use App\Livewire\DonatedItemsComponent;
 use App\Livewire\DonationComponent;
@@ -15,6 +16,7 @@ use App\Livewire\EventsComponent;
 use App\Livewire\FaceVerificationComponent;
 use App\Livewire\FaqComponents;
 use App\Livewire\HomeComponent;
+use App\Livewire\JobComponent;
 use App\Livewire\LoginComponent;
 use App\Livewire\PrivacyPolicyComponent;
 use App\Livewire\RegisAsVolunteer;
@@ -37,6 +39,9 @@ Route::middleware('page_visits')->group(function () {
     Route::get('/contact', ContactComponent::class)->name('contact');
 
     Route::get('/events/{slug}', EventsComponent::class)->name('events.details');
+
+    Route::get("jobs", JobComponent::class)->name('jobs');
+    Route::get("job/{slug}", JobDetailComponent::class)->name('job.details');
 
     Route::get("/campaigns", DonationComponent::class)->name('campaigns');
     Route::get("/campaign/{slug}", DonationDetailComponent::class)->name('donate.details');

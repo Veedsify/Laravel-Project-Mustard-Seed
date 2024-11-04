@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="{{ $homePage->logo }}"
+        <meta name="description" content="{{ optional($homePage)->logo }}"
             content="mustard seed, causes, donate, charity foundation, charity hub, mustard seed charity,  theme, donations, non profit, fundraiser,social, ngo, non-profit, nonprofit, organization, volunteer">
         <meta name="author" content="Mustard Seed">
         <meta property="og:type" content="website">
@@ -14,10 +14,10 @@
         <meta property="og:site_name" content="Mustard Seed Charity Donations">
         <meta property="og:site_name" content="Mustard Seed Charity">
         <meta property="og:url" content="www.mustardseedcharity.com">
-        <meta property="og:image" content="{{ asset('storage/' . $homePage->logo) }}">
-        <meta property="og:description" content="{{ $homePage->footer_text }}">
+        <meta property="og:image" content="{{ asset('storage/' . optional($homePage)->logo) }}">
+        <meta property="og:description" content="{{ optional($homePage)->footer_text }}">
         <meta name="twitter:title" content="Mustard Seed Charity">
-        <meta name="twitter:description" content="{{ $homePage->footer_text }}">
+        <meta name="twitter:description" content="{{ optional($homePage)->footer_text }}">
         <meta name="twitter:image" content="www.mustardseedcharity.com">
         <meta name="twitter:card" content="summary">
 
@@ -30,11 +30,12 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link
-            href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Space+Grotesk:wght@300..700&display=swap"
             rel="stylesheet">
 
         {{-- FAVICON --}}
-        <link rel="icon" type="image/x-icon" sizes="20x20" href="{{ asset('storage/' . $homePage->logo) }}">
+        <link rel="icon" type="image/x-icon" sizes="20x20"
+            href="{{ asset('storage/' . optional($homePage)->logo) }}">
 
         <!-- Bootstrap -->
         {{-- <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap-5.3.0.min.css') }}"> --}}

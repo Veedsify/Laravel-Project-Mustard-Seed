@@ -48,6 +48,11 @@ class User extends Authenticatable implements FilamentUser
         'email_verified_at',
     ];
 
+    public function myJob()
+    {
+        return $this->hasMany(MyJob::class);
+    }
+
     public function idVerified()
     {
         return $this->hasOne(IdVerified::class);

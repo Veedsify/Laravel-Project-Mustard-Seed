@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('location')->nullable();
             $table->string('address')->nullable();
-            $table->longTxet('map_embed')->nullable();
+            $table->longText('map_embed')->nullable();
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
             $table->string('instagram')->nullable();

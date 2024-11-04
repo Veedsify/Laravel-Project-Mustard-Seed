@@ -2,7 +2,7 @@
 <main>
     <!-- Breadcrumb Area S t a r t -->
     <section class="breadcrumb-section breadcrumb-bg"
-        style="background-image: url({{ asset('storage/' . $headerImages->about_page_header_image) }}); background-size:cover; background-position:center;">
+        style="background-image: url({{ asset('storage/' . optional($headerImages)->about_page_header_image) }}); background-size:cover; background-position:center;">
         <div class="container">
             <div class="breadcrumb-text">
                 <nav aria-label="breadcrumb" class="breadcrumb-nav wow-dis fadeInUp" data-wow-delay="0.0s">
@@ -60,10 +60,10 @@
                 <div class="col-lg-6 my-auto">
                     <!-- Section Tittle -->
                     <div class="section-tittle mb-35">
-                        <span class="sub-tittle text-capitalize font-600">{{ $aboutPageConfig->short_title }}</span>
-                        <h2 class="title font-700 pb-15">{{ $aboutPageConfig->title }}</h2>
+                        <span class="sub-tittle text-capitalize font-600">{{ optional($aboutPageConfig)->short_title }}</span>
+                        <h2 class="title font-700 pb-15">{{ optional($aboutPageConfig)->title }}</h2>
                         <p class="pera-subtitle mb-15">
-                            {!! $aboutPageConfig->content !!}
+                            {!! optional($aboutPageConfig)->content !!}
                         </p>
                     </div>
                     <div class="about-info">
@@ -74,8 +74,8 @@
                                         <i class="ri-hand-heart-line"></i>
                                     </div>
                                     <div class="info-content">
-                                        <h4 class="title">{{ $aboutPageConfig->donation_title }}</h4>
-                                        <p class="pera">{{ $aboutPageConfig->donation_content }}</p>
+                                        <h4 class="title">{{ optional($aboutPageConfig)->donation_title }}</h4>
+                                        <p class="pera">{{ optional($aboutPageConfig)->donation_content }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -86,14 +86,14 @@
                                     </div>
 
                                     <div class="info-content">
-                                        <h4 class="title">{{ $aboutPageConfig->volunteer_title }}</h4>
-                                        <p class="pera">{{ $aboutPageConfig->volunteer_content }}</p>
+                                        <h4 class="title">{{ optional($aboutPageConfig)->volunteer_title }}</h4>
+                                        <p class="pera">{{ optional($aboutPageConfig)->volunteer_content }}</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-10 mt-10">
-                                <a href="{{ $aboutPageConfig->read_more_link }}"
-                                    class="btn btn-primary-fill">{{ $aboutPageConfig->read_more_title }}</a>
+                                <a href="{{ optional($aboutPageConfig)->read_more_link }}"
+                                    class="btn btn-primary-fill">{{ optional($aboutPageConfig)->read_more_title }}</a>
                             </div>
                         </div>
                     </div>
@@ -102,7 +102,7 @@
                     <div class="position-relative h-100">
                         <div>
                             <img class="w-100 d-none d-lg-block"
-                                src="{{ asset('storage/' . $aboutPageConfig->main_image) }}" alt="image">
+                                src="{{ asset('storage/' . optional($aboutPageConfig)->main_image) }}" alt="image">
                         </div>
                     </div>
                 </div>
@@ -146,7 +146,7 @@
                                 <div class="team-img">
                                     <a href="{{ route('volunteers.details', [$volunteer->username]) }}">
                                         <img src="{{ asset('storage/' . $volunteer->volunteer_settings->image) }}"
-                                            class="img-fluid w-100" alt="img">
+                                            class="img-fluid w-100" style="aspect-ratio:1/1; object-fit:cover;" alt="img">
                                     </a>
                                 </div>
                                 <div class="team-info">

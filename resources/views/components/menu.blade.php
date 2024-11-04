@@ -9,7 +9,8 @@
                                 <!-- Logo-->
                                 <div class="logo logo-large light-logo">
                                     <a href="{{ route('home') }}"><img width="70"
-                                            src="{{ asset('storage/' . $homePage->logo) }}" alt="logo"></a>
+                                            src="{{ asset('storage/' . optional($homePage)->logo) }}"
+                                            alt="logo"></a>
                                 </div>
                                 <!-- Logo Mobile-->
                                 <div class="logo logo-mobile light-logo">
@@ -31,9 +32,9 @@
                             <div class="main-menu d-none d-lg-block">
                                 <nav>
                                     <ul class="listing" id="navigation">
-                                        <li class="single-list"><a href="{{ route('home') }}"
+                                        {{-- <li class="single-list"><a href="{{ route('home') }}"
                                                 class="single {{ request()->is('/') ? 'active' : '' }}"
-                                                wire:navigate>Home</a></li>
+                                                wire:navigate>Home</a></li> --}}
 
                                         <li class="single-list"><a href="{{ route('about') }}"
                                                 class="single {{ request()->is('about') ? 'active' : '' }}"
@@ -42,6 +43,10 @@
                                         <li class="single-list"><a href="{{ route('campaigns') }}"
                                                 class="single {{ request()->is('campaigns') ? 'active' : '' }}"
                                                 wire:navigate>Campaigns</a></li>
+
+                                        <li class="single-list"><a href="{{ route('jobs') }}"
+                                                class="single {{ request()->is('jobs') ? 'active' : '' }}"
+                                                wire:navigate>Jobs</a></li>
 
                                         <li class="single-list"><a href="{{ route('donations') }}"
                                                 class="single {{ request()->is('donations') ? 'active' : '' }}"
@@ -91,7 +96,7 @@
                                             };
                                         @endphp
                                         <a href="{{ $dashboardRoute }}" class="btn-primary-fill pill-btn">
-                                            {{ explode(' ', auth()->user()->name)[0] ?? auth()->user()->name }}
+                                            {{ explode(' ', auth()->user()->name)[0] ?? auth()->user()->name }} - Dashboard
                                         </a>
                                     @endauth
                                     @guest()

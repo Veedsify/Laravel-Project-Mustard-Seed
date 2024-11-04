@@ -9,10 +9,10 @@
                             <div>   
                                 <div class="logo">
                                     <a href="index.blade.php"><img width="70"
-                                            src="{{ asset('storage/' . $homePage->logo) }}" alt="logo"></a>
+                                            src="{{ asset('storage/' . optional($homePage)->logo) }}" alt="logo"></a>
                                 </div>
                                 <p class="text-white w-50">
-                                   {{ $homePage->footer_text }}
+                                   {{ optional($homePage)->footer_text }}
                                 </p>
                             </div>
                         </div>
@@ -77,7 +77,7 @@
                                         <i class="ri-mail-fill"></i>
                                     </div>
                                     <a class="single" href="javascript:void(0)">
-                                        {{ $footerContactData->email }}
+                                        {{ optional($footerContactData)->email }}
                                     </a>
                                 </div>
                             </li>
@@ -86,7 +86,7 @@
                                     <div class="imp-icon">
                                         <i class="ri-phone-fill"></i>
                                     </div>
-                                    <a class="single" href="javascript:void(0)"> {{ $footerContactData->phone }}</a>
+                                    <a class="single" href="javascript:void(0)"> {{ optional($footerContactData)->phone }}</a>
                                 </div>
                             </li>
                             <li class="single-list">
@@ -95,7 +95,7 @@
                                         <i class="ri-map-pin-2-fill"></i>
                                     </div>
                                     <a class="single" href="javascript:void(0)">
-                                        {{ $footerContactData->location }}
+                                        {{ optional($footerContactData)->location }}
                                     </a>
                                 </div>
                             </li>
@@ -117,19 +117,19 @@
                                 <div class="footer-social-link">
                                     <ul class="listing">
                                         <li class="single-list">
-                                            <a class="single" href="{{ $footerContactData->facebook }}"><i
+                                            <a class="single" href="{{ optional($footerContactData)->facebook }}"><i
                                                     class="ri-facebook-fill"></i></a>
                                         </li>
                                         <li class="single-list">
-                                            <a class="single" href="{{ $footerContactData->twitter }}"><i
+                                            <a class="single" href="{{ optional($footerContactData)->twitter }}"><i
                                                     class="ri-twitter-fill"></i></a>
                                         </li>
                                         <li class="single-list">
-                                            <a class="single" href="{{ $footerContactData->instagram }}"><i
+                                            <a class="single" href="{{ optional($footerContactData)->instagram }}"><i
                                                     class="ri-instagram-line"></i></a>
                                         </li>
                                         <li class="single-list">
-                                            <a class="single" href="{{ $footerContactData->linkedin }}"><i
+                                            <a class="single" href="{{ optional($footerContactData)->linkedin }}"><i
                                                     class="ri-linkedin-fill"></i></a>
                                         </li>
                                     </ul>

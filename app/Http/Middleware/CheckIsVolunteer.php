@@ -18,12 +18,12 @@ class CheckIsVolunteer
     public function handle(Request $request, Closure $next): Response
     {
 
-        if(!User::find(Auth::id())->hasRole('volunteer')) {
+        if (!User::find(Auth::id())->hasRole('volunteer')) {
             return redirect(route('home'))->with('error', 'You are not Authorized to view this page');
         }
 
-        if(User::find(Auth::id())->admin_approved == false){
-            return redirect(route('home'))->with('error', 'This Account Has Been Deactivated, Please contact admin for futher instructions');
+        if (User::find(Auth::id())->admin_approved == false) {
+            return redirect(route('home'))->with('error', ('This ' . ucwords(Auth::user()->role) . ' Account Is Not Active, Please contact admin for futher instructions'));
         }
 
         return $next($request);

@@ -89,7 +89,7 @@ class VolunteerSettingResource extends Resource
     {
         return $table
             ->modifyQueryUsing(function (Builder $query) {
-                $query->where('user_id', Auth::user()->id);
+                $query->where('user_id', Auth::user()->id)->latest()->limit(1);
             })
             ->columns([
                 ImageColumn::make('image')

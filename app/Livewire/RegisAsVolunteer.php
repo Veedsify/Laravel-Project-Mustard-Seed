@@ -105,9 +105,6 @@ class RegisAsVolunteer extends Component
         ];
 
         // Send email to volunteer with google auth signin
-
-
-        $this->redirect(route('login'));
         $this->dispatch('notify', message: 'Volunteer has been registered successfully, check your email for login details');
     }
 

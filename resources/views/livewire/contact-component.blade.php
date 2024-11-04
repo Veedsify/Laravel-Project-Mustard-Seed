@@ -2,7 +2,7 @@
 <main>
     <!-- Breadcrumb Area S t a r t -->
     <section class="breadcrumb-section breadcrumb-bg"
-        style="background-image: url({{ asset('storage/' . $headerImages->contact_page_header_image) }}); background-size: cover; background-position: center;"">
+        style="background-image: url({{ asset('storage/' . optional($headerImages)->contact_page_header_image) }}); background-size: cover; background-position: center;"">
         <div class="container">
             <div class="breadcrumb-text">
                 <nav aria-label="breadcrumb" class="breadcrumb-nav wow fadeInUp" data-wow-delay="0.0s">
@@ -33,7 +33,7 @@
                                 <div class="contact-content">
                                     <p class="subtitle">Phone</p>
                                     <a class="title" href="javascript:void(0)">
-                                        {{ $contactData->phone }}
+                                        {{ optional($contactData)->phone }}
                                     </a>
                                 </div>
                             </div>
@@ -45,7 +45,7 @@
                                 <div class="contact-content">
                                     <p class="subtitle">Email</p>
                                     <a class="title" href="javascript:void(0)">
-                                        {{ $contactData->email }}
+                                        {{ optional($contactData)->email }}
                                     </a>
                                 </div>
                             </div>
@@ -57,7 +57,7 @@
                                 <div class="contact-content">
                                     <p class="subtitle">Location</p>
                                     <a class="title" href="javascript:void(0)">
-                                        {{ $contactData->location }}
+                                        {{ optional($contactData)->location }}
                                     </a>
                                 </div>
                             </div>
@@ -69,7 +69,7 @@
                 <div class="row gy-24">
                     <livewire:comps.contact-component-form />
                     <div class="col-xl-6">
-                        {!! $contactData->map_embed !!}
+                        {!! optional($contactData)->map_embed !!}
                         {{-- <iframe class="map-frame"
                             src="https://www.google.com/maps/embed/v1/place?q=Dhaka,+Bangladesh&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
                             width="600" height="450" style="border: 15px" allowfullscreen="" loading="lazy"

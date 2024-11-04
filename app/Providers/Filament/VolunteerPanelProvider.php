@@ -47,6 +47,7 @@ class VolunteerPanelProvider extends PanelProvider
                 'Items',
                 'Blogs',
                 'Locations',
+                'Jobs',
                 'Donations',
                 'Campaigns',
                 'Events',
