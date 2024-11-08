@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Livewire\User;
 
 use App\Services\RekognitionService;
@@ -12,10 +13,11 @@ use Livewire\WithFileUploads;
 class UserVerificationDocument extends Component
 {
     use WithFileUploads;
+
     public $fileType = '';
     public $file;
     public $file2;
-    
+
     private function findFirstName($firstName, $text)
     {
         $strPos = stripos($text, $firstName) !== false;
@@ -28,6 +30,7 @@ class UserVerificationDocument extends Component
         }
         return $strPos;
     }
+
     private function getIdNumber($filepath, $firstName)
     {
         try {
@@ -35,7 +38,7 @@ class UserVerificationDocument extends Component
             $texts = $recognize->extractText($filepath);
             $detectedTexts = array_column($texts, 'DetectedText');
             $singleLineText = implode(' ', $detectedTexts);
-            $pattern = '/(\d{4}\s*\d{3}\s*\d{4})/';
+            $pattern = '/(\d{4}\s*\d{4}\s*\d{4})|(\d{12})|(\d{2}\s*\d{2}\s*\d{2}\s*\d{2}\s*\d{2}\s*\d{2})|(\d{9})/';
             if (preg_match($pattern, $singleLineText, $matches)) {
                 $nin = str_replace(' ', '', $matches[0]); // Remove spaces if necessary
                 if ($this->findFirstName($firstName, $singleLineText)) {
@@ -56,6 +59,7 @@ class UserVerificationDocument extends Component
             return '';
         }
     }
+
     public function saveDocuments()
     {
         $this->validate([
@@ -83,6 +87,7 @@ class UserVerificationDocument extends Component
             return redirect()->route('login');
         }
     }
+
     public function render()
     {
         return view('livewire.user.user-verification-document');

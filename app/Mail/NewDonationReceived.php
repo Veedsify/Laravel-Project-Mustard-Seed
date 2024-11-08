@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Item;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -10,16 +11,22 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ReceiverVerificationApproved extends Mailable
+class NewDonationReceived extends Mailable
 {
     use Queueable, SerializesModels;
+
+    public Item $item;
     public User $user;
+    public array $data;
+
     /**
      * Create a new message instance.
      */
-    public function __construct(User $user)
+    public function __construct(Item $item, User $user, $data)
     {
+        $this->item = $item;
         $this->user = $user;
+        $this->data = $data;
     }
 
     /**
@@ -28,7 +35,7 @@ class ReceiverVerificationApproved extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Receiver Verification Approved',
+            subject: 'New Donation Received',
         );
     }
 
@@ -38,10 +45,12 @@ class ReceiverVerificationApproved extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.receiver_verification_approved',
+            view: 'emails.new_donation_received',
             with: [
+                'item' => $this->item,
                 'user' => $this->user,
-            ]
+                'data' => $this->data,
+            ],
         );
     }
 

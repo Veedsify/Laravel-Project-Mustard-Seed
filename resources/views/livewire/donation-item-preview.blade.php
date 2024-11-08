@@ -2,7 +2,7 @@
 <main>
     <!-- Breadcrumb Area S t a r t -->
     <section
-        style="background-image: url(https://images.pexels.com/photos/6646921/pexels-photo-6646921.jpeg?auto=compress&cs=tinysrgb&w=600);background-size: cover;background-position: center;"
+        style="background-image: url({{ asset('storage/' . $item->image) }});background-size: cover;background-position: center;"
         class="breadcrumb-section breadcrumb-bg">
         <div class="container">
             <div class="breadcrumb-text">
@@ -11,10 +11,12 @@
                         <li class="breadcrumb-item single-list"><a href="{{ route('home') }}" class="single">Home</a>
                         </li>
                         <li class="breadcrumb-item single-list" aria-current="page"><a href="javascript:void(0)"
-                                class="single">Item </a></li>
+                                                                                       class="single">Item </a></li>
                     </ul>
                 </nav>
-                <h1 class="title wow fadeInUp" data-wow-delay="0.1s">Item details</h1>
+                <h1 class="title wow fadeInUp" data-wow-delay="0.1s">
+                    {{$item->name}}
+                </h1>
             </div>
         </div>
     </section>
@@ -28,7 +30,7 @@
                         <div class="blog-img">
                             <a href="javascript:void(0)">
                                 <img src="{{ asset('storage/' . $item->image) }}"
-                                    class="w-100 blog-image"alt="{{ $item->name }}">
+                                     class="w-100 blog-image" alt="{{ $item->name }}">
                             </a>
                             <div class="brush-bg">
                                 <img src="{{ asset('assets/images/gallery/brush-bg-two.png') }}" alt="image">
@@ -69,8 +71,8 @@
                                                 <div class="blog-img" style="flex:1;">
                                                     <a href="{{ route('item.preview', $otherItem->slug) }}">
                                                         <img style="object-fit: cover;"
-                                                            src="{{ asset('storage/' . $otherItem->image) }}"
-                                                            class="img-fluid w-100" alt="img">
+                                                             src="{{ asset('storage/' . $otherItem->image) }}"
+                                                             class="img-fluid w-100" alt="img">
                                                     </a>
                                                 </div>
                                                 <div class="blog-info flex-1" style="flex:1;">
@@ -97,7 +99,7 @@
                                                         </div>
                                                         <div class="button-section">
                                                             <a href="{{ route('item.preview', $otherItem->slug) }}"
-                                                                class="btn-primary-fill pill-btn" wire:navigate>View
+                                                               class="btn-primary-fill pill-btn" wire:navigate>View
                                                                 Item</a>
                                                         </div>
                                                     </div>
@@ -117,81 +119,85 @@
 
 
                     {{-- @if (!$item->appliedItem && !$item->appliedItem->count() > 0) --}}
-                        <!-- Comments -->
-                        @if ($userIsRestricted == false && $item->user->id !== auth()->id())
-                            <div class="comment-blog" id="apply">
-                                <h4 class="pera">Apply To Receive This Item</h4>
-                                <div class="comment-box">
-                                    <div class="custom-form">
-                                        <div class="row">
-                                            <div class="col-xl-6">
-                                                <div class="form-group">
-                                                    <label class="custom-label" for="fullName">Full Name</label>
-                                                    <input type="text" class="form-control custom-input"
-                                                        id="fullName" wire:model="name" placeholder="Alex Jordan">
-                                                    @error('name')
-                                                        <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6">
-                                                <div class="form-group">
-                                                    <label class="custom-label" for="email">Email address</label>
-                                                    <input type="email" class="form-control custom-input"
-                                                        id="email" wire:model="email"
-                                                        placeholder="name@example.com">
-                                                    @error('email')
-                                                        <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="custom-label" for="reason">Reasons Why You Need This</label>
-                                            <textarea wire:model="reason" class="form-control custom-textarea" id="reason" placeholder="Type Keyword"></textarea>
-                                            @error('reason')
+                    <!-- Comments -->
+                    @if ($userIsRestricted == false && $item->user->id !== auth()->id())
+                        <div class="comment-blog" id="apply">
+                            <h4 class="pera">Apply To Receive This Item</h4>
+                            <div class="comment-box">
+                                <input type="hidden" class="form-control custom-input"
+                                       id="unit" wire:model="unit" value="{{$item->unit}}" placeholder="Unit">
+                                <div class="custom-form">
+                                    <div class="row">
+                                        <div class="col-xl-6">
+                                            <div class="form-group">
+                                                <label class="custom-label" for="fullName">Full Name</label>
+                                                <input type="text" class="form-control custom-input"
+                                                       id="fullName" wire:model="name" placeholder="Alex Jordan">
+                                                @error('name')
                                                 <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                        <div class="d-flex justify-content-center align-items-center">
-                                            <div wire:loading wire:target="apply" class="mb-3">
-                                                <img src="{{ asset('assets/images/loader.gif') }}" alt="Loading"
-                                                    width="60" style="user-select: none;">
+                                                @enderror
                                             </div>
                                         </div>
-                                        @if (!auth()->check())
+                                        <div class="col-xl-6">
                                             <div class="form-group">
-                                                <div>
-                                                    You need to <a href="{{ route('login') }}"
-                                                        class="text-primary">login</a> to apply for this item.
-                                                </div>
+                                                <label class="custom-label" for="email">Email address</label>
+                                                <input type="email" class="form-control custom-input"
+                                                       id="email" wire:model="email"
+                                                       placeholder="name@example.com">
+                                                @error('email')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
-                                        @elseif($item->user->id === auth()->id())
-                                            <div class="form-group">
-                                                <div>
-                                                    Sorry, You can't apply for items you donated.
-                                                </div>
-                                            </div>
-                                        @else
-                                            <button wire:click="apply" type="submit"
-                                                class="submit-btn">Apply</button>
-                                        @endif
+                                        </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label class="custom-label" for="reason">Reasons Why You Need This</label>
+                                        <textarea wire:model="reason" class="form-control custom-textarea" id="reason"
+                                                  placeholder="Type Keyword"></textarea>
+                                        @error('reason')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <div wire:loading wire:target="apply" class="mb-3">
+                                            <img src="{{ asset('assets/images/loader.gif') }}" alt="Loading"
+                                                 width="60" style="user-select: none;">
+                                        </div>
+                                    </div>
+                                    @if (!auth()->check())
+                                        <div class="form-group">
+                                            <div>
+                                                You need to <a href="{{ route('login') }}"
+                                                               class="text-primary">login</a> to apply for this item.
+                                            </div>
+                                        </div>
+                                    @elseif($item->user->id === auth()->id())
+                                        <div class="form-group">
+                                            <div>
+                                                Sorry, You can't apply for items you donated.
+                                            </div>
+                                        </div>
+                                    @else
+                                        <button wire:click="apply" type="submit"
+                                                class="submit-btn">Apply
+                                        </button>
+                                    @endif
                                 </div>
                             </div>
-                        @else
-                            <div class="form-group">
-                                <div class="border p-3 rounded-2 text-danger">
-                                    Sorry, You can't apply for this item.
-                                </div>
+                        </div>
+                    @else
+                        <div class="form-group">
+                            <div class="border p-3 rounded-2 text-danger">
+                                Sorry, You can't apply for this item.
                             </div>
-                        @endif
+                        </div>
+                    @endif
                     {{-- @else --}}
-                        {{-- <div class="form-group">
-                            <div class="border p-3 rounded-2 text-success">
-                                Sorry, This Item Has Already Been Applied For, Check back after 24 hours
-                            </div>
-                        </div> --}}
+                    {{-- <div class="form-group">
+                        <div class="border p-3 rounded-2 text-success">
+                            Sorry, This Item Has Already Been Applied For, Check back after 24 hours
+                        </div>
+                    </div> --}}
                     {{-- @endif --}}
                 </div>
                 <div class="col-xxl-3 col-xl-4 col-lg-4">
@@ -201,8 +207,8 @@
                             <h6 class="fw-bold mb-3">Donator</h6>
                             <div class="user-box mb-3">
                                 <div class="user-img mx-auto">
-                                    <img src="{{ asset($item->user->avatar) }}" alt="img"
-                                        style="object-fit: cover; aspect-ratio: 1/1;">
+                                    <img src="{{ asset('storage/' . $item->user->avatar) }}" alt="img"
+                                         style="object-fit: cover; aspect-ratio: 1/1;">
                                 </div>
                                 <div class="user-info text-center">
                                     <h4 class="title">

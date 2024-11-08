@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMail;
+use App\Mail\SendUserWelcomeEmail;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
+use Resend\Laravel\Facades\Resend;
 
 class AuthController extends Controller
 {
@@ -67,11 +70,21 @@ class AuthController extends Controller
                     $newUser->roles()->attach($role);
                 }
 
+                $message = "To get started, click the button below to login into your account:";
                 // Send Welcome Email (implement the email sending logic)
+                Resend::emails()->send([
+                    'from' => 'Mustard Seed Charity <info@mustardseedcharity.com>',
+                    'to' => $newUser->email,
+                    'subject' => 'New Account Created',
+                    'html' => (new SendUserWelcomeEmail($newUser, $message))->render(),
+                ]);
+
                 Auth::login($newUser);
                 return redirect(route('home'))->with('success', 'Login Successful');
             } else {
                 $dbUser->google_id = $user->id;
+                $dbUser->save();
+
                 Auth::login($dbUser);
                 $role = $dbUser->roles()->first();
                 if ($role) {

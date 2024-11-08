@@ -68,8 +68,9 @@ class UserResource extends Resource
                             ->relationship('roles', 'name') // This is where you define the pivot relationship
                             ->preload() // Preload roles for better UX
                             ->searchable(),
-                        Toggle::make('admin_approved')->label('Admin Approved')->hidden(fn($record) => Auth::user()->id == $record->id),
-
+                        Toggle::make('admin_approved')->label('Admin Approved')->hidden(function($record) {
+                            return Auth::id() == optional($record)->id ? true : false;
+                        }),
                     ])
                 ])
             ])->columns(3);

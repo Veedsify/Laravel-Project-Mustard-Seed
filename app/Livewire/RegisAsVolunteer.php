@@ -2,12 +2,14 @@
 
 namespace App\Livewire;
 
+use App\Mail\SendUserWelcomeEmail;
 use App\Models\Role;
 use App\Models\State;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Illuminate\Support\Str;
+use Resend\Laravel\Facades\Resend;
 
 class RegisAsVolunteer extends Component
 {
@@ -78,7 +80,7 @@ class RegisAsVolunteer extends Component
             'bio' => 'I am a volunteer',
             'phone' => $this->phone,
             'email' => $this->email,
-            'image' => fake()->imageUrl(), 
+            'image' => fake()->imageUrl(),
             'website' => 'https://example.com',
             'address' => $this->address,
             'city' => $this->city,
@@ -98,13 +100,16 @@ class RegisAsVolunteer extends Component
         $role = Role::where('name', 'volunteer')->first();
         $user->roles()->attach($role);
 
-        $emailData = [
-            'name' => $this->name,
-            'email' => $this->email,
-            'password' => $password,
-        ];
+        $message = "Your account has been created successfully, volunteer accounts would be approved by the admin, you would be notified when your account is approved";
 
         // Send email to volunteer with google auth signin
+        Resend::emails()->send([
+            'from' => 'Mustard Seed Charity <info@mustardseedcharity.com>',
+            'to' => $user->email,
+            'subject' => 'Welcome to Mustard Seed Charity',
+            'html' => (new SendUserWelcomeEmail($user, $message))->render(),
+        ]);
+
         $this->dispatch('notify', message: 'Volunteer has been registered successfully, check your email for login details');
     }
 

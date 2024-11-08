@@ -4,9 +4,11 @@ namespace App\Livewire\Comps;
 
 use App\Mail\ContactMail;
 use App\Models\Contact;
+use App\Models\User;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
+use Resend\Laravel\Facades\Resend;
 
 class ContactComponentForm extends Component
 {
@@ -18,7 +20,14 @@ class ContactComponentForm extends Component
     protected function sendMail(Contact $contact, string $to): bool
     {
         try {
-            Mail::to($to)->send(new ContactMail($contact));
+            // Mail::to($to)->send(new ContactMail($contact));
+            $firstAdmin = User::where('role', 'admin')->first();
+            Resend::emails()->send([
+                'from' => 'Mustard Seed Charity <info@mustardseedcharity.com>',
+                'to' => $firstAdmin->email,
+                'subject' => 'New Contact Form Submission',
+                'html' => (new ContactMail($contact))->render(),
+            ]);
             return true;
         } catch (\Exception $e) {
             // Handle the exception (log it, show a message, etc.)

@@ -22,7 +22,7 @@
     <section class="donate-section top-bottom-padding">
         <div class="container">
             <div class="row gy-24">
-                @if ($items->isEmpty())
+                @if (count($items) === 0)
                     <div class="col-lg-12">
                         <h4 class="font-medium">
                             No Available Items
@@ -57,6 +57,7 @@
                                         </div>
                                         <div class="donate flex gap-10 align-items-center">
                                             <i class="ri-chat-3-line"></i>
+                                            {{ $item->appliedItems->count() }} Applied
                                         </div>
                                     </div>
                                     <h4 class="text-base text-muted fw-bold mb-3">

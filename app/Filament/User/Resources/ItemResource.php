@@ -19,10 +19,10 @@ class ItemResource extends Resource
     protected static ?string $model = Item::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-window';
-    protected static ?string $navigationGroup = 'Campaigns';
+    protected static ?string $navigationGroup = 'Donations';
     protected static ?string $navigationLabel = 'Donate';
     protected static ?string $title = 'New Donation';
-    
+
     public static function canEdit($record): bool
     {
         return false;
@@ -118,7 +118,7 @@ class ItemResource extends Resource
                 //
             ])
             ->actions([
-                // Tables\Actions\EditAction::make(),
+                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([

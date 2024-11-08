@@ -3,16 +3,22 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Mail\DisableUserAccount;
+use App\Mail\SendUserWelcomeEmail;
+use App\Mail\SendVolunteerWelcomeEmail;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Resend\Laravel\Facades\Resend;
 
 class User extends Authenticatable implements FilamentUser
 {
     use HasFactory, Notifiable;
+
 
 
     public function canAccessPanel(Panel $panel): bool
@@ -24,6 +30,7 @@ class User extends Authenticatable implements FilamentUser
         // //        dump($panel);
         //         return false;
     }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -48,6 +55,7 @@ class User extends Authenticatable implements FilamentUser
         'email_verified_at',
     ];
 
+
     public function myJob()
     {
         return $this->hasMany(MyJob::class);
@@ -71,12 +79,47 @@ class User extends Authenticatable implements FilamentUser
     // Add this method to create settings after a user is created
     protected static function booted()
     {
+        static::creating(function ($user){
+            $user->password = bcrypt('password');
+        });
+
         static::created(function ($user) {
-            // Create a new settings record for the newly created user
-            if ($user->role === 'volunteer') {
-                VolunteerSetting::create([
-                    'user_id' => $user->id,
-                ]);
+            // Create a new settings record for the newly created volunteer users
+            if (Auth::check() && Auth::user()->hasRole('admin')) {
+                if ($user->role === 'volunteer') {
+                    VolunteerSetting::create([
+                        'user_id' => $user->id,
+                    ]);
+                }
+            }
+        });
+
+        static::updating(function ($user) {
+            if ($user->isDirty('admin_approved')) {
+                if ($user->admin_approved) {
+                    if ($user->role === 'volunteer') {
+                        $user->email_verified_at = now();
+                        $data = [
+                            'volunteerSettings' => VolunteerSetting::where('user_id', $user->id)->first(),
+                        ];
+                        // Send Welcome Email(implement the email sending logic)
+                        Resend::emails()->send([
+                            'from' => 'Mustard Seed Charity <info@mustardseedcharity.com>',
+                            'to' => $user->email,
+                            'subject' => 'Hey Volunteer: Your Account has been Approved',
+                            'html' => (new SendVolunteerWelcomeEmail($user, $data))->render(),
+                        ]);
+                    }
+                } else {
+                    // Send Disable User Account Email(implement the email sending logic)
+                    Resend::emails()->send([
+                        'from' => 'Mustard Seed Charity <info@mustardseedcharity.com>',
+                        'to' => $user->email,
+                        'subject' => 'Hey User: Your Account has been Disabled',
+                        'html' => (new DisableUserAccount($user))->render(),
+                    ]);
+                    Log::info('User account disabled');
+                }
             }
         });
     }

@@ -53,7 +53,8 @@ class ItemResource extends Resource
             ->emptyStateDescription('It seems like there are no donations here at the moment.')
             ->columns([
                 Tables\Columns\ImageColumn::make('image'),
-                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('user.name'),
+                Tables\Columns\TextColumn::make('name')->label('Donated Item Name'),
                 Tables\Columns\TextColumn::make('description'),
                 Tables\Columns\TextColumn::make('quantity'),
                 Tables\Columns\TextColumn::make('unit'),

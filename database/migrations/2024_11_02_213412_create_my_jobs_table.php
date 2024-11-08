@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('image1');
             $table->string('image2')->nullable();
             $table->foreignId('user_id')->constrained();
+            $table->foreignId('volunteer_id')->nullable()->constrained();
             $table->timestamps();
         });
     }

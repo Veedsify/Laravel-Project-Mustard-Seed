@@ -1,6 +1,6 @@
-<div x-data="{ name: '{{ Auth::user()->name }}', location: '{{ Auth::user()->location }}', email: '{{ Auth::user()->email }}', bio: '{{ Auth::user()->bio }}', image: '{{ asset(Auth::user()->avatar) }}' }"
-    class="bg-white dark:bg-black dark:shadow-gray-300 shadow-sm p-6 rounded w-72 md:w-2/3 lg:w-1/3 m-3 max-h-[80vh] overflow-y-auto"
-    @click.stop="">
+<div x-data="{ name: '{{ Auth::user()->name }}', location: '{{ Auth::user()->location }}', email: '{{ Auth::user()->email }}', bio: '{{ Auth::user()->bio }}', image: '{{ asset('storage/'. Auth::user()->avatar) }}' }"
+     class="bg-white dark:bg-black dark:shadow-gray-300 shadow-sm p-6 rounded w-72 md:w-2/3 lg:w-1/3 m-3 max-h-[80vh] overflow-y-auto"
+     @click.stop="">
 
     <h1 class="font-bold text-lg md:text-xl mb-5 dark:text-white">Edit Profile</h1>
 
@@ -10,7 +10,7 @@
         </div>
         <div class="relative border-[3px] mb-3 inline-block p-2 rounded-full border-dotted group">
             <img alt="" width="100" height="100" :src="image"
-                class="object-cover w-20 h-20 rounded-full lg:w-24 lg:h-24 aspect-square" />
+                 class="object-cover w-20 h-20 rounded-full lg:w-24 lg:h-24 aspect-square"/>
             <div
                 class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center rounded-full cursor-pointer transition-all duration-200">
             </div>
@@ -18,20 +18,20 @@
     </label>
 
     <input type="file" id="imageUpload" name="avatar" class="hidden" @change="handleImageUpload"
-        wire:model="avatar" />
+           wire:model="avatar"/>
     @error('avatar')
-        <p class="text-red-500">{{ $message }}</p>
+    <p class="text-red-500">{{ $message }}</p>
     @enderror
     <div>
         <input type="text" wire:model="name" name="name" x-model="name"
-            class="w-full block border mb-3 dark:text-white dark:bg-gray-900 dark:border-gray-700 border-gray-300 p-4 outline-none text-black rounded-lg"
-            placeholder="Name " />
+               class="w-full block border mb-3 dark:text-white dark:bg-gray-900 dark:border-gray-700 border-gray-300 p-4 outline-none text-black rounded-lg"
+               placeholder="Name "/>
         <p class="text-red-500">{{ $errors->first('name') }}</p>
     </div>
     <div>
         <select type="text" wire:model="location" name="location" x-model="location"
-            class="w-full block border mb-3 dark:text-white dark:bg-gray-900 dark:border-gray-700 border-gray-300 p-4 outline-none text-black rounded-lg"
-            placeholder="Location " label="Location">
+                class="w-full block border mb-3 dark:text-white dark:bg-gray-900 dark:border-gray-700 border-gray-300 p-4 outline-none text-black rounded-lg"
+                placeholder="Location " label="Location">
             <option value="" selected disabled>--SELECT FROM LIST--</option>
             <x-states :states="$states"/>
         </select>
@@ -39,14 +39,14 @@
     </div>
     <div>
         <input wire:model="email_address" readonly disabled type="email" name="email_address" x-model="email"
-            class="w-full block border mb-3 dark:text-white disabled:cursor-not-allowed disabled:select-none dark:bg-gray-900 dark:border-gray-700 border-gray-300 p-4 outline-none text-black rounded-xl select-none"
-            placeholder="Email " />
+               class="w-full block border mb-3 dark:text-white disabled:cursor-not-allowed disabled:select-none dark:bg-gray-900 dark:border-gray-700 border-gray-300 p-4 outline-none text-black rounded-xl select-none"
+               placeholder="Email "/>
         <p class="text-red-500">{{ $errors->first('email_address') }}</p>
     </div>
     <div>
         <textarea wire:model="bio" name="bio" x-model="bio" rows="6"
-            class="resize-none w-full block outline-none border mb-3 border-gray-300 dark:text-white dark:bg-gray-900 dark:border-gray-700 p-4 text-black rounded-lg"
-            placeholder="Bio"></textarea>
+                  class="resize-none w-full block outline-none border mb-3 border-gray-300 dark:text-white dark:bg-gray-900 dark:border-gray-700 p-4 text-black rounded-lg"
+                  placeholder="Bio"></textarea>
         <p class="text-red-500">{{ $errors->first('bio') }}</p>
     </div>
     <div>

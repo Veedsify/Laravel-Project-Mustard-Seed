@@ -2,6 +2,8 @@
 
 namespace App\Mail;
 
+use App\Models\Item;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -13,12 +15,18 @@ class DonationApproved extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public User $user;
+    public Item $item;
+    public array $data;
+
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(User $user, $item, $data)
     {
-        //
+        $this->user = $user;
+        $this->item = $item;
+        $this->data = $data;
     }
 
     /**
@@ -37,7 +45,12 @@ class DonationApproved extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.donation_approved',
+            with: [
+                'user' => $this->user,
+                'item' => $this->item,
+                'data' => $this->data,
+            ],
         );
     }
 

@@ -40,7 +40,7 @@ class EditUserSettings extends Component
 
         $storeLink = null;
         if ($this->avatar) {
-            $storeLink = 'storage/' . $this->avatar->store('avatars', 'public');
+            $storeLink = $this->avatar->store('avatars', 'public');
         } else {
             $storeLink = Auth::user()->avatar;
         }

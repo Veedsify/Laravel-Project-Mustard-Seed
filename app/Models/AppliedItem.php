@@ -15,6 +15,7 @@ class AppliedItem extends Model
         'first_name',
         'last_name',
         'reason',
+        'unit',
         'is_approved',
     ];
 

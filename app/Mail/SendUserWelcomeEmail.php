@@ -20,9 +20,11 @@ class SendUserWelcomeEmail extends Mailable
      */
 
     public User $user;
-    public function __construct(User $user)
+    public string $message;
+    public function __construct(User $user, $message)
     {
         $this->user = $user;
+        $this->message = $message;
     }
 
     /**
@@ -43,7 +45,7 @@ class SendUserWelcomeEmail extends Mailable
     {
         return new Content(
             view: 'emails.welcome-email',
-            with: ['user' => $this->user],
+            with: ['user' => $this->user, 'text' => $this->message],
         );
     }
 

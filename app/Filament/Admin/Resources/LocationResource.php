@@ -14,6 +14,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
+use Illuminate\Support\Log;
 
 class LocationResource extends Resource
 {
@@ -56,6 +57,17 @@ class LocationResource extends Resource
                 ])->columnSpan(2),
             ])->columns(3);
     }
+
+    // Method 2: Using a custom action
+       public function getActions(): array
+       {
+           return [
+               Actions\CreateAction::make()
+                   ->after(function (Customer $record) {
+                       Mail::to($record->email)->send(new CustomerCreatedMail($record));
+                   }),
+           ];
+       }
 
     public static function table(Table $table): Table
     {

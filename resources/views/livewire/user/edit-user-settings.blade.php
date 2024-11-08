@@ -1,4 +1,4 @@
-<div x-data="{ name: '{{ Auth::user()->name }}', location: '{{ Auth::user()->location }}', email: '{{ Auth::user()->email }}', bio: '{{ Auth::user()->bio }}', image: '{{ asset(Auth::user()->avatar) }}' }"
+<div x-data="{ name: '{{ Auth::user()->name }}', location: '{{ Auth::user()->location }}', email: '{{ Auth::user()->email }}', bio: '{{ Auth::user()->bio }}', image: '{{ asset('storage/' . Auth::user()->avatar) }}' }"
     class="bg-white dark:bg-black dark:shadow-gray-300 shadow-sm p-6 rounded w-72 md:w-2/3 lg:w-1/3 m-3 max-h-[80vh] overflow-y-auto"
     @click.stop="">
 

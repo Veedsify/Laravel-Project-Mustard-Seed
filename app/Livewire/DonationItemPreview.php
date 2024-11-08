@@ -13,10 +13,11 @@ class DonationItemPreview extends Component
 {
 
     public $slug;
-    public $name =  '';
+    public $name = '';
     public $email = '';
     public $reason = '';
-    
+    public $unit = '';
+
     public function mount($slug)
     {
         $user = Auth::user();
@@ -27,7 +28,8 @@ class DonationItemPreview extends Component
         $this->slug = $slug;
     }
 
-    public function apply(){
+    public function apply()
+    {
         $rules = [
             'name' => 'required',
             'email' => 'required|email',
@@ -42,17 +44,18 @@ class DonationItemPreview extends Component
         ])->first();
 
 
-        if(!$item){
-            $this->dispatch('notify-error', message:'Item not found');
+        if (!$item) {
+            $this->dispatch('notify-error', message: 'Item not found');
             return;
         }
 
         $findAppliedItem = AppliedItem::where([
             ['item_id', $item->id],
+            ['user_id', Auth::id()]
         ])->first();
 
-        if($findAppliedItem){
-            $this->dispatch('notify-info', message:'You can\'t apply for this item, as it has already been applied for');
+        if ($findAppliedItem) {
+            $this->dispatch('notify-info', message: 'You can\'t apply for this item, as it you have already Applied');
             return;
         }
 
@@ -68,6 +71,7 @@ class DonationItemPreview extends Component
         $createAppliedItem->first_name = explode(' ', $this->name)[0];
         $createAppliedItem->last_name = explode(' ', $this->name)[1] ?? '';
         $createAppliedItem->reason = $this->reason;
+        $createAppliedItem->unit = $this->unit;
         $createAppliedItem->is_approved = false;
         $createAppliedItem->save();
 
@@ -75,9 +79,9 @@ class DonationItemPreview extends Component
         $this->email = '';
         $this->reason = '';
 
-        $this->dispatch('notify', message:'Application submitted successfully');
+        $this->dispatch('notify', message: 'Application submitted successfully');
     }
-    
+
 
     public function render()
     {
@@ -85,20 +89,26 @@ class DonationItemPreview extends Component
             ['slug', $this->slug],
             ['status', true]
         ])
-        ->first();
+            ->first();
 
         if (!$item) {
             abort(404);
             return;
-        }        
+        }
         $otherItems = Item::where('id', '!=', $item->id)
             ->limit(3)
             ->inRandomOrder()
             ->get();
 
         $volunteers = User::where('role', 'volunteer')->get()->pluck('id')->toArray();
-        $itemCategories = ItemCategory::all();
-        
+        $itemCategories = ItemCategory::orderBy('name')->get();
+
+//        Updating Units
+        $this->unit = $item->unit;
+        if ($item->quantity == $item->appliedItems->sum('unit')) {
+            abort('404');
+        }
+
         return view('livewire.donation-item-preview', [
             'item' => $item,
             'otherItems' => $otherItems,

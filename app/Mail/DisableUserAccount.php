@@ -10,10 +10,12 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ReceiverVerificationApproved extends Mailable
+class DisableUserAccount extends Mailable
 {
     use Queueable, SerializesModels;
-    public User $user;
+
+    public $user;
+
     /**
      * Create a new message instance.
      */
@@ -28,7 +30,7 @@ class ReceiverVerificationApproved extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Receiver Verification Approved',
+            subject: 'Disable User Account',
         );
     }
 
@@ -38,10 +40,8 @@ class ReceiverVerificationApproved extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.receiver_verification_approved',
-            with: [
-                'user' => $this->user,
-            ]
+            view: 'emails.accountdisabled',
+            with: ['user' => $this->user],
         );
     }
 
