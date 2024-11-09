@@ -1,12 +1,12 @@
 @section('title', $title)
 <main>
-    <section class="breadcrumb-section breadcrumb-bg">
+    <section class="breadcrumb-section breadcrumb-bg"   style="background-image: url({{ asset('storage/' . optional($headerImages)->jobs_page_header_image) }}); background-size: cover; background-position: center;">
         <div class="container">
             <div class="breadcrumb-text">
                 <nav aria-label="breadcrumb" class="breadcrumb-nav wow fadeInUp" data-wow-delay="0.0s"
                     style="visibility: visible; animation-delay: 0s; animation-name: fadeInUp;">
                     <ul class="breadcrumb listing">
-                        <li class="breadcrumb-item single-list"><a href="index.html" class="single">Home</a></li>
+                        <li class="breadcrumb-item single-list"><a href="{{route('home')}}" class="single">Home</a></li>
                         <li class="breadcrumb-item single-list" aria-current="page"><a href="javascript:void(0)"
                                 class="single">Jobs</a></li>
                     </ul>
@@ -34,7 +34,7 @@
                             <div class="donate-info">
                                 <div class="" style="width:100%;">
                                     <div class="donate-info-titled" style="flex: 1 1 100%;">
-                                        <h4 class="title text-capitalize mb-3"><a href="donation-details.html">
+                                        <h4 class="title text-capitalize mb-3"><a href="{{ route('job.details', [$job->slug]) }}">
                                             {{ $job->name }}
                                             </a></h4>
                                         <p class="subtitle w-100 d-block">

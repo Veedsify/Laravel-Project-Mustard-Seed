@@ -10,8 +10,7 @@
 - [ ] Account Face Verification Denied 
 - [ ] Job Application Status Update
 - [ ] Campaign Application Received
-- [ ] Reset Your Password
-- [ ] New Job Opportunity Posted
+- [X] New Job Opportunity Posted
 - [ ] Thank You for Your Application
 
 

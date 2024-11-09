@@ -3,15 +3,13 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\EventResource\Pages;
-use App\Filament\Admin\Resources\EventResource\RelationManagers;
 use App\Models\Event;
 use Filament\Forms;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class EventResource extends Resource
 {
@@ -25,7 +23,23 @@ class EventResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Section::make('Add a new Event')->schema([
+                    Forms\Components\TextInput::make('name')
+                        ->label('Name')
+                        ->required(),
+                    Forms\Components\Textarea::make('description')
+                        ->label('Description')
+                        ->required(),
+                    Forms\Components\TextInput::make('location')
+                        ->label('Location')
+                        ->required(),
+                    Forms\Components\RichEditor::make('content')
+                        ->label('Content')
+                        ->required(),
+                    Forms\Components\FileUpload::make('image')
+                        ->label('Image')
+                        ->image(),
+                ]),
             ]);
     }
 
@@ -33,7 +47,22 @@ class EventResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('description')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('location')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\ImageColumn::make('image')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('content')
+                    ->html()
+                    ->words(10)
+                    ->searchable()
+                    ->sortable(),
             ])
             ->filters([
                 //

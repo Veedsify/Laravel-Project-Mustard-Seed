@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug');
             $table->longText('description');
-            $table->string('status');
+            $table->boolean('status')->default(false);
             $table->string('type');
             $table->string('location');
             $table->string('salary');
@@ -24,8 +24,8 @@ return new class extends Migration
             $table->string('experience');
             $table->string('image1');
             $table->string('image2')->nullable();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('volunteer_id')->nullable()->constrained();
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('volunteer_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -22,27 +22,49 @@
                     <tr>
                         <td class="main-content">
                             <h1>New Job Posted</h1>
-                            <p>Your job listing has been successfully published and is now visible to potential
-                                candidates.</p>
+                            @if($user->role === 'user')
+                                <p>Your job listing has been successfully added, and is pending approval you will get notified once its accepted</p>
+                            @else
+                                <p>
+                                    A new job has been posted on the platform. Please review the details below and take
+                                    the necessary action.
+                                </p>
+                            @endif
                             <table width="100%" style="width:100%" cellpadding="10" cellspacing="0"
                                    style="margin: 20px 0;">
                                 <tr>
-                                    <td width="50%" bgcolor="#f8f8f8"><strong>Position:</strong></td>
-                                    <td width="50%" bgcolor="#f8f8f8">[Job Title]</td>
+                                    <td width="50%" bgcolor="#f8f8f8"><strong>Title:</strong></td>
+                                    <td width="50%" bgcolor="#f8f8f8">
+                                        {{ $myJob->name }}
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td><strong>Location:</strong></td>
-                                    <td>[Location]</td>
+                                    <td>
+                                        {{ $myJob->location }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#f8f8f8"><strong>Status:</strong></td>
+                                    <td bgcolor="#f8f8f8">
+                                        <span class="tag">
+                                            {{ $myJob->status ? 'Active' : 'Inactive' }}
+                                        </span>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td bgcolor="#f8f8f8"><strong>Type:</strong></td>
                                     <td bgcolor="#f8f8f8">
-                                        <span class="tag">[Job Type]</span>
+                                        <span class="tag">
+                                            {{ $myJob->type }}
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td><strong>Posted On:</strong></td>
-                                    <td>[Date]</td>
+                                    <td>
+                                        {{ $myJob->created_at->format('d M, Y') }}
+                                    </td>
                                 </tr>
                             </table>
                             <p style="text-align: center;">

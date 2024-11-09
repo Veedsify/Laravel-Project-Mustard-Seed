@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Http\Middleware\CheckIsUser;
+use App\Http\Middleware\CheckUserIsNotDisabled;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -32,7 +33,7 @@ class UserPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Amber,
             ])
-            ->font('DM Sans')
+            ->font('Pangolin')
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->discoverResources(in: app_path('Filament/User/Resources'), for: 'App\\Filament\\User\\Resources')
             ->discoverPages(in: app_path('Filament/User/Pages'), for: 'App\\Filament\\User\\Pages')
@@ -49,7 +50,7 @@ class UserPanelProvider extends PanelProvider
                 //     ->group('Settings')
                 //     ->visible(fn () => true)
                 //     ->icon('heroicon-s-shield-check')
-                //     ->sort(-1),  
+                //     ->sort(-1),
             ])
             ->navigationGroups([
                 'Items',
@@ -57,6 +58,7 @@ class UserPanelProvider extends PanelProvider
                 'Locations',
                 'Donations',
                 'Campaigns',
+                'Jobs',
                 'Events',
                 'Testimonials',
                 'Volunteers',
@@ -77,6 +79,7 @@ class UserPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
                 CheckIsUser::class,
+                CheckUserIsNotDisabled::class
             ]);
     }
 }

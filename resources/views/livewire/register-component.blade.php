@@ -19,7 +19,7 @@
                     <div class="login-card">
                         <!-- Logo -->
                         <div class="logo mb-40">
-                            <a href="index.blade.php" class="mb-30 d-block"><img
+                            <a href="{{route('home')}}" class="mb-30 d-block"><img
                                     src="assets/images/logo/Logo-charitfix.png" alt="logo"></a>
                         </div>
                         <!-- Form -->

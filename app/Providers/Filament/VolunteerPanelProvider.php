@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Http\Middleware\CheckIsVolunteer;
+use App\Http\Middleware\CheckUserIsNotDisabled;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -69,6 +70,7 @@ class VolunteerPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
                 CheckIsVolunteer::class,
+                CheckUserIsNotDisabled::class
             ]);
     }
 }

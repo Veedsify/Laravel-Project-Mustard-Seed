@@ -4,6 +4,7 @@ namespace App\Filament\Volunteer\Resources;
 
 use App\Filament\Volunteer\Resources\MyJobResource\Pages;
 use App\Filament\Volunteer\Resources\MyJobResource\RelationManagers;
+use App\Models\Item;
 use App\Models\MyJob;
 use Filament\Forms;
 use Filament\Forms\Components\Group;
@@ -13,6 +14,7 @@ use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -24,6 +26,8 @@ class MyJobResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-s-briefcase';
     protected static ?string $navigationGroup = 'Jobs';
+    protected static ?string $navigationLabel = 'Jobs';
+    protected static ?string $breadcrumb = 'Jobs';
 
     public static function form(Form $form): Form
     {
@@ -31,9 +35,9 @@ class MyJobResource extends Resource
             ->schema([
                 Section::make('Job Information')->schema([
                     Group::make([
-                        Forms\Components\TextInput::make('name')->label('Title')->required(),
-                        Forms\Components\RichEditor::make('description')->label('Description')->required(),
-                        Forms\Components\TextInput::make('location')->label('Location')->required(),
+                        Forms\Components\TextInput::make('name')->label('Title')->required()->readOnly(),
+//                        Forms\Components\RichEditor::make('description')->label('Description')->required(),
+                        Forms\Components\TextInput::make('location')->label('Location')->required()->readOnly(),
                         Select::make('type')->label('Type')->required()->options([
                             'Project' => 'Project',
                             'Professional Service' => 'Professional Service',
@@ -48,13 +52,13 @@ class MyJobResource extends Resource
                             '1 week' => '1 week',
                             '2 weeks' => '2 weeks',
                         ])->native(false),
-                        Forms\Components\TextInput::make('salary')->label('Salary (₦)')->required(),
-                        Forms\Components\TextInput::make('experience')->label('Experience')->required(),
+                        Forms\Components\TextInput::make('salary')->label('Salary (₦)')->required()->readOnly(),
+                        Forms\Components\TextInput::make('experience')->label('Experience')->required()->readOnly(),
                     ])->columnSpan(2),
                     Group::make()->schema([
                         Forms\Components\FileUpload::make('image1')->label('Main Image')->required(),
                         Forms\Components\FileUpload::make('image2')->label('Image 2'),
-                        Toggle::make('status')->label('Job is open')->required(),
+                        Toggle::make('status')->label('Approve Job')->required(),
                     ])
                 ])->columns(3)
             ]);
@@ -64,23 +68,39 @@ class MyJobResource extends Resource
     {
         return $table
         ->modifyQueryUsing(function (Builder $query) {
-            $query->where('user_id', Auth::id());
+            $query->where('volunteer_id', Auth::id());
         })
             ->columns([
-                Tables\Columns\ImageColumn::make('image1'),
-                Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('location'),
-                Tables\Columns\TextColumn::make('type'),
-                Tables\Columns\TextColumn::make('salary'),
-                Tables\Columns\TextColumn::make('duration'),
+                Tables\Columns\ImageColumn::make('image1')->searchable(),
+                Tables\Columns\TextColumn::make('name')->searchable(),
+                Tables\Columns\TextColumn::make('location')->searchable(),
+                Tables\Columns\TextColumn::make('type')->searchable(),
+                Tables\Columns\TextColumn::make('salary')->searchable(),
+                Tables\Columns\TextColumn::make('duration')->searchable(),
                 Tables\Columns\IconColumn::make('status')->boolean()->label('Open'),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+//                Tables\Actions\EditAction::make(),
+                Action::make('UpdateStatus')
+                    ->icon('heroicon-s-arrow-path')
+                    ->label('Update')
+                    ->color('info')
+                    ->requiresConfirmation()
+                    ->form([
+                        Toggle::make('status')
+                            ->default(fn($record) => $record->status)
+                            ->label('Status')
+                            ->required(),
+                    ])
+                    ->action(function (array $data, MyJob $record): void {
+                        $record->update([
+                            'status' => $data['status'],
+                        ]);
+                        $record->save();
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

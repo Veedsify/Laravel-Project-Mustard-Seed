@@ -124,6 +124,10 @@ class User extends Authenticatable implements FilamentUser
         });
     }
 
+    public function events ()
+    {
+        return $this->hasMany(Event::class);
+    }
 
     public function roles()
     {

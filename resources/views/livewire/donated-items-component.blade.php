@@ -7,7 +7,7 @@
             <div class="breadcrumb-text">
                 <nav aria-label="breadcrumb" class="breadcrumb-nav wow fadeInUp" data-wow-delay="0.0s">
                     <ul class="breadcrumb listing">
-                        <li class="breadcrumb-item single-list"><a href="index.blade.php" class="single">Home</a></li>
+                        <li class="breadcrumb-item single-list"><a href="{{route('home')}}" class="single">Home</a></li>
                         <li class="breadcrumb-item single-list" aria-current="page"><a href="javascript:void(0)"
                                 class="single">Donated Items</a></li>
                     </ul>

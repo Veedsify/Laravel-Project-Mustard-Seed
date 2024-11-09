@@ -20,13 +20,13 @@
                  </button>
              </li>
              <!-- Tab 3 -->
-             <li>
-                 <button x-transition @click="activeTab = 2" :aria-selected="activeTab === 2"
-                     :class="{ 'bg-slate-600 text-white dark:text-white': activeTab === 2 }"
-                     class="px-4 py-2 bg-gray-100 rounded font-medium text-black" role="tab">
-                     <span>Privacy</span>
-                 </button>
-             </li>
+{{--             <li>--}}
+{{--                 <button x-transition @click="activeTab = 2" :aria-selected="activeTab === 2"--}}
+{{--                     :class="{ 'bg-slate-600 text-white dark:text-white': activeTab === 2 }"--}}
+{{--                     class="px-4 py-2 bg-gray-100 rounded font-medium text-black" role="tab">--}}
+{{--                     <span>Privacy</span>--}}
+{{--                 </button>--}}
+{{--             </li>--}}
          </ul>
 
          <!-- Panels -->
@@ -36,7 +36,7 @@
              <!-- Panel 2 -->
             <livewire:user.location-settings-component />
              <!-- Panel 3 -->
-            <livewire:user.privacy-settings-component />
+{{--            <livewire:user.privacy-settings-component />--}}
          </div>
      </div>
  </x-filament-panels::page>

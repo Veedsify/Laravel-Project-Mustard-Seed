@@ -95,9 +95,9 @@
         </section>
     @endif
     <!-- End-of helpful-->
-    @if ($data && $data->show_event_section)
+    {{-- @if ($data && $data->show_event_section)
         <livewire:comps.home-urgent-section />
-    @endif
+    @endif --}}
     <!-- Donate S t a r t -->
     <section class="donate-section bottom-padding">
         <div class="container">
@@ -178,89 +178,45 @@
     <!-- End-of Donate -->
 
     @if ($data && $data->show_upcoming_event_section)
-        <div class="our-event-three mb-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-7 mx-auto">
-                        <!-- Section Tittle -->
-                        <div class="section-tittle text-center mb-45">
-                            <h2 class="title font-700">Upcoming Events</h2>
-                            <p class="pera">When deciding which charity to donate to, it's important to do your
-                                research
-                                and
-                                find one that aligns with your values and interests.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="slider center-slider-active">
-                <!-- Single -->
-                <div class="clip event-image-overlay ml-15 mr-15">
-                    <a href="event-details.html"><img class="main-img" src="assets/images/gallery/event-6.png"
-                            alt="image"></a>
-                    <div class="brush-bg">
-                        <img src="assets/images/gallery/brush.png" alt="image">
-                    </div>
-                    <div class="overlay-text">
-                        <h4 class="title"><a href="event-details.html">Your donation, no matter how big or small, can
-                                make.</a>
-                        </h4>
-                        <div class="highlight">
-                            <p class="pera">Leadership, Pro Event</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single -->
-                <div class="clip event-image-overlay ml-15 mr-15">
-                    <a href="event-details.html"> <img class="main-img" src="assets/images/gallery/event-6.png"
-                            alt="image"></a>
-                    <div class="brush-bg">
-                        <img src="assets/images/gallery/brush.png" alt="image">
-                    </div>
-                    <div class="overlay-text">
-                        <h4 class="title"><a href="event-details.html">Your donation, no matter how big or small, can
-                                make.</a>
-                        </h4>
-                        <div class="highlight">
-                            <p class="pera">Leadership, Pro Event</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single -->
-                <div class="clip event-image-overlay ml-15 mr-15">
-                    <a href="#"><img class="main-img" src="assets/images/gallery/event-6.png"
-                            alt="image"></a>
-                    <div class="brush-bg">
-                        <img src="assets/images/gallery/brush.png" alt="image">
-                    </div>
-                    <div class="overlay-text">
-                        <h4 class="title"><a href="event-details.html">Your donation, no matter how big or small, can
-                                make.</a>
-                        </h4>
-                        <div class="highlight">
-                            <p class="pera">Leadership, Pro Event</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single -->
-                <div class="clip event-image-overlay ml-15 mr-15">
-                    <a href="event-details.html"><img class="main-img" src="assets/images/gallery/event-6.png"
-                            alt="image"></a>
-                    <div class="brush-bg">
-                        <img src="assets/images/gallery/brush.png" alt="image">
-                    </div>
-                    <div class="overlay-text">
-                        <h4 class="title"><a href="event-details.html">Your donation, no matter how big or small, can
-                                make.</a>
-                        </h4>
-                        <div class="highlight">
-                            <p class="pera">Leadership, Pro Event</p>
-                        </div>
+    <div class="our-event-three mb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-7 mx-auto">
+                    <!-- Section Tittle -->
+                    <div class="section-tittle text-center mb-45">
+                        <h2 class="title font-700">Upcoming Events</h2>
+                        <p class="pera">
+                            The upcoming events are listed below. Please join us and help the poor.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="slider center-slider-active">
+            <!-- Single -->
+            @foreach ($upcoming_events as $event)
+                <div class="clip event-image-overlay ml-15 mr-15">
+                    <a href="#"><img class="main-img" src="{{ asset('storage/' . $event->image) }}" style="aspect-ratio: 16/9; height: 500px; border-radius: 2rem; object-fit: cover"
+                            alt="image"></a>
+                    <div class="brush-bg">
+                        <img src="{{ asset('assets/images/gallery/brush.png') }}" alt="image">
+                    </div>
+                    <div class="overlay-text">
+                        <h4 class="title"><a href="#">
+                                {{ $event->name }}
+                        </a>
+                        </h4>
+                        <div class="highlight">
+                            <p class="pera">
+                                {{ $event->location }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
     @endif
 
 
@@ -279,7 +235,7 @@
                         <!-- Section Tittle -->
                         <div class="section-tittle text-center mb-50">
                             <span class="sub-tittle text-capitalize font-600">Testimonials</span>
-                            <h2 class="title font-700">What People Say</h2>
+                            <h2 class="title font-700">What Our Donors Say</h2>
                         </div>
                     </div>
                 </div>
@@ -288,8 +244,8 @@
                         <div class="single-testimonial position-relative">
                             <div class="client-info">
                                 <div class="client-details">
-                                    <h3 class="name">Robart Jonson</h3>
-                                    <p class="location">United , Canada</p>
+                                    <h3 class="name">Sarah Thompson</h3>
+                                    <p class="location">Monthly Donor</p>
                                 </div>
                                 <div class="rating">
                                     <i class="ri-star-fill"></i>
@@ -301,11 +257,10 @@
                             </div>
                             <div class="position-relative">
                                 <p class="pera">
-                                    <i>These questions are used to provoke thought and discussion. They can be used
-                                        to challenge the other person's assumptions, such as "Do you really think
-                                        that's true?", or to get them to think about a different perspective, such
-                                        as "What if we tried it this way? The specific questions to ask may vary
-                                        depending on the context and the information you are seeking.</i>
+                                    <i>"I've been donating monthly for over a year now, and it's incredible to see the
+                                        impact we're making together. The transparency in how funds are used and regular
+                                        updates about the projects make me confident in my decision to support this
+                                        cause."</i>
                                 </p>
                                 <div class="position-absolute quote">
                                     <div class="rounded-btn">
@@ -317,8 +272,8 @@
                         <div class="single-testimonial position-relative">
                             <div class="client-info">
                                 <div class="client-details">
-                                    <h3 class="name">Adam John</h3>
-                                    <p class="location">United , UAE</p>
+                                    <h3 class="name">Michael Chen</h3>
+                                    <p class="location">Volunteer & Donor</p>
                                 </div>
 
                                 <div class="rating">
@@ -330,12 +285,11 @@
                                 </div>
                             </div>
                             <div class="position-relative">
-                                <p class="pera pb-80">
-                                    <i>These questions are used to provoke thought and discussion. They can be used
-                                        to challenge the other person's assumptions, such as "Do you really think
-                                        that's true?", or to get them to think about a different perspective, such
-                                        as "What if we tried it this way? The specific questions to ask may vary
-                                        depending on the context and the information you are seeking.</i>
+                                <p class="pera">
+                                    <i>"As both a volunteer and donor, I've seen firsthand how every contribution makes
+                                        a difference. The dedication of the team and the direct impact on communities is
+                                        truly inspiring. This organization genuinely cares about making positive
+                                        change."</i>
                                 </p>
                                 <div class="position-absolute quote">
                                     <div class="rounded-btn">
@@ -347,8 +301,8 @@
                         <div class="single-testimonial position-relative">
                             <div class="client-info">
                                 <div class="client-details">
-                                    <h3 class="name">John Doe</h3>
-                                    <p class="location">Mexico, USA</p>
+                                    <h3 class="name">Emily Rodriguez</h3>
+                                    <p class="location">Project Supporter</p>
                                 </div>
 
                                 <div class="rating">
@@ -360,12 +314,13 @@
                                 </div>
                             </div>
                             <div class="position-relative">
-                                <p class="pera pb-80">
-                                    <i>These questions are used to provoke thought and discussion. They can be used
-                                        to challenge the other person's assumptions, such as "Do you really think
-                                        that's true?", or to get them to think about a different perspective, such
-                                        as "What if we tried it this way? The specific questions to ask may vary
-                                        depending on the context and the information you are seeking.</i>
+                                <p class="pera">
+                                    <i>"What sets this charity apart is their commitment to sustainable change. They
+                                        don't
+                                        just provide temporary solutions - they work with communities to create lasting
+                                        impact.
+                                        The regular progress reports and photos make me feel connected to the
+                                        cause."</i>
                                 </p>
                                 <div class="position-absolute quote">
                                     <div class="rounded-btn">

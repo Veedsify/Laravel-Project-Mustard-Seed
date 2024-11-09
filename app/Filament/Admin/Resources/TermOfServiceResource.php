@@ -41,7 +41,7 @@ class TermOfServiceResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('title'),
+                TextColumn::make('title')->searchable()->sortable(),
                 TextColumn::make('content')->words('20')->html()
             ])
             ->paginated(false)

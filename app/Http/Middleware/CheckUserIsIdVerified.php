@@ -19,10 +19,17 @@ class CheckUserIsIdVerified
         if (!Auth::check()) {
             return redirect()->route('login');
         }
-        if (!Auth::user()->idVerified) {
+        // if request is logout then allow
+        if ($request->path() === 'user/logout' && $request->isMethod('post')) {
+            return $next($request);
+        }
+        
+        // if request is for verification page then allow
+        $user = Auth::user();
+        if (!$user || !$user->idVerified) {
             return redirect('/user/verification')->with('error', 'You have not started your face verification process.');
         }
-        if (!Auth::user()->idVerified->verification_status) {
+        if (!$user->idVerified->verification_status) {
             return redirect('/user/verification')->with('error', 'Your face verification is still pending. Please wait for the verification to complete.');
         }
         return $next($request);

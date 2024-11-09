@@ -6,9 +6,9 @@
                     <div class="menu-wrapper d-flex align-items-center justify-content-between">
                         <div class="header-left d-flex align-items-center justify-content-between">
                             <!-- Logo-->
-                            <div>   
-                                <div class="logo">
-                                    <a href="index.blade.php"><img width="70"
+                            <div>
+                                <div class="logo mb-2">
+                                    <a href="{{route('home')}}"><img width="70"
                                             src="{{ asset('storage/' . optional($homePage)->logo) }}" alt="logo"></a>
                                 </div>
                                 <p class="text-white w-50">

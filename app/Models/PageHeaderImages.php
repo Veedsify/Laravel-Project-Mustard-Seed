@@ -20,5 +20,6 @@ class PageHeaderImages extends Model
         'privacy_page_header_image',
         'terms_page_header_image',
         'contact_page_header_image',
+        'jobs_page_header_image',
     ];
 }

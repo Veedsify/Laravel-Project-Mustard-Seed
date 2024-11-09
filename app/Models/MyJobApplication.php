@@ -17,10 +17,12 @@ class MyJobApplication extends Model
         'email',
         'phone',
         'cover_letter',
+        'resume',
+        'approved'
     ];
 
     public function job (){
-        return $this->belongsTo(MyJob::class);
+        return $this->belongsTo(MyJob::class, 'my_job_id');
     }
 
 }

@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('my_job_applications', function (Blueprint $table) {
             $table->id();
             $table->foreignId('my_job_id')->constrained()->onDelete('cascade');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');            
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->string('email');
             $table->string('phone');
-            $table->string('cover_letter');
+            $table->longText('cover_letter');
+            $table->string('resume');
+            $table->boolean('approved')->default(false);
             $table->timestamps();
         });
     }

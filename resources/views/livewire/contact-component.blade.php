@@ -2,12 +2,12 @@
 <main>
     <!-- Breadcrumb Area S t a r t -->
     <section class="breadcrumb-section breadcrumb-bg"
-        style="background-image: url({{ asset('storage/' . optional($headerImages)->contact_page_header_image) }}); background-size: cover; background-position: center;"">
+        style="background-image: url({{ asset('storage/' . optional($headerImages)->contact_page_header_image) }}); background-size: cover; background-position: center;">
         <div class="container">
             <div class="breadcrumb-text">
                 <nav aria-label="breadcrumb" class="breadcrumb-nav wow fadeInUp" data-wow-delay="0.0s">
                     <ul class="breadcrumb listing">
-                        <li class="breadcrumb-item single-list"><a href="index.blade.php" class="single">Home</a></li>
+                        <li class="breadcrumb-item single-list"><a href="{{route('home')}}" class="single">Home</a></li>
                         <li class="breadcrumb-item single-list" aria-current="page"><a href="javascript:void(0)"
                                 class="single">contact</a></li>
                     </ul>

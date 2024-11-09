@@ -9,7 +9,8 @@ use Filament\Resources\Pages\ListRecords;
 class ListMyJobs extends ListRecords
 {
     protected static string $resource = MyJobResource::class;
-
+    protected static ?string $title = 'Jobs assigned to me';
+    protected static ?string $breadcrumb = 'All Jobs';
     protected function getHeaderActions(): array
     {
         return [

@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Campaign;
+use App\Models\Event;
 use App\Models\HomepageData;
 use App\Models\Service;
 use Illuminate\Database\Eloquent\Builder;
@@ -22,11 +23,13 @@ class HomeComponent extends Component
             ->get();
 
         $services = Service::where('service_status', true)->orderBy('service_name', 'DESC')->get()->take(4);
+        $upcoming_events = Event::latest()->limit(4)->get();
 
         return view('livewire.home-component', [
             'data' => HomepageData::first(),
             'services' => $services,
-            'campaigns' => $campaigns
+            'campaigns' => $campaigns,
+            'upcoming_events' => $upcoming_events
         ]);
     }
 }

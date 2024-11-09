@@ -56,7 +56,6 @@ class ContactComponentForm extends Component
         $this->sendMail($contact, $this->email);
         $this->reset();
         $this->dispatch('notify', message: 'We have received your message and will get back to you soon.');
-
     }
 
     public function render()

@@ -71,10 +71,10 @@ class ItemResource extends Resource
             ->emptyStateDescription('It seems like there are no donations here at the moment.')
             ->columns([
                 Tables\Columns\ImageColumn::make('image'),
-                Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('description'),
-                Tables\Columns\TextColumn::make('quantity'),
-                Tables\Columns\TextColumn::make('unit'),
+                Tables\Columns\TextColumn::make('name')->searchable(),
+                Tables\Columns\TextColumn::make('description')->searchable(),
+                Tables\Columns\TextColumn::make('quantity')->searchable(),
+                Tables\Columns\TextColumn::make('unit')->searchable(),
                 Tables\Columns\TextColumn::make('status')
                     ->tooltip(fn($record) => $record->status ? 'Active' : 'Pending Approval')
                     ->badge()

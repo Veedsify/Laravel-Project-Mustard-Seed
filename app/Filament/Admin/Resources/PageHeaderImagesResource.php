@@ -3,9 +3,7 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\PageHeaderImagesResource\Pages;
-use App\Filament\Admin\Resources\PageHeaderImagesResource\RelationManagers;
 use App\Models\PageHeaderImages;
-use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
@@ -13,8 +11,6 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class PageHeaderImagesResource extends Resource
 {
@@ -29,39 +25,42 @@ class PageHeaderImagesResource extends Resource
         return $form
             ->schema([
                 Section::make("Banner Image")
-                ->description("Upload images for each page header.")
-                ->schema([
-                    FileUpload::make('home_page_header_image')
-                        ->label('Home Page Header Image')
-                        ->columnSpan(1),
-                    FileUpload::make('about_page_header_image')
-                        ->label('About Page Header Image')
-                        ->columnSpan(1),
-                    FileUpload::make('campaigns_page_header_image')
-                        ->label('Campaigns Page Header Image')
-                        ->columnSpan(1),
-                    FileUpload::make('donations_page_header_image')
-                        ->label('Donations Page Header Image')
-                        ->columnSpan(1),
-                    FileUpload::make('blogs_page_header_image')
-                        ->label('Blogs Page Header Image')
-                        ->columnSpan(1),
-                    FileUpload::make('volunteers_page_header_image')
-                        ->label('Volunteers Page Header Image')
-                        ->columnSpan(1),
-                    FileUpload::make('faq_page_header_image')
-                        ->label('FAQ Page Header Image')
-                        ->columnSpan(1),
-                    FileUpload::make('privacy_page_header_image')
-                        ->label('Privacy Page Header Image')
-                        ->columnSpan(1),
-                    FileUpload::make('terms_page_header_image')
-                        ->label('Terms Page Header Image')
-                        ->columnSpan(1),
-                    FileUpload::make('contact_page_header_image')
-                        ->label('Contact Page Header Image')
-                        ->columnSpan(1),
-                ])->columns(2)
+                    ->description("Upload images for each page header.")
+                    ->schema([
+                        FileUpload::make('home_page_header_image')
+                            ->label('Home Page Header Image')
+                            ->columnSpan(1),
+                        FileUpload::make('about_page_header_image')
+                            ->label('About Page Header Image')
+                            ->columnSpan(1),
+                        FileUpload::make('campaigns_page_header_image')
+                            ->label('Campaigns Page Header Image')
+                            ->columnSpan(1),
+                        FileUpload::make('donations_page_header_image')
+                            ->label('Donations Page Header Image')
+                            ->columnSpan(1),
+                        FileUpload::make('blogs_page_header_image')
+                            ->label('Blogs Page Header Image')
+                            ->columnSpan(1),
+                        FileUpload::make('volunteers_page_header_image')
+                            ->label('Volunteers Page Header Image')
+                            ->columnSpan(1),
+                        FileUpload::make('faq_page_header_image')
+                            ->label('FAQ Page Header Image')
+                            ->columnSpan(1),
+                        FileUpload::make('privacy_page_header_image')
+                            ->label('Privacy Page Header Image')
+                            ->columnSpan(1),
+                        FileUpload::make('terms_page_header_image')
+                            ->label('Terms Page Header Image')
+                            ->columnSpan(1),
+                        FileUpload::make('contact_page_header_image')
+                            ->label('Contact Page Header Image')
+                            ->columnSpan(1),
+                        FileUpload::make('jobs_page_header_image')
+                            ->label('Jobs Page Header Image')
+                            ->columnSpan(1),
+                    ])->columns(2),
             ]);
     }
 

@@ -10,7 +10,7 @@
             <div class="breadcrumb-text">
                 <nav aria-label="breadcrumb" class="breadcrumb-nav wow fadeInUp" data-wow-delay="0.0s">
                     <ul class="breadcrumb listing">
-                        <li class="breadcrumb-item single-list"><a href="index.blade.php" class="single">Home</a></li>
+                        <li class="breadcrumb-item single-list"><a href="{{route('home')}}" class="single">Home</a></li>
                         <li class="breadcrumb-item single-list" aria-current="page"><a href="javascript:void(0)"
                                 class="single">Donation </a></li>
                     </ul>
@@ -85,60 +85,60 @@
                     </div>
                     <!-- Donors -->
 
-                    <div class="row py-5 gy-24">
-                        <div class="col-12">
-                            <h3 class="title">Donors</h3>
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-sm-6 col-xs-12">
-                            <div class="donor-card">
-                                <div class="donor-img">
-                                    <img src="{{ asset('assets/images/gallery/donor-1.png') }}" alt="image">
-                                </div>
-                                <div class="donor-content">
-                                    <h4 class="title">David Warner</h4>
-                                    <p class="amount">$500</p>
-                                    <p class="pera">July 09,2023</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-sm-6 col-xs-12">
-                            <div class="donor-card">
-                                <div class="donor-img">
-                                    <img src="assets/images/gallery/donor-2.png" alt="image">
-                                </div>
-                                <div class="donor-content">
-                                    <h4 class="title">Carry Jon</h4>
-                                    <p class="amount">$500</p>
-                                    <p class="pera">July 09,2023</p>
-                                </div>
-                            </div>
-                        </div>
+{{--                    <div class="row py-5 gy-24">--}}
+{{--                        <div class="col-12">--}}
+{{--                            <h3 class="title">Donors</h3>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-xl-3 col-lg-4 col-sm-6 col-xs-12">--}}
+{{--                            <div class="donor-card">--}}
+{{--                                <div class="donor-img">--}}
+{{--                                    <img src="{{ asset('assets/images/gallery/donor-1.png') }}" alt="image">--}}
+{{--                                </div>--}}
+{{--                                <div class="donor-content">--}}
+{{--                                    <h4 class="title">David Warner</h4>--}}
+{{--                                    <p class="amount">$500</p>--}}
+{{--                                    <p class="pera">July 09,2023</p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-xl-3 col-lg-4 col-sm-6 col-xs-12">--}}
+{{--                            <div class="donor-card">--}}
+{{--                                <div class="donor-img">--}}
+{{--                                    <img src="assets/images/gallery/donor-2.png')}}" alt="image">--}}
+{{--                                </div>--}}
+{{--                                <div class="donor-content">--}}
+{{--                                    <h4 class="title">Carry Jon</h4>--}}
+{{--                                    <p class="amount">$500</p>--}}
+{{--                                    <p class="pera">July 09,2023</p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <div class="col-xl-3 col-lg-4 col-sm-6 col-xs-12">
-                            <div class="donor-card">
-                                <div class="donor-img">
-                                    <img src="assets/images/gallery/donor-3.png" alt="image">
-                                </div>
-                                <div class="donor-content">
-                                    <h4 class="title">Maxwell</h4>
-                                    <p class="amount">$500</p>
-                                    <p class="pera">July 09,2023</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-sm-6 col-xs-12">
-                            <div class="donor-card">
-                                <div class="donor-img">
-                                    <img src="assets/images/gallery/donor-4.png" alt="image">
-                                </div>
-                                <div class="donor-content">
-                                    <h4 class="title">Cary Minuti</h4>
-                                    <p class="amount">$500</p>
-                                    <p class="pera">July 09,2023</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+{{--                        <div class="col-xl-3 col-lg-4 col-sm-6 col-xs-12">--}}
+{{--                            <div class="donor-card">--}}
+{{--                                <div class="donor-img">--}}
+{{--                                    <img src="assets/images/gallery/donor-3.png')}}" alt="image">--}}
+{{--                                </div>--}}
+{{--                                <div class="donor-content">--}}
+{{--                                    <h4 class="title">Maxwell</h4>--}}
+{{--                                    <p class="amount">$500</p>--}}
+{{--                                    <p class="pera">July 09,2023</p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-xl-3 col-lg-4 col-sm-6 col-xs-12">--}}
+{{--                            <div class="donor-card">--}}
+{{--                                <div class="donor-img">--}}
+{{--                                    <img src="assets/images/gallery/donor-4.png')}}" alt="image">--}}
+{{--                                </div>--}}
+{{--                                <div class="donor-content">--}}
+{{--                                    <h4 class="title">Cary Minuti</h4>--}}
+{{--                                    <p class="amount">$500</p>--}}
+{{--                                    <p class="pera">July 09,2023</p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
                 <div class="col-xxl-3 col-xl-4 col-lg-4">
                     <div class="right-element">
@@ -204,25 +204,25 @@
     <div class="gallery-area">
         <div class="gallery-slider d-flex">
             <div class="gallery-img">
-                <img src="assets/images/gallery/gallery-1.png" alt="img">
+                <img src="{{ asset('assets/images/gallery/gallery-1.png')}}" alt="img">
             </div>
             <div class="gallery-img">
-                <img src="assets/images/gallery/gallery-2.png" alt="img">
+                <img src="{{ asset('assets/images/gallery/gallery-2.png')}}" alt="img">
             </div>
             <div class="gallery-img">
-                <img src="assets/images/gallery/gallery-3.png" alt="img">
+                <img src="{{ asset('assets/images/gallery/gallery-3.png')}}" alt="img">
             </div>
             <div class="gallery-img">
-                <img src="assets/images/gallery/gallery-4.png" alt="img">
+                <img src="{{ asset('assets/images/gallery/gallery-4.png')}}" alt="img">
             </div>
             <div class="gallery-img">
-                <img src="assets/images/gallery/gallery-2.png" alt="img">
+                <img src="{{ asset('assets/images/gallery/gallery-2.png')}}" alt="img">
             </div>
             <div class="gallery-img">
-                <img src="assets/images/gallery/gallery-3.png" alt="img">
+                <img src="{{ asset('assets/images/gallery/gallery-3.png')}}" alt="img">
             </div>
             <div class="gallery-img">
-                <img src="assets/images/gallery/gallery-1.png" alt="img">
+                <img src="{{ asset('assets/images/gallery/gallery-1.png')}}" alt="img">
             </div>
         </div>
     </div>

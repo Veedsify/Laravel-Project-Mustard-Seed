@@ -2,9 +2,9 @@
 
 namespace App\Filament\Admin\Resources;
 
-use App\Filament\Admin\Resources\EventCategoryResource\Pages;
-use App\Filament\Admin\Resources\EventCategoryResource\RelationManagers;
-use App\Models\EventCategory;
+use App\Filament\Admin\Resources\MyJobApplicationResource\Pages;
+use App\Filament\Admin\Resources\MyJobApplicationResource\RelationManagers;
+use App\Models\MyJobApplication;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,12 +13,12 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class EventCategoryResource extends Resource
+class MyJobApplicationResource extends Resource
 {
-    protected static ?string $model = EventCategory::class;
+    protected static ?string $model = MyJobApplication::class;
 
-    protected static ?string $navigationIcon = 'heroicon-s-users';
-    protected static ?string $navigationGroup = 'Events';
+    protected static ?string $navigationIcon = 'heroicon-s-book-open';
+    protected static ?string $navigationGroup = 'Jobs';
 
     public static function form(Form $form): Form
     {
@@ -57,9 +57,9 @@ class EventCategoryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListEventCategories::route('/'),
-            'create' => Pages\CreateEventCategory::route('/create'),
-            'edit' => Pages\EditEventCategory::route('/{record}/edit'),
+            'index' => Pages\ListMyJobApplications::route('/'),
+            'create' => Pages\CreateMyJobApplication::route('/create'),
+            'edit' => Pages\EditMyJobApplication::route('/{record}/edit'),
         ];
     }
 }

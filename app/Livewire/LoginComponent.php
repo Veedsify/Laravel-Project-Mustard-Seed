@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class LoginComponent extends Component
 {
-    public $id;
+    // public $id;
     public function mount()
     {
         $userFromQuery = request()->query('id') ?? null;

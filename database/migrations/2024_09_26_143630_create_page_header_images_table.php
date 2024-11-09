@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('privacy_page_header_image')->nullable();
             $table->string('terms_page_header_image')->nullable();
             $table->string('contact_page_header_image')->nullable();
+            $table->string('jobs_page_header_image')->nullable();
             $table->timestamps();
         });
     }

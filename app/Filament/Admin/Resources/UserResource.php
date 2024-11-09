@@ -81,8 +81,8 @@ class UserResource extends Resource
         return $table
             ->columns([
                 TextColumn::class::make('name')->sortable()->searchable(),
-                TextColumn::class::make('role')->sortable(),
-                TextColumn::class::make('email')->sortable(),
+                TextColumn::class::make('role')->sortable()->searchable(),
+                TextColumn::class::make('email')->sortable()->searchable(),
                 TextColumn::class::make('admin_approved')->getStateUsing((
                     fn($record) => $record->admin_approved ? 'Approved' : 'Not Approved'
                 ))->label('Admin Approved')

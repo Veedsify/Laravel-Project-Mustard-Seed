@@ -17,8 +17,11 @@ class Verification extends Page
 
     public static function canAccess(): bool
     {
+        if (!Auth::check()) {
+            return false;
+        }
         $user = User::find(Auth::id());
-        return !optional($user->idVerified)->verification_status;
+        return optional($user->idVerified)->verification_status === false; 
     }
 
     public $step = 1;

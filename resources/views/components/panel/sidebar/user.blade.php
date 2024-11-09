@@ -2,7 +2,7 @@
     Actions
 </li>
 <li>
-    <a href="index.html" class="active"><i class="material-icons">dashboard</i>Dashboard</a>
+    <a href="{{route('home')}}" class="active"><i class="material-icons">dashboard</i>Dashboard</a>
 </li>
 <li>
     <a href="profile.html"><i class="material-icons">person_outline</i>Profile</a>

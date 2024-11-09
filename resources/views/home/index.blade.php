@@ -17,11 +17,11 @@
                   <div class="header-left d-flex align-items-center justify-content-between">
                     <!-- Logo-->
                     <div class="logo logo-large light-logo">
-                      <a href="index.html"><img src="assets/images/logo/Logo-charitfix.png" alt="logo"></a>
+                      <a href="{{route('home')}}"><img src="assets/images/logo/Logo-charitfix.png" alt="logo"></a>
                     </div>
                     <!-- Logo Mobile-->
                     <div class="logo logo-mobile light-logo">
-                      <a href="index.html"><img src="assets/images/icon/favicon.png" alt="img"></a>
+                      <a href="{{route('home')}}"><img src="assets/images/icon/favicon.png" alt="img"></a>
                     </div>
                   </div>
 
@@ -684,14 +684,14 @@
                 <div class="header-left d-flex align-items-center justify-content-between">
                   <!-- Logo-->
                   <div class="logo">
-                    <a href="index.html"><img src="assets/images/logo/dark.png" alt="logo"></a>
+                    <a href="{{route('home')}}"><img src="assets/images/logo/dark.png" alt="logo"></a>
                   </div>
                 </div>
                 <!-- Footer-menu -->
                 <div class="main-menu d-none d-lg-block">
                   <nav>
                     <ul class="listing" id="navigation2">
-                      <li class="single-list"><a href="index.html" class="single">Home</a></li>
+                      <li class="single-list"><a href="{{route('home')}}" class="single">Home</a></li>
                       <li class="single-list"><a href="donation.html" class="single">Donation</a></li>
                       <li class="single-list"><a href="about.html" class="single">About</a></li>
                       <li class="single-list"><a href="blog.html" class="single">Blog</a></li>
