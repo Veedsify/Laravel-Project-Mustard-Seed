@@ -64,7 +64,7 @@
                                             }
                                         </style>
                                         <div class="subtitle" id="content">
-                                            {!! Str::limit($campaign->description, 50) !!}
+                                            {!! Str::limit($campaign->description, 150) !!}
                                         </div>
                                         <div class="progress custom-progress-two">
                                             <div class="progress-bar" style="width: {{$percentage}}%"></div>
