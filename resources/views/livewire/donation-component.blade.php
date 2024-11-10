@@ -58,7 +58,12 @@
                                                 {{$campaign->name}}
                                             </a>
                                         </h4>
-                                        <div class="subtitle">
+                                        <style>
+                                            #content * {
+                                                all : unset !important;
+                                            }
+                                        </style>
+                                        <div class="subtitle" id="content">
                                             {!! Str::limit($campaign->description, 50) !!}
                                         </div>
                                         <div class="progress custom-progress-two">
