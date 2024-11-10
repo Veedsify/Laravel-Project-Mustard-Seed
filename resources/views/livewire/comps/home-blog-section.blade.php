@@ -15,7 +15,7 @@
                 <div class="single-blog h-calc wow-dis fadeInUp" data-wow-delay="0.2s">
                     <div class="blog-img position-relative" data-time="{{$blog->created_at->format('d, M Y')}}">
                         <a href="{{route('blog.details', [$blog->slug])}}">
-                            <img src="{{asset($blog->image)}}" class="img-fluid w-100" alt="img">
+                            <img src="{{asset('storage/' . $blog->image)}}" class="img-fluid w-100" alt="img">
                         </a>
                     </div>
                     <div class="blog-info">
