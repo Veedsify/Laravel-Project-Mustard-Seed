@@ -76,7 +76,7 @@
                                                 </a>
                                             </h4>
                                             <p class="subtitle">
-                                                {{ Str::limit($blog->content, 150) }}
+                                                {!! Str::limit($blog->content, 150) !!}
                                             </p>
                                         </div>
                                     </div>
