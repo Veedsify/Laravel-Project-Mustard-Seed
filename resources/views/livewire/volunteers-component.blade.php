@@ -27,7 +27,7 @@
                         <div class="single-team h-calc">
                             <div class="team-img">
                                 <a href="{{ route('volunteers.details', [$volunteer->username]) }}">
-                                    <img src="{{ asset('storage/' . $volunteer->avatar) }}" class="img-fluid w-100"
+                                    <img src="{{ asset('storage/' . $volunteer->volunteer_settings->image) }}" class="img-fluid w-100"
                                         alt="img">
                                 </a>
                             </div>
