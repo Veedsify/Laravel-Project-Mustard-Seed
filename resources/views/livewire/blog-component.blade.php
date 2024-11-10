@@ -75,7 +75,12 @@
                                                     {{ $blog->title }}
                                                 </a>
                                             </h4>
-                                            <div class="subtitle" style="all: unset;">
+                                            <style>
+                                                #content {
+                                                    all : unset !important;
+                                                }
+                                            </style>
+                                            <div class="subtitle" id="content">
                                                 {!! Str::limit($blog->content, 150) !!}
                                             </div>
                                         </div>
