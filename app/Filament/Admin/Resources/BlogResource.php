@@ -8,6 +8,7 @@ use App\Models\Blog;
 use Filament\Forms;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -55,7 +56,8 @@ class BlogResource extends Resource
                         Forms\Components\Select::make('category_id')->label('Category')->options(function () {
                             return \App\Models\Category::pluck('name', 'id');
                         })->required()->columnSpan('full')->searchable()
-                    ])->description('add post category')
+                    ])->description('add post category'),
+                    Toggle::make('is_published')->label('Publish')
                 ])->columnSpan(2),
                 Group::make()->schema([
                     Forms\Components\Section::make("Editor")->schema([
