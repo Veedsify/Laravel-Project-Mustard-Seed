@@ -15,6 +15,12 @@ class Blog extends Model
         'views', 'likes', 'dislikes',
     ];
 
+    public static function booted(){
+        static::creating(function($blog){
+            $blog->user_id = auth()->id();
+        });
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);
