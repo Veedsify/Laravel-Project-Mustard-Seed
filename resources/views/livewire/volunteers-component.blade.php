@@ -2,7 +2,6 @@
     <!-- Breadcrumb Area S t a r t -->
     <section class="breadcrumb-section breadcrumb-bg"
         style="background-image: url({{  asset('storage/' . optional($headerImages)->volunteers_page_header_image) }}); background-size: cover; background-position: center;">
-        >
         <div class="container">
             <div class="breadcrumb-text">
                 <nav aria-label="breadcrumb" class="breadcrumb-nav wow fadeInUp" data-wow-delay="0.0s">
