@@ -10,7 +10,7 @@
                             <table width="100%" style="width:100%" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td width="50%">
-                                        <img src="logo.png" alt="Logo" class="logo">
+                                        <img src="{{ asset('storage/' . optional($homePage)->logo) }}" width="50" alt="Logo" class="logo">
                                     </td>
                                     <td width="50%" align="right" class="text-green">
                                         Welcome Volunteer!
