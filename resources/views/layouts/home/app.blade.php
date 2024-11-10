@@ -50,6 +50,11 @@
         <!-- RTL CSS::When Need RTL Uncomments File -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <style>
+            #content * {
+                all : unset !important;
+            }
+        </style>
         @livewireStyles
     </head>
 

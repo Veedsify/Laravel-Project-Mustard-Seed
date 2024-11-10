@@ -137,7 +137,7 @@
                                                 {{ $campaign->name }}
                                             </a>
                                         </h4>
-                                        <div class="subtitle">
+                                        <div class="subtitle" id="content">
                                             {!! Str::limit($campaign->description, 150) !!}
                                         </div>
                                         <div class="progress custom-progress-two">
