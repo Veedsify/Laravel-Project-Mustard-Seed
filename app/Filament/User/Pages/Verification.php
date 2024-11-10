@@ -21,7 +21,7 @@ class Verification extends Page
             return false;
         }
         $user = User::find(Auth::id());
-        return optional($user->idVerified)->verification_status === false; 
+        return !optional($user->idVerified)->verification_status; 
     }
 
     public $step = 1;
