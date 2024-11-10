@@ -60,10 +60,10 @@
                             <li class="single-list"><a href="{{ route('faq') }}" class="single" wire:navigate>FAQs</a>
                             </li>
                             <li class="single-list"><a href="{{ route('privacy.policy') }}" class="single"
-                                    wire:navigate>privacy
-                                    policy</a></li>
+                                    wire:navigate>Privacy
+                                    Policy</a></li>
                             <li class="single-list"><a href="{{ route('terms') }}" class="single"
-                                    wire:navigate>terms-condition</a></li>
+                                    wire:navigate>Terms & Condition</a></li>
                         </ul>
                     </div>
                 </div>
@@ -81,14 +81,14 @@
                                     </a>
                                 </div>
                             </li>
-                            <li class="single-list">
+                            {{-- <li class="single-list">
                                 <div class="d-flex align-items-center gap-10 mb-20">
                                     <div class="imp-icon">
                                         <i class="ri-phone-fill"></i>
                                     </div>
                                     <a class="single" href="javascript:void(0)"> {{ optional($footerContactData)->phone }}</a>
                                 </div>
-                            </li>
+                            </li> --}}
                             <li class="single-list">
                                 <div class="d-flex align-items-center gap-10 mb-20">
                                     <div class="imp-icon">
