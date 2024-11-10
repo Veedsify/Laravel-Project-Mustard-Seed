@@ -75,9 +75,9 @@
                                                     {{ $blog->title }}
                                                 </a>
                                             </h4>
-                                            <p class="subtitle">
+                                            <div class="subtitle" style="all: unset;">
                                                 {!! Str::limit($blog->content, 150) !!}
-                                            </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
