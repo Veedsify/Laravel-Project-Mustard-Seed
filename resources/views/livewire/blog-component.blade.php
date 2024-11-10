@@ -76,7 +76,7 @@
                                                 </a>
                                             </h4>
                                             <style>
-                                                #content {
+                                                #content * {
                                                     all : unset !important;
                                                 }
                                             </style>
