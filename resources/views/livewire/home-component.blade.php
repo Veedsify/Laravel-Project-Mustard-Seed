@@ -72,7 +72,7 @@
     @if ($data && $data->show_feature_section)
         <section class="helpful-area">
             <div class="container">
-                <div class="row gy-24">
+                <div class="row gy-24 mb-5">
                     @foreach ($services as $service)
                         <div class="col-xl-3 col-md-6 col-lg-6">
                             <div class="helpful-card h-calc  wow-dis fadeInLeft" data-wow-delay="0.2s">
