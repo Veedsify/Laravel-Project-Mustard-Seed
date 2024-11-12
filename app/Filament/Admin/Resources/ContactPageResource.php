@@ -3,9 +3,7 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\ContactPageResource\Pages;
-use App\Filament\Admin\Resources\ContactPageResource\RelationManagers;
 use App\Models\ContactPage;
-use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -14,8 +12,6 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ContactPageResource extends Resource
 {
@@ -31,8 +27,7 @@ class ContactPageResource extends Resource
                 Section::make('Contact Information')->schema([
                     TextInput::make('phone')
                         ->label('Phone')
-                        ->placeholder('Enter the phone number')
-                        ->required(),
+                        ->placeholder('Enter the phone number'), 
                     TextInput::make('email')
                         ->label('Email')
                         ->placeholder('Enter the email address')
@@ -70,19 +65,19 @@ class ContactPageResource extends Resource
     {
         return $table
             ->columns([
-               TextColumn::make('phone')
+                TextColumn::make('phone')
                     ->searchable()
                     ->label('Phone'),
-               TextColumn::make('email')
+                TextColumn::make('email')
                     ->searchable()
                     ->label('Email'),
-               TextColumn::make('location')
+                TextColumn::make('location')
                     ->searchable()
                     ->label('Location'),
-               TextColumn::make('address')
+                TextColumn::make('address')
                     ->searchable()
                     ->label('Address'),
-               TextColumn::make('facebook')
+                TextColumn::make('facebook')
                     ->searchable()
                     ->label('Facebook'),
             ])
@@ -95,7 +90,7 @@ class ContactPageResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    // Tables\Actions\DeleteBulkAction::make(), 
+                    // Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }

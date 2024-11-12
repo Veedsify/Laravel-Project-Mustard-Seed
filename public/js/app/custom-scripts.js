@@ -1,8 +1,8 @@
 console.log('FIlament and There');
 
 AWS.config.update({
-     accessKeyId: 'AKIA44U26FALAXIDBKB5', // Replace with your access key
-     secretAccessKey: 'ZPQZAMVtJoqusYMRHJCR5Z55kJF7/9gcd6yESsOo', // Replace with your secret key
+     accessKeyId: 'AKIATG6MGVBEEOHFO7VI', // Replace with your access key
+     secretAccessKey: 'lpziAmDpqFmCssdVLU+VDIeoWbRFqOSN+zMFG2S3', // Replace with your secret key
      region: 'us-east-2' // Replace with your region
 });
 

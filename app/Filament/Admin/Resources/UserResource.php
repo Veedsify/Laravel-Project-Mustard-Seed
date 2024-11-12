@@ -62,7 +62,7 @@ class UserResource extends Resource
                                     ->pluck('name', 'id')
                             )
                             ->native(false)
-                            ->label('Location'),
+                            ->label('State'),
                         Forms\Components\Select::make('roles')
                             ->label('Roles')
                             ->relationship('roles', 'name') // This is where you define the pivot relationship

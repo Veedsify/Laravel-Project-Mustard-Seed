@@ -3,6 +3,7 @@
 namespace App\Filament\User\Resources;
 
 use App\Filament\User\Resources\ItemResource\Pages;
+use App\Filament\User\Resources\ItemResource\RelationManagers;
 use App\Filament\User\Resources\ItemResource\Widgets\TotalDonations;
 use App\Models\Item;
 use Filament\Forms;
@@ -23,10 +24,10 @@ class ItemResource extends Resource
     protected static ?string $navigationLabel = 'Donate';
     protected static ?string $title = 'New Donation';
 
-    public static function canEdit($record): bool
-    {
-        return false;
-    }
+    // public static function canEdit($record): bool
+    // {
+    //     return false;
+    // }
 
     public static function form(Form $form): Form
     {
@@ -39,7 +40,7 @@ class ItemResource extends Resource
                         Forms\Components\TextInput::make('name')->label('Name')->required()->live(onBlur: true)->columnSpan('full')
                             ->afterStateUpdated(function (Forms\Set $set, $state) {
                                 $set('slug', \Illuminate\Support\Str::slug($state));
-                            }),
+                            })->readOnlyOn(['edit', 'view']),
                         Forms\Components\TextInput::make('slug')->readOnly()->columnSpan('full')->unique(
                             'items',
                             'slug',
@@ -47,6 +48,7 @@ class ItemResource extends Resource
                         )->label('Slug')->required(),
                         Forms\Components\Textarea::make('description')
                             ->label('Description')
+                            ->readOnlyOn(['edit', 'view'])
                             ->required(),
                         Forms\Components\RichEditor::make('content')
                             ->label('Content')
@@ -61,9 +63,11 @@ class ItemResource extends Resource
                     ->schema([
                         Forms\Components\TextInput::make('quantity')
                             ->label('Quantity')
+                            ->readOnlyOn(['edit', 'view'])
                             ->required(),
                         Forms\Components\TextInput::make('unit')
                             ->label('Unit')
+                            ->readOnlyOn(['edit', 'view'])
                             ->required(),
                         Forms\Components\Select::make('category_id')
                             ->relationship('category', 'name')
@@ -86,7 +90,7 @@ class ItemResource extends Resource
                         Forms\Components\Toggle::make('is_anonymous')
                             ->label('Post as Anonymous'),
                         Forms\Components\Select::make('volunteer_id')
-                            ->label('Select an Agent')
+                            ->label('Select a Vlounteer')
                             ->searchable()
                             ->preload()
                             ->relationship('volunteer', 'name'),
@@ -118,20 +122,20 @@ class ItemResource extends Resource
                 //
             ])
             ->actions([
-                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                //  Tables\Actions\EditAction::make(),
+                // Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                // Tables\Actions\BulkActionGroup::make([
+                //     Tables\Actions\DeleteBulkAction::make(),
+                // ]),
             ]);
     }
 
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\AppliedItemsRelationManager::class,
         ];
     }
     public static function getWidgets(): array

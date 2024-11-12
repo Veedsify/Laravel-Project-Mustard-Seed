@@ -14,8 +14,8 @@
                                 </div>
                                 <!-- Logo Mobile-->
                                 <div class="logo logo-mobile light-logo">
-                                    <a href="{{ route('home') }}" wire:navigate><img
-                                            src="assets/images/icon/favicon.png" alt="img"></a>
+                                    <a href="{{ route('home') }}" wire:navigate><img width="70"
+                                            src="{{ asset('storage/' . optional($homePage)->logo) }}" alt="img"></a>
                                 </div>
                             </div>
                             <div class="search-container">

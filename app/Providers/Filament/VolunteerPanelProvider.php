@@ -41,7 +41,7 @@ class VolunteerPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Volunteer/Widgets'), for: 'App\\Filament\\Volunteer\\Widgets')
             ->widgets([
-                Widgets\AccountWidget::class,
+                // Widgets\AccountWidget::class,
                 // Widgets\FilamentInfoWidget::class,
             ])
             ->navigationGroups([
