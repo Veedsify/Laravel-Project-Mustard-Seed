@@ -89,6 +89,7 @@ class RekognitionService
     {
         try {
             $image = Storage::get($imagePath);
+            Log::info('Image Extract: ' . $image);
 
             $result = $this->client->detectText([
                 'Image' => [
