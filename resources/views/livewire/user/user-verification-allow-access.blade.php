@@ -35,11 +35,11 @@
             Allow Access
         </button>
     </div>
-    <button onclick="backStep()" type="button"
-        class="rounded-xl p-3 w-full block border-gray-300 bg-gray-800 dark:bg-gray-700 text-white font-semibold cursor-pointer hover:bg-gray-500">
-        Back
-    </button>
     <div class="col-span-full w-full">
+        <button onclick="backStep()" type="button"
+            class="rounded-xl p-3 w-full block border-gray-300 bg-gray-800 dark:bg-gray-700 text-white font-semibold cursor-pointer hover:bg-gray-500">
+            Back
+        </button>
         <button onclick="detectFace()" type="button"
             class="rounded-xl p-3 w-full block border-gray-300 bg-amber-600 text-white font-semibold cursor-pointer hover:bg-amber-500">
             Start Verification
