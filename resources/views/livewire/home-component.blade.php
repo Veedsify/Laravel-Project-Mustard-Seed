@@ -77,7 +77,7 @@
                         <div class="col-xl-3 col-md-6 col-lg-6">
                             <div class="helpful-card h-calc  wow-dis fadeInLeft" data-wow-delay="0.2s">
                                 <div class="helpful-card-icon">
-                                    <img src="{{$service->service_image}}" width="50" alt="">
+                                    <img src="{{ 'storage/' . $service->service_image }}" width="50" alt="">
                                 </div>
                                 <div class="helpful-card-caption">
                                     <h4 class="caption-title">
@@ -178,45 +178,46 @@
     <!-- End-of Donate -->
 
     @if ($data && $data->show_upcoming_event_section)
-    <div class="our-event-three mb-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-7 mx-auto">
-                    <!-- Section Tittle -->
-                    <div class="section-tittle text-center mb-45">
-                        <h2 class="title font-700">Upcoming Events</h2>
-                        <p class="pera">
-                            The upcoming events are listed below. Please join us and help the poor.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="slider center-slider-active">
-            <!-- Single -->
-            @foreach ($upcoming_events as $event)
-                <div class="clip event-image-overlay ml-15 mr-15">
-                    <a href="#"><img class="main-img" src="{{ asset('storage/' . $event->image) }}" style="aspect-ratio: 16/9; height: 500px; border-radius: 2rem; object-fit: cover"
-                            alt="image"></a>
-                    <div class="brush-bg">
-                        <img src="{{ asset('assets/images/gallery/brush.png') }}" alt="image">
-                    </div>
-                    <div class="overlay-text">
-                        <h4 class="title"><a href="#">
-                                {{ $event->name }}
-                        </a>
-                        </h4>
-                        <div class="highlight">
+        <div class="our-event-three mb-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-7 mx-auto">
+                        <!-- Section Tittle -->
+                        <div class="section-tittle text-center mb-45">
+                            <h2 class="title font-700">Upcoming Events</h2>
                             <p class="pera">
-                                {{ $event->location }}
+                                The upcoming events are listed below. Please join us and help the poor.
                             </p>
                         </div>
                     </div>
                 </div>
-            @endforeach
+            </div>
+
+            <div class="slider center-slider-active">
+                <!-- Single -->
+                @foreach ($upcoming_events as $event)
+                    <div class="clip event-image-overlay ml-15 mr-15">
+                        <a href="#"><img class="main-img" src="{{ asset('storage/' . $event->image) }}"
+                                style="aspect-ratio: 16/9; height: 500px; border-radius: 2rem; object-fit: cover"
+                                alt="image"></a>
+                        <div class="brush-bg">
+                            <img src="{{ asset('assets/images/gallery/brush.png') }}" alt="image">
+                        </div>
+                        <div class="overlay-text">
+                            <h4 class="title"><a href="#">
+                                    {{ $event->name }}
+                                </a>
+                            </h4>
+                            <div class="highlight">
+                                <p class="pera">
+                                    {{ $event->location }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
         </div>
-    </div>
     @endif
 
 
