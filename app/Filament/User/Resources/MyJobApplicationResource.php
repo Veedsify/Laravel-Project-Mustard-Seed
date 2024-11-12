@@ -3,6 +3,7 @@
 namespace App\Filament\User\Resources;
 
 use App\Filament\User\Resources\MyJobApplicationResource\Pages;
+use App\Http\Middleware\CheckUserIsIdVerified;
 use App\Models\MyJobApplication;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
@@ -18,6 +19,7 @@ class MyJobApplicationResource extends Resource
     protected static ?string $model = MyJobApplication::class;
 
     protected static ?string $navigationIcon = 'heroicon-s-book-open';
+    protected static string | array $routeMiddleware = [CheckUserIsIdVerified::class];
     protected static ?string $navigationGroup = 'Jobs';
     public static function canEdit($record): bool
     {
