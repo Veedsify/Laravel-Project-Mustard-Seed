@@ -18,9 +18,12 @@ class DonatedItemsCount extends BaseWidget
                 'user_id' => Auth::user()->id,
             ])->where('status', true)->count())
                 ->icon('heroicon-s-check-circle'),
-            Stat::make('Received Donations', Item::where([
-                'user_id' => Auth::user()->id,
-            ])->where('status', false)->appliedItems()->where('is_approved', true)->count())
+            Stat::make('Received Donations', Item::where('user_id', Auth::user()->id)
+                ->where('status', false)
+                ->whereHas('appliedItems', function ($query) {
+                    $query->where('is_approved', true);
+                })
+                ->count())
                 ->icon('heroicon-s-x-circle'),
         ];
     }
