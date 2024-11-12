@@ -77,7 +77,7 @@
                         <div class="col-xl-3 col-md-6 col-lg-6">
                             <div class="helpful-card h-calc  wow-dis fadeInLeft" data-wow-delay="0.2s">
                                 <div class="helpful-card-icon">
-                                    <img src="{{ 'storage/' . $service->service_image }}" width="50" alt="" style="invert: 1;">
+                                    <img src="{{ asset('storage/' . $service->service_image) }}" width="50" alt="" style="invert: 1;">
                                 </div>
                                 <div class="helpful-card-caption">
                                     <h4 class="caption-title">
