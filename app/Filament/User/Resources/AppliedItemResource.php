@@ -20,11 +20,16 @@ class AppliedItemResource extends Resource
     protected static ?string $title = 'Applied Items';
     protected static string|array $routeMiddleware = [CheckUserIsIdVerified::class];
 
+    public static function canCreate(): bool
+    {
+        return false;
+    }
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+
             ]);
     }
 
@@ -32,18 +37,32 @@ class AppliedItemResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\ImageColumn::make('item.image')
+                    ->label('Image'),
+                Tables\Columns\TextColumn::make('item.name')
+                    ->label('Item Name')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('first_name')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('last_name')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('reason')
+                    ->searchable()
+                    ->sortable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                // Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                // Tables\Actions\BulkActionGroup::make([
+                //     Tables\Actions\DeleteBulkAction::make(),
+                // ]),
             ]);
     }
 
