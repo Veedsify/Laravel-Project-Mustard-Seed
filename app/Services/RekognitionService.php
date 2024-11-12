@@ -12,14 +12,15 @@ class RekognitionService
 
     public function __construct()
     {
-        $this->client = new RekognitionClient([
-            'version' => 'latest',
-            'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
-            'credentials' => [
-                'key' => env('AWS_ACCESS_KEY_ID'),
-                'secret' => env('AWS_SECRET_ACCESS_KEY'),
-            ],
-        ]);
+            $credentials = new \Aws\Credentials\Credentials(
+                env('AWS_ACCESS_KEY_ID'),
+                env('AWS_SECRET_ACCESS_KEY')
+            );
+            $this->client = new RekognitionClient([
+                'version' => 'latest',
+                'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
+                'credentials' => $credentials,
+            ]);
     }
 
     public function detectLabels($imagePath)
