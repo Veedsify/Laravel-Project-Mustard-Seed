@@ -65,6 +65,7 @@ class RekognitionService
     public function compareFaces($sourceImage, $targetImage)
     {
         try {
+            Log::info('Source Image: ' . $sourceImage);
             $sourceImage = Storage::get($sourceImage);
             $targetImage = Storage::get($targetImage);
 
