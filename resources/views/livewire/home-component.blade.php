@@ -72,12 +72,12 @@
     @if ($data && $data->show_feature_section)
         <section class="helpful-area">
             <div class="container">
-                <div class="row gy-24 mb-5">
+                <div class="row gy-24 mb-5 justify-content-center">
                     @foreach ($services as $service)
                         <div class="col-xl-3 col-md-6 col-lg-6">
                             <div class="helpful-card h-calc  wow-dis fadeInLeft" data-wow-delay="0.2s">
                                 <div class="helpful-card-icon">
-                                    <img src="{{ 'storage/' . $service->service_image }}" width="50" alt="">
+                                    <img src="{{ 'storage/' . $service->service_image }}" width="50" alt="" style="invert: 1;">
                                 </div>
                                 <div class="helpful-card-caption">
                                     <h4 class="caption-title">
