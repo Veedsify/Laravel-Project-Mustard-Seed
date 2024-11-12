@@ -47,7 +47,7 @@ class RekognitionService
     {
         try {
             $image = Storage::get($imagePath);
-
+            Log::info('Image: ' . $image);
             $result = $this->client->detectFaces([
                 'Image' => [
                     'Bytes' => $image,
