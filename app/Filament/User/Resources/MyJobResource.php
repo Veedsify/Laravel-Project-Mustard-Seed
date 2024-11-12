@@ -4,6 +4,7 @@ namespace App\Filament\User\Resources;
 
 use App\Filament\User\Resources\MyJobResource\Pages;
 use App\Filament\User\Resources\MyJobResource\RelationManagers;
+use App\Http\Middleware\CheckUserIsIdVerified;
 use App\Models\MyJob;
 use Filament\Forms;
 use Filament\Forms\Components\Group;
@@ -23,6 +24,7 @@ class MyJobResource extends Resource
     protected static ?string $model = MyJob::class;
 
     protected static ?string $navigationIcon = 'heroicon-s-briefcase';
+    protected static string | array $routeMiddleware = [CheckUserIsIdVerified::class];
     protected static ?string $navigationGroup = 'Jobs';
 
     public static function form(Form $form): Form
