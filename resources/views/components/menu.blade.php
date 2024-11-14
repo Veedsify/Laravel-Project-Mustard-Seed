@@ -52,9 +52,9 @@
                                                 class="single {{ request()->is('donations') ? 'active' : '' }}"
                                                 wire:navigate>Donations</a></li>
 
-                                        <li class="single-list"><a href="{{ route('blogs') }}"
-                                                class="single {{ request()->is('blogs') ? 'active' : '' }}"
-                                                wire:navigate>Blog</a>
+                                        <li class="single-list"><a href="{{ route('volunteers') }}"
+                                                class="single {{ request()->is('volunteers') ? 'active' : '' }}"
+                                                wire:navigate>Volunteers</a>
                                         </li>
 
                                         {{-- <li class="single-list">
