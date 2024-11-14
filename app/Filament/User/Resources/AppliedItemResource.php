@@ -16,8 +16,8 @@ class AppliedItemResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-s-cursor-arrow-ripple';
     protected static ?string $navigationGroup = 'Donations';
-    protected static ?string $navigationLabel = 'Applied Items';
-    protected static ?string $title = 'Applied Items';
+    protected static ?string $navigationLabel = 'My Applied Items';
+    protected static ?string $title = 'My Applied Items';
     protected static string|array $routeMiddleware = [CheckUserIsIdVerified::class];
 
     public static function canCreate(): bool
@@ -26,7 +26,7 @@ class AppliedItemResource extends Resource
     }
 
     public static function form(Form $form): Form
-    {
+    {   
         return $form
             ->schema([
 

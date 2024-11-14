@@ -111,7 +111,8 @@ class UserResource extends Resource
     {
         return [
             RelationManagers\BlogsRelationManager::class,
-            RelationManagers\CommentsRelationManager::class
+            RelationManagers\CommentsRelationManager::class,
+            RelationManagers\ItemsRelationManager::class,
         ];
     }
 

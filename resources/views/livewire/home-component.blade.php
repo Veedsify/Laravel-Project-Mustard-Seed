@@ -17,12 +17,16 @@
                                 {{ $data->home_banner_description ?? "When deciding which charity to donate to, it's important to do your research and find one that aligns with your values and interests." }}
                             </p>
                             <div class="d-flex gap-20 flex-wrap">
-                                <a href="{{ Auth::check() ? config('app.url') . '/user/items' : route('register') }}"
+                                {{-- <a href="{{ Auth::check() ? config('app.url') . '/user/items' : route('register') }}"
                                     class="btn-primary-fill hero-btn wow-dis fadeInLeft" data-wow-delay="0.4s">Donate
-                                    Now</a>
-                                <a href="{{ route('register.as.volunteer') }}" wire:navigate
+                                    Now</a> --}}
+                                {{-- <a href="{{ route('register.as.volunteer') }}" wire:navigate
                                     class="btn-tertiary-fill hero-btn wow-dis fadeInRight" data-wow-delay="0.4s">Join
-                                    Volunteers</a>
+                                    Volunteers</a> --}}
+                                <a href="{{ route('get-started') }}" wire:navigate
+                                    class="btn-tertiary-fill hero-btn wow-dis fadeInRight" data-wow-delay="0.4s">
+                                    Get Started
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -77,7 +81,8 @@
                         <div class="col-xl-3 col-md-6 col-lg-6">
                             <div class="helpful-card h-calc  wow-dis fadeInLeft" data-wow-delay="0.2s">
                                 <div class="helpful-card-icon">
-                                    <img src="{{ asset('storage/' . $service->service_image) }}" width="50" alt="" style="invert: 1;">
+                                    <img src="{{ asset('storage/' . $service->service_image) }}" width="50"
+                                        alt="" style="invert: 1;">
                                 </div>
                                 <div class="helpful-card-caption">
                                     <h4 class="caption-title">

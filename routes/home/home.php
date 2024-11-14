@@ -15,6 +15,7 @@ use App\Livewire\DonationPayComponent;
 use App\Livewire\EventsComponent;
 use App\Livewire\FaceVerificationComponent;
 use App\Livewire\FaqComponents;
+use App\Livewire\GetStartedComponent;
 use App\Livewire\HomeComponent;
 use App\Livewire\JobComponent;
 use App\Livewire\LoginComponent;
@@ -30,6 +31,7 @@ Route::middleware('page_visits')->group(function () {
 
     // Home Page Routes
     Route::get('/', HomeComponent::class)->name('home');
+    Route::get('/get-started', GetStartedComponent::class)->name('get-started');
     Route::get('/about', AboutComponent::class)->name('about');
     Route::get('/blog/{slug}', BlogDetailsComponent::class)->name('blog.details');
     Route::get('/blogs', BlogComponent::class)->name('blogs');

@@ -76,7 +76,7 @@ class RekognitionService
                 'TargetImage' => [
                     'Bytes' => $targetImage,
                 ],
-                'SimilarityThreshold' => 70,
+                'SimilarityThreshold' => 50,
             ]);
 
             return $result['FaceMatches'];
