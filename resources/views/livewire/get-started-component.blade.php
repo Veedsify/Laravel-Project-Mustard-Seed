@@ -87,7 +87,7 @@
         </div>
     </section>
 
-    <section class="helpful-area-three">
+    <section class="helpful-area-three mb-5">
         <div class="container">
             <div class="row g-4">
                 <!-- Volunteer Section -->
