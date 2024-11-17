@@ -22,6 +22,42 @@
     <section class="donate-section top-bottom-padding">
         <div class="container">
             <div class="row gy-24">
+                <div class="col-12">
+                    <div class="filter-box p-4 bg-white rounded shadow-sm mb-4">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="mb-2">Location</label>
+                                    <select wire:model.live="location" class="form-select">
+                                        <option value="">Select Location</option>
+                                        @foreach($states as $state)
+                                            <option value="{{ $state->name }}">{{ $state->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="mb-2">Search Items</label>
+                                    <input type="text" wire:model.live="searchQuery" class="form-control" placeholder="Search items...">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="mb-2">Category</label>
+                                    <select wire:model.live="item_type" class="form-select">
+                                        <option value="">Select Category</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row gy-24">
                 @if (count($items) === 0)
                     <div class="col-lg-12">
                         <h4 class="font-medium">
@@ -39,10 +75,14 @@
                                         style="aspect-ratio: 4/3;object-fit:cover;" class="rounded w-100">
                                 </div>
                                 <div class="card-body">
-                                    <div class="social mb-3">
+                                    <div class="social mb-3 d-flex align-items-center gap-3">
                                         <span class="new-badge">
                                             {{ $item->condition === 1 ? 'New' : 'Used' }}
                                         </span>
+                                        <small class="text-muted">
+                                            <i class="ri-map-pin-line"></i>
+                                            {{ optional($item->volunteer->volunteer_settings)->city }}
+                                        </small>
                                     </div>
                                     <div class="flex mb-15 gap-16 align-items-center">
                                         <div class="user flex gap-10 align-items-center">
@@ -82,7 +122,7 @@
                 <div class="col-lg-12">
                     <!-- pagination -->
                     <nav class="pagination-nav">
-                        {{-- {{ ('vendor.livewire.bootstrap') }} --}}
+                        {{ $items->links('vendor.livewire.bootstrap') }}
                     </nav>
                     <!-- End pagination -->
                 </div>

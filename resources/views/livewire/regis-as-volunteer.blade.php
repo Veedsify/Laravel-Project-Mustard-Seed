@@ -5,7 +5,7 @@
             <div class="breadcrumb-text">
                 <nav aria-label="breadcrumb" class="breadcrumb-nav wow-dis fadeInUp" data-wow-delay="0.0s">
                     <ul class="breadcrumb listing">
-                        <li class="breadcrumb-item single-list"><a href="{{route('home')}}" class="single">Home</a>
+                        <li class="breadcrumb-item single-list"><a href="{{ route('home') }}" class="single">Home</a>
                         </li>
                         <li class="breadcrumb-item single-list" aria-current="page"><a href="javascript:void(0)"
                                 class="single">Register as a Volunteer</a>
@@ -85,8 +85,10 @@
                             <div class="col-xl-6">
                                 <div class="form-group">
                                     <label for="state">State</label>
-                                    <input type="text" id="state" class="form-control custom-input"
-                                        placeholder="State*" wire:model="state">
+                                    <select id="state_of_origin" type="text" class="form-control custom-input"
+                                        label="State Of Origin*" wire:model="state">
+                                        <x-states :states="$states" />
+                                    </select>
                                     @error('state')
                                         <span class="error text-danger">{{ $message }}</span>
                                     @enderror

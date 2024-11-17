@@ -52,6 +52,10 @@
                                             {{ $item->condition === 1 ? 'New' : 'Used' }}
                                         </span>
                                     </div>
+                                    <small class="text-muted">
+                                        <i class="ri-map-pin-line"></i>
+                                        {{ optional($item->volunteer->volunteer_settings)->city }}
+                                    </small>
                                 </div>
                                 <h4 style="font-size: 32px;" class="fw-bold">
                                     {{ $item->name }}
