@@ -25,7 +25,7 @@
                 <div class="col-xl-12">
                     <div class="contact-section">
                         <div class="contact-list">
-                            <div class="contact-icon-list">
+                            {{-- <div class="contact-icon-list">
                                 <div class="single-icon">
                                     <i class="ri-phone-fill"></i>
                                 </div>
@@ -36,7 +36,7 @@
                                         {{ optional($contactData)->phone }}
                                     </a>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="contact-icon-list">
                                 <div class="single-icon">
                                     <i class="ri-mail-fill"></i>
