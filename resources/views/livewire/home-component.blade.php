@@ -236,107 +236,96 @@
         <!-- Testimonial S t a r t-->
         <section class="testimonial-section bottom-padding">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-7">
-                        <!-- Section Tittle -->
-                        <div class="section-tittle text-center mb-50">
-                            <span class="sub-tittle text-capitalize font-600">Testimonials</span>
-                            <h2 class="title font-700">What Our Donors Say</h2>
+            <div class="row justify-content-center">
+                <div class="col-xl-7">
+                <!-- Section Tittle -->
+                <div class="section-tittle text-center mb-50">
+                    <span class="sub-tittle text-capitalize font-600">Testimonials</span>
+                    <h2 class="title font-700">What Our Beneficiaries Say</h2>
+                </div>
+                </div>
+            </div>
+            <div class="row justify-content-center g-24">
+                <div class="col-lg-10 col-12 testimonial-slider">
+                <div class="single-testimonial position-relative">
+                    <div class="client-info">
+                    <div class="client-details">
+                        <h3 class="name">Chioma Okonkwo</h3>
+                        <p class="location">Small Business Owner</p>
+                    </div>
+                    <div class="rating">
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                    </div>
+                    </div>
+                    <div class="position-relative">
+                    <p class="pera">
+                        <i>"The microloan I received helped me expand my small shop in Lagos. Now I can better provide for my children's education. God bless this organization for supporting small business owners like me."</i>
+                    </p>
+                    <div class="position-absolute quote">
+                        <div class="rounded-btn">
+                        <i class="ri-double-quotes-r"></i>
                         </div>
                     </div>
-                </div>
-                <div class="row justify-content-center g-24">
-                    <div class="col-lg-10 col-12 testimonial-slider">
-                        <div class="single-testimonial position-relative">
-                            <div class="client-info">
-                                <div class="client-details">
-                                    <h3 class="name">Sarah Thompson</h3>
-                                    <p class="location">Monthly Donor</p>
-                                </div>
-                                <div class="rating">
-                                    <i class="ri-star-fill"></i>
-                                    <i class="ri-star-fill"></i>
-                                    <i class="ri-star-fill"></i>
-                                    <i class="ri-star-fill"></i>
-                                    <i class="ri-star-fill"></i>
-                                </div>
-                            </div>
-                            <div class="position-relative">
-                                <p class="pera">
-                                    <i>"I've been donating monthly for over a year now, and it's incredible to see the
-                                        impact we're making together. The transparency in how funds are used and regular
-                                        updates about the projects make me confident in my decision to support this
-                                        cause."</i>
-                                </p>
-                                <div class="position-absolute quote">
-                                    <div class="rounded-btn">
-                                        <i class="ri-double-quotes-r"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-testimonial position-relative">
-                            <div class="client-info">
-                                <div class="client-details">
-                                    <h3 class="name">Michael Chen</h3>
-                                    <p class="location">Volunteer & Donor</p>
-                                </div>
-
-                                <div class="rating">
-                                    <i class="ri-star-fill"></i>
-                                    <i class="ri-star-fill"></i>
-                                    <i class="ri-star-fill"></i>
-                                    <i class="ri-star-fill"></i>
-                                    <i class="ri-star-fill"></i>
-                                </div>
-                            </div>
-                            <div class="position-relative">
-                                <p class="pera">
-                                    <i>"As both a volunteer and donor, I've seen firsthand how every contribution makes
-                                        a difference. The dedication of the team and the direct impact on communities is
-                                        truly inspiring. This organization genuinely cares about making positive
-                                        change."</i>
-                                </p>
-                                <div class="position-absolute quote">
-                                    <div class="rounded-btn">
-                                        <i class="ri-double-quotes-r"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-testimonial position-relative">
-                            <div class="client-info">
-                                <div class="client-details">
-                                    <h3 class="name">Emily Rodriguez</h3>
-                                    <p class="location">Project Supporter</p>
-                                </div>
-
-                                <div class="rating">
-                                    <i class="ri-star-fill"></i>
-                                    <i class="ri-star-fill"></i>
-                                    <i class="ri-star-fill"></i>
-                                    <i class="ri-star-fill"></i>
-                                    <i class="ri-star-fill"></i>
-                                </div>
-                            </div>
-                            <div class="position-relative">
-                                <p class="pera">
-                                    <i>"What sets this charity apart is their commitment to sustainable change. They
-                                        don't
-                                        just provide temporary solutions - they work with communities to create lasting
-                                        impact.
-                                        The regular progress reports and photos make me feel connected to the
-                                        cause."</i>
-                                </p>
-                                <div class="position-absolute quote">
-                                    <div class="rounded-btn">
-                                        <i class="ri-double-quotes-r"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
+                <div class="single-testimonial position-relative">
+                    <div class="client-info">
+                    <div class="client-details">
+                        <h3 class="name">Oluwaseun Adebayo</h3>
+                        <p class="location">Community Leader</p>
+                    </div>
+
+                    <div class="rating">
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                    </div>
+                    </div>
+                    <div class="position-relative">
+                    <p class="pera">
+                        <i>"The borehole project in our community has transformed lives. Our children no longer walk miles for clean water. We are grateful for this lasting impact on our village."</i>
+                    </p>
+                    <div class="position-absolute quote">
+                        <div class="rounded-btn">
+                        <i class="ri-double-quotes-r"></i>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="single-testimonial position-relative">
+                    <div class="client-info">
+                    <div class="client-details">
+                        <h3 class="name">Amina Ibrahim</h3>
+                        <p class="location">Student Beneficiary</p>
+                    </div>
+
+                    <div class="rating">
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                    </div>
+                    </div>
+                    <div class="position-relative">
+                    <p class="pera">
+                        <i>"Thanks to the scholarship program, I can continue my education at university. This opportunity has given me hope for a better future. I promise to make the most of this blessing."</i>
+                    </p>
+                    <div class="position-absolute quote">
+                        <div class="rounded-btn">
+                        <i class="ri-double-quotes-r"></i>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
             </div>
         </section>
         <!-- End-of Testimonial -->
