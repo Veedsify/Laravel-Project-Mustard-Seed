@@ -38,12 +38,6 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="mb-2">Search Items</label>
-                                    <input type="text" wire:model.live="searchQuery" class="form-control" placeholder="Search items...">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
                                     <label class="mb-2">Category</label>
                                     <select wire:model.live="item_type" class="form-select">
                                         <option value="">Select Category</option>
@@ -51,6 +45,12 @@
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach
                                     </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="mb-2">Search Items</label>
+                                    <input type="text" wire:model.live="searchQuery" class="form-control" placeholder="Search items...">
                                 </div>
                             </div>
                         </div>
