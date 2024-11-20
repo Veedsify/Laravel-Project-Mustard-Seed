@@ -65,6 +65,10 @@
                         </h4>
                     </div>
                 @endif
+                <div wire:loading wire:target="render" class="mb-3">
+                    <img src="{{ asset('assets/images/loader.gif') }}" alt="Loading" width="60"
+                        style="user-select: none;">
+                </div>
                 @foreach ($items as $item)
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 view-wrapper">
                         <a href="{{ route('item.preview', $item->slug) }}"
