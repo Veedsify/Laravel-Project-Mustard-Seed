@@ -30,12 +30,22 @@ class DonatedItemsComponent extends Component
                 return $query->where('category_id', 'like', "%{$this->item_type}%");
             })
             ->when($this->searchQuery, function ($query) {
-                return $query->where('name', 'like', "%{$this->searchQuery}%")
-                    ->orWhere('description', 'like', "%{$this->searchQuery}%")
-                    ->orWhere('content', 'like', "%{$this->searchQuery}%")                // Recommended way using whereHas
-                    ->orWhereHas('volunteer.volunteer_settings', function($query) {
-                        $query->where('city', 'like', "%{$this->searchQuery}%");
+                if ($this->location || $this->item_type) {
+                    return $query->where(function ($q) {
+                        $q->where('name', 'like', "%{$this->searchQuery}%")
+                            ->orWhere('description', 'like', "%{$this->searchQuery}%")
+                            ->orWhere('content', 'like', "%{$this->searchQuery}%");
                     });
+                } else {
+                    return $query->where(function ($q) {
+                        $q->where('name', 'like', "%{$this->searchQuery}%")
+                            ->orWhere('description', 'like', "%{$this->searchQuery}%")
+                            ->orWhere('content', 'like', "%{$this->searchQuery}%")
+                            ->orWhereHas('volunteer.volunteer_settings', function($q) {
+                                $q->where('city', 'like', "%{$this->searchQuery}%");
+                            });
+                    });
+                }
             })
             ->whereRaw('quantity > (SELECT COALESCE(SUM(unit), 0) FROM applied_items WHERE item_id = items.id)')
             ->paginate(10);
