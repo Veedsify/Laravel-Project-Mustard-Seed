@@ -33,16 +33,15 @@ class DonationItemPreview extends Component
         $rules = [
             'name' => 'required',
             'email' => 'required|email',
-            'reason' => 'required'
+            'reason' => 'required',
         ];
 
         $this->validate($rules);
 
         $item = Item::where([
             ['slug', $this->slug],
-            ['status', true]
+            ['status', true],
         ])->first();
-
 
         if (!$item) {
             $this->dispatch('notify-error', message: 'Item not found');
@@ -51,8 +50,18 @@ class DonationItemPreview extends Component
 
         $findAppliedItem = AppliedItem::where([
             ['item_id', $item->id],
-            ['user_id', Auth::id()]
+            ['user_id', Auth::id()],
         ])->first();
+
+        //find if user applied for other items today
+        $otherItems = AppliedItem::where('user_id', Auth::id())
+            ->whereDate('created_at', date('Y-m-d'))
+            ->get();
+
+        if (count($otherItems) >= 1) {
+            $this->dispatch('notify-info', message: 'You can\'t apply for this item, as you have already applied for an item today');
+            return;
+        }
 
         if ($findAppliedItem) {
             $this->dispatch('notify-info', message: 'You can\'t apply for this item, as it you have already Applied');
@@ -82,12 +91,11 @@ class DonationItemPreview extends Component
         $this->dispatch('notify', message: 'Application submitted successfully');
     }
 
-
     public function render()
     {
         $item = Item::where([
             ['slug', $this->slug],
-            ['status', true]
+            ['status', true],
         ])
             ->first();
 
@@ -113,7 +121,7 @@ class DonationItemPreview extends Component
             'item' => $item,
             'otherItems' => $otherItems,
             'volunteers' => $volunteers,
-            'itemCategories' => $itemCategories
+            'itemCategories' => $itemCategories,
         ]);
     }
 }

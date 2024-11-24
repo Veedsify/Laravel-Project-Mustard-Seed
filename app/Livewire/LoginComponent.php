@@ -16,12 +16,9 @@ class LoginComponent extends Component
         //     $this->id = $userFromQuery;
         // } else {
         //     $this->id = 1;
-        // }uery = request()->query('id') ?? null;
-        // if ($userFromQuery) {
-        //     $this->id = $userFromQuery;
-        // } else {
-        //     $this->id = 1;
         // }
+        // $userFromQuery = request()->query('id') ?? null;
+        // $userFromQuery ? $this->id = $userFromQuery : $this->id = 1;
     }
     public function render()
     {
