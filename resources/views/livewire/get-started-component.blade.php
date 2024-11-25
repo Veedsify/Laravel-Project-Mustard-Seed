@@ -41,6 +41,9 @@
                                         donations and requests</small></li>
                                 <li class="list-group-item border rounded p-3">Verify Job Authenticity - <small class="text-muted">Confirm
                                         legitimacy of tasks</small></li>
+                                        <li class="list-group-item border rounded p-3">Enjoy 10% Share - <small class="text-muted">
+                                            Get 10% of the total donation value as a reward
+                                            </small></li>
                             </ol>
                         </div>
                     </div>
@@ -122,8 +125,7 @@
                             </svg>
                         </div>
                         <h3>Become a Benefactor</h3>
-                        <p>Support our mission with regular, meaningful contributions. Your sustained giving enables us
-                            to plan and implement impactful long-term programs.</p>
+                        <p>As a benefactor, you will receive support from our community through donations. Your needs will be met by generous donors and dedicated volunteers.</p>
                         <a href="{{ route('register') }}" class="btn btn-primary mt-4">Join as Benefactor</a>
                     </div>
                 </div>
