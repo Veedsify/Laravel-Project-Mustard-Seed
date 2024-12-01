@@ -236,96 +236,102 @@
         <!-- Testimonial S t a r t-->
         <section class="testimonial-section bottom-padding">
             <div class="container">
-            <div class="row justify-content-center">
-            <div class="col-xl-7">
-            <!-- Section Tittle -->
-            <div class="section-tittle text-center mb-50">
-                <span class="sub-tittle text-capitalize font-600">Testimonials</span>
-                <h2 class="title font-700">What Our Donors Say</h2>
-            </div>
-            </div>
-            </div>
-            <div class="row justify-content-center g-24">
-            <div class="col-lg-10 col-12 testimonial-slider">
-            <div class="single-testimonial position-relative">
-                <div class="client-info">
-                <div class="client-details">
-                <h3 class="name">John Smith</h3>
-                <p class="location">Regular Donor</p>
+                <div class="row justify-content-center">
+                    <div class="col-xl-7">
+                        <!-- Section Tittle -->
+                        <div class="section-tittle text-center mb-50">
+                            <span class="sub-tittle text-capitalize font-600">Testimonials</span>
+                            <h2 class="title font-700">What Our Donors Say</h2>
+                        </div>
+                    </div>
                 </div>
-                <div class="rating">
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                </div>
-                </div>
-                <div class="position-relative">
-                <p class="pera">
-                <i>"Donating clothes and food supplies through this platform has been incredibly rewarding. Knowing that my contributions directly help families in need gives me great joy."</i>
-                </p>
-                <div class="position-absolute quote">
-                <div class="rounded-btn">
-                <i class="ri-double-quotes-r"></i>
-                </div>
-                </div>
-                </div>
-            </div>
-            <div class="single-testimonial position-relative">
-                <div class="client-info">
-                <div class="client-details">
-                <h3 class="name">Sarah Johnson</h3>
-                <p class="location">Monthly Contributor</p>
-                </div>
+                <div class="row justify-content-center g-24">
+                    <div class="col-lg-10 col-12 testimonial-slider">
+                        <div class="single-testimonial position-relative">
+                            <div class="client-info">
+                                <div class="client-details">
+                                    <h3 class="name">John Smith</h3>
+                                    <p class="location">Regular Donor</p>
+                                </div>
+                                <div class="rating">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                </div>
+                            </div>
+                            <div class="position-relative">
+                                <p class="pera">
+                                    <i>"Donating clothes and food supplies through this platform has been incredibly
+                                        rewarding. Knowing that my contributions directly help families in need gives me
+                                        great joy."</i>
+                                </p>
+                                <div class="position-absolute quote">
+                                    <div class="rounded-btn">
+                                        <i class="ri-double-quotes-r"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single-testimonial position-relative">
+                            <div class="client-info">
+                                <div class="client-details">
+                                    <h3 class="name">Sarah Johnson</h3>
+                                    <p class="location">Monthly Contributor</p>
+                                </div>
 
-                <div class="rating">
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                </div>
-                </div>
-                <div class="position-relative">
-                <p class="pera">
-                <i>"I regularly donate basic necessities like rice, cooking oil, and toiletries. The transparency in how these items reach those in need makes me trust this organization completely."</i>
-                </p>
-                <div class="position-absolute quote">
-                <div class="rounded-btn">
-                <i class="ri-double-quotes-r"></i>
-                </div>
-                </div>
-                </div>
-            </div>
-            <div class="single-testimonial position-relative">
-                <div class="client-info">
-                <div class="client-details">
-                <h3 class="name">Michael Brown</h3>
-                <p class="location">Corporate Donor</p>
-                </div>
+                                <div class="rating">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                </div>
+                            </div>
+                            <div class="position-relative">
+                                <p class="pera">
+                                    <i>"I regularly donate basic necessities like rice, cooking oil, and toiletries. The
+                                        transparency in how these items reach those in need makes me trust this
+                                        organization completely."</i>
+                                </p>
+                                <div class="position-absolute quote">
+                                    <div class="rounded-btn">
+                                        <i class="ri-double-quotes-r"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single-testimonial position-relative">
+                            <div class="client-info">
+                                <div class="client-details">
+                                    <h3 class="name">Michael Brown</h3>
+                                    <p class="location">Corporate Donor</p>
+                                </div>
 
-                <div class="rating">
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
+                                <div class="rating">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                </div>
+                            </div>
+                            <div class="position-relative">
+                                <p class="pera">
+                                    <i>"Our company's donation of school supplies and children's clothing was handled
+                                        professionally. It's heartening to see these items reaching students who really
+                                        need them."</i>
+                                </p>
+                                <div class="position-absolute quote">
+                                    <div class="rounded-btn">
+                                        <i class="ri-double-quotes-r"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                </div>
-                <div class="position-relative">
-                <p class="pera">
-                <i>"Our company's donation of school supplies and children's clothing was handled professionally. It's heartening to see these items reaching students who really need them."</i>
-                </p>
-                <div class="position-absolute quote">
-                <div class="rounded-btn">
-                <i class="ri-double-quotes-r"></i>
-                </div>
-                </div>
-                </div>
-            </div>
-            </div>
-            </div>
             </div>
         </section>
         <!-- End-of Testimonial -->
@@ -341,31 +347,7 @@
     @endif
     <!-- Gallery S t a r t -->
     @if ($data && $data->show_gallery_section)
-        <div class="gallery-area">
-            <div class="gallery-slider d-flex">
-                <div class="gallery-img">
-                    <img src="assets/images/gallery/gallery-1.png" alt="img">
-                </div>
-                <div class="gallery-img">
-                    <img src="assets/images/gallery/gallery-2.png" alt="img">
-                </div>
-                <div class="gallery-img">
-                    <img src="assets/images/gallery/gallery-3.png" alt="img">
-                </div>
-                <div class="gallery-img">
-                    <img src="assets/images/gallery/gallery-4.png" alt="img">
-                </div>
-                <div class="gallery-img">
-                    <img src="assets/images/gallery/gallery-2.png" alt="img">
-                </div>
-                <div class="gallery-img">
-                    <img src="assets/images/gallery/gallery-3.png" alt="img">
-                </div>
-                <div class="gallery-img">
-                    <img src="assets/images/gallery/gallery-1.png" alt="img">
-                </div>
-            </div>
-        </div>
+        @livewire('gallery-component')
     @endif
     <!-- End-of Gallery -->
 </main>

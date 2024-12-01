@@ -20,6 +20,13 @@
       0 => 'BladeUI\\Icons\\BladeIconsServiceProvider',
     ),
   ),
+  'codeat3/blade-solar-icons' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Codeat3\\BladeSolarIcons\\BladeSolarIconsServiceProvider',
+    ),
+  ),
   'filament/actions' => 
   array (
     'providers' => 

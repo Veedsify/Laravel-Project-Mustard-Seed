@@ -260,7 +260,7 @@
         autoplaySpeed: 2000,
         infinite: true,
         arrows: false,
-        // rtl: true, // Enable RTL support
+        rtl: true, // Enable RTL support
         responsive: [
             {
                 breakpoint: 1200,

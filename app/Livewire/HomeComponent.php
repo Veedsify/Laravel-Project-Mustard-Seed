@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\BottomGallery;
 use App\Models\Campaign;
 use App\Models\Event;
 use App\Models\HomepageData;
@@ -29,7 +30,7 @@ class HomeComponent extends Component
             'data' => HomepageData::first(),
             'services' => $services,
             'campaigns' => $campaigns,
-            'upcoming_events' => $upcoming_events
+            'upcoming_events' => $upcoming_events,
         ]);
     }
 }

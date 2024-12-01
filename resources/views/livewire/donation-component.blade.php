@@ -112,30 +112,6 @@
     <!-- End-of donate -->
 
     <!-- Gallery S t a r t -->
-    <div class="gallery-area">
-        <div class="gallery-slider d-flex">
-            <div class="gallery-img">
-                <img src="assets/images/gallery/gallery-1.png" alt="img">
-            </div>
-            <div class="gallery-img">
-                <img src="assets/images/gallery/gallery-2.png" alt="img">
-            </div>
-            <div class="gallery-img">
-                <img src="assets/images/gallery/gallery-3.png" alt="img">
-            </div>
-            <div class="gallery-img">
-                <img src="assets/images/gallery/gallery-4.png" alt="img">
-            </div>
-            <div class="gallery-img">
-                <img src="assets/images/gallery/gallery-2.png" alt="img">
-            </div>
-            <div class="gallery-img">
-                <img src="assets/images/gallery/gallery-3.png" alt="img">
-            </div>
-            <div class="gallery-img">
-                <img src="assets/images/gallery/gallery-1.png" alt="img">
-            </div>
-        </div>
-    </div>
+    @livewire('gallery-component')
     <!-- End-of Gallery -->
 </main>
