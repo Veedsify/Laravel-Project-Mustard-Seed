@@ -48,14 +48,15 @@ class UserVerificationDocument extends Component
             ];
 
             $nin = null;
-            Log::info($texts);
-            Log::info($nin);
             foreach ($patterns as $pattern) {
                 if (preg_match($pattern, $singleLineText, $matches)) {
                     $nin = str_replace(' ', '', $matches[1]); // Remove spaces, use first captured group
                     break;
                 }
             }
+            
+            Log::info($detectedTexts);
+            Log::info($nin);
 
             if ($nin !== null) {
                 // Only proceed if a potential NIN is found
