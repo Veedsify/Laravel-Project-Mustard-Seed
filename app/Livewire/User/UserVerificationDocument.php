@@ -42,6 +42,7 @@ class UserVerificationDocument extends Component
             // Improved regex pattern to match various ID number formats
             $patterns = [
                 '/(\d{4}\s*\d{4}\s*\d{4})/u',  // 4-4-4 format
+                '/(\d{4}\s*\d{3}\s*\d{4})/u',  // 4444 444 4444 format
                 '/(\d{12})/u',                 // 12 consecutive digits
                 '/(\d{2}\s*\d{2}\s*\d{2}\s*\d{2}\s*\d{2}\s*\d{2})/u', // 2-2-2-2-2-2 format
                 '/(\d{9})/u'                   // 9 digits
@@ -54,7 +55,7 @@ class UserVerificationDocument extends Component
                     break;
                 }
             }
-            
+
             Log::info($detectedTexts);
             Log::info($nin);
 
