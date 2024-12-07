@@ -38,21 +38,41 @@ class UserVerificationDocument extends Component
             $texts = $recognize->extractText($filepath);
             $detectedTexts = array_column($texts, 'DetectedText');
             $singleLineText = implode(' ', $detectedTexts);
-            $pattern = '/(\d{4}\s*\d{4}\s*\d{4})|(\d{12})|(\d{2}\s*\d{2}\s*\d{2}\s*\d{2}\s*\d{2}\s*\d{2})|(\d{9})/';
-            if (preg_match($pattern, $singleLineText, $matches)) {
-                $nin = str_replace(' ', '', $matches[0]); // Remove spaces if necessary
-                if ($this->findFirstName($firstName, $singleLineText)) {
-                    return intval($nin);
-                } else {
-                    return null;
+
+            // Improved regex pattern to match various ID number formats
+            $patterns = [
+                '/(\d{4}\s*\d{4}\s*\d{4})/u',  // 4-4-4 format
+                '/(\d{4}\s*\d{3}\s*\d{4})/u',  // 4444 444 4444 format
+                '/(\d{12})/u',                 // 12 consecutive digits
+                '/(\d{2}\s*\d{2}\s*\d{2}\s*\d{2}\s*\d{2}\s*\d{2})/u', // 2-2-2-2-2-2 format
+                '/(\d{9})/u'                   // 9 digits
+            ];
+
+            $nin = null;
+            foreach ($patterns as $pattern) {
+                if (preg_match($pattern, $singleLineText, $matches)) {
+                    $nin = str_replace(' ', '', $matches[1]); // Remove spaces, use first captured group
+                    break;
                 }
-            } else {
-                Notification::make()
-                    ->title('Please upload a clear image of your ID')
-                    ->danger()
-                    ->send();
-                return null;
             }
+
+            // Log::info($detectedTexts);
+            // Log::info($nin);
+
+            if ($nin !== null) {
+                // Only proceed if a potential NIN is found
+                if ($this->findFirstName($firstName, $singleLineText)) {
+                    // Validate NIN length if needed (adjust as per your specific requirements)
+                    return intval($nin);
+                }
+            }
+
+            // If no valid NIN is found
+            Notification::make()
+                ->title('Unable to detect a valid ID number. Please upload a clear image of your ID.')
+                ->danger()
+                ->send();
+            return null;
             // return $texts;
         } catch (\Exception $e) {
             Log::error($e->getMessage());

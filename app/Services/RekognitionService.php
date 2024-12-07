@@ -47,7 +47,7 @@ class RekognitionService
     {
         try {
             $image = Storage::get($imagePath);
-            Log::info('Image: ' . $image);
+            // Log::info('Image: ' . $image);
             $result = $this->client->detectFaces([
                 'Image' => [
                     'Bytes' => $image,
@@ -65,7 +65,6 @@ class RekognitionService
     public function compareFaces($sourceImage, $targetImage)
     {
         try {
-            Log::info('Source Image: ' . $sourceImage);
             $sourceImage = Storage::get($sourceImage);
             $targetImage = Storage::get($targetImage);
 
@@ -90,7 +89,6 @@ class RekognitionService
     {
         try {
             $image = Storage::get($imagePath);
-            Log::info('Image Extract: ' . $image);
 
             $result = $this->client->detectText([
                 'Image' => [
