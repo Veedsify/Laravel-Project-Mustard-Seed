@@ -56,8 +56,8 @@ class UserVerificationDocument extends Component
                 }
             }
 
-            Log::info($detectedTexts);
-            Log::info($nin);
+            // Log::info($detectedTexts);
+            // Log::info($nin);
 
             if ($nin !== null) {
                 // Only proceed if a potential NIN is found

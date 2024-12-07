@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Schedule;
 
 Schedule::call(function () {
-    Log::info('Deleting old AppliedItems');
+    // Log::info('Deleting old AppliedItems');
     try {
         AppliedItem::where([['is_approved', false], ['created_at', '<', now()->subDays(1)]])->delete();
     } catch (\Exception $e) {
