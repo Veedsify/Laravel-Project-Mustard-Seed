@@ -95,7 +95,7 @@ class ItemResource extends Resource
                             ->searchable()
                             ->preload()
                             ->native(false)
-                            ->option(function ($record) {
+                            ->options(function ($record) {
                                 return User::where('role', 'volunteer')->pluck('name', 'id')->toArray();
                             }),
                     ]),
