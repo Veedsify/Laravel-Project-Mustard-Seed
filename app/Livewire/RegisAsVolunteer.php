@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+
 use App\Mail\SendUserWelcomeEmail;
 use App\Models\Role;
 use App\Models\State;
@@ -80,7 +81,7 @@ class RegisAsVolunteer extends Component
             'bio' => 'I am a volunteer',
             'phone' => $this->phone,
             'email' => $this->email,
-            'image' => fake()->imageUrl(),
+            'image' => asset('assets/images/avatar.png'),
             'website' => 'https://example.com',
             'address' => $this->address,
             'city' => $this->city,
