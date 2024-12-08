@@ -6,6 +6,7 @@ use App\Filament\User\Resources\ItemResource\Pages;
 use App\Filament\User\Resources\ItemResource\RelationManagers;
 use App\Filament\User\Resources\ItemResource\Widgets\TotalDonations;
 use App\Models\Item;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
@@ -90,10 +91,13 @@ class ItemResource extends Resource
                         Forms\Components\Toggle::make('is_anonymous')
                             ->label('Post as Anonymous'),
                         Forms\Components\Select::make('volunteer_id')
-                            ->label('Select a Vlounteer')
+                            ->label('Select a Volunteer')
                             ->searchable()
                             ->preload()
-                            ->relationship('volunteer', 'name'),
+                            ->native(false)
+                            ->option(function ($record) {
+                                return User::where('role', 'volunteer')->pluck('name', 'id')->toArray();
+                            }),
                     ]),
             ])->columns(3);
     }
