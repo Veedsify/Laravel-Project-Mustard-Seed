@@ -1,13 +1,17 @@
 let AccessKey;
 let SecretKey;
 const fetchAwsCredentials = async () => {
-    const response = await fetch("/get-aws-creadentials", {
-        method: "POST",
-    });
-    const data = await response.json();
-    AccessKey = data.AccessKey;
-    SecretKey = data.SecretKey;
-};
+     try {
+         const response = await fetch("/get-aws-creadentials", {
+             method: "POST",
+         });
+         const data = await response.json();
+         AccessKey = data.AccessKey;
+         SecretKey = data.SecretKey;
+     } catch (error) {
+         console.log("Error fetching AWS credentials:", error);
+     }
+ };
 
 fetchAwsCredentials();
 
