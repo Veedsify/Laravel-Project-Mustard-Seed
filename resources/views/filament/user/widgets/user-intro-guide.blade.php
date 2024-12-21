@@ -10,7 +10,7 @@
                 <div class="p-2">
                     <h2 class="text-lg font-semibold">Donators Guide</h2>
                 </div>
-                <iframe class="w-full" src="https://www.youtube.com/embed/Y8kU484gyj8?si=vcgyfUzznVXIFqnx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/Y8kU484gyj8?si=vcgyfUzznVXIFqnx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 {{-- <video class="w-full h-full aspect-video object-cover" controls poster="{{ asset('images/guide-thumbnail.jpg') }}">
                     <source
                         src="{{ asset('https://res.cloudinary.com/dymmepdu0/video/upload/f_auto:video,q_auto/olou63vmaco15e4tgvwn') }}"
@@ -22,7 +22,7 @@
                 <div class="p-2">
                     <h2 class="text-lg font-semibold">Benefactors Guide</h2>
                 </div>
-                <iframe class="w-full" src="https://www.youtube.com/embed/osS-Q9cpitM?si=wCdKL4uxs5XcxMu1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/osS-Q9cpitM?si=wCdKL4uxs5XcxMu1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 {{-- <video class="w-full h-full aspect-video object-cover" controls poster="{{ asset('images/guide-thumbnail.jpg') }}">
                     <source
                         src="{{ asset('https://res.cloudinary.com/dymmepdu0/video/upload/f_auto:video,q_auto/opqzurxydljmfhbt60fs') }}"
