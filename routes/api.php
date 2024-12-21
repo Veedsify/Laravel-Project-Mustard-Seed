@@ -35,12 +35,9 @@ Route::post("/blog/create", function(Request $request){
 Route::post('/face/upload',[FaceVerifcation::class, 'attachFace'])->name('face.upload');
 
 Route::post('/get-aws-creadentials', function (Request $request) {
-    if(Auth::check()){
         $credentials = [
             'key' => env('AWS_ACCESS_KEY_ID'),
             'secret' => env('AWS_SECRET_ACCESS_KEY'),
         ];
         return response()->json($credentials);
-    }
-    return response()->json(['message' => 'Unauthenticated'], 401);
-});
+})->middleware('auth');
