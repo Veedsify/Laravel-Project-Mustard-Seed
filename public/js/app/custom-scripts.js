@@ -1,11 +1,22 @@
-console.log('FIlament and There');
+let AccessKey;
+let SecretKey;
+
+const fetchAwsCredentials = async () => {
+    const response = await fetch("/get-aws-creadentials", {
+        method: "POST",
+    });
+    const data = await response.json();
+    AccessKey = data.AccessKey;
+    SecretKey = data.SecretKey;
+};
+
+fetchAwsCredentials();
 
 AWS.config.update({
-     accessKeyId: '', // Replace with your access key
-     secretAccessKey: '', // Replace with your secret key
-     region: 'us-east-2' // Replace with your region
+    accessKeyId: AccessKey, // Replace with your access key
+    secretAccessKey: SecretKey, // Replace with your secret key
+    region: "us-east-2", // Replace with your region
 });
-
 const rekognition = new AWS.Rekognition();
 
 
