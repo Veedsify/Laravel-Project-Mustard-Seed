@@ -40,4 +40,4 @@ Route::post('/get-aws-creadentials', function (Request $request) {
             'secret' => env('AWS_SECRET_ACCESS_KEY'),
         ];
         return response()->json($credentials);
-})->middleware('auth');
+});
