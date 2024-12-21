@@ -5,6 +5,12 @@ const fetchAwsCredentials = async () => {
     try {
         const response = await fetch("/api/get-aws-creadentials", {
             method: "POST",
+        }, {
+          headers: {
+               'Content-Type': 'application/json',
+               'Accept': 'application/json',
+               'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+          }
         });
         const data = await response.json();
         AccessKey = data.AccessKey;
