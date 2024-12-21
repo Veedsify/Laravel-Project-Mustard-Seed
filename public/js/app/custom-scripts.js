@@ -5,28 +5,41 @@ const fetchAwsCredentials = async () => {
     try {
         const response = await fetch("/api/get-aws-creadentials", {
             method: "POST",
-        }, {
-          headers: {
-               'Content-Type': 'application/json',
-               'Accept': 'application/json',
-               'XSRF-TOKEN': document.cookie.match(new RegExp(`(^| )XSRF-TOKEN=([^;]+)`))[2]
-          }
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'XSRF-TOKEN': document.cookie.match(new RegExp(`(^| )XSRF-TOKEN=([^;]+)`))[2]
+            }
         });
+
+        if (!response.ok) {
+            throw new Error(`Failed to fetch credentials: ${response.statusText}`);
+        }
+
         const data = await response.json();
         AccessKey = data.AccessKey;
         SecretKey = data.SecretKey;
     } catch (error) {
-        console.log("Error fetching AWS credentials:", error);
+        console.error("Error fetching AWS credentials:", error);
     }
 };
 
-fetchAwsCredentials();
+(async () => {
+    await fetchAwsCredentials();
 
-AWS.config.update({
-    accessKeyId: AccessKey, // Replace with your access key
-    secretAccessKey: SecretKey, // Replace with your secret key
-    region: "us-east-2", // Replace with your region
-});
+    if (AccessKey && SecretKey) {
+        AWS.config.update({
+            accessKeyId: AccessKey,
+            secretAccessKey: SecretKey,
+            region: "us-east-2"
+        });
+
+        console.log("AWS configured successfully");
+    } else {
+        console.error("Failed to configure AWS: Credentials are undefined");
+    }
+})();
+
 const rekognition = new AWS.Rekognition();
 
 function allowCameraAccess(e) {
