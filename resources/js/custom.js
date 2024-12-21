@@ -1,5 +1,6 @@
 let AccessKey;
 let SecretKey;
+let rekognition;
 
 const fetchAwsCredentials = async () => {
     try {
@@ -17,8 +18,20 @@ const fetchAwsCredentials = async () => {
         }
 
         const data = await response.json();
+        console.log("Fetched credentials:", data);
+
         AccessKey = data.key;
         SecretKey = data.secret;
+
+        AWS.config.update({
+            accessKeyId: AccessKey,
+            secretAccessKey: SecretKey,
+            region: data.region || "us-east-2", // Fallback region
+        });
+
+        console.log("AWS configured successfully");
+
+        rekognition = new AWS.Rekognition();
     } catch (error) {
         console.error("Error fetching AWS credentials:", error);
     }
@@ -27,20 +40,12 @@ const fetchAwsCredentials = async () => {
 (async () => {
     await fetchAwsCredentials();
 
-    if (AccessKey && SecretKey) {
-        AWS.config.update({
-            accessKeyId: AccessKey,
-            secretAccessKey: SecretKey,
-            region: "us-east-2"
-        });
-
-        console.log("AWS configured successfully");
+    if (!rekognition) {
+        console.error("Failed to initialize AWS services");
     } else {
-        console.error("Failed to configure AWS: Credentials are undefined");
+        console.log("AWS Rekognition is ready to use");
     }
 })();
-
-const rekognition = new AWS.Rekognition();
 
 function allowCameraAccess(e) {
     const deviceSize = window.innerWidth < 768 ? "mobile" : "desktop";
