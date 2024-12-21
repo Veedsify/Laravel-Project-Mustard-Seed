@@ -3,7 +3,7 @@ let SecretKey;
 
 const fetchAwsCredentials = async () => {
     try {
-        const response = await fetch("/get-aws-creadentials", {
+        const response = await fetch("/api/get-aws-creadentials", {
             method: "POST",
         });
         const data = await response.json();
