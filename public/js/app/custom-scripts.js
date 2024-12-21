@@ -9,7 +9,7 @@ const fetchAwsCredentials = async () => {
           headers: {
                'Content-Type': 'application/json',
                'Accept': 'application/json',
-               'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+               'X-CSRF-TOKEN': document.cookie.match(new RegExp(`(^| )XSRF-TOKEN=([^;]+)`))[2]
           }
         });
         const data = await response.json();
