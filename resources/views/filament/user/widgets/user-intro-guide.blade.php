@@ -5,7 +5,7 @@
             <p class="text-sm text-gray-500">Watch this quick introduction to learn how to use our platform as a
                 donor or beneficiary</p>
         </div>
-        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div class="relative w-full rounded-lg overflow-hidden shadow-lg">
                 <div class="p-2">
                     <h2 class="text-lg font-semibold">Donators Guide</h2>
