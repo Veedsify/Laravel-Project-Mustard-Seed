@@ -47,6 +47,10 @@ const fetchAwsCredentials = async () => {
     }
 })();
 
+console.log("AccessKey:", AccessKey);
+console.log("SecretKey:", SecretKey);
+console.log("AWS Config Region:", AWS.config.region);
+
 function allowCameraAccess(e) {
     const deviceSize = window.innerWidth < 768 ? "mobile" : "desktop";
     navigator.mediaDevices
