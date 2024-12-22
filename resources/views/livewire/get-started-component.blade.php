@@ -29,7 +29,7 @@
                     <!-- Volunteer Guide -->
                     <div class="guide-section mb-5 p-3 border rounded shadow-sm">
                         <h3 class="guide-title mb-4"><i class="fas fa-hands-helping"></i> For Volunteers</h3>
-                        <video class="w-full h-full object-cover aspect-video" controls poster="{{ asset('images/guide-thumbnail.jpg') }}">
+                        <video class="w-full object-cover aspect-video" controls poster="{{ asset('images/guide-thumbnail.jpg') }}">
                             <source src="{{ asset('https://res.cloudinary.com/dymmepdu0/video/upload/f_auto:video,q_auto/pbcyrwr3mrctcxpnrdqv') }}"
                                 type="video/mp4">
                             Your browser does not support the video tag.
