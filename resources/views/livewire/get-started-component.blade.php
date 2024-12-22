@@ -1,5 +1,5 @@
-@section('title', $title)
 <div>
+@section('title', $title)
     <section class="breadcrumb-section breadcrumb-bg"
         style="backgeound: cadetblue; background-size:cover; background-position:center;">
         <div class="container">
