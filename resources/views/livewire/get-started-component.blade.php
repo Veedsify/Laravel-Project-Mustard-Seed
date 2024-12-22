@@ -29,11 +29,6 @@
                     <!-- Volunteer Guide -->
                     <div class="guide-section mb-5 p-3 border rounded shadow-sm">
                         <h3 class="guide-title mb-4"><i class="fas fa-hands-helping"></i> For Volunteers</h3>
-                        <video class="w-full object-cover aspect-video" controls poster="{{ asset('images/guide-thumbnail.jpg') }}">
-                            <source src="{{ asset('https://res.cloudinary.com/dymmepdu0/video/upload/f_auto:video,q_auto/pbcyrwr3mrctcxpnrdqv') }}"
-                                type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
                         <div class="guide-steps">
                             <ol class="list-group list-group-numbered gap-2">
                                 <li class="list-group-item border rounded p-3">Register as a Volunteer - <small class="text-muted">Sign up
@@ -56,8 +51,6 @@
                     <!-- Donor Guide -->
                     <div class="guide-section mb-5 p-3 border rounded shadow-sm">
                         <h3 class="guide-title mb-4"><i class="fas fa-gift"></i> For Donors</h3>
-                        <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/Y8kU484gyj8?si=vcgyfUzznVXIFqnx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        <div class="guide-steps">
                             <ol class="list-group list-group-numbered gap-2">
                                 <li class="list-group-item border rounded p-3">Register as a Donor - <small class="text-muted">Join as
                                         named or anonymous donor</small></li>
@@ -76,7 +69,7 @@
                     <!-- Benefactor Guide -->
                     <div class="guide-section p-3 border rounded shadow-sm">
                         <h3 class="guide-title mb-4"><i class="fas fa-hand-holding-heart"></i> For Benefactors</h3>
-                        <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/osS-Q9cpitM?si=wCdKL4uxs5XcxMu1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                  
                         <div class="guide-steps">
                             <ol class="list-group list-group-numbered gap-2">
                                 <li class="list-group-item border rounded p-3">Register as a Benefactor - <small class="text-muted">Sign
@@ -91,6 +84,35 @@
                                         support eligibility guidelines</small></li>
                             </ol>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="video-guide-section my-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Video Guides</h2>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="video-wrapper">
+                        <h4 class="text-center mb-3">Volunteer Guide</h4>
+                        <video class="w-full object-cover aspect-video" controls poster="{{ asset('images/guide-thumbnail.jpg') }}">
+                            <source src="{{ asset('https://res.cloudinary.com/dymmepdu0/video/upload/f_auto:video,q_auto/pbcyrwr3mrctcxpnrdqv') }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="video-wrapper">
+                        <h4 class="text-center mb-3">Donator Guide</h4>
+                        <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/Y8kU484gyj8?si=vcgyfUzznVXIFqnx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="video-wrapper">
+                        <h4 class="text-center mb-3">Benefactors Guide</h4>
+                        <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/osS-Q9cpitM?si=wCdKL4uxs5XcxMu1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
