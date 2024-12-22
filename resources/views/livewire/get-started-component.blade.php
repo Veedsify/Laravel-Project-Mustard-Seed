@@ -99,7 +99,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="video-wrapper">
                         <h4 class="text-center mb-3">Volunteer Guide</h4>
-                        <video class="w-full object-cover aspect-video" controls
+                        <video class="w-full h-auto" controls
                             poster="{{ asset('images/guide-thumbnail.jpg') }}">
                             <source
                                 src="{{ asset('https://res.cloudinary.com/dymmepdu0/video/upload/f_auto:video,q_auto/pbcyrwr3mrctcxpnrdqv') }}"
@@ -111,7 +111,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="video-wrapper">
                         <h4 class="text-center mb-3">Benefactors Guide</h4>
-                        <iframe class="w-full aspect-video" width="100%"
+                        <iframe class="w-full aspect-video" width="100%" height="100%"
                             src="https://www.youtube.com/embed/osS-Q9cpitM?si=wCdKL4uxs5XcxMu1"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -121,7 +121,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="video-wrapper">
                         <h4 class="text-center mb-3">Donator Guide</h4>
-                        <iframe class="w-full aspect-video" width="100%"
+                        <iframe class="w-full aspect-video" width="100%" height="100%"
                             src="https://www.youtube.com/embed/Y8kU484gyj8?si=vcgyfUzznVXIFqnx"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
