@@ -110,9 +110,9 @@
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="video-wrapper">
-                        <h4 class="text-center mb-3">Donator Guide</h4>
-                        <iframe class="w-full aspect-video"
-                            src="https://www.youtube.com/embed/Y8kU484gyj8?si=vcgyfUzznVXIFqnx"
+                        <h4 class="text-center mb-3">Benefactors Guide</h4>
+                        <iframe class="w-full aspect-video" width="100%"
+                            src="https://www.youtube.com/embed/osS-Q9cpitM?si=wCdKL4uxs5XcxMu1"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -120,9 +120,9 @@
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="video-wrapper">
-                        <h4 class="text-center mb-3">Benefactors Guide</h4>
-                        <iframe class="w-full aspect-video"
-                            src="https://www.youtube.com/embed/osS-Q9cpitM?si=wCdKL4uxs5XcxMu1"
+                        <h4 class="text-center mb-3">Donator Guide</h4>
+                        <iframe class="w-full aspect-video" width="100%"
+                            src="https://www.youtube.com/embed/Y8kU484gyj8?si=vcgyfUzznVXIFqnx"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
