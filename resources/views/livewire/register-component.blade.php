@@ -19,8 +19,8 @@
                     <div class="login-card">
                         <!-- Logo -->
                         <div class="logo mb-40">
-                            <a href="{{route('home')}}" class="mb-30 d-block"><img
-                                    src="assets/images/logo/Logo-charitfix.png" alt="logo"></a>
+                            <a href="{{route('home')}}" class="mb-30 d-block rounded-pill"><img
+                                src="{{ asset('storage/' . optional($homePage)->logo) }}" width="60" alt="logo"></a>
                         </div>
                         <!-- Form -->
                         <form action="#" method="POST">

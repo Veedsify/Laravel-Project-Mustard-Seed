@@ -19,6 +19,13 @@
     <section class="donate-section top-bottom-padding">
         <div class="container">
             <div class="row gy-24">
+                @if(isset($jobs) && $jobs->count() == 0)
+                    <div class="col-lg-12">
+                        <h2 class="" role="alert">
+                            No job found
+                        </h2>
+                    </div>
+                @endif
                 @foreach ($jobs as $job)
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 view-wrapper">
                         <div class="single-donate h-calc">

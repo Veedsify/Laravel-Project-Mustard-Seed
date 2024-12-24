@@ -26,7 +26,7 @@ class VolunteerPanelProvider extends PanelProvider
     {
         return $panel
             ->id('volunteer')
-            ->font('Lexend')
+            ->font('Sora')
             ->spa()
             ->brandName("Mustard Seed Charity")
             ->path('/dashboard/volunteer')

@@ -6,11 +6,7 @@
                 volunteer</p>
         </div>
         <div class="relative w-full aspect-video rounded-lg overflow-hidden shadow-lg">
-            <video class="w-full h-full object-cover aspect-video" controls poster="{{ asset('images/guide-thumbnail.jpg') }}">
-                <source src="{{ asset('https://res.cloudinary.com/dymmepdu0/video/upload/f_auto:video,q_auto/pbcyrwr3mrctcxpnrdqv') }}"
-                    type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+            <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/RXbUtTpWW70?si=uyTCLJsC1jNQGGwD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
     </x-filament::section>
 </x-filament-widgets::widget>

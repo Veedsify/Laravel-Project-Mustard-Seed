@@ -99,19 +99,17 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="video-wrapper">
                         <h4 class="text-center mb-3">Volunteer Guide</h4>
-                        <video class="w-full h-auto" controls
-                            poster="{{ asset('images/guide-thumbnail.jpg') }}">
-                            <source
-                                src="{{ asset('https://res.cloudinary.com/dymmepdu0/video/upload/f_auto:video,q_auto/pbcyrwr3mrctcxpnrdqv') }}"
-                                type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                        <iframe class="w-full aspect-video" width="100%" height="300"
+                        src="https://www.youtube.com/embed/RXbUtTpWW70?si=uyTCLJsC1jNQGGwD"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="video-wrapper">
                         <h4 class="text-center mb-3">Benefactors Guide</h4>
-                        <iframe class="w-full aspect-video" width="100%" height="100%"
+                        <iframe class="w-full aspect-video" width="100%" height="300"
                             src="https://www.youtube.com/embed/osS-Q9cpitM?si=wCdKL4uxs5XcxMu1"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -121,7 +119,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="video-wrapper">
                         <h4 class="text-center mb-3">Donator Guide</h4>
-                        <iframe class="w-full aspect-video" width="100%" height="100%"
+                        <iframe class="w-full aspect-video" width="100%" height="300"
                             src="https://www.youtube.com/embed/Y8kU484gyj8?si=vcgyfUzznVXIFqnx"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -149,7 +147,7 @@
                                 <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                             </svg>
                         </div>
-                        <h3>Become a Volunteer</h3>
+                        <h3 class="mb-2">Become a Volunteer</h3>
                         <p>Join our community of dedicated volunteers making a difference. Discover various ways to
                             contribute your time, skills, and passion to our causes.</p>
                         <a href="{{ route('register.as.volunteer') }}" class="btn btn-primary mt-4">Register as
@@ -167,7 +165,7 @@
                                 <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
                             </svg>
                         </div>
-                        <h3>Become a Benefactor</h3>
+                        <h3 class="mb-2">Become a Benefactor</h3>
                         <p>As a benefactor, you will receive support from our community through donations. Your needs
                             will be met by generous donors and dedicated volunteers.</p>
                         <a href="{{ route('register') }}" class="btn btn-primary mt-4">Join as Benefactor</a>
@@ -186,7 +184,7 @@
                                 <line x1="1" y1="10" x2="23" y2="10"></line>
                             </svg>
                         </div>
-                        <h3>Make a Donation</h3>
+                        <h3 class="mb-2">Make a Donation</h3>
                         <p>Your donation helps create a lasting impact in communities. Every contribution, big or small,
                             supports our various initiatives to make a real difference.</p>
                         <a href="{{ auth()->check() ? url('user/item') : route('register') }}"

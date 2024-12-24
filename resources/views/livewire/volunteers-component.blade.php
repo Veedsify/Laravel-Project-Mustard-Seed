@@ -21,6 +21,13 @@
     <section class="team-section top-bottom-padding">
         <div class="container">
             <div class="row gy-24">
+                @if(isset($volunteers) && $volunteers->count() == 0)
+                    <div class="col-lg-12">
+                        <h2 class="" role="alert">
+                            No Volunteers available
+                        </h2>
+                    </div>
+                @endif
                 @foreach ($volunteers as $volunteer)
                     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 view-wrapper">
                         <div class="single-team h-calc">
