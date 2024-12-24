@@ -6,8 +6,8 @@
                 volunteer</p>
         </div>
         <div class="relative w-full aspect-video rounded-lg overflow-hidden shadow-lg">
-            <video class="w-full h-full object-cover" controls poster="{{ asset('images/guide-thumbnail.jpg') }}">
-                <source src="{{ asset('https://videos.pexels.com/video-files/28988888/12538607_640_360_50fps.mp4') }}"
+            <video class="w-full h-full object-cover aspect-video" controls poster="{{ asset('images/guide-thumbnail.jpg') }}">
+                <source src="{{ asset('https://res.cloudinary.com/dymmepdu0/video/upload/f_auto:video,q_auto/pbcyrwr3mrctcxpnrdqv') }}"
                     type="video/mp4">
                 Your browser does not support the video tag.
             </video>
