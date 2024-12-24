@@ -5,7 +5,7 @@ AWS.config.update({
      secretAccessKey: '', // Replace with your secret key
      region: 'us-east-2' // Replace with your region
 });
-
+     
 const rekognition = new AWS.Rekognition();
 
 
