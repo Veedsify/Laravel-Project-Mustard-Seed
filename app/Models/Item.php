@@ -53,6 +53,11 @@ class Item extends Model
         return $this->hasMany(AppliedItem::class);
     }
 
+    public function applicantsFromOrganization(): HasMany
+    {
+        return $this->hasMany(ApplicantFromOrganization::class);
+    }
+
     protected static function booted(): void
     {
         static::creating(function ($item) {
@@ -108,4 +113,7 @@ class Item extends Model
             }
         });
     }
+
+
+
 }

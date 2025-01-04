@@ -21,7 +21,7 @@ class BlogFactory extends Factory
             'slug' => $this->faker->slug,
             'image' => $this->faker->imageUrl($width = 640, $height = 480, 'Mustard'),
             'category_id' => $this->faker->randomElement([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]),
-            'user_id' => 1,
+            'user_id' => $this->faker->randomElement([1]),
             'content' => $this->faker->paragraph(35),
             'descriptions' => $this->faker->paragraph(2),
             'is_published' => $this->faker->boolean,

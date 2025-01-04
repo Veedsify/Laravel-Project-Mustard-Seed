@@ -2,6 +2,7 @@
 namespace Database\Seeders;
 
 use App\Models\Blog;
+use App\Constants\States;
 use App\Models\CampaignCategory;
 use App\Models\Category;
 use App\Models\Location;
@@ -17,24 +18,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // $user = User::factory()->create([
+        //     'name' => 'Kc Admin',
+        //     'email' => 'charitymustardseed@gmail.com',
+        //     'role' => 'admin',
+        // ]);
         // User::factory(10)->create();
 
-        $user = User::factory()->create([
-            'name' => 'Kc Admin',
-            'email' => 'charitymustardseed@gmail.com',
-            'role' => 'admin',
-        ]);
-
-        Role::factory()->create([
-            'name' => 'admin',
-        ]);
-        Role::factory()->create([
-            'name' => 'user',
-        ]);
-        Role::factory()->create([
-            'name' => 'volunteer',
-        ]);
+        // Role::factory()->create([
+        //     'name' => 'admin',
+        // ]);
+        // Role::factory()->create([
+        //     'name' => 'user',
+        // ]);
+        // Role::factory()->create([
+        //     'name' => 'volunteer',
+        // ]);
         // User::factory(200)->create();
+        States::SeedState();
         // Location::factory(10)->create();
         // CampaignCategory::factory(4)->create();
         // Category::factory(10)->create();

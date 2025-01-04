@@ -4,6 +4,7 @@ namespace App\Providers\Filament;
 
 use App\Http\Middleware\CheckIsUser;
 use App\Http\Middleware\CheckUserIsNotDisabled;
+use CharrafiMed\GlobalSearchModal\GlobalSearchModalPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -28,12 +29,17 @@ class UserPanelProvider extends PanelProvider
         return $panel
             ->id('user')
             // ->spa()
-            ->brandName("Mustard Seed Charity") 
+            ->brandName("Mustard Seed Charity")
             ->path('user')
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Teal,
             ])
-            ->font('Sora')
+            ->plugins([
+                GlobalSearchModalPlugin::make()->closeByEscaping(enabled: false)->closeButton(enabled: true)
+            ])
+            ->font('Epilogue')
+            ->databaseNotifications()
+            ->databaseNotificationsPolling('13s')
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->discoverResources(in: app_path('Filament/User/Resources'), for: 'App\\Filament\\User\\Resources')
             ->discoverPages(in: app_path('Filament/User/Pages'), for: 'App\\Filament\\User\\Pages')

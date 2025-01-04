@@ -11,7 +11,7 @@
                 <input wire:model="fileType" type="radio" value="voterscard" id="voterscard" name="idcard"
                     class="hidden" />
                 <span
-                    class="selects flex items-center gap-3 justify-center p-4 rounded-xl border dark:border-gray-700 duration-100 ease-in-out group-hover:border-amber-500 cursor-pointer">
+                    class="selects flex items-center gap-3 justify-center p-4 rounded-xl border dark:border-gray-700 duration-100 ease-in-out group-hover:border-teal-500 cursor-pointer">
                     Voters Card
                     <span>
                         <x-icons.voterscard />
@@ -22,7 +22,7 @@
                 <input wire:model="fileType" type="radio" value="nationalId" id="nationalId" name="idcard"
                     class="hidden" />
                 <span
-                    class="selects flex items-center gap-3 justify-center p-4 rounded-xl border dark:border-gray-700 duration-100 ease-in-out group-hover:border-amber-500 cursor-pointer">
+                    class="selects flex items-center gap-3 justify-center p-4 rounded-xl border dark:border-gray-700 duration-100 ease-in-out group-hover:border-teal-500 cursor-pointer">
                     National ID
                     <span>
                         <x-icons.nationalcard />
@@ -33,7 +33,7 @@
                 <input wire:model="fileType" type="radio" value="driverslisense" id="driverslisense" name="idcard"
                     class="hidden" />
                 <span
-                    class="selects flex items-center gap-3 justify-center p-4 rounded-xl border dark:border-gray-700 duration-100 ease-in-out group-hover:border-amber-500 cursor-pointer">
+                    class="selects flex items-center gap-3 justify-center p-4 rounded-xl border dark:border-gray-700 duration-100 ease-in-out group-hover:border-teal-500 cursor-pointer">
                     Drivers License
                     <span>
                         <x-icons.driverscard />
@@ -71,7 +71,7 @@
         <label for="nobackside" class="inline-block font-semibold mb-3 text-sm select-none cursor-pointer">
             Card has no backside
             <input @click="backside = !backside" type="checkbox" id="nobackside" name="backside"
-                class="ml-3 inline-block accent-amber-500 text-amber-500 bg-amber-500 outline-none border-none" />
+                class="ml-3 inline-block accent-teal-500 text-teal-500 bg-teal-500 outline-none border-none" />
         </label>
         <label x-show="backside" for="frontside" class="block font-semibold mb-3 text-sm">
             <span class="inline-block mb-4">
@@ -100,7 +100,7 @@
             Back
         </button>
         <button wire:click.prevent="saveDocuments" type="button" id="name"
-            class="rounded-xl p-3 w-full block border-gray-300 bg-amber-600 text-white font-semibold cursor-pointer hover:bg-amber-500">
+            class="rounded-xl p-3 w-full block border-gray-300 bg-teal-600 text-white font-semibold cursor-pointer hover:bg-teal-500">
             Next
         </button>
     </div>

@@ -1,4 +1,51 @@
 @section('title', $title)
+@section('meta')
+    <meta name="description" 
+        content="Explore job opportunities at Mustard Seed Charity. Join our team and make a difference in community development and humanitarian work through various roles in poverty alleviation, education, and community outreach.">
+    <meta name="keywords" 
+        content="mustard seed jobs, charity jobs, ngo jobs, nonprofit careers, humanitarian work, community development jobs, volunteer opportunities, charity careers, social impact jobs">
+    <meta name="author" content="Mustard Seed">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Job Opportunities - Mustard Seed Charity">
+    <meta property="og:site_name" content="Mustard Seed Charity">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:image" content="{{ asset('storage/' . optional($homePage)->logo) }}">
+    <meta property="og:description" content="Find meaningful career opportunities at Mustard Seed Charity">
+    <meta name="twitter:title" content="Job Opportunities - Mustard Seed Charity">
+    <meta name="twitter:description" content="Find meaningful career opportunities at Mustard Seed Charity">
+    <meta name="twitter:description" content="{{ optional($homePage)->footer_text }}">
+    <meta name="twitter:image" content="www.mustardseedcharity.com">
+    <meta name="twitter:card" content="summary">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:locale" content="en_US">
+    <meta property="article:modified_time" content="{{ now() }}">
+
+    <!-- Twitter -->
+    <meta name="twitter:domain" content="mustardseedcharity.com/donations">
+
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="rating" content="General">
+    <meta name="revisit-after" content="2 days">
+    <meta name="language" content="English">
+    <link rel="canonical" href="{{ url()->current() . '/donations' }}">
+
+    <!-- Rich Snippets -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "NonProfit",
+            "name": "Mustard Seed Charity",
+            "url": "https://mustardseedcharity.com/donations",
+            "logo": "{{ asset('storage/' . optional($homePage)->logo) }}",
+            "sameAs": [
+            
+            ],
+        }
+</script>
+@endsection
 <main>
     <section class="breadcrumb-section breadcrumb-bg"   style="background-image: url({{ asset('storage/' . optional($headerImages)->jobs_page_header_image) }}); background-size: cover; background-position: center;">
         <div class="container">

@@ -8,6 +8,18 @@ use Livewire\Component;
 class VolunteersDetailsComponent extends Component
 {
     public $username;
+    public $rating = 0;
+    public $reviews = [];
+    public $reviewText = '';
+
+    public function setRating($rating)
+    {   
+        $this->rating = $rating;
+    }
+
+    public function submitReview(){
+
+    }
 
     public function mount($username)
     {
@@ -22,7 +34,8 @@ class VolunteersDetailsComponent extends Component
             return abort(404);
         }
         return view('livewire.volunteers-details-component', [
-            'volunteer' => $volunteer
+            'volunteer' => $volunteer,
+            'reviews' => $this->reviews,
         ]);
     }
 }

@@ -3,7 +3,7 @@
         <p class="mb-10 max-w-[500px] leading-loose">
             Do take notes that the campaigns listed here are only the campaigns that are closest to your location.
             to view all campaigns, please visit the <a href="{{route('campaigns')}}"
-                                                       class="text-amber-500 font-semibold">Campaigns page</a>.
+                                                       class="text-teal-500 font-semibold">Campaigns page</a>.
         </p>
         @if($this->campaigns->count() == 0)
             <p class="text-gray-500 font-bold py-3 bg-gray-100 p-3 rounded-lg">
@@ -29,7 +29,7 @@
                             {!! Str::limit($campaign->description, 150) !!}
                         </div>
                         <a href="{{route('donate.details', ['slug' => $campaign->slug])}}"
-                           class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-amber-700 rounded hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800">
+                           class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-teal-700 rounded hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800">
                             View Campaign
                             <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
                                  xmlns="http://www.w3.org/2000/svg"

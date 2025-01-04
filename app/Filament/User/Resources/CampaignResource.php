@@ -9,6 +9,8 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Database\Eloquent\Model;
 
 class CampaignResource extends Resource
 {
@@ -23,6 +25,34 @@ class CampaignResource extends Resource
     protected static ?string $navigationGroup = 'Campaigns';
 
     protected static ?string $breadcrumb = 'Campaigns';
+    protected static ?string $recordTitleAttribute = 'title';
+
+    public static function getGlobalSearchResultTitle(Model $record): string | Htmlable
+    {
+        return "Campaign";
+    }
+
+    public static function getGloballySearchableAttributes(): array
+    {
+        return [
+            'name',
+            'description',
+            'image',
+            'slug',
+            'status',
+            'raised',
+            'goal',
+            'user.name',
+            'location.address'
+        ];
+    }
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        return [
+            'User' => $record->user->name,
+            'Location' => $record->location->name,
+        ];
+    }
 
     public static function getNavigationBadge(): ?string
     {
@@ -68,8 +98,8 @@ class CampaignResource extends Resource
         return [
             'index' => Pages\Campaign::route('/'),
             //            'index' => Pages\ListCampaigns::route('/'),
-//            'create' => Pages\CreateCampaign::route('/create'),
-//            'edit' => Pages\EditCampaign::route('/{record}/edit'),
+            //            'create' => Pages\CreateCampaign::route('/create'),
+            //            'edit' => Pages\EditCampaign::route('/{record}/edit'),
         ];
     }
 }

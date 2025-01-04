@@ -8,7 +8,7 @@
             First Name:
         </label>
         <input type="text" id="first_name" name="first_name" wire:model="first_name"
-            class="rounded-xl p-3 w-full block border-gray-300 dark:bg-gray-800 dark:border-gray-700 outline-amber-500 accent-amber-500" />
+            class="rounded-xl p-3 w-full block border-gray-300 dark:bg-gray-800 dark:border-gray-700 outline-teal-500 accent-teal-500" />
         @error('first_name')
             <small class="text-red-500">
                 {{ $message }}
@@ -20,7 +20,7 @@
             Last Name:
         </label>
         <input type="text" id="last_name" name="last_name" wire:model="last_name"
-            class="rounded-xl p-3 w-full block border-gray-300 dark:bg-gray-800 dark:border-gray-700 outline-amber-500 accent-amber-500" />
+            class="rounded-xl p-3 w-full block border-gray-300 dark:bg-gray-800 dark:border-gray-700 outline-teal-500 accent-teal-500" />
         @error('last_name')
             <small class="text-red-500">
                 {{ $message }}
@@ -32,7 +32,7 @@
             Phone Number:
         </label>
         <input type="text" id="phone" name="phone" wire:model="phone_number"
-            class="rounded-xl p-3 w-full block border-gray-300 dark:bg-gray-800 dark:border-gray-700 outline-amber-500 accent-amber-500" />
+            class="rounded-xl p-3 w-full block border-gray-300 dark:bg-gray-800 dark:border-gray-700 outline-teal-500 accent-teal-500" />
         @error('phone_number')
             <small class="text-red-500">
                 {{ $message }}
@@ -44,7 +44,7 @@
             Residential Address:
         </label>
         <input type="text" id="address" name="address" wire:model="address"
-            class="rounded-xl p-3 w-full block border-gray-300 dark:bg-gray-800 dark:border-gray-700 outline-amber-500 accent-amber-500" />
+            class="rounded-xl p-3 w-full block border-gray-300 dark:bg-gray-800 dark:border-gray-700 outline-teal-500 accent-teal-500" />
         @error('address')
             <small class="text-red-500">
                 {{ $message }}
@@ -53,7 +53,7 @@
     </div>
     <div class="col-span-full w-full">
         <button wire:click="saveDetails" type="button" id="name" name="name"
-            class="rounded-xl p-3 w-full block border-gray-300 dark:border-gray-700 outline-amber-500 accent-amber-500 bg-amber-600 text-white font-semibold cursor-pointer hover:bg-amber-500">
+            class="rounded-xl p-3 w-full block border-gray-300 dark:border-gray-700 outline-teal-500 accent-teal-500 bg-teal-600 text-white font-semibold cursor-pointer hover:bg-teal-500">
             Next
         </button>
     </div>

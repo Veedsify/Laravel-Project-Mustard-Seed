@@ -26,13 +26,15 @@ class VolunteerPanelProvider extends PanelProvider
     {
         return $panel
             ->id('volunteer')
-            ->font('Sora')
+            ->font('Epilogue')
             ->spa()
             ->brandName("Mustard Seed Charity")
             ->path('/dashboard/volunteer')
+            ->databaseNotifications()
+            ->databaseNotificationsPolling('13s')
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Teal,
             ])
             ->discoverResources(in: app_path('Filament/Volunteer/Resources'), for: 'App\\Filament\\Volunteer\\Resources')
             ->discoverPages(in: app_path('Filament/Volunteer/Pages'), for: 'App\\Filament\\Volunteer\\Pages')

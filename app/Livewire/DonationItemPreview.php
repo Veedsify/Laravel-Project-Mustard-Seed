@@ -68,6 +68,15 @@ class DonationItemPreview extends Component
             return;
         }
 
+        // CheckOrganizationsToo
+        $applicantsFromOrganizations = Item::where('id', $item->id)->applicantsFromOrganization()->get();
+
+        if (($applicantsFromOrganizations->count()  * $item->unit) + 1 >= $item->quantity) {
+            $this->dispatch('notify-info', message: 'You can\'t apply for this item, as it has reached the maximum number of applicants');
+            return;
+        }
+
+
         // $checkId = User::find(Auth::id())->idVerified;
         // if(!$checkId || !$checkId->verification_status){
         //     $this->dispatch('notify-id', message:'You can\'t apply for this item, as your ID is not verified, please verify your id on your dashboard');
@@ -87,6 +96,7 @@ class DonationItemPreview extends Component
         $this->name = '';
         $this->email = '';
         $this->reason = '';
+        $this->reset();
 
         $this->dispatch('notify', message: 'Application submitted successfully');
     }
@@ -104,6 +114,7 @@ class DonationItemPreview extends Component
             return;
         }
         $otherItems = Item::where('id', '!=', $item->id)
+            ->where('status', true)
             ->limit(3)
             ->inRandomOrder()
             ->get();
@@ -111,7 +122,7 @@ class DonationItemPreview extends Component
         $volunteers = User::where('role', 'volunteer')->get()->pluck('id')->toArray();
         $itemCategories = ItemCategory::orderBy('name')->get();
 
-//        Updating Units
+        //        Updating Units
         $this->unit = $item->unit;
         if ($item->quantity == $item->appliedItems->sum('unit')) {
             abort('404');

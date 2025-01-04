@@ -10,6 +10,7 @@ use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Infolist;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\Action;
@@ -21,7 +22,7 @@ class ItemResource extends Resource
 {
     protected static ?string $model = Item::class;
 
-    protected static ?string $navigationIcon = 'heroicon-s-window';
+    protected static ?string $navigationIcon = 'bxs-donate-heart';
     protected static ?string $navigationGroup = 'Donations';
     protected static ?string $navigationLabel = 'Approve Donations';
     protected static ?string $title = 'New Donation';
@@ -89,20 +90,28 @@ class ItemResource extends Resource
                 Tables\Actions\ViewAction::make(),
                 Action::make('UpdateStatus')
                     ->icon('heroicon-s-arrow-path')
-                    ->label('Update')
-                    ->color('info')
+                    ->label('Approve')
+                    ->color('success')
                     ->requiresConfirmation()
-                    ->form([
-                        Toggle::make('status')
-                            ->default(fn($record) => $record->status)
-                            ->label('Status')
-                            ->required(),
-                    ])
+                    // ->form([
+                    //     Toggle::make('status')
+                    //         ->default(fn($record) => $record->status)
+                    //         ->label('Status')
+                    //         ->required(),
+                    // ])
                     ->action(function (array $data, Item $record): void {
                         $record->update([
-                            'status' => $data['status'],
+                            'status' => true,
                         ]);
                         $record->save();
+
+                        $body = 'Donation ' . $record->name . ' has been approved successfully.';
+
+                        Notification::make()
+                            ->success()
+                            ->title('Donation Approved')
+                            ->body($body)
+                            ->sendToDatabase($record->user);
                     }),
             ])
             ->bulkActions([
@@ -116,9 +125,12 @@ class ItemResource extends Resource
     {
         return $infolist->schema([
             TextEntry::make('Donator')
-                ->default(fn($record) => $record->user->name),
+                ->default(fn($record) => $record->user->custom_username),
             TextEntry::make('Donator Email')
-                ->default(fn($record) => $record->user->email),
+                ->default(function ($record) {
+                    $email =  $record->user->email;
+                    return substr($email, 0, 3) . '...' . substr($email, strpos($email, '@'));
+                }),
             TextEntry::make('Donator Username')
                 ->default(fn($record) => $record->user->username),
             TextEntry::make('Item Category')

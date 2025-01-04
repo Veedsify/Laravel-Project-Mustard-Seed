@@ -9,6 +9,8 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Database\Eloquent\Model;
 
 class AppliedItemResource extends Resource
 {
@@ -18,7 +20,31 @@ class AppliedItemResource extends Resource
     protected static ?string $navigationGroup = 'Donations';
     protected static ?string $navigationLabel = 'My Applied Items';
     protected static ?string $title = 'My Applied Items';
+    protected static ?string $recordTitleAttribute = 'title';
     protected static string|array $routeMiddleware = [CheckUserIsIdVerified::class];
+
+    public static function getGlobalSearchResultTitle(Model $record): string | Htmlable
+    {
+        return "Applied Items";
+    }
+    public static function getGloballySearchableAttributes(): array
+    {
+        return [
+            'user.name',
+            'first_name',
+            'last_name',
+            'reason',
+            'unit',
+            'is_approved',
+        ];
+    }
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        return [
+            'User' => $record->user->name,
+            'Item' => $record->item->name,
+        ];
+    }
 
     public static function canCreate(): bool
     {
@@ -26,11 +52,9 @@ class AppliedItemResource extends Resource
     }
 
     public static function form(Form $form): Form
-    {   
+    {
         return $form
-            ->schema([
-
-            ]);
+            ->schema([]);
     }
 
     public static function table(Table $table): Table

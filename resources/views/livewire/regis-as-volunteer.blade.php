@@ -44,6 +44,23 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="form-group d-flex align-items-center gap-4">
+                                    <label for="password">
+                                        Is An Organization
+                                    </label>
+                                    <input type="checkbox" id="is_valid_organisation" class="form-check-input"
+                                        placeholder="Is An Organization*" wire:model="is_valid_organisation">
+                                    @error('password')
+                                        <span
+                                            class="error text
+                                        -danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-xl-6">

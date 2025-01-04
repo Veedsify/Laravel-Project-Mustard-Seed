@@ -65,7 +65,7 @@
             </svg>
         </div>
         <input wire:click="save" type="submit" @click.prevent="submitForm" value="Save"
-            class="w-full block border mb-3 dark:text-white dark:bg-amber-600 dark:border-amber-700 bg-amber-600 p-4 outline-none text-white rounded-xl cursor-pointer" />
+            class="w-full block border mb-3 dark:text-white dark:bg-teal-600 dark:border-teal-700 bg-teal-600 p-4 outline-none text-white rounded-xl cursor-pointer" />
     </div>
 </div>
 

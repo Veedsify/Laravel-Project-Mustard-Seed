@@ -19,8 +19,6 @@ class User extends Authenticatable implements FilamentUser
 {
     use HasFactory, Notifiable;
 
-
-
     public function canAccessPanel(Panel $panel): bool
     {
         return true;
@@ -37,24 +35,26 @@ class User extends Authenticatable implements FilamentUser
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'username',
-        'avatar',
-        'cover',
-        'role',
-        'bio',
-        'google_id',
-        'location',
-        'admin_approved',
-        'admin_id',
-        'donator_id',
-        'volunteer_id',
-        'password_reset_token',
-        'email_verified_at',
+        "name",
+        "email",
+        "password",
+        "custom_username",
+        "username",
+        "avatar",
+        "cover",
+        "role",
+        "bio",
+        "google_id",
+        "location",
+        "admin_approved",
+        "admin_id",
+        "donator_id",
+        "volunteer_id",
+        "is_valid_organisation",
+        "password_reset_token",
+        "completed_onboarding",
+        "email_verified_at",
     ];
-
 
     public function myJob()
     {
@@ -79,52 +79,61 @@ class User extends Authenticatable implements FilamentUser
     // Add this method to create settings after a user is created
     protected static function booted()
     {
-        static::creating(function ($user){
-            $user->password = bcrypt('password');
+        static::creating(function ($user) {
+            $user->password = bcrypt("password");
         });
 
         static::created(function ($user) {
             // Create a new settings record for the newly created volunteer users
-            if (Auth::check() && Auth::user()->hasRole('admin')) {
-                if ($user->role === 'volunteer') {
+            if (Auth::check() && Auth::user()->hasRole("admin")) {
+                if ($user->role === "volunteer") {
                     VolunteerSetting::create([
-                        'user_id' => $user->id,
+                        "user_id" => $user->id,
                     ]);
                 }
             }
         });
 
         static::updating(function ($user) {
-            if ($user->isDirty('admin_approved')) {
+            if ($user->isDirty("admin_approved")) {
                 if ($user->admin_approved) {
-                    if ($user->role === 'volunteer') {
+                    if ($user->role === "volunteer") {
                         $user->email_verified_at = now();
                         $data = [
-                            'volunteerSettings' => VolunteerSetting::where('user_id', $user->id)->first(),
+                            "volunteerSettings" => VolunteerSetting::where(
+                                "user_id",
+                                $user->id
+                            )->first(),
                         ];
                         // Send Welcome Email(implement the email sending logic)
                         Resend::emails()->send([
-                            'from' => 'Mustard Seed Charity <info@mustardseedcharity.com>',
-                            'to' => $user->email,
-                            'subject' => 'Hey Volunteer: Your Account has been Approved',
-                            'html' => (new SendVolunteerWelcomeEmail($user, $data))->render(),
+                            "from" =>
+                                "Mustard Seed Charity <info@mustardseedcharity.com>",
+                            "to" => $user->email,
+                            "subject" =>
+                                "Hey Volunteer: Your Account has been Approved",
+                            "html" => (new SendVolunteerWelcomeEmail(
+                                $user,
+                                $data
+                            ))->render(),
                         ]);
                     }
                 } else {
                     // Send Disable User Account Email(implement the email sending logic)
                     Resend::emails()->send([
-                        'from' => 'Mustard Seed Charity <info@mustardseedcharity.com>',
-                        'to' => $user->email,
-                        'subject' => 'Hey User: Your Account has been Disabled',
-                        'html' => (new DisableUserAccount($user))->render(),
+                        "from" =>
+                            "Mustard Seed Charity <info@mustardseedcharity.com>",
+                        "to" => $user->email,
+                        "subject" => "Hey User: Your Account has been Disabled",
+                        "html" => (new DisableUserAccount($user))->render(),
                     ]);
-                    Log::info('User account disabled');
+                    Log::info("User account disabled");
                 }
             }
         });
     }
 
-    public function events ()
+    public function events()
     {
         return $this->hasMany(Event::class);
     }
@@ -141,9 +150,8 @@ class User extends Authenticatable implements FilamentUser
 
     public function hasRole($role)
     {
-        return $this->roles->contains('name', $role);
+        return $this->roles->contains("name", $role);
     }
-
 
     public function volunteer_settings()
     {
@@ -153,33 +161,47 @@ class User extends Authenticatable implements FilamentUser
     // Volunteer belongs to an Admin
     public function admin()
     {
-        return $this->belongsTo(User::class, 'admin_id')->where('role', 'admin');
+        return $this->belongsTo(User::class, "admin_id")->where(
+            "role",
+            "admin"
+        );
     }
 
     // User belongs to a Volunteer
     public function volunteer()
     {
-        return $this->belongsTo(User::class, 'volunteer_id')->where('role', 'volunteer');
+        return $this->belongsTo(User::class, "volunteer_id")->where(
+            "role",
+            "volunteer"
+        );
     }
 
     // Donators are standalone
     public function donators()
     {
-        return $this->hasMany(User::class, 'donator_id')->where('role', 'donator');
+        return $this->hasMany(User::class, "donator_id")->where(
+            "role",
+            "donator"
+        );
     }
 
     // Admin has many Volunteers
     public function volunteers()
     {
-        return $this->hasMany(User::class, 'admin_id')->where('role', 'volunteer');
+        return $this->hasMany(User::class, "admin_id")->where(
+            "role",
+            "volunteer"
+        );
     }
 
     // Volunteer has many Users
     public function users()
     {
-        return $this->hasMany(User::class, 'volunteer_id')->where('role', 'user');
+        return $this->hasMany(User::class, "volunteer_id")->where(
+            "role",
+            "user"
+        );
     }
-
 
     public function blogs()
     {
@@ -221,15 +243,22 @@ class User extends Authenticatable implements FilamentUser
         return $this->hasMany(AppliedItem::class);
     }
 
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class, "volunteer_id");
+    }
+
+    public function ratingsGiven()
+    {
+        return $this->hasMany(Rating::class, "user_id");
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $hidden = ["password", "remember_token"];
 
     /**
      * Get the attributes that should be cast.
@@ -239,8 +268,8 @@ class User extends Authenticatable implements FilamentUser
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            "email_verified_at" => "datetime",
+            "password" => "hashed",
         ];
     }
 }

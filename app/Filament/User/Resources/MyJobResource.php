@@ -15,7 +15,9 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,8 +28,42 @@ class MyJobResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-s-briefcase';
     protected static string | array $routeMiddleware = [CheckUserIsIdVerified::class];
     protected static ?string $navigationGroup = 'Jobs';
+    protected static ?string $recordTitleAttribute = 'title';
+    public static function getGlobalSearchResultTitle(Model $record): string | Htmlable
+    {
+        return "Job";
+    }
 
+    public static function getGloballySearchableAttributes(): array
+    {
+        return [
+            'name',
+            'slug',
+            'description',
+            'status',
+            'type',
+            'location',
+            'salary',
+            'duration',
+            'experience',
+            'user.name',
+            'volunteer.name',
+            'jobApplication.name',
+            'jobApplication.email',
+            'jobApplication.phone',
+        ];
+    }
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        return [
+            'Volunteer' => $record->volunteer->name,
+            'User' => $record->user->name,
+        ];
+    }
     public static function form(Form $form): Form
+
+
+
     {
         return $form
             ->schema([

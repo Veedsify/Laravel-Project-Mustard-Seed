@@ -31,7 +31,7 @@
                                 <tr>
                                     <td width="50%" bgcolor="#f8f8f8"><strong>Donor:</strong></td>
                                     <td width="50%" bgcolor="#f8f8f8">
-                                        {{$user->name}}
+                                        {{$user->custom_username}}
                                     </td>
                                 </tr>
                                 <tr>

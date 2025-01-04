@@ -3,7 +3,10 @@
 namespace App\Filament\Volunteer\Resources;
 
 use App\Filament\Volunteer\Resources\VolunteerSettingResource\Pages;
+use App\Models\State;
+use App\Models\User;
 use App\Models\VolunteerSetting;
+use AWS\CRT\Log;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Form;
@@ -14,6 +17,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log as FacadesLog;
 
 class VolunteerSettingResource extends Resource
 {
@@ -23,11 +27,17 @@ class VolunteerSettingResource extends Resource
 
     protected static ?string $navigationGroup = 'Volunteers';
 
+    private function hasSettings()
+    {
+        return Auth::user()->volunteer_settings->count() > 0;
+    }
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\Section::make('Personal Information')
+                    ->columnSpan(3)
                     ->schema([
                         Forms\Components\TextInput::make('organization')
                             ->label('Organization Name')
@@ -43,6 +53,7 @@ class VolunteerSettingResource extends Resource
                     ]),
 
                 Forms\Components\Section::make('Contact Information')
+                    ->columnSpan(2)
                     ->schema([
                         Forms\Components\TextInput::make('phone')
                             ->label('Phone')
@@ -59,7 +70,11 @@ class VolunteerSettingResource extends Resource
                         Forms\Components\TextInput::make('city')
                             ->label('City')
                             ->required(),
-                        Forms\Components\TextInput::make('state')
+                        Forms\Components\Select::make('state')
+                            ->options(fn() => State::all()->pluck('name', 'name'))
+                            ->native(false)
+                            ->preload()
+                            ->searchable()
                             ->label('State')
                             ->required(),
                         Forms\Components\TextInput::make('country')
@@ -82,7 +97,7 @@ class VolunteerSettingResource extends Resource
                             ->label('LinkedIn')
                             ->required(),
                     ]),
-            ])->columns(3);
+            ])->columns(5);
     }
 
     public static function table(Table $table): Table

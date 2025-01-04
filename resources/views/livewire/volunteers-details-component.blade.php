@@ -6,7 +6,7 @@
             <div class="breadcrumb-text">
                 <nav aria-label="breadcrumb" class="breadcrumb-nav wow fadeInUp" data-wow-delay="0.0s">
                     <ul class="breadcrumb listing">
-                        <li class="breadcrumb-item single-list"><a href="{{route('home')}}" class="single">Home</a></li>
+                        <li class="breadcrumb-item single-list"><a href="{{ route('home') }}" class="single">Home</a></li>
                         <li class="breadcrumb-item single-list" aria-current="page"><a href="javascript:void(0)"
                                 class="single">Volunteer</a></li>
                     </ul>
@@ -23,7 +23,8 @@
             <div class="row gy-24">
                 <div class="col-xl-4 col-md-5 col-lg-5">
                     <div class="volunteer-img">
-                        <img src="{{ asset('storage/' . optional($volunteer->volunteer_settings)->image) }}" alt="image">
+                        <img src="{{ asset('storage/' . optional($volunteer->volunteer_settings)->image) }}"
+                            alt="image">
                     </div>
                 </div>
                 <div class="col-xl-8 col-md-7 col-lg-7">
@@ -81,5 +82,8 @@
             </div>
         </div>
     </section>
+
+
+    @livewire('comps.volunteer-ratings', ['volunteer' => $volunteer])
     <!-- End-of volunteer details-->
 </main>

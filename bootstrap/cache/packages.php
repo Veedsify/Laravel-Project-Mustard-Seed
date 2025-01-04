@@ -20,11 +20,36 @@
       0 => 'BladeUI\\Icons\\BladeIconsServiceProvider',
     ),
   ),
+  'charrafimed/global-search-modal' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'CharrafiMed\\GlobalSearchModal\\GlobalSearchModalServiceProvider',
+    ),
+  ),
+  'codeat3/blade-codicons' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Codeat3\\BladeCodicons\\BladeCodiconsServiceProvider',
+    ),
+  ),
   'codeat3/blade-solar-icons' => 
   array (
     'providers' => 
     array (
       0 => 'Codeat3\\BladeSolarIcons\\BladeSolarIconsServiceProvider',
+    ),
+  ),
+  'faisal50x/blade-ionicons' => 
+  array (
+    'aliases' => 
+    array (
+      'BladeIonicons' => 'Faisal50x\\BladeIonicons\\BladeIoniconsFacade',
+    ),
+    'providers' => 
+    array (
+      0 => 'Faisal50x\\BladeIonicons\\BladeIoniconsServiceProvider',
     ),
   ),
   'filament/actions' => 
@@ -133,6 +158,13 @@
       0 => 'Livewire\\LivewireServiceProvider',
     ),
   ),
+  'mallardduck/blade-boxicons' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'MallardDuck\\BladeBoxicons\\BladeBoxiconsServiceProvider',
+    ),
+  ),
   'nesbot/carbon' => 
   array (
     'providers' => 
@@ -154,6 +186,13 @@
       0 => 'Termwind\\Laravel\\TermwindServiceProvider',
     ),
   ),
+  'owenvoke/blade-fontawesome' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'OwenVoke\\BladeFontAwesome\\BladeFontAwesomeServiceProvider',
+    ),
+  ),
   'resend/resend-laravel' => 
   array (
     'providers' => 
@@ -170,6 +209,13 @@
     'providers' => 
     array (
       0 => 'RyanChandler\\BladeCaptureDirective\\BladeCaptureDirectiveServiceProvider',
+    ),
+  ),
+  'saade/blade-iconsax' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Saade\\BladeIconsax\\BladeIconsaxServiceProvider',
     ),
   ),
 );

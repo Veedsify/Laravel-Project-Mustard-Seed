@@ -48,7 +48,7 @@
             <div class="flex mt-4 md:mt-6">
                 <div x-data="{ openModal: false }">
                     <button @click="openModal = true"
-                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-amber-700 rounded-lg hover:bg-amber-800  dark:bg-amber-600 ">
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-teal-700 rounded-lg hover:bg-teal-800  dark:bg-teal-600 ">
                         Edit Profile
                     </button>
                     <div class="fixed bg-black bg-opacity-50 top-0 left-0 w-full h-screen z-50 transition-all duration-300 ease-in-out flex items-center justify-center"

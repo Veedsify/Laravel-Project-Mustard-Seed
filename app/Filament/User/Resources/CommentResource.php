@@ -15,6 +15,8 @@ use Filament\Tables;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Table;
+use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Database\Eloquent\Model;
 
 class CommentResource extends Resource
 {
@@ -24,7 +26,30 @@ class CommentResource extends Resource
     protected static ?string $modelLabel = 'Comments';
     protected static string | array $routeMiddleware = [CheckUserIsIdVerified::class];
     protected static ?string $navigationGroup = 'Blogs';
+    protected static ?string $recordTitleAttribute = 'title';
 
+    public static function getGlobalSearchResultTitle(Model $record): string | Htmlable
+    {
+        return "Comments";
+    }
+
+    public static function getGloballySearchableAttributes(): array
+    {
+        return [
+            'content',
+            'blog.title',
+            'blog.slug',
+            'user.name',
+        ];
+    }
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        return [
+            'User' => $record->user->name,
+            'Blog' => $record->blog->title,
+        ];
+    }
+    
     public static function form(Form $form): Form
     {
         return $form

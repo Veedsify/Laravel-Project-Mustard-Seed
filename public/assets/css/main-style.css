@@ -13,7 +13,7 @@
 ------------------------------------------------*/
 :root {
     --remix-icon: "remixicon";
-    --Mono: "JetBrains Mono", sans-serif;
+    --Mono: "Epilogue", sans-serif;
     --Sans: "Sora", sans-serif;
     --white: #fff;
     --light: #d8dbe0;
@@ -27214,4 +27214,25 @@ input[type=number] {
 .item-description * {
     all: unset;
     font-size: 0.8rem;
+}
+
+
+.stars-container {
+    display: flex;
+    gap: 5px;
+}
+
+.star-wrapper {
+    cursor: pointer;
+}
+
+.star {
+    fill: #e4e4e4;
+    /* Default color */
+    transition: fill 0.3s;
+}
+
+.star.active {
+    fill: #ffd700;
+    /* Active color */
 }

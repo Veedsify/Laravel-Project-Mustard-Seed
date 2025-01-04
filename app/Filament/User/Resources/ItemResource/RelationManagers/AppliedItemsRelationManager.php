@@ -11,6 +11,8 @@ use Filament\Tables\Table;
 class AppliedItemsRelationManager extends RelationManager
 {
     protected static string $relationship = 'appliedItems';
+    protected static bool $isLazy = false;
+
 
     public function form(Form $form): Form
     {
@@ -28,8 +30,10 @@ class AppliedItemsRelationManager extends RelationManager
             ->heading('Users who applied')
             ->recordTitleAttribute('first_name')
             ->columns([
-                Tables\Columns\TextColumn::make('first_name'),
-                Tables\Columns\TextColumn::make('last_name'),
+                Tables\Columns\TextColumn::make('custom_username')
+                ->getStateUsing(function ($record) {
+                    return $record->user->custom_username ?? $record->user->username;
+                }),
                 Tables\Columns\TextColumn::make('reason'),
                 Tables\Columns\IconColumn::make('is_approved')->boolean(),
             ])

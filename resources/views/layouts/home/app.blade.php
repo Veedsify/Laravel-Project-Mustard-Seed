@@ -6,20 +6,6 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="{{ optional($homePage)->logo }}"
-            content="mustard seed, causes, donate, charity foundation, charity hub, mustard seed charity,  theme, donations, non profit, fundraiser,social, ngo, non-profit, nonprofit, organization, volunteer">
-        <meta name="author" content="Mustard Seed">
-        <meta property="og:type" content="website">
-        <meta property="og:title" content="Mustard Seed Charity">
-        <meta property="og:site_name" content="Mustard Seed Charity Donations">
-        <meta property="og:site_name" content="Mustard Seed Charity">
-        <meta property="og:url" content="www.mustardseedcharity.com">
-        <meta property="og:image" content="{{ asset('storage/' . optional($homePage)->logo) }}">
-        <meta property="og:description" content="{{ optional($homePage)->footer_text }}">
-        <meta name="twitter:title" content="Mustard Seed Charity">
-        <meta name="twitter:description" content="{{ optional($homePage)->footer_text }}">
-        <meta name="twitter:image" content="www.mustardseedcharity.com">
-        <meta name="twitter:card" content="summary">
 
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>
@@ -29,12 +15,19 @@
         {{-- FONTS --}}
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Sora:wght@100..800&display=swap"
+            rel="stylesheet">
 
         {{-- FAVICON --}}
         <link rel="icon" type="image/x-icon" sizes="20x20"
             href="{{ asset('storage/' . optional($homePage)->logo) }}">
 
+        {{-- OPEN GRAPHS --}}
+        @yield('meta')
+
+        {{-- "https://www.facebook.com/mustardseedcharity",
+            "https://twitter.com/mustardseedcharity" --}}
         <!-- Bootstrap -->
         {{-- <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap-5.3.0.min.css') }}"> --}}
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -48,11 +41,31 @@
         <!-- RTL CSS::When Need RTL Uncomments File -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+        <!-- Swiper JS & CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
         <style>
             #content * {
-                all : unset !important;
+                all: unset !important;
             }
         </style>
+
+        <!-- Google Ananlytics -->
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-9F2L5MFVSX"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'G-9F2L5MFVSX');
+        </script>
         @livewireStyles
     </head>
 

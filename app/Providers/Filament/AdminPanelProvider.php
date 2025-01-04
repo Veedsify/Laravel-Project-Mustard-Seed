@@ -32,11 +32,11 @@ class AdminPanelProvider extends PanelProvider
             ->brandLogo('assets/images/logo/mustard_seed_logo.jpg')
             // ->spa()
             ->path('admin')
-            ->font('Sora')
+            ->font('Epilogue')
             ->defaultThemeMode(ThemeMode::Dark)
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->colors([
-                'primary' => Color::Emerald,
+                'primary' => Color::Teal,
                 'secondary' => Color::hex("#000"),
                 'background' => Color::hex("#000"),
             ])

@@ -12,7 +12,9 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Table;
+use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 class MyJobApplicationResource extends Resource
 {
@@ -21,6 +23,31 @@ class MyJobApplicationResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-s-book-open';
     protected static string | array $routeMiddleware = [CheckUserIsIdVerified::class];
     protected static ?string $navigationGroup = 'Jobs';
+    protected static ?string $recordTitleAttribute = 'title';
+
+    public static function getGlobalSearchResultTitle(Model $record): string | Htmlable
+    {
+        return "Job Application for {$record->job->name}";
+    }
+
+    public static function getGloballySearchableAttributes(): array
+    {
+        return [
+            'name',
+            'email',
+            'phone',
+            'cover_letter',
+            'job.name',
+            'job.description',
+        ];
+    }
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        return [
+            'Job' => $record->job->name,
+        ];
+    }
+
     public static function canEdit($record): bool
     {
         return false;

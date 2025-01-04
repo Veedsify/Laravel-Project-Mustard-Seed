@@ -1,4 +1,51 @@
 @section('title', 'Donated Items')
+@section('meta')
+    <meta name="description" content="{{ optional($homePage)->logo }}"
+        content="Mustard Seed Charity is deeply committed to community development and humanitarian work, with a variety of initiatives focused on poverty alleviation and human empowerment via job provision and education. The Charity organization operates and reach out to various community through her committed Volunteers all over the globe.">
+        <meta name="keywords" content="{{ optional($homePage)->logo }}"
+        content="mustard seed, causes, donate, charity foundation, charity hub, mustard seed charity,  theme, donations, non profit, fundraiser,social, ngo, non-profit, nonprofit, organization, volunteer">
+    <meta name="author" content="Mustard Seed">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Mustard Seed Charity - About Us">
+    <meta property="og:site_name" content="Mustard Seed Charity Donations">
+    <meta property="og:site_name" content="Mustard Seed Charity">
+    <meta property="og:url" content="www.mustardseedcharity.com/donations">
+    <meta property="og:image" content="{{ asset('storage/' . optional($homePage)->logo) }}">
+    <meta property="og:description" content="{{ optional($homePage)->footer_text }}">
+    <meta name="twitter:title" content="Mustard Seed Charity">
+    <meta name="twitter:description" content="{{ optional($homePage)->footer_text }}">
+    <meta name="twitter:image" content="www.mustardseedcharity.com">
+    <meta name="twitter:card" content="summary">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:locale" content="en_US">
+    <meta property="article:modified_time" content="{{ now() }}">
+
+    <!-- Twitter -->
+    <meta name="twitter:domain" content="mustardseedcharity.com/donations">
+
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="rating" content="General">
+    <meta name="revisit-after" content="2 days">
+    <meta name="language" content="English">
+    <link rel="canonical" href="{{ url()->current()}}">
+
+    <!-- Rich Snippets -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "NonProfit",
+            "name": "Mustard Seed Charity",
+            "url": "https://mustardseedcharity.com/donations",
+            "logo": "{{ asset('storage/' . optional($homePage)->logo) }}",
+            "sameAs": [
+            
+            ],
+        }
+</script>
+@endsection
 <main>
     <!-- Breadcrumb Area S t a r t -->
     <section class="breadcrumb-section breadcrumb-bg"

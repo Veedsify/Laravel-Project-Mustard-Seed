@@ -52,7 +52,7 @@
                                     </div>
                                     <div>
                                         <button
-                                            class="px-3 py-2 inline-block mt-2 text-xs font-medium text-white bg-amber-600 rounded w-full">
+                                            class="px-3 py-2 inline-block mt-2 text-xs font-medium text-white bg-teal-600 rounded w-full">
                                             View
                                         </button>
                                     </div>

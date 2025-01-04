@@ -1,4 +1,52 @@
 @section('title', $title)
+@section('meta')
+    <meta name="description" content="{{ optional($homePage)->logo }}"
+        content="mustard seed, causes, donate, charity foundation, charity hub, mustard seed charity,  theme, donations, non profit, fundraiser,social, ngo, non-profit, nonprofit, organization, volunteer">
+    <meta name="author" content="Mustard Seed">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Mustard Seed Charity">
+    <meta property="og:site_name" content="Mustard Seed Charity Donations">
+    <meta property="og:site_name" content="Mustard Seed Charity">
+    <meta property="og:url" content="www.mustardseedcharity.com">
+    <meta property="og:image" content="{{ asset('storage/' . optional($homePage)->logo) }}">
+    <meta property="og:description" content="{{ optional($homePage)->footer_text }}">
+    <meta name="twitter:title" content="Mustard Seed Charity">
+    <meta name="twitter:description" content="{{ optional($homePage)->footer_text }}">
+    <meta name="twitter:image" content="www.mustardseedcharity.com">
+    <meta name="twitter:card" content="summary">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:locale" content="en_US">
+    <meta property="article:publisher" content="https://www.facebook.com/mustardseedcharity">
+    <meta property="article:modified_time" content="{{ now() }}">
+
+    <!-- Twitter -->
+    <meta name="twitter:creator" content="@mustardseedcharity">
+    <meta name="twitter:site" content="@mustardseedcharity">
+    <meta name="twitter:domain" content="mustardseedcharity.com">
+
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="rating" content="General">
+    <meta name="revisit-after" content="2 days">
+    <meta name="language" content="English">
+    <link rel="canonical" href="{{ url()->current() }}">
+
+    <!-- Rich Snippets -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "NonProfit",
+            "name": "Mustard Seed Charity",
+            "url": "https://mustardseedcharity.com",
+            "logo": "{{ asset('storage/' . optional($homePage)->logo) }}",
+            "sameAs": [
+            
+            ],
+        }
+</script>
+@endsection
 <main>
     <!-- Hero area S t a r t-->
     <section class="hero-area">
@@ -346,8 +394,8 @@
         <!-- End-of Question Area -->
     @endif
     <!-- Gallery S t a r t -->
-    @if ($data && $data->show_gallery_section)
+    {{-- @if ($data && $data->show_gallery_section) --}}
         @livewire('gallery-component')
-    @endif
+    {{-- @endif --}}
     <!-- End-of Gallery -->
 </main>

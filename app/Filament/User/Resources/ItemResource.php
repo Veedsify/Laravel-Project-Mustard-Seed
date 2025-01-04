@@ -13,7 +13,9 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
 class ItemResource extends Resource
@@ -24,11 +26,34 @@ class ItemResource extends Resource
     protected static ?string $navigationGroup = 'Donations';
     protected static ?string $navigationLabel = 'Donate';
     protected static ?string $title = 'New Donation';
+    protected static ?string $recordTitleAttribute = 'title';
+ 
+    public static function getGlobalSearchResultTitle(Model $record): string | Htmlable
+    {
+        return "Items for Donation";
+    }
 
-    // public static function canEdit($record): bool
-    // {
-    //     return false;
-    // }
+    public static function getGloballySearchableAttributes(): array
+    {
+        return [
+            'name',
+            'description',
+            'slug',
+            'content',
+            'quantity',
+            'category.name',
+            'user.name',
+            'volunteer.name',
+        ];
+    }
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        return [
+            'Category' => $record->category->name,
+            'User' => $record->user->name,
+            'Volunteer' => $record->volunteer->name,
+        ];
+    }
 
     public static function form(Form $form): Form
     {
@@ -140,6 +165,7 @@ class ItemResource extends Resource
     {
         return [
             RelationManagers\AppliedItemsRelationManager::class,
+            RelationManagers\ApplicantsFromOrganizationRelationManager::class,
         ];
     }
     public static function getWidgets(): array

@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class DonatedItemsCount extends BaseWidget
 {
+
+
+    protected static bool $isLazy = false;
+    protected ?string $heading = 'Analytics';
     protected function getStats(): array
     {
         return [

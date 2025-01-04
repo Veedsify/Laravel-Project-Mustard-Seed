@@ -41,7 +41,7 @@
             Back
         </button>
         <button onclick="detectFace()" type="button"
-            class="rounded-xl p-3 w-full block border-gray-300 bg-amber-600 text-white font-semibold cursor-pointer hover:bg-amber-500">
+            class="rounded-xl p-3 w-full block border-gray-300 bg-teal-600 text-white font-semibold cursor-pointer hover:bg-teal-500">
             Start Verification
         </button>
     </div>

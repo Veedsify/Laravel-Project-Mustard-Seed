@@ -38,6 +38,7 @@ class AppliedItemResource extends Resource
                     $query->where('volunteer_id', Auth::user()->id);
                 })->orderBy('id', 'desc');
             })
+            ->defaultGroup('item.name')
             ->columns([
                 Tables\Columns\ImageColumn::make('item.image')
                     ->label('Image'),
@@ -45,10 +46,8 @@ class AppliedItemResource extends Resource
                     ->label('Item Name')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('first_name')
-                    ->searchable()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('last_name')
+                Tables\Columns\TextColumn::make('user.custom_username')
+                    ->label('Username')
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('reason')
@@ -91,10 +90,8 @@ class AppliedItemResource extends Resource
             ImageEntry::make('Image')
                 ->default(fn($record) => $record->item->image)
                 ->columnSpan(2),
-            TextEntry::make('Fullname')
-                ->default(fn($record) => $record->user->name),
             TextEntry::make('Username')
-                ->default(fn($record) => $record->user->username),
+                ->default(fn($record) => $record->user->custom_username),
             TextEntry::make('Item Category')
                 ->default(fn($record) => $record->item->category->name),
             TextEntry::make('Assigned Volunteer Name')

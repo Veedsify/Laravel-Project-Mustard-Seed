@@ -74,7 +74,7 @@
                                             <div class="single-blog h-calc">
                                                 <div class="blog-img" style="flex:1;">
                                                     <a href="{{ route('item.preview', $otherItem->slug) }}">
-                                                        <img style="object-fit: cover;"
+                                                        <img style="object-fit: cover; aspect-ratio: 4/3;"
                                                              src="{{ asset('storage/' . $otherItem->image) }}"
                                                              class="img-fluid w-100" alt="img">
                                                     </a>

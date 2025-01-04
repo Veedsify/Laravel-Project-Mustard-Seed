@@ -34,12 +34,12 @@
         Preloader
     ----------------------------------------------*/
 
-    $('#preloader-active').delay(450).fadeOut('slowest');
+    $("#preloader-active").delay(450).fadeOut("slowest");
     // $('body').delay(450).css({
     //     'overflow': 'visible'
     // });
-    $(window).on('load', function () {
-        $('#preloader-active').delay(450).fadeOut('slowest');
+    $(window).on("load", function () {
+        $("#preloader-active").delay(450).fadeOut("slowest");
         // $('body').delay(450).css({
         //     'overflow': 'visible'
         // });
@@ -63,7 +63,10 @@
       Data-background
     -----------------------------------*/
     $("[data-background]").each(function () {
-        $(this).css("background-image", "url(" + $(this).attr("data-background") + ")");
+        $(this).css(
+            "background-image",
+            "url(" + $(this).attr("data-background") + ")"
+        );
     });
 
     /*-----------------------------------
@@ -72,13 +75,20 @@
     function mainSlider() {
         var BasicSlider = $(".slider-active");
         BasicSlider.on("init", function (e, slick) {
-            var $firstAnimatingElements = $(".single-slider:first-child").find("[data-animation]");
+            var $firstAnimatingElements = $(".single-slider:first-child").find(
+                "[data-animation]"
+            );
             doAnimations($firstAnimatingElements);
         });
-        BasicSlider.on("beforeChange", function (e, slick, currentSlide, nextSlide) {
-            var $animatingElements = $('.single-slider[data-slick-index="' + nextSlide + '"]').find("[data-animation]");
-            doAnimations($animatingElements);
-        });
+        BasicSlider.on(
+            "beforeChange",
+            function (e, slick, currentSlide, nextSlide) {
+                var $animatingElements = $(
+                    '.single-slider[data-slick-index="' + nextSlide + '"]'
+                ).find("[data-animation]");
+                doAnimations($animatingElements);
+            }
+        );
         BasicSlider.slick({
             autoplay: true,
             autoplaySpeed: 4000,
@@ -86,8 +96,10 @@
             fade: true,
             arrows: false,
             // rtl: true, // Enable RTL support
-            prevArrow: '<button type="button" class="slick-prev"><i class="ti-angle-left"></i></button>',
-            nextArrow: '<button type="button" class="slick-next"><i class="ti-angle-right"></i></button>',
+            prevArrow:
+                '<button type="button" class="slick-prev"><i class="ti-angle-left"></i></button>',
+            nextArrow:
+                '<button type="button" class="slick-next"><i class="ti-angle-right"></i></button>',
             responsive: [
                 {
                     breakpoint: 1024,
@@ -117,7 +129,8 @@
         });
 
         function doAnimations(elements) {
-            var animationEndEvents = "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
+            var animationEndEvents =
+                "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
             elements.each(function () {
                 var $this = $(this);
                 var $animationDelay = $this.data("delay");
@@ -126,9 +139,11 @@
                     "animation-delay": $animationDelay,
                     "-webkit-animation-delay": $animationDelay,
                 });
-                $this.addClass($animationType).one(animationEndEvents, function () {
-                    $this.removeClass($animationType);
-                });
+                $this
+                    .addClass($animationType)
+                    .one(animationEndEvents, function () {
+                        $this.removeClass($animationType);
+                    });
             });
         }
     }
@@ -191,13 +206,17 @@
         slidesToScroll: 1,
         autoplay: false,
         // rtl: true, // Enable RTL support
-        prevArrow: '<button type="button" class="slick-prev slick-arrow"><i class="ri-arrow-left-line"></i></button>',
-        nextArrow: '<button type="button" class="slick-next slick-arrow"><i class="ri-arrow-right-line"></i></button>',
+        prevArrow:
+            '<button type="button" class="slick-prev slick-arrow"><i class="ri-arrow-left-line"></i></button>',
+        nextArrow:
+            '<button type="button" class="slick-next slick-arrow"><i class="ri-arrow-right-line"></i></button>',
         customPaging: function (slider, i) {
             // Custom content for each dot
             return `<div class="slick-custom-dot">
                   <div class="testimonial-img-horizontal">
-                      <img class="w-100" src="assets/images/gallery/testimonial-${i + 1}.png" alt="image">
+                      <img class="w-100" src="assets/images/gallery/testimonial-${
+                          i + 1
+                      }.png" alt="image">
                   </div>
               </div>`;
         },
@@ -214,8 +233,10 @@
         slidesToScroll: 1,
         autoplay: false,
         // rtl: true, // Enable RTL support
-        prevArrow: '<button type="button" class="slick-prev slick-arrow"><i class="ri-arrow-left-s-line"></i></button>',
-        nextArrow: '<button type="button" class="slick-next slick-arrow"><i class="ri-arrow-right-s-line"></i></button>',
+        prevArrow:
+            '<button type="button" class="slick-prev slick-arrow"><i class="ri-arrow-left-s-line"></i></button>',
+        nextArrow:
+            '<button type="button" class="slick-next slick-arrow"><i class="ri-arrow-right-s-line"></i></button>',
         responsive: [
             {
                 breakpoint: 1200,
@@ -246,12 +267,14 @@
         slidesToScroll: 1,
         autoplay: false,
         // rtl: true, // Enable RTL support
-        prevArrow: '<button type="button" class="slick-prev slick-arrow"><i class="ri-arrow-left-s-line"></i></button>',
-        nextArrow: '<button type="button" class="slick-next slick-arrow"><i class="ri-arrow-right-s-line"></i></button>',
+        prevArrow:
+            '<button type="button" class="slick-prev slick-arrow"><i class="ri-arrow-left-s-line"></i></button>',
+        nextArrow:
+            '<button type="button" class="slick-next slick-arrow"><i class="ri-arrow-right-s-line"></i></button>',
     });
 
     /*----------------------------------------------
-      slider - Gallery Area-active
+      slider - Gallery Area-active With Swiper Now
     ----------------------------------------------*/
     $(".gallery-slider").slick({
         slidesToShow: 6,
@@ -281,6 +304,31 @@
                 },
             },
         ],
+    });
+    var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 0,
+        autoplay: {
+            delay: 2000,
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        loop: true,
+        breakpoints: {
+            0: {
+                slidesPerView: 1,
+            },
+            576: {
+                slidesPerView: 2,
+            },
+            768: {
+                slidesPerView: 4,
+            },
+            992: {
+                slidesPerView: 6,
+            },
+        },
     });
 
     /*----------------------------------------------
@@ -327,8 +375,10 @@
         infinite: true,
         arrows: true,
         // rtl: true, // Enable RTL support
-        prevArrow: '<button type="button" class="slick-arrow-prev"><p class="arrow-text">Previews</p><div class="slick-prev"><i class="ri-arrow-left-line"></i></div></button>',
-        nextArrow: '<button type="button" class="slick-arrow-next"><p class="arrow-text">Next Previews</p><div class="slick-next"><i class="ri-arrow-right-line"></i></div></button>',
+        prevArrow:
+            '<button type="button" class="slick-arrow-prev"><p class="arrow-text">Previews</p><div class="slick-prev"><i class="ri-arrow-left-line"></i></div></button>',
+        nextArrow:
+            '<button type="button" class="slick-arrow-next"><p class="arrow-text">Next Previews</p><div class="slick-next"><i class="ri-arrow-right-line"></i></div></button>',
     });
 
     /*----------------------------------------------
@@ -372,7 +422,6 @@
         width: "100%",
     });
 
-
     /*----------------------------------------------
       Custom click expand icon
     ----------------------------------------------*/
@@ -385,7 +434,6 @@
             });
         });
     });
-
 
     /*-----------------------------------
       Slick Nav [ Mobile Menu ]
@@ -404,7 +452,6 @@
             }
         }
     });
-
 
     /*-----------------------------------
       Search box
@@ -431,7 +478,10 @@
     });
 
     $(document).click(function (event) {
-        if (!$(event.target).closest($searchIcon).length && !$(event.target).closest($searchContainer).length) {
+        if (
+            !$(event.target).closest($searchIcon).length &&
+            !$(event.target).closest($searchContainer).length
+        ) {
             // $searchContainer.hide();
             // $overlay.hide();
         }
@@ -458,7 +508,6 @@
     -----------------------------------*/
     new WOW().init();
 
-
     /*-----------------------------------
       Hover Tilt Effect
     -----------------------------------*/
@@ -484,7 +533,7 @@
                 icon.removeClass("ri-eye-off-line").addClass("ri-eye-line");
             }
         });
-    })
+    });
 
     /*-----------------------------------
       Play video
@@ -492,7 +541,9 @@
     $("#play-video").on("click", function (e) {
         e.preventDefault();
         $("#video-overlay").addClass("open");
-        $("#video-overlay").append('<iframe width="560" height="315" src="https://www.youtube.com/embed/RK1RRVR9A2g" frameborder="0" allowfullscreen></iframe>');
+        $("#video-overlay").append(
+            '<iframe width="560" height="315" src="https://www.youtube.com/embed/RK1RRVR9A2g" frameborder="0" allowfullscreen></iframe>'
+        );
     });
 
     $(".video-overlay, .video-overlay-close").on("click", function (e) {
@@ -513,7 +564,9 @@
     $("#play-video-two").on("click", function (e) {
         e.preventDefault();
         $("#video-overlay").addClass("open");
-        $("#video-overlay").append('<iframe width="560" height="315" src="https://www.youtube.com/embed/RK1RRVR9A2g" frameborder="0" allowfullscreen></iframe>');
+        $("#video-overlay").append(
+            '<iframe width="560" height="315" src="https://www.youtube.com/embed/RK1RRVR9A2g" frameborder="0" allowfullscreen></iframe>'
+        );
     });
 
     $(".video-overlay, .video-overlay-close").on("click", function (e) {
@@ -538,11 +591,14 @@
         var progressPath = document.querySelector(".progressParent path");
         var pathLength = progressPath?.getTotalLength();
         if (pathLength) {
-            progressPath.style.transition = progressPath.style.WebkitTransition = "none";
+            progressPath.style.transition =
+                progressPath.style.WebkitTransition = "none";
             progressPath.style.strokeDasharray = pathLength + " " + pathLength;
             progressPath.style.strokeDashoffset = pathLength;
             progressPath.getBoundingClientRect();
-            progressPath.style.transition = progressPath.style.WebkitTransition = "stroke-dashoffset 10ms linear";
+            progressPath.style.transition =
+                progressPath.style.WebkitTransition =
+                    "stroke-dashoffset 10ms linear";
             var updateProgress = function () {
                 var scroll = $(window).scrollTop();
                 var height = $(document).height() - $(window).height();
@@ -557,62 +613,69 @@
                 if (jQuery(this).scrollTop() > offset) {
                     jQuery(".progressParent").addClass("rn-backto-top-active");
                 } else {
-                    jQuery(".progressParent").removeClass("rn-backto-top-active");
+                    jQuery(".progressParent").removeClass(
+                        "rn-backto-top-active"
+                    );
                 }
             });
             jQuery(".progressParent").on("click", function (event) {
                 event.preventDefault();
-                jQuery("html, body").animate({scrollTop: 0}, duration);
+                jQuery("html, body").animate({ scrollTop: 0 }, duration);
                 return false;
             });
         }
     })();
 
-
     /*-----------------------------------
         selectPricing , Tag
     -----------------------------------*/
     $(".selectPricing li, .selectTag li").click(function () {
-        $(this).toggleClass('active').siblings().removeClass('active');
+        $(this).toggleClass("active").siblings().removeClass("active");
     });
 
     /*------------------------------
         payment gateway selection
     -------------------------------*/
-    $(".payment-gateway-list li").on('click', function () {
+    $(".payment-gateway-list li").on("click", function () {
         $(".payment-gateway-list li").removeClass("selected");
         $(this).addClass("selected");
-    })
-
+    });
 
     // Count pricing
     $(document).ready(function () {
-        let price_right_parent = $('.priceListing');
-        let left_default_amount = $('.left_default_amount').val();
-        price_right_parent.find('.total_donation_amount').text('$' + left_default_amount);
+        let price_right_parent = $(".priceListing");
+        let left_default_amount = $(".left_default_amount").val();
+        price_right_parent
+            .find(".total_donation_amount")
+            .text("$" + left_default_amount);
 
-        $(document).on('click', '.selectPricing li', function () {
-            let el = '$' + $(this).data('amount');
-            price_right_parent.find('.total_donation_amount').text(el);
-            $('.left_default_amount').val($(this).data('amount'))
+        $(document).on("click", ".selectPricing li", function () {
+            let el = "$" + $(this).data("amount");
+            price_right_parent.find(".total_donation_amount").text(el);
+            $(".left_default_amount").val($(this).data("amount"));
         });
 
-        $(document).on('keyup', '.left_default_amount ', function () {
+        $(document).on("keyup", ".left_default_amount ", function () {
             let el = $(this).val();
-            price_right_parent.find('.total_donation_amount').text('$' + el);
+            price_right_parent.find(".total_donation_amount").text("$" + el);
         });
 
-        $(document).on('click', '.payment-gateway-list .single-gateway-item', function () {
-            $('#slected_gateway_from_helper').val($(this).data('gateway'))
+        $(document).on(
+            "click",
+            ".payment-gateway-list .single-gateway-item",
+            function () {
+                $("#slected_gateway_from_helper").val($(this).data("gateway"));
 
-            let gateway = $(this).data('gateway');
+                let gateway = $(this).data("gateway");
 
-            if (gateway == 'manual_payment') {
-                $('.manual_payment_transaction_field').removeClass('d-none');
-            } else {
-                $('.manual_payment_transaction_field').addClass('d-none');
+                if (gateway == "manual_payment") {
+                    $(".manual_payment_transaction_field").removeClass(
+                        "d-none"
+                    );
+                } else {
+                    $(".manual_payment_transaction_field").addClass("d-none");
+                }
             }
-        });
+        );
     });
-
 })(jQuery);
