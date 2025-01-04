@@ -276,35 +276,35 @@
     /*----------------------------------------------
       slider - Gallery Area-active With Swiper Now
     ----------------------------------------------*/
-    $(".gallery-slider").slick({
-        slidesToShow: 6,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 2000,
-        infinite: true,
-        arrows: false,
-        rtl: true, // Enable RTL support
-        responsive: [
-            {
-                breakpoint: 1200,
-                settings: {
-                    slidesToShow: 6,
-                },
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 3,
-                },
-            },
-            {
-                breakpoint: 575,
-                settings: {
-                    slidesToShow: 2,
-                },
-            },
-        ],
-    });
+    // $(".gallery-slider").slick({
+    //     slidesToShow: 6,
+    //     slidesToScroll: 1,
+    //     autoplay: true,
+    //     autoplaySpeed: 2000,
+    //     infinite: true,
+    //     arrows: false,
+    //     rtl: true, // Enable RTL support
+    //     responsive: [
+    //         {
+    //             breakpoint: 1200,
+    //             settings: {
+    //                 slidesToShow: 6,
+    //             },
+    //         },
+    //         {
+    //             breakpoint: 768,
+    //             settings: {
+    //                 slidesToShow: 3,
+    //             },
+    //         },
+    //         {
+    //             breakpoint: 575,
+    //             settings: {
+    //                 slidesToShow: 2,
+    //             },
+    //         },
+    //     ],
+    // });
     var swiper = new Swiper(".mySwiper", {
         spaceBetween: 0,
         autoplay: {
