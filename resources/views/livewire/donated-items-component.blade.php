@@ -41,7 +41,7 @@
             "url": "https://mustardseedcharity.com/donations",
             "logo": "{{ asset('storage/' . optional($homePage)->logo) }}",
             "sameAs": [
-            
+
             ],
         }
 </script>
@@ -181,7 +181,30 @@
         </div>
     </section>
     <!-- End-of donate -->
-
+    <!-- Question Box Start -->
+    <section class="question-box-section py-5 " style="background: #00715D;">
+        <div class="container">
+            <div class="row justify-content-center">
+                    <div class="question-box bg-white rounded-lg shadow-sm p-4 p-md-5">
+                        <div class="text-center mb-4">
+                            <svg class="mb-3" width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#00715D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 17H12.01" stroke="#00715D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9.09003 9.00001C9.32513 8.33167 9.78918 7.76811 10.4 7.40914C11.0108 7.05016 11.7289 6.91894 12.4272 7.03872C13.1255 7.15849 13.7588 7.52153 14.2151 8.06353C14.6714 8.60553 14.9211 9.29152 14.92 10C14.92 12 11.92 13 11.92 13" stroke="#00715D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <h3 class="title">Looking for Something Specific?</h3>
+                            <p class="text-muted">Can't find what you're looking for? Let us know and we'll notify you when it becomes available.</p>
+                        </div>
+                     <div class="d-flex justify-content-center">
+                                <a href="{{route('forum')}}" class="btn-primary-fill px-4 py-2 rounded">
+                                    Request On Our Forum
+                                </a>
+                     </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+    <!-- End of Question Box -->
     <!-- Gallery S t a r t -->
     @livewire('gallery-component')
     <!-- End-of Gallery -->

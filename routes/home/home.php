@@ -15,6 +15,7 @@ use App\Livewire\DonationPayComponent;
 use App\Livewire\EventsComponent;
 use App\Livewire\FaceVerificationComponent;
 use App\Livewire\FaqComponents;
+use App\Livewire\ForumComponent;
 use App\Livewire\GetStartedComponent;
 use App\Livewire\HomeComponent;
 use App\Livewire\JobComponent;
@@ -37,6 +38,8 @@ Route::middleware('page_visits')->group(function () {
     Route::get('/blogs', BlogComponent::class)->name('blogs');
     Route::get('/login', LoginComponent::class)->name('login');
     Route::get('/register', RegisterComponent::class)->name('register');
+    
+    
     // Route::get('/logout', [LoginComponent::class, 'logout'])->name('logout');
     Route::get('/contact', ContactComponent::class)->name('contact');
 
@@ -69,6 +72,8 @@ Route::middleware('page_visits')->group(function () {
     // FaceVerification
     Route::get('/verify/face', FaceVerificationComponent::class)->name('face.verify');
    Route::post('/start/face-verification', [FaceVerifcation::class, 'saveFace'])->name('face.verification');
+   
+   Route::get('/forum', ForumComponent::class)->name('forum');
 });
 
 // Route::post('/face/upload',[FaceVerifcation::class, 'attachFace'])->name('face.upload');
