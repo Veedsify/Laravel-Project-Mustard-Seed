@@ -41,11 +41,11 @@ class RegisAsVolunteer extends Component
             "city" => "required",
             "zipcode" => "required",
             "local_gov" => "required",
-            "nin" => "required",
-            "nin_state" => "required",
-            "nin_city" => "required",
-            "nin_zipcode" => "required",
-            "nin_local_gov" => "required",
+            "nin" => $this->is_valid_organisation ? "nullable" : "required",
+            "nin_state" => $this->is_valid_organisation ? "nullable" : "required",
+            "nin_city" => $this->is_valid_organisation ? "nullable" : "required",
+            "nin_zipcode" => $this->is_valid_organisation ? "nullable" : "required",
+            "nin_local_gov" => $this->is_valid_organisation ? "nullable" : "required",
         ]);
 
         $password = Str::random(8);
@@ -64,7 +64,7 @@ class RegisAsVolunteer extends Component
             "email" => $this->email,
             "password" => Hash::make($password),
             "username" =>
-                "@" . Str::replace(" ", "", $this->name) . rand(10, 100),
+            "@" . Str::replace(" ", "", $this->name) . rand(10, 100),
             "avatar" => "avatar.png",
             "cover" => "cover.png",
             "role" => "volunteer",
